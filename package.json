@@ -1,0 +1,109 @@
+{
+  "name": "glamorous",
+  "version": "0.0.0-semantically-released",
+  "description": "React component styling solved",
+  "main": "dist/glamorous.cjs.js",
+  "jsnext:main": "dist/glamorous.es.js",
+  "module": "dist/glamorous.es.js",
+  "scripts": {
+    "start": "nps",
+    "test": "nps test",
+    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
+    "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "css",
+    "css-in-js",
+    "styled-components",
+    "glamor",
+    "jsxstyle"
+  ],
+  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "license": "MIT",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": ">=14",
+    "glamor": ">=2"
+  },
+  "devDependencies": {
+    "all-contributors-cli": "^4.0.1",
+    "babel-cli": "^6.23.0",
+    "babel-jest": "^19.0.0",
+    "babel-preset-env": "^1.2.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "codecov": "^2.1.0",
+    "commitizen": "^2.9.6",
+    "common-tags": "^1.4.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "enzyme": "^2.8.0",
+    "enzyme-to-json": "^1.5.0",
+    "eslint": "^3.17.0",
+    "eslint-config-kentcdodds": "^12.0.0",
+    "glamor": "^2.20.24",
+    "husky": "^0.13.2",
+    "jest-cli": "^19.0.2",
+    "jest-glamor-react": "^1.2.0",
+    "lint-staged": "^3.3.1",
+    "nps": "^5.0.3",
+    "nps-utils": "^1.1.2",
+    "opt-cli": "^1.5.1",
+    "prettier-eslint-cli": "^3.1.2",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "semantic-release": "^6.3.6",
+    "validate-commit-msg": "^2.11.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "kentcdodds",
+      "kentcdodds/jest",
+      "kentcdodds/react",
+      "kentcdodds/prettier"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentcdodds/glamorous.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kentcdodds/glamorous/issues"
+  },
+  "homepage": "https://github.com/kentcdodds/glamorous#readme"
+}

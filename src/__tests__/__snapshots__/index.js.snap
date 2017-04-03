@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows you to specify the tag rendered by a component 1`] = `
+.css-110n7f9,
+[data-css-110n7f9] {
+  height: 1px;
+  width: 2px;
+}
+
+<svg
+  class="css-110n7f9"
+  height="2"
+/>
+`;
+
+exports[`can use pre-glamorous components with css attributes 1`] = `
+.css-1t62idy,
+[data-css-1t62idy] {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+<a
+  class="is added to classes css-1t62idy"
+  href="/is-forwarded"
+  id="is-forwarded"
+/>
+`;
+
+exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
+.css-mhpxxj,
+[data-css-mhpxxj] {
+  padding: 1px;
+  margin: 1px;
+}
+
+<div
+  class="css-mhpxxj"
+>
+  He likes it! Hey Mikey!
+</div>
+`;
+
+exports[`merges composed component styles for reasonable overrides 1`] = `
+.css-1k8eh41,
+[data-css-1k8eh41] {
+  margin-top: 1px;
+  margin-right: 2px;
+  padding-top: 5px;
+  padding-right: 6px;
+  margin-bottom: 3px;
+  margin-left: 4px;
+}
+
+<div
+  class="other classes are not removed css-1k8eh41"
+/>
+`;
+
+exports[`sanity test 1`] = `
+.css-1b98bkc,
+[data-css-1b98bkc] {
+  margin-left: 24px;
+}
+
+<div
+  class="css-1b98bkc"
+/>
+`;
+
+exports[`styles can be functions that accept props 1`] = `
+.css-ig7b2c,
+[data-css-ig7b2c] {
+  margin-top: 2px;
+}
+
+<div
+  class="css-ig7b2c"
+/>
+`;
+
+exports[`will forward \`color\` to an svg 1`] = `
+<svg
+  class="css-nil"
+  color="red"
+/>
+`;
+
+exports[`will not forward \`color\` to a div 1`] = `
+.css-1ezp9xe,
+[data-css-1ezp9xe] {
+  color: red;
+}
+
+<div
+  class="css-1ezp9xe"
+/>
+`;
