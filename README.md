@@ -2,8 +2,10 @@
 
 # glamorous
 
-React component styling solved with an elegant (inspired) API, small footprint
-(<5kb gzipped), and blazing fast performance (thanks to [`glamor`][glamor]).
+React component styling solved with an elegant ([inspired](#inspiration)) API,
+small footprint (<5kb gzipped), and great performance (via [`glamor`][glamor]).
+
+> Read [the intro blogpost][intro-blogpost]
 
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
@@ -297,8 +299,8 @@ The biggest inspiration for building this is because I love the API offered by
   tooling support, ESLint, etc.)
 
 > You can get around the parser issue if you use a certain babel plugin, but
-> then you can't do any dynamic construction of your CSS string which is a
-> bummer for custom utilities.
+> then you can't do any dynamic construction of your CSS string (like
+> [this][styled-components-util]) which is a bummer for custom utilities.
 
 ## Other Solutions
 
@@ -364,3 +366,5 @@ MIT
 [module-formats-badge]: https://img.shields.io/badge/module%20formats-umd%2C%20cjs%2C%20es-green.svg?style=flat-square
 [mainFields]: https://webpack.js.org/configuration/resolve/#resolve-mainfields
 [umd]: https://github.com/umdjs/umd
+[styled-components-util]: https://codepen.io/kentcdodds/pen/MpxMge
+[intro-blogpost]: https://medium.com/p/fb3c9f4ed20e
