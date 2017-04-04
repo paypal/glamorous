@@ -9,3 +9,5 @@ We haven't filled this out yet though. Care to help? See `CONTRIBUTING.md`
 ## Might do
 
 ## Wont do
+
+- Support property-specific dynamic functions like `styled-components` [#5](https://github.com/kentcdodds/glamorous/issues/5)
