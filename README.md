@@ -350,7 +350,7 @@ MIT
 [version-badge]: https://img.shields.io/npm/v/glamorous.svg?style=flat-square
 [package]: https://www.npmjs.com/package/glamorous
 [downloads-badge]: https://img.shields.io/npm/dm/glamorous.svg?style=flat-square
-[npm-stat]: http://npm-stat.com/charts.html?package=glamorous&from=2016-04-01
+[npm-stat]: http://npm-stat.com/charts.html?package=glamorous&from=2017-04-01
 [license-badge]: https://img.shields.io/npm/l/glamorous.svg?style=flat-square
 [license]: https://github.com/kentcdodds/glamorous/blob/master/other/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
