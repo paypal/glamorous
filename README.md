@@ -1,3 +1,5 @@
+<img src="https://github.com/kentcdodds/glamorous/raw/master/other/glamorous.png" alt="glamorous logo" title="glamorous" align="right" width="200" height="200" />
+
 # glamorous
 
 React component styling solved with an elegant (inspired) API, small footprint
