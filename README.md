@@ -16,6 +16,7 @@ small footprint (<5kb gzipped), and great performance (via [`glamor`][glamor]).
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
+[![Chat][chat-badge]][chat]
 [![Donate][donate-badge]][donate]
 [![Code of Conduct][coc-badge]][coc]
 [![Roadmap][roadmap-badge]][roadmap]
@@ -317,7 +318,10 @@ There are actually quite a few solutions to the general problem of styling in
 React. This isn't the place for a full-on comparison of features, but I'm
 unaware of any which supports _all_ of the features which this library supports.
 
-<!-- Links -->
+## Support
+
+If you need help, please fork [this codepen][help-pen] and bring it up in
+[the chat][chat]
 
 ## Contributors
 
@@ -353,6 +357,8 @@ MIT
 [prs]: http://makeapullrequest.com
 [donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
 [donate]: http://kcd.im/donate
+[chat]: https://gitter.im/kentcdodds/glamorous
+[chat-badge]: https://img.shields.io/gitter/room/kentcdodds/glamorous.svg?style=flat-square
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]: https://github.com/kentcdodds/glamorous/blob/master/other/CODE_OF_CONDUCT.md
 [roadmap-badge]: https://img.shields.io/badge/%F0%9F%93%94-roadmap-CD9523.svg?style=flat-square
@@ -379,3 +385,4 @@ MIT
 [intro-blogpost]: https://medium.com/p/fb3c9f4ed20e
 [react-ssr]: https://facebook.github.io/react/docs/react-dom-server.html
 [glamor-ssr]: https://github.com/threepointone/glamor/blob/5e7d988211330b8e2fca5bb8da78e35051444efd/docs/server.md
+[help-pen]: http://kcd.im/glamorous-help

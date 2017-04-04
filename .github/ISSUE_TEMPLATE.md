@@ -15,7 +15,7 @@ learn how: http://kcd.im/pull-request
 - `node` version:
 - `npm` (or `yarn`) version:
 
-Relevant code or config
+Relevant code or config. Or even better, [a reproduction][help-pen]
 
 ```javascript
 
@@ -41,3 +41,5 @@ Problem description:
 
 
 Suggested solution:
+
+[help-pen]: http://kcd.im/glamorous-help
