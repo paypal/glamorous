@@ -1,4 +1,4 @@
-<img src="https://github.com/kentcdodds/glamorous/raw/master/other/glamorous.png" alt="glamorous logo" title="glamorous" align="right" width="200" height="200" />
+<img src="https://github.com/kentcdodds/glamorous/raw/master/other/glamorous.png" alt="glamorous logo" title="glamorous" align="right" width="150" height="150" />
 
 # glamorous
 
