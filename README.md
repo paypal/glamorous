@@ -1,7 +1,7 @@
 # glamorous
 
 React component styling solved with an elegant (inspired) API, small footprint
-(<10kb gzipped), and blazing fast performance (thanks to [`glamor`][glamor]).
+(<5kb gzipped), and blazing fast performance (thanks to [`glamor`][glamor]).
 
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
