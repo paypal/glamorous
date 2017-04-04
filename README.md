@@ -281,6 +281,13 @@ One other tip... This totally works:
 </glamorous.Div>
 ```
 
+### Server Side Rendering (SSR)
+
+Because both `glamor` and `react` support SSR, `glamorous` does too! I actually
+do this on [my personal site](https://github.com/kentcdodds/kentcdodds.com)
+which is generated at build-time on the server. Learn about rendering
+[`react` on the server][react-ssr] and [`glamor` too][glamor-ssr].
+
 ## Inspiration
 
 This package was inspired by the work from people's work on the following
@@ -368,3 +375,5 @@ MIT
 [umd]: https://github.com/umdjs/umd
 [styled-components-util]: https://codepen.io/kentcdodds/pen/MpxMge
 [intro-blogpost]: https://medium.com/p/fb3c9f4ed20e
+[react-ssr]: https://facebook.github.io/react/docs/react-dom-server.html
+[glamor-ssr]: https://github.com/threepointone/glamor/blob/5e7d988211330b8e2fca5bb8da78e35051444efd/docs/server.md
