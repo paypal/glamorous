@@ -38,7 +38,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.23.0",
     "codecov": "^2.1.0",
-    "commitizen": "^2.9.6",
+    "commitizen": "^2",
     "common-tags": "^1.4.0",
     "cz-conventional-changelog": "^2.0.0",
     "enzyme": "^2.8.0",
