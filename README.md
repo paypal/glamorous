@@ -28,6 +28,8 @@ small footprint (<5kb gzipped), and great performance (via [`glamor`][glamor]).
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+## The problem
+
 You like CSS in JS, but you don't like having to create entire component
 functions just for styling purposes. You don't want to give a name to something
 that's purely style-related. And it's just kind of annoying to do the
