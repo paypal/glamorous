@@ -304,7 +304,7 @@ selectors, introduce keyframe animations, and use media queries:
         color: 'red'
       }
     })
-    
+
     // Use in a render function
     <MyLink href="https://github.com">GitHub</MyLink>
   ```
@@ -381,18 +381,18 @@ selectors, introduce keyframe animations, and use media queries:
 <details>
   <summary>Media Queries</summary>
   ```javascript
-const MyResponsiveDiv = glamorous.div({
-  width: '100%',
-  padding: 20,
-  '@media(min-width: 400px)': {
-    width: '85%',
-    padding: 0
-  }
-})
-// Use in a render function
-`<MyResponsiveDiv>`
-  Responsive Content
-`</MyResponsiveDiv>`
+    const MyResponsiveDiv = glamorous.div({
+      width: '100%',
+      padding: 20,
+      '@media(min-width: 400px)': {
+        width: '85%',
+        padding: 0
+      }
+    })
+    // Use in a render function
+    <MyResponsiveDiv>
+      Responsive Content
+    </MyResponsiveDiv>
   ```
 </details>
 
