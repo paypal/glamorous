@@ -246,7 +246,7 @@ const animationStyles = props => {
 }
 
 // Define the element
-const AnimatedDiv = glamorous.div(crazyStyles)
+const AnimatedDiv = glamorous.div(animationStyles)
 
 // Use in a render function
 <AnimatedDiv>
