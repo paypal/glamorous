@@ -352,7 +352,7 @@ MIT
 [downloads-badge]: https://img.shields.io/npm/dm/glamorous.svg?style=flat-square
 [npm-stat]: http://npm-stat.com/charts.html?package=glamorous&from=2017-04-01
 [license-badge]: https://img.shields.io/npm/l/glamorous.svg?style=flat-square
-[license]: https://github.com/paypal/glamorous/blob/master/other/LICENSE
+[license]: https://github.com/paypal/glamorous/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
