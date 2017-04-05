@@ -27,6 +27,15 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "patitonar",
+      "name": "Gerardo Nardelli",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4614574?v=3",
+      "profile": "https://gnardelli.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
