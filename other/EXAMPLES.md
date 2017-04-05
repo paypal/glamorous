@@ -20,3 +20,4 @@ const MyLink = glamorous.a(
   })
 )
 ```
+You can see a live preview of this example here: https://codesandbox.io/s/mZkpo0lKA
