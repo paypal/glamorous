@@ -109,7 +109,7 @@ You can then use one of the module formats:
 - `main`: `dist/glamorous.cjs.js` - exports itself as a CommonJS module
 - `global`: `dist/glamorous.umd.js` and `dist/glamorous.umd.min.js` - exports
   itself as a [umd][umd] module which is consumable in several environments, the
-  most noteable as a global.
+  most notable as a global.
 - `jsnext:main` and `module`: `dist/glamorous.es.js` - exports itself using the
   ES modules specification, you'll need to configure webpack to make use of this
   file do this using the [resolve.mainFields][mainFields] property.
