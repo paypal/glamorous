@@ -1,4 +1,4 @@
-<img src="https://github.com/kentcdodds/glamorous/raw/master/other/glamorous.png" alt="glamorous logo" title="glamorous" align="right" width="150" height="150" />
+<img src="https://github.com/paypal/glamorous/raw/master/other/glamorous.png" alt="glamorous logo" title="glamorous" align="right" width="150" height="150" />
 
 # glamorous
 
@@ -328,7 +328,7 @@ If you need help, please fork [this codepen][help-pen] and bring it up in
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/glamorous/commits?author=kentcdodds) [📖](https://github.com/kentcdodds/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/kentcdodds/glamorous/commits?author=kentcdodds) | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/kentcdodds/glamorous/commits?author=patitonar) |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds) [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds) | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar) |
 | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
@@ -341,36 +341,36 @@ MIT
 
 [npm]: https://www.npmjs.com/
 [node]: https://nodejs.org
-[build-badge]: https://img.shields.io/travis/kentcdodds/glamorous.svg?style=flat-square
-[build]: https://travis-ci.org/kentcdodds/glamorous
-[coverage-badge]: https://img.shields.io/codecov/c/github/kentcdodds/glamorous.svg?style=flat-square
-[coverage]: https://codecov.io/github/kentcdodds/glamorous
-[dependencyci-badge]: https://dependencyci.com/github/kentcdodds/glamorous/badge?style=flat-square
-[dependencyci]: https://dependencyci.com/github/kentcdodds/glamorous
+[build-badge]: https://img.shields.io/travis/paypal/glamorous.svg?style=flat-square
+[build]: https://travis-ci.org/paypal/glamorous
+[coverage-badge]: https://img.shields.io/codecov/c/github/paypal/glamorous.svg?style=flat-square
+[coverage]: https://codecov.io/github/paypal/glamorous
+[dependencyci-badge]: https://dependencyci.com/github/paypal/glamorous/badge?style=flat-square
+[dependencyci]: https://dependencyci.com/github/paypal/glamorous
 [version-badge]: https://img.shields.io/npm/v/glamorous.svg?style=flat-square
 [package]: https://www.npmjs.com/package/glamorous
 [downloads-badge]: https://img.shields.io/npm/dm/glamorous.svg?style=flat-square
 [npm-stat]: http://npm-stat.com/charts.html?package=glamorous&from=2017-04-01
 [license-badge]: https://img.shields.io/npm/l/glamorous.svg?style=flat-square
-[license]: https://github.com/kentcdodds/glamorous/blob/master/other/LICENSE
+[license]: https://github.com/paypal/glamorous/blob/master/other/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
 [donate]: http://kcd.im/donate
-[chat]: https://gitter.im/kentcdodds/glamorous
-[chat-badge]: https://img.shields.io/gitter/room/kentcdodds/glamorous.svg?style=flat-square
+[chat]: https://gitter.im/paypal/glamorous
+[chat-badge]: https://img.shields.io/gitter/room/paypal/glamorous.svg?style=flat-square
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://github.com/kentcdodds/glamorous/blob/master/other/CODE_OF_CONDUCT.md
+[coc]: https://github.com/paypal/glamorous/blob/master/other/CODE_OF_CONDUCT.md
 [roadmap-badge]: https://img.shields.io/badge/%F0%9F%93%94-roadmap-CD9523.svg?style=flat-square
-[roadmap]: https://github.com/kentcdodds/glamorous/blob/master/other/ROADMAP.md
+[roadmap]: https://github.com/paypal/glamorous/blob/master/other/ROADMAP.md
 [examples-badge]: https://img.shields.io/badge/%F0%9F%92%A1-examples-8C8E93.svg?style=flat-square
-[examples]: https://github.com/kentcdodds/glamorous/blob/master/other/EXAMPLES.md
-[github-watch-badge]: https://img.shields.io/github/watchers/kentcdodds/glamorous.svg?style=social
-[github-watch]: https://github.com/kentcdodds/glamorous/watchers
-[github-star-badge]: https://img.shields.io/github/stars/kentcdodds/glamorous.svg?style=social
-[github-star]: https://github.com/kentcdodds/glamorous/stargazers
-[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20glamorous!%20https://github.com/kentcdodds/glamorous%20%F0%9F%91%8D
-[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/kentcdodds/glamorous.svg?style=social
+[examples]: https://github.com/paypal/glamorous/blob/master/other/EXAMPLES.md
+[github-watch-badge]: https://img.shields.io/github/watchers/paypal/glamorous.svg?style=social
+[github-watch]: https://github.com/paypal/glamorous/watchers
+[github-star-badge]: https://img.shields.io/github/stars/paypal/glamorous.svg?style=social
+[github-star]: https://github.com/paypal/glamorous/stargazers
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20glamorous!%20https://github.com/paypal/glamorous%20%F0%9F%91%8D
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/paypal/glamorous.svg?style=social
 [emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
 [all-contributors]: https://github.com/kentcdodds/all-contributors
 [glamor]: https://github.com/threepointone/glamor

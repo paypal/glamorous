@@ -100,10 +100,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kentcdodds/glamorous.git"
+    "url": "https://github.com/paypal/glamorous.git"
   },
   "bugs": {
-    "url": "https://github.com/kentcdodds/glamorous/issues"
+    "url": "https://github.com/paypal/glamorous/issues"
   },
-  "homepage": "https://github.com/kentcdodds/glamorous#readme"
+  "homepage": "https://github.com/paypal/glamorous#readme"
 }

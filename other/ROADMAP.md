@@ -12,4 +12,4 @@ We haven't filled this out yet though. Care to help? See `CONTRIBUTING.md`
 
 ## Wont do
 
-- Support property-specific dynamic functions like `styled-components` [#5](https://github.com/kentcdodds/glamorous/issues/5)
+- Support property-specific dynamic functions like `styled-components` [#5](https://github.com/paypal/glamorous/issues/5)
