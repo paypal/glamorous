@@ -306,7 +306,7 @@ const MyLink = glamorous.a({
   }
 })
 // Use in a render function
-`<MyLink href="https://github.com">GitHub</MyLink>`
+`<MyLink href="https://github.com">`GitHub`</MyLink>`
     </pre>
   </p>
 </details>
@@ -329,9 +329,9 @@ const MyListItem = glamorous.li({
 })
 // Use in a render function
 `<ul>`
-  `<MyListItem>Item 1</MyListItem>`
-  `<MyListItem>Item 2</MyListItem>`
-  `<MyListItem>Item 3</MyListItem>`
+  `<MyListItem>`Item 1`</MyListItem>`
+  `<MyListItem>`Item 2`</MyListItem>`
+  `<MyListItem>`Item 3`</MyListItem>`
 `</ul>`
     </pre>
   </p>
