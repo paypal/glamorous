@@ -235,14 +235,16 @@ const MyDiv = glamorous.div({
 ##### Animations
 
 ```js
+// import css from glamor
+import { css } from 'glamor'
+
 // Define the animation styles
 const animationStyles = props => {
   const bounce = css.keyframes({
     '0%': { transform: `scale(1.01)` },
     '100%': { transform: `scale(0.99)` }
   })
-  const animationStyles = {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
-  return animationStyles
+  return {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
 }
 
 // Define the element
