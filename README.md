@@ -300,14 +300,14 @@ selectors, introduce keyframe animations, and use media queries:
   <summary>pseudo-class</summary>
 
   ```javascript
-    const MyLink = glamorous.a({
-      ':hover': {
-        color: 'red'
-      }
-    })
+const MyLink = glamorous.a({
+  ':hover': {
+    color: 'red'
+  }
+})
 
-    // Use in a render function
-    <MyLink href="https://github.com">GitHub</MyLink>
+// Use in a render function
+<MyLink href="https://github.com">GitHub</MyLink>
   ```
 </details>
 
@@ -315,24 +315,24 @@ selectors, introduce keyframe animations, and use media queries:
   <summary>pseudo-element</summary>
 
   ```javascript
-    const MyListItem = glamorous.li({
-      listStyleType: 'none',
-      position: 'relative',
-      '&::before': {
-        content: `'#'`, // be sure the quotes are included in the passed string
-        display: 'block',
-        position: 'absolute',
-        left: '-20px',
-        width: '20px',
-        height: '20px'
-      }
-    })
-    // Use in a render function
-    <ul>
-      <MyListItem>Item 1</MyListItem>
-      <MyListItem>Item 2</MyListItem>
-      <MyListItem>Item 3</MyListItem>
-    </ul>
+const MyListItem = glamorous.li({
+  listStyleType: 'none',
+  position: 'relative',
+  '&::before': {
+    content: `'#'`, // be sure the quotes are included in the passed string
+    display: 'block',
+    position: 'absolute',
+    left: '-20px',
+    width: '20px',
+    height: '20px'
+  }
+})
+// Use in a render function
+<ul>
+  <MyListItem>Item 1</MyListItem>
+  <MyListItem>Item 2</MyListItem>
+  <MyListItem>Item 3</MyListItem>
+</ul>
   ```
 </details>
 
@@ -340,19 +340,19 @@ selectors, introduce keyframe animations, and use media queries:
   <summary>Relational CSS Selectors</summary>
 
   ```javascript
-    const MyDiv = glamorous.div({
-      display: 'block',
-      '& div': { color: 'red' }, // child selector
-      '& div:first-of-type': { textDecoration: 'underline' }, // psuedo-selector
-      '& > p': { color: 'blue' } // direct descendent
-    })
+const MyDiv = glamorous.div({
+  display: 'block',
+  '& div': { color: 'red' }, // child selector
+  '& div:first-of-type': { textDecoration: 'underline' }, // psuedo-selector
+  '& > p': { color: 'blue' } // direct descendent
+})
 
-    // Use in a render function
-    <MyDiv>
-      <div><p>Red Underlined Paragraph</p></div>
-      <div>Red Paragraph</div>
-      <p>Blue Paragraph</p>
-    </MyDiv>
+// Use in a render function
+<MyDiv>
+  <div><p>Red Underlined Paragraph</p></div>
+  <div>Red Paragraph</div>
+  <p>Blue Paragraph</p>
+</MyDiv>
   ```
 </details>
 
@@ -360,25 +360,25 @@ selectors, introduce keyframe animations, and use media queries:
   <summary>Animations</summary>
 
   ```javascript
-    // import css from glamor
-    import { css } from 'glamor'
+// import css from glamor
+import { css } from 'glamor'
 
-    // Define the animation styles
-    const animationStyles = props => {
-      const bounce = css.keyframes({
-        '0%': { transform: `scale(1.01)` },
-        '100%': { transform: `scale(0.99)` }
-      })
-      return {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
-    }
+// Define the animation styles
+const animationStyles = props => {
+  const bounce = css.keyframes({
+    '0%': { transform: `scale(1.01)` },
+    '100%': { transform: `scale(0.99)` }
+  })
+  return {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
+}
 
-    // Define the element
-    const AnimatedDiv = glamorous.div(animationStyles)
+// Define the element
+const AnimatedDiv = glamorous.div(animationStyles)
 
-    // Use in a render function
-    <AnimatedDiv>
-      Bounce.
-    </AnimatedDiv>
+// Use in a render function
+<AnimatedDiv>
+  Bounce.
+</AnimatedDiv>
   ```
 </details>
 
@@ -386,18 +386,18 @@ selectors, introduce keyframe animations, and use media queries:
   <summary>Media Queries</summary>
 
   ```javascript
-    const MyResponsiveDiv = glamorous.div({
-      width: '100%',
-      padding: 20,
-      '@media(min-width: 400px)': {
-        width: '85%',
-        padding: 0
-      }
-    })
-    // Use in a render function
-    <MyResponsiveDiv>
-      Responsive Content
-    </MyResponsiveDiv>
+const MyResponsiveDiv = glamorous.div({
+  width: '100%',
+  padding: 20,
+  '@media(min-width: 400px)': {
+    width: '85%',
+    padding: 0
+  }
+})
+// Use in a render function
+<MyResponsiveDiv>
+  Responsive Content
+</MyResponsiveDiv>
   ```
 </details>
 
