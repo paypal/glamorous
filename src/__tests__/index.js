@@ -132,14 +132,14 @@ test('forwards props when the GlamorousComponent.rootEl is known', () => {
   // (components you have no control over).
 
   // here's a component you can't change, it renders all props to it's
-  // rootEl which is a `div` in this case. They probably shouldn't be doing
+  // `rootEl` which is a `div` in this case. They probably shouldn't be doing
   // this, but there are use cases for libraries to do this:
   const SomeComponentIHaveNoControlOver = jest.fn(props => <div {...props} />)
 
   // to prevent glamorous from forwarding non-div attributes to this
   // component, you can make a glamorous version out of it and specify the
   // `rootEl` as `div` (doesn't matter a whole lot, except in the case of
-  // svg, if it's an `svg`, then definitely put `svg` otherwise, put
+  // `svg`, if it's an `svg`, then definitely put `svg` otherwise, put
   // something else...
   const MyWrappedVersion = glamorous(SomeComponentIHaveNoControlOver, {
     rootEl: 'div',
