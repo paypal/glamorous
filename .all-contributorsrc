@@ -45,6 +45,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "paulmolluzzo",
+      "name": "Paul Molluzzo",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/737065?v=3",
+      "profile": "https://paul.molluzzo.com",
+      "contributions": [
+        "doc",
+        "example"
+      ]
     }
   ]
 }

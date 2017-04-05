@@ -14,7 +14,7 @@ small footprint (<5kb gzipped), and great performance (via [`glamor`][glamor]).
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
 [![Donate][donate-badge]][donate]
@@ -291,6 +291,116 @@ do this on [my personal site](https://github.com/kentcdodds/kentcdodds.com)
 which is generated at build-time on the server. Learn about rendering
 [`react` on the server][react-ssr] and [`glamor` too][glamor-ssr].
 
+### Example Style Objects
+
+Style objects can affect pseudo-classes and pseduo-elements, complex CSS
+selectors, introduce keyframe animations, and use media queries:
+
+<details>
+  <summary>pseudo-class</summary>
+
+```javascript
+const MyLink = glamorous.a({
+  ':hover': {
+    color: 'red'
+  }
+})
+
+// Use in a render function
+<MyLink href="https://github.com">GitHub</MyLink>
+```
+</details>
+
+<details>
+  <summary>pseudo-element</summary>
+
+```javascript
+const MyListItem = glamorous.li({
+  listStyleType: 'none',
+  position: 'relative',
+  '&::before': {
+    content: `'#'`, // be sure the quotes are included in the passed string
+    display: 'block',
+    position: 'absolute',
+    left: '-20px',
+    width: '20px',
+    height: '20px'
+  }
+})
+// Use in a render function
+<ul>
+  <MyListItem>Item 1</MyListItem>
+  <MyListItem>Item 2</MyListItem>
+  <MyListItem>Item 3</MyListItem>
+</ul>
+```
+</details>
+
+<details>
+  <summary>Relational CSS Selectors</summary>
+
+```javascript
+const MyDiv = glamorous.div({
+  display: 'block',
+  '& div': { color: 'red' }, // child selector
+  '& div:first-of-type': { textDecoration: 'underline' }, // psuedo-selector
+  '& > p': { color: 'blue' } // direct descendent
+})
+
+// Use in a render function
+<MyDiv>
+  <div><p>Red Underlined Paragraph</p></div>
+  <div>Red Paragraph</div>
+  <p>Blue Paragraph</p>
+</MyDiv>
+```
+</details>
+
+<details>
+  <summary>Animations</summary>
+
+```javascript
+// import css from glamor
+import { css } from 'glamor'
+
+// Define the animation styles
+const animationStyles = props => {
+  const bounce = css.keyframes({
+    '0%': { transform: `scale(1.01)` },
+    '100%': { transform: `scale(0.99)` }
+  })
+  return {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
+}
+
+// Define the element
+const AnimatedDiv = glamorous.div(animationStyles)
+
+// Use in a render function
+<AnimatedDiv>
+  Bounce.
+</AnimatedDiv>
+```
+</details>
+
+<details>
+  <summary>Media Queries</summary>
+
+```javascript
+const MyResponsiveDiv = glamorous.div({
+  width: '100%',
+  padding: 20,
+  '@media(min-width: 400px)': {
+    width: '85%',
+    padding: 0
+  }
+})
+// Use in a render function
+<MyResponsiveDiv>
+  Responsive Content
+</MyResponsiveDiv>
+```
+</details>
+
 ## Inspiration
 
 This package was inspired by the work from people's work on the following
@@ -328,8 +438,8 @@ If you need help, please fork [this codepen][help-pen] and bring it up in
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds) [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds) | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar) | [<img src="https://avatars0.githubusercontent.com/u/14236753?v=3" width="100px;"/><br /><sub>Chandan Rai</sub>](https://github.com/crowchirp)<br />[📖](https://github.com/paypal/glamorous/commits?author=crowchirp) |
-| :---: | :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds) [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds) | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar) | [<img src="https://avatars0.githubusercontent.com/u/14236753?v=3" width="100px;"/><br /><sub>Chandan Rai</sub>](https://github.com/crowchirp)<br />[📖](https://github.com/paypal/glamorous/commits?author=crowchirp) | [<img src="https://avatars2.githubusercontent.com/u/737065?v=3" width="100px;"/><br /><sub>Paul Molluzzo</sub>](https://paul.molluzzo.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=paulmolluzzo) 💡 |
+| :---: | :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification.
