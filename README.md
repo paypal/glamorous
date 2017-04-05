@@ -174,8 +174,8 @@ These can be style objects or functions which are invoked with `props` on every
 render and return style objects. To learn more about what these style objects
 can look like, please take a look at the [`glamor`][glamor] documentation.
 
-Style objects can affect pseudo-classes and pseduo-elements, children (and other CSS selectors),
-introduce keyframe animations, and use media queries:
+Style objects can affect pseudo-classes and pseduo-elements, complex CSS
+selectors, introduce keyframe animations, and use media queries:
 
 ##### pseudo-class
 
