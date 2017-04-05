@@ -438,7 +438,7 @@ If you need help, please fork [this codepen][help-pen] and bring it up in
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds) [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds) | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar) | [<img src="https://avatars0.githubusercontent.com/u/14236753?v=3" width="100px;"/><br /><sub>Chandan Rai</sub>](https://github.com/crowchirp)<br />[📖](https://github.com/paypal/glamorous/commits?author=crowchirp) | [<img src="https://avatars2.githubusercontent.com/u/737065?v=3" width="100px;"/><br /><sub>Paul Molluzzo</sub>](https://paul.molluzzo.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=paulmolluzzo) 💡 |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds) [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds) | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar) | [<img src="https://avatars0.githubusercontent.com/u/14236753?v=3" width="100px;"/><br /><sub>Chandan Rai</sub>](https://github.com/crowchirp)<br />[📖](https://github.com/paypal/glamorous/commits?author=crowchirp) | [<img src="https://avatars3.githubusercontent.com/u/16726210?v=3" width="100px;"/><br /><sub>BinHong Lee</sub>](https://binhonglee.github.io)<br />[📖](https://github.com/paypal/glamorous/commits?author=binhonglee) | [<img src="https://avatars2.githubusercontent.com/u/737065?v=3" width="100px;"/><br /><sub>Paul Molluzzo</sub>](https://paul.molluzzo.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=paulmolluzzo) 💡 |
 | :---: | :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
@@ -462,7 +462,7 @@ MIT
 [downloads-badge]: https://img.shields.io/npm/dm/glamorous.svg?style=flat-square
 [npm-stat]: http://npm-stat.com/charts.html?package=glamorous&from=2017-04-01
 [license-badge]: https://img.shields.io/npm/l/glamorous.svg?style=flat-square
-[license]: https://github.com/paypal/glamorous/blob/master/other/LICENSE
+[license]: https://github.com/paypal/glamorous/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
