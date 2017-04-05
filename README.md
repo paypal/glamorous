@@ -167,113 +167,12 @@ wrapping a component you intend to style, you'll need to make sure you accept
 the `className` as a prop and apply it to where you want the styles applied in
 your custom component (normally the root element).
 
-#### ...styles
+##### ...styles
 
 The `glamorousComponentFactory` accepts any number of style object arguments.
 These can be style objects or functions which are invoked with `props` on every
 render and return style objects. To learn more about what these style objects
 can look like, please take a look at the [`glamor`][glamor] documentation.
-
-Style objects can affect pseudo-classes and pseduo-elements, complex CSS
-selectors, introduce keyframe animations, and use media queries:
-
-##### pseudo-class
-
-```js
-const MyLink = glamorous.a({
-  ':hover': {
-    color: 'red'
-  }
-})
-
-// Use in a render function
-<MyLink href="https://github.com">GitHub</MyLink>
-```
-
-##### pseudo-element
-
-```js
-const MyListItem = glamorous.li({
-  listStyleType: 'none',
-  position: 'relative',
-  '&::before': {
-    content: `'#'`, // be sure the quotes are included in the passed string
-    display: 'block',
-    position: 'absolute',
-    left: '-20px',
-    width: '20px',
-    height: '20px'
-  }
-})
-
-// Use in a render function
-<ul>
-  <MyListItem>Item 1</MyListItem>
-  <MyListItem>Item 2</MyListItem>
-  <MyListItem>Item 3</MyListItem>
-</ul>
-```
-
-##### Relational CSS Selectors
-
-```js
-const MyDiv = glamorous.div({
-  display: 'block',
-  '& div': { color: 'red' }, // child selector
-  '& div:first-of-type': { textDecoration: 'underline' }, // psuedo-selector
-  '& > p': { color: 'blue' } // direct descendent
-})
-
-// Use in a render function
-<MyDiv>
-  <div><p>Red Underlined Paragraph</p></div>
-  <div>Red Paragraph</div>
-  <p>Blue Paragraph</p>
-</MyDiv>
-```
-
-##### Animations
-
-```js
-// import css from glamor
-import { css } from 'glamor'
-
-// Define the animation styles
-const animationStyles = props => {
-  const bounce = css.keyframes({
-    '0%': { transform: `scale(1.01)` },
-    '100%': { transform: `scale(0.99)` }
-  })
-  return {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
-}
-
-// Define the element
-const AnimatedDiv = glamorous.div(animationStyles)
-
-// Use in a render function
-<AnimatedDiv>
-  Bounce.
-</AnimatedDiv>
-```
-
-##### Media Queries
-
-```js
-const MyResponsiveDiv = glamorous.div({
-  width: '100%',
-  padding: 20,
-  '@media(min-width: 400px)': {
-    width: '85%',
-    padding: 0
-  }
-})
-
-// Use in a render function
-<MyResponsiveDiv>
-  Responsive Content
-</MyResponsiveDiv>
-
-```
 
 #### GlamorousComponent
 
@@ -391,6 +290,116 @@ Because both `glamor` and `react` support SSR, `glamorous` does too! I actually
 do this on [my personal site](https://github.com/kentcdodds/kentcdodds.com)
 which is generated at build-time on the server. Learn about rendering
 [`react` on the server][react-ssr] and [`glamor` too][glamor-ssr].
+
+### Example Style Objects
+
+Style objects can affect pseudo-classes and pseduo-elements, complex CSS
+selectors, introduce keyframe animations, and use media queries:
+
+<details>
+  <summary>pseudo-class</summary>
+  <p>
+    <pre>
+const MyLink = glamorous.a({
+  ':hover': {
+    color: 'red'
+  }
+})
+// Use in a render function
+`<MyLink href="https://github.com">GitHub</MyLink>`
+    </pre>
+  </p>
+</details>
+
+<details>
+  <summary>pseudo-element</summary>
+  <p>
+    <pre>
+const MyListItem = glamorous.li({
+  listStyleType: 'none',
+  position: 'relative',
+  '&::before': {
+    content: `'#'`, // be sure the quotes are included in the passed string
+    display: 'block',
+    position: 'absolute',
+    left: '-20px',
+    width: '20px',
+    height: '20px'
+  }
+})
+// Use in a render function
+`<ul>`
+  `<MyListItem>Item 1</MyListItem>`
+  `<MyListItem>Item 2</MyListItem>`
+  `<MyListItem>Item 3</MyListItem>`
+`</ul>`
+    </pre>
+  </p>
+</details>
+
+<details>
+  <summary>Relational CSS Selectors</summary>
+  <p>
+    <pre>
+const MyDiv = glamorous.div({
+  display: 'block',
+  '& div': { color: 'red' }, // child selector
+  '& div:first-of-type': { textDecoration: 'underline' }, // psuedo-selector
+  '& > p': { color: 'blue' } // direct descendent
+})
+// Use in a render function
+`<MyDiv>`
+  `<div><p>Red Underlined Paragraph</p></div>`
+  `<div>Red Paragraph</div>`
+  `<p>Blue Paragraph</p>`
+`</MyDiv>`
+    </pre>
+  </p>
+</details>
+
+<details>
+  <summary>Animations</summary>
+  <p>
+    <pre>
+// import css from glamor
+import { css } from 'glamor'
+// Define the animation styles
+const animationStyles = props => {
+  const bounce = css.keyframes({
+    '0%': { transform: `scale(1.01)` },
+    '100%': { transform: `scale(0.99)` }
+  })
+  return {animation: `${bounce} 0.2s infinite ease-in-out alternate`}
+}
+// Define the element
+const AnimatedDiv = glamorous.div(animationStyles)
+// Use in a render function
+`<AnimatedDiv>`
+  Bounce.
+`</AnimatedDiv>`
+    </pre>
+  </p>
+</details>
+
+<details>
+  <summary>Media Queries</summary>
+  <p>
+    <pre>
+const MyResponsiveDiv = glamorous.div({
+  width: '100%',
+  padding: 20,
+  '@media(min-width: 400px)': {
+    width: '85%',
+    padding: 0
+  }
+})
+// Use in a render function
+`<MyResponsiveDiv>`
+  Responsive Content
+`</MyResponsiveDiv>`
+    </pre>
+  </p>
+</details>
 
 ## Inspiration
 
