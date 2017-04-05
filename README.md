@@ -299,7 +299,7 @@ selectors, introduce keyframe animations, and use media queries:
 <details>
   <summary>pseudo-class</summary>
 
-  ```javascript
+```javascript
 const MyLink = glamorous.a({
   ':hover': {
     color: 'red'
@@ -308,13 +308,13 @@ const MyLink = glamorous.a({
 
 // Use in a render function
 <MyLink href="https://github.com">GitHub</MyLink>
-  ```
+```
 </details>
 
 <details>
   <summary>pseudo-element</summary>
 
-  ```javascript
+```javascript
 const MyListItem = glamorous.li({
   listStyleType: 'none',
   position: 'relative',
@@ -333,13 +333,13 @@ const MyListItem = glamorous.li({
   <MyListItem>Item 2</MyListItem>
   <MyListItem>Item 3</MyListItem>
 </ul>
-  ```
+```
 </details>
 
 <details>
   <summary>Relational CSS Selectors</summary>
 
-  ```javascript
+```javascript
 const MyDiv = glamorous.div({
   display: 'block',
   '& div': { color: 'red' }, // child selector
@@ -353,13 +353,13 @@ const MyDiv = glamorous.div({
   <div>Red Paragraph</div>
   <p>Blue Paragraph</p>
 </MyDiv>
-  ```
+```
 </details>
 
 <details>
   <summary>Animations</summary>
 
-  ```javascript
+```javascript
 // import css from glamor
 import { css } from 'glamor'
 
@@ -379,13 +379,13 @@ const AnimatedDiv = glamorous.div(animationStyles)
 <AnimatedDiv>
   Bounce.
 </AnimatedDiv>
-  ```
+```
 </details>
 
 <details>
   <summary>Media Queries</summary>
 
-  ```javascript
+```javascript
 const MyResponsiveDiv = glamorous.div({
   width: '100%',
   padding: 20,
@@ -398,7 +398,7 @@ const MyResponsiveDiv = glamorous.div({
 <MyResponsiveDiv>
   Responsive Content
 </MyResponsiveDiv>
-  ```
+```
 </details>
 
 ## Inspiration
