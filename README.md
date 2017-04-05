@@ -298,6 +298,7 @@ selectors, introduce keyframe animations, and use media queries:
 
 <details>
   <summary>pseudo-class</summary>
+
   ```javascript
     const MyLink = glamorous.a({
       ':hover': {
@@ -312,6 +313,7 @@ selectors, introduce keyframe animations, and use media queries:
 
 <details>
   <summary>pseudo-element</summary>
+
   ```javascript
     const MyListItem = glamorous.li({
       listStyleType: 'none',
@@ -336,6 +338,7 @@ selectors, introduce keyframe animations, and use media queries:
 
 <details>
   <summary>Relational CSS Selectors</summary>
+
   ```javascript
     const MyDiv = glamorous.div({
       display: 'block',
@@ -355,6 +358,7 @@ selectors, introduce keyframe animations, and use media queries:
 
 <details>
   <summary>Animations</summary>
+
   ```javascript
     // import css from glamor
     import { css } from 'glamor'
@@ -380,6 +384,7 @@ selectors, introduce keyframe animations, and use media queries:
 
 <details>
   <summary>Media Queries</summary>
+
   ```javascript
     const MyResponsiveDiv = glamorous.div({
       width: '100%',
