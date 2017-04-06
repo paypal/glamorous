@@ -48,3 +48,10 @@ const MyGrid = glamorous.div({
   },
 })
 ```
+
+## with Next.js
+
+Here's a [deployed example](https://with-glamorous-zrqwerosse.now.sh/) of using
+`glamorous` with `Next.js`. See the code [here][next].
+
+[next]: https://github.com/zeit/next.js/tree/master/examples/with-glamorous
