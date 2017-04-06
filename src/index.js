@@ -4,8 +4,10 @@
  */
 import React from 'react'
 import {css, styleSheet} from 'glamor'
+import * as jsxStyleComponents from 'glamor/jsxstyle'
 import shouldForwardProperty from './should-forward-property'
 import domElements from './dom-elements'
+import jsxStyleComponentTags from './jsxstyle-components'
 
 const {PropTypes} = React
 
@@ -126,6 +128,28 @@ Object.assign(
 )
 
 /*
+ * This creates a glamorousComponentFactory for every jsxstyle element so you
+ * can simply do:
+ * const GreenBlock = glamorous.block({
+ *   backgroundColor: 'green',
+ *   padding: 20,
+ * })
+ * <GreenBlock>Click Me!</GreenBlock>
+ */
+Object.assign(
+  glamorous,
+  jsxStyleComponentTags.reduce(
+    (getters, tag) => {
+      const capitalTag = capitalize(tag)
+      const jsxStyleComponent = jsxStyleComponents[capitalTag]
+      getters[tag] = glamorous(jsxStyleComponent)
+      return getters
+    },
+    {},
+  ),
+)
+
+/*
  * This creates a glamorous component for each DOM element so you can
  * simply do:
  * <glamorous.Div
@@ -138,6 +162,27 @@ Object.assign(
 Object.assign(
   glamorous,
   domElements.reduce(
+    (comps, tag) => {
+      const capitalTag = capitalize(tag)
+      comps[capitalTag] = glamorous[tag]()
+      comps[capitalTag].displayName = `glamorous.${capitalTag}`
+      comps[capitalTag].propsAreCssOverrides = true
+      return comps
+    },
+    {},
+  ),
+)
+
+/*
+ * This creates glamorous components matching components produced by jsxstyle
+ * simply do:
+ * <glamorous.Block>
+ *   I'm a block!
+ * </glamorous.Block>
+ */
+Object.assign(
+  glamorous,
+  jsxStyleComponentTags.reduce(
     (comps, tag) => {
       const capitalTag = capitalize(tag)
       comps[capitalTag] = glamorous[tag]()
