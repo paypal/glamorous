@@ -4,10 +4,9 @@
  */
 import React from 'react'
 import {css, styleSheet} from 'glamor'
-import * as jsxStyleComponents from 'glamor/jsxstyle'
 import shouldForwardProperty from './should-forward-property'
 import domElements from './dom-elements'
-import jsxStyleComponentTags from './jsxstyle-components'
+import jsxStyleComponents from './jsxstyle-components'
 
 const {PropTypes} = React
 
@@ -130,23 +129,18 @@ Object.assign(
 /*
  * This creates a glamorousComponentFactory for every jsxstyle element so you
  * can simply do:
- * const GreenBlock = glamorous.block({
+ * const GreenBlock = glamorous.display.block({
  *   backgroundColor: 'green',
  *   padding: 20,
  * })
  * <GreenBlock>Click Me!</GreenBlock>
  */
-Object.assign(
-  glamorous,
-  jsxStyleComponentTags.reduce(
-    (getters, tag) => {
-      const capitalTag = capitalize(tag)
-      const jsxStyleComponent = jsxStyleComponents[capitalTag]
-      getters[tag] = glamorous(jsxStyleComponent)
-      return getters
-    },
-    {},
-  ),
+glamorous.display = jsxStyleComponents.reduce(
+  (getters, {name, tag, styles}) => {
+    getters[name] = glamorous[tag](styles)
+    return getters
+  },
+  {},
 )
 
 /*
@@ -176,18 +170,18 @@ Object.assign(
 /*
  * This creates glamorous components matching components produced by jsxstyle
  * simply do:
- * <glamorous.Block>
+ * <glamorous.display.Block>
  *   I'm a block!
- * </glamorous.Block>
+ * </glamorous.display.Block>
  */
 Object.assign(
-  glamorous,
-  jsxStyleComponentTags.reduce(
-    (comps, tag) => {
-      const capitalTag = capitalize(tag)
-      comps[capitalTag] = glamorous[tag]()
-      comps[capitalTag].displayName = `glamorous.${capitalTag}`
-      comps[capitalTag].propsAreCssOverrides = true
+  glamorous.display,
+  jsxStyleComponents.reduce(
+    (comps, {name, tag, styles}) => {
+      const capitalName = capitalize(name)
+      comps[capitalName] = glamorous[tag](styles)
+      comps[capitalName].displayName = `glamorous.${capitalName}`
+      comps[capitalName].propsAreCssOverrides = true
       return comps
     },
     {},

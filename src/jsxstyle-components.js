@@ -6,4 +6,47 @@
  * like: glamorous.block and the <glamorous.Block /> elements
  */
 
-export default ['view', 'block', 'inlineBlock', 'flex', 'row', 'column']
+export default [
+  {
+    name: 'view',
+    tag: 'div',
+    styles: {},
+  },
+  {
+    name: 'block',
+    tag: 'div',
+    styles: {
+      display: 'block',
+    },
+  },
+  {
+    name: 'inlineBlock',
+    tag: 'div',
+    styles: {
+      display: 'inline-block',
+    },
+  },
+  {
+    name: 'flex',
+    tag: 'div',
+    styles: {
+      display: 'flex',
+    },
+  },
+  {
+    name: 'row',
+    tag: 'div',
+    styles: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+  },
+  {
+    name: 'column',
+    tag: 'div',
+    styles: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
+]
