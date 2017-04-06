@@ -12,8 +12,8 @@ learn how: http://kcd.im/pull-request
 -->
 
 - `glamorous` version:
-- `node` version:
-- `npm` (or `yarn`) version:
+- `glamor` version:
+- `react` version:
 
 Relevant code.
 
