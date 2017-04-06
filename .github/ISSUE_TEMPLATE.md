@@ -15,7 +15,7 @@ learn how: http://kcd.im/pull-request
 - `node` version:
 - `npm` (or `yarn`) version:
 
-Relevant code or config. Or even better, [a reproduction][help-pen]
+Relevant code. Or even better, a reproduction: http://kcd.im/glamorous-help
 
 ```javascript
 
