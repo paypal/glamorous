@@ -15,7 +15,7 @@ learn how: http://kcd.im/pull-request
 - `node` version:
 - `npm` (or `yarn`) version:
 
-Relevant code. Or even better, a reproduction: http://kcd.im/glamorous-help
+Relevant code.
 
 ```javascript
 
@@ -29,12 +29,14 @@ What happened:
 
 <!-- Please provide the full error message/screenshots/anything -->
 
-Reproduction repository:
+Reproduction:
 
 <!--
-If possible, please create a repository that reproduces the issue with the
-minimal amount of code possible.
+Please reproduce your issue with this: http://kcd.im/glamorous-help
+with as minimal amount of code possible. Then paste a link below:
 -->
+
+-- paste your link here --
 
 Problem description:
 
@@ -42,4 +44,3 @@ Problem description:
 
 Suggested solution:
 
-[help-pen]: http://kcd.im/glamorous-help
