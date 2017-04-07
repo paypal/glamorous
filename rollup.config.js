@@ -1,6 +1,7 @@
 import rollupBabel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import nodeResolve from 'rollup-plugin-node-resolve'
+import json from 'rollup-plugin-json'
 import uglify from 'rollup-plugin-uglify'
 
 const minify = process.env.MINIFY
@@ -25,6 +26,7 @@ export default {
   plugins: [
     nodeResolve({jsnext: true, main: true}),
     commonjs({include: 'node_modules/**'}),
+    json(),
     rollupBabel({
       exclude: 'node_modules/**',
       babelrc: false,
