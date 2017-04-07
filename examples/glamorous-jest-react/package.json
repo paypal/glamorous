@@ -4,7 +4,7 @@
   "description": "Example to test glamorous with jest",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watchAll"
   },
   "keywords": [
     "glamorous",
