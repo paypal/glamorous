@@ -18,10 +18,11 @@ export default {
   exports: 'default',
   moduleName: 'glamorous',
   format: 'umd',
-  external: ['react', 'glamor'],
+  external: ['react', 'glamor', 'prop-types'],
   globals: {
     react: 'React',
     glamor: 'Glamor',
+    'prop-types': 'PropTypes',
   },
   plugins: [
     nodeResolve({jsnext: true, main: true}),

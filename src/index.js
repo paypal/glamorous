@@ -6,8 +6,7 @@ import React from 'react'
 import {css, styleSheet} from 'glamor'
 import shouldForwardProperty from './should-forward-property'
 import domElements from './dom-elements'
-
-const {PropTypes} = React
+import {PropTypes} from './react-compat'
 
 /**
  * This is the main export and the function that people
