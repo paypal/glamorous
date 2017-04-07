@@ -5,7 +5,13 @@
 import React from 'react'
 import {css, styleSheet} from 'glamor'
 import shouldForwardProperty from './should-forward-property'
-import domElements from './dom-elements'
+
+const htmlTagNames = require('html-tag-names')
+const svgTagNames = require('svg-tag-names')
+
+const domElements = htmlTagNames
+  .concat(svgTagNames)
+  .filter((tag, index, array) => array.indexOf(tag) === index)
 
 const {PropTypes} = React
 

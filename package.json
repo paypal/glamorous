@@ -24,10 +24,13 @@
   ],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "html-tag-names": "^1.1.1",
+    "svg-tag-names": "^1.1.0"
+  },
   "peerDependencies": {
-    "react": ">=14",
-    "glamor": ">=2"
+    "glamor": ">=2",
+    "react": ">=14"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.0.1",
