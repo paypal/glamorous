@@ -25,7 +25,8 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "dependencies": {
-    "html-tag-names": "^1.1.1"
+    "html-tag-names": "^1.1.1",
+    "svg-tag-names": "^1.1.0"
   },
   "peerDependencies": {
     "glamor": ">=2",

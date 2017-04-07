@@ -7,6 +7,9 @@ import {css, styleSheet} from 'glamor'
 import shouldForwardProperty from './should-forward-property'
 
 const htmlTagNames = require('html-tag-names')
+const svgTagNames = require('svg-tag-names')
+
+const domElements = htmlTagNames.concat(svgTagNames)
 
 const {PropTypes} = React
 
@@ -117,7 +120,7 @@ function getDisplayName(comp) {
  */
 Object.assign(
   glamorous,
-  htmlTagNames.reduce(
+  domElements.reduce(
     (getters, tag) => {
       getters[tag] = glamorous(tag)
       return getters
@@ -138,7 +141,7 @@ Object.assign(
  */
 Object.assign(
   glamorous,
-  htmlTagNames.reduce(
+  domElements.reduce(
     (comps, tag) => {
       const capitalTag = capitalize(tag)
       comps[capitalTag] = glamorous[tag]()
