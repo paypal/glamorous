@@ -5,7 +5,8 @@
 import React from 'react'
 import {css, styleSheet} from 'glamor'
 import shouldForwardProperty from './should-forward-property'
-import domElements from './dom-elements'
+
+const htmlTagNames = require('html-tag-names')
 
 const {PropTypes} = React
 
@@ -116,7 +117,7 @@ function getDisplayName(comp) {
  */
 Object.assign(
   glamorous,
-  domElements.reduce(
+  htmlTagNames.reduce(
     (getters, tag) => {
       getters[tag] = glamorous(tag)
       return getters
@@ -137,7 +138,7 @@ Object.assign(
  */
 Object.assign(
   glamorous,
-  domElements.reduce(
+  htmlTagNames.reduce(
     (comps, tag) => {
       const capitalTag = capitalize(tag)
       comps[capitalTag] = glamorous[tag]()
