@@ -1,12 +1,13 @@
 import React from 'react'
-import * as glamorous from 'glamorous'
+/* eslint-disable */
+import * as glamorous from 'glamorous';
 
 export function Wrapper(props) {
   const MySection = glamorous.section({
     padding: '4em',
     background: 'papayawhip',
-  })
-  return <MySection {...props} />
+  });
+  return <MySection {...props} />;
 }
 
 export function Title(props) {
@@ -14,6 +15,6 @@ export function Title(props) {
     fontSize: '1.5em',
     textAlign: 'center',
     color: 'palevioletred',
-  })
-  return <MyH1 {...props} />
+  });
+  return <MyH1 {...props} />;
 }
