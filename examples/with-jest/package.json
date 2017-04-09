@@ -1,0 +1,33 @@
+{
+  "name": "glamorous-jest-react",
+  "version": "1.0.0",
+  "description": "Example to test glamorous with jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "glamorous",
+    "jest",
+    "react"
+  ],
+  "author": "pksjce",
+  "license": "ISC",
+  "dependencies": {
+    "enzyme": "^2.8.0",
+    "glamorous": "^1.0.1",
+    "jest-glamor-react": "^1.2.0",
+    "react": "^15.4.2"
+  },
+  "devDependencies": {
+    "enzyme-to-json": "^1.5.0",
+    "jest": "^19.0.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupTestFrameworkScriptFile": "./testSetup.js"
+  }
+}

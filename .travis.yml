@@ -12,6 +12,7 @@ script:
 after_success:
   - yarn start report-coverage
   - yarn start release
+  - yarn start validate.examples
 branches:
   only:
     - master

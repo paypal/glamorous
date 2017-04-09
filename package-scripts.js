@@ -55,9 +55,24 @@ module.exports = {
         'semantic-release post'
       ),
     },
+    examples: {
+      withJest: {
+        description: 'This jumpstarts and validates the with-jest example.',
+        script: series(
+          'cd examples/with-jest',
+          'yarn install',
+          'yarn run test',
+          'cd ../../'
+        ),
+      },
+    },
     validate: {
       description: 'This runs several scripts to make sure things look good before committing or on clean install',
-      script: concurrent.nps('lint', 'build', 'test'),
+      default: concurrent.nps('lint', 'build', 'test'),
+      examples: {
+        description: 'Validates the examples folder',
+        script: 'nps examples.withJest',
+      },
     },
   },
   options: {
