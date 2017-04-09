@@ -64,7 +64,7 @@
         "doc",
         "example"
       ]
-    },
+    },`
     {
       "login": "tsriram",
       "name": "Sriram Thiagarajan",
@@ -77,7 +77,9 @@
       "name": "Pavithra Kodmad",
       "avatar_url": "https://avatars1.githubusercontent.com/u/417268?v=3",
       "profile": "https://github.com/pksjce",
-      "contributions": []
+      "contributions": [
+        "example"
+      ]
     }
   ]
 }
