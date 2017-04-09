@@ -472,7 +472,7 @@ MIT
 [roadmap-badge]: https://img.shields.io/badge/%F0%9F%93%94-roadmap-CD9523.svg?style=flat-square
 [roadmap]: https://github.com/paypal/glamorous/blob/master/other/ROADMAP.md
 [examples-badge]: https://img.shields.io/badge/%F0%9F%92%A1-examples-8C8E93.svg?style=flat-square
-[examples]: https://github.com/paypal/glamorous/blob/master/examples/README.md
+[examples]: https://github.com/paypal/glamorous/blob/master/examples
 [github-watch-badge]: https://img.shields.io/github/watchers/paypal/glamorous.svg?style=social
 [github-watch]: https://github.com/paypal/glamorous/watchers
 [github-star-badge]: https://img.shields.io/github/stars/paypal/glamorous.svg?style=social
