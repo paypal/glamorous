@@ -255,6 +255,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "UsulPro",
+      "name": "Oleg Proskurin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14885189?v=3",
+      "profile": "http://twitter.com/#!/usulpro",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
