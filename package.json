@@ -95,7 +95,8 @@
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "collectCoverageFrom": ["src/**/*.js"]
   },
   "config": {
     "commitizen": {
