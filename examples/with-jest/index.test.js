@@ -1,7 +1,6 @@
 import {matcher, serializer} from 'jest-glamor-react'
 import React from 'react'
-import * as enzyme from 'enzyme'
-import toJson from 'enzyme-to-json'
+import {shallow, render, mount} from 'enzyme'
 import {Wrapper, Title} from './index'
 
 expect.addSnapshotSerializer(serializer)
@@ -14,9 +13,7 @@ test('enzyme', () => {
     </Wrapper>
   )
 
-  expect(toJson(enzyme.shallow(ui))).toMatchSnapshotWithGlamor(
-    `enzyme.shallow`,
-  )
-  expect(toJson(enzyme.mount(ui))).toMatchSnapshotWithGlamor(`enzyme.mount`)
-  expect(toJson(enzyme.render(ui))).toMatchSnapshotWithGlamor(`enzyme.render`)
+  expect(shallow(ui)).toMatchSnapshotWithGlamor(`enzyme.shallow`)
+  expect(mount(ui)).toMatchSnapshotWithGlamor(`enzyme.mount`)
+  expect(render(ui)).toMatchSnapshotWithGlamor(`enzyme.render`)
 })

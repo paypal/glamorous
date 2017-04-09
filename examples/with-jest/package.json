@@ -22,5 +22,11 @@
   "devDependencies": {
     "enzyme-to-json": "^1.5.0",
     "jest": "^19.0.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
