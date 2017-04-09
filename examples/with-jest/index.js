@@ -1,5 +1,5 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import glamorous from '../../src'
 
 export function Wrapper(props) {
   const MySection = glamorous.section({
