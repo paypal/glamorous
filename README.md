@@ -104,6 +104,9 @@ as well (if you don't already have them):
 npm install --save react glamor
 ```
 
+> NOTE: If you're using React v15.5 or greater, you'll also need to have
+> `prop-types` installed: `npm install --save prop-types`
+
 You can then use one of the module formats:
 
 - `main`: `dist/glamorous.cjs.js` - exports itself as a CommonJS module
@@ -132,6 +135,7 @@ If you want to use the global:
 ```html
 <!-- Load dependencies -->
 <script src="https://unpkg.com/react/dist/react.js"></script>
+<script src="https://unpkg.com/prop-types/prop-types.js"></script>
 <script src="https://unpkg.com/glamor/umd/index.js"></script>
 <!-- load library -->
 <script src="https://unpkg.com/glamorous/dist/glamorous.umd.js"></script>
