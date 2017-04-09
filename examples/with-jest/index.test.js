@@ -3,9 +3,6 @@ import React from 'react'
 import {shallow, render, mount} from 'enzyme'
 import {Wrapper, Title} from './index'
 
-expect.addSnapshotSerializer(serializer)
-expect.extend(matcher)
-
 test('enzyme', () => {
   const ui = (
     <Wrapper>

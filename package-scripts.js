@@ -60,8 +60,8 @@ module.exports = {
         description: 'This jumpstarts and validates the with-jest example.',
         script: series(
           'cd examples/with-jest',
-          'npm install',
-          'npm run test',
+          'yarn install',
+          'yarn run test',
           'cd ../../'
         ),
       },

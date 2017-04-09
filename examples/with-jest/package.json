@@ -27,6 +27,7 @@
     "testEnvironment": "jsdom",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "./testSetup.js"
   }
 }
