@@ -14,23 +14,19 @@ exports[`enzyme.mount 1`] = `
   color: palevioletred;
 }
 
-<Wrapper>
-  <glamorous(section)>
-    <section
-      className="css-1otybxc"
-    >
-      <Title>
-        <glamorous(h1)>
-          <h1
-            className="css-1tnuino"
-          >
-            Hello World, this is my first glamor styled component!
-          </h1>
-        </glamorous(h1)>
-      </Title>
-    </section>
-  </glamorous(section)>
-</Wrapper>
+<glamorous(section)>
+  <section
+    className="css-1otybxc"
+  >
+    <glamorous(h1)>
+      <h1
+        className="css-1tnuino"
+      >
+        Hello World, this is my first glamor styled component!
+      </h1>
+    </glamorous(h1)>
+  </section>
+</glamorous(section)>
 `;
 
 exports[`enzyme.render 1`] = `
@@ -59,9 +55,17 @@ exports[`enzyme.render 1`] = `
 `;
 
 exports[`enzyme.shallow 1`] = `
-<glamorous(section)>
-  <Title>
+.css-1otybxc,
+[data-css-1otybxc] {
+  padding: 4em;
+  background: papayawhip;
+}
+
+<section
+  className="css-1otybxc"
+>
+  <glamorous(h1)>
     Hello World, this is my first glamor styled component!
-  </Title>
-</glamorous(section)>
+  </glamorous(h1)>
+</section>
 `;
