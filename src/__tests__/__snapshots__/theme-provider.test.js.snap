@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`enzyme.mount 1`] = `
+.css-1fyph4i,
+[data-css-1fyph4i] {
+  color: red;
+  padding: 10px;
+}
+
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": "10px",
+      }
+    }
+  >
+    <glamorous(div)>
+      <div
+        className="css-1fyph4i"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`enzyme.mount 2`] = `
+.css-1t91z0n,
+[data-css-1t91z0n] {
+  color: red;
+  padding: 20px;
+}
+
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": "20px",
+      }
+    }
+  >
+    <glamorous(div)>
+      <div
+        className="css-1t91z0n"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`enzyme.mount 3`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": "2px",
+    }
+  }
+/>
+`;
+
+exports[`enzyme.mount 4`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": "2px",
+    }
+  }
+/>
+`;
+
+exports[`merges nested themes 1`] = `
+.css-e5hgul,
+[data-css-e5hgul] {
+  padding: 1px;
+}
+
+.css-45n9js,
+[data-css-45n9js] {
+  padding: 1px;
+  margin: 2px;
+}
+
+<div>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": "1px",
+      }
+    }
+  >
+    <div>
+      <glamorous(div)>
+        <div
+          className="css-e5hgul"
+        />
+      </glamorous(div)>
+      <ThemeProvider
+        theme={
+          Object {
+            "margin": "2px",
+          }
+        }
+      >
+        <glamorous(div)>
+          <div
+            className="css-45n9js"
+          />
+        </glamorous(div)>
+      </ThemeProvider>
+    </div>
+  </ThemeProvider>
+</div>
+`;
+
+exports[`renders a component with theme 1`] = `
+.css-1fyph4i,
+[data-css-1fyph4i] {
+  color: red;
+  padding: 10px;
+}
+
+<div
+  class="css-1fyph4i"
+/>
+`;
+
+exports[`renders if children are null 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "padding": "1px",
+    }
+  }
+/>
+`;
