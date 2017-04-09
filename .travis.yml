@@ -9,6 +9,7 @@ node_js:
   - '6'
 script:
   - yarn start validate
+  - yarn start validate.examples
 after_success:
   - yarn start report-coverage
   - yarn start release
