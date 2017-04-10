@@ -5,19 +5,28 @@ import json from 'rollup-plugin-json'
 import uglify from 'rollup-plugin-uglify'
 
 const minify = process.env.MINIFY
+const format = process.env.FORMAT
+const esm = format === 'es'
+
+let targets
+
+if (minify) {
+  targets = [{dest: 'dist/glamorous.umd.min.js', format: 'umd'}]
+} else if (esm) {
+  targets = [{dest: 'dist/glamorous.es.js', format: 'es'}]
+} else {
+  targets = [
+    {dest: 'dist/glamorous.umd.js', format: 'umd'},
+    {dest: 'dist/glamorous.cjs.js', format: 'cjs'},
+  ]
+}
 
 export default {
-  entry: 'src/index.js',
-  targets: minify ?
-    [{dest: 'dist/glamorous.umd.min.js', format: 'umd'}] :
-  [
-        {dest: 'dist/glamorous.umd.js', format: 'umd'},
-        {dest: 'dist/glamorous.es.js', format: 'es'},
-        {dest: 'dist/glamorous.cjs.js', format: 'cjs'},
-  ],
-  exports: 'default',
+  entry: esm ? 'src/index.js' : 'src/umd-entry.js',
+  targets,
+  exports: esm ? 'named' : 'default',
   moduleName: 'glamorous',
-  format: 'umd',
+  format,
   external: ['react', 'glamor', 'prop-types'],
   globals: {
     react: 'React',
@@ -32,6 +41,7 @@ export default {
       exclude: 'node_modules/**',
       babelrc: false,
       presets: [['env', {modules: false}], 'stage-2', 'react'],
+      plugins: ['external-helpers'],
     }),
     minify ? uglify() : null,
   ].filter(Boolean),

@@ -2,11 +2,12 @@
  * This is a relatively small abstraction that's ripe for open sourcing.
  * Documentation is in the README.md
  */
-import React from 'react'
+import React, {Component} from 'react'
 import {css, styleSheet} from 'glamor'
 import shouldForwardProperty from './should-forward-property'
 import domElements from './dom-elements'
 import {PropTypes} from './react-compat'
+import ThemeProvider, {CHANNEL} from './theme-provider'
 
 /**
  * This is the main export and the function that people
@@ -34,43 +35,77 @@ function glamorous(comp, {rootEl, displayName} = {}) {
      * This is a component which will render the comp (closure)
      * with the glamorous styles (closure). Forwards any valid
      * props to the underlying component.
-     * @param {Object} props the props for the component. className is
-     *   handled specially so any glamor-provided classNames will be
-     *   merged predicably (with no regard to specificity)
+     * @param {Object} theme the theme object
      * @return {ReactElement} React.createElement
      */
-    function GlamorousComponent(props) {
-      const {className, ...rest} = props
-      const {toForward, cssOverrides} = splitProps(rest, GlamorousComponent)
+    class GlamorousComponent extends Component {
+      state = {theme: null}
+      setTheme = theme => this.setState({theme})
 
-      // create className to apply
-      const mappedArgs = GlamorousComponent.styles.map(mapToPropsCall)
-      const {
-        glamorStyles: parentGlamorStyles,
-        glamorlessClassName,
-      } = extractGlamorStyles(className)
-      const glamorClassName = css(
-        ...mappedArgs,
-        ...parentGlamorStyles,
-        cssOverrides,
-      ).toString()
-      const fullClassName = joinClasses(glamorlessClassName, glamorClassName)
-
-      return React.createElement(GlamorousComponent.comp, {
-        className: fullClassName,
-        ...toForward,
-      })
-
-      function mapToPropsCall(glamorRules) {
-        if (typeof glamorRules === 'function') {
-          return glamorRules(props)
+      componentWillMount() {
+        const {theme} = this.props
+        if (this.context[CHANNEL]) {
+          // if a theme is provided via props, it takes precedence over context
+          this.setTheme(theme ? theme : this.context[CHANNEL].getState())
+        } else {
+          this.setTheme(theme || {})
         }
-        return glamorRules
+      }
+
+      componentWillReceiveProps(nextProps) {
+        if (this.props.theme !== nextProps.theme) {
+          this.setTheme(nextProps.theme)
+        }
+      }
+
+      componentDidMount() {
+        if (this.context[CHANNEL] && !this.props.theme) {
+          // subscribe to future theme changes
+          this.unsubscribe = this.context[CHANNEL].subscribe(this.setTheme)
+        }
+      }
+
+      componentWillUnmount() {
+        // cleanup subscription
+        this.unsubscribe && this.unsubscribe()
+      }
+
+      render() {
+        const {className, ...rest} = this.props
+        const {toForward, cssOverrides} = splitProps(rest, GlamorousComponent)
+        // create className to apply
+        const mappedArgs = GlamorousComponent.styles.map(glamorRules => {
+          if (typeof glamorRules === 'function') {
+            return glamorRules(this.props, {...this.state.theme})
+          }
+          return glamorRules
+        })
+        const {
+          glamorStyles: parentGlamorStyles,
+          glamorlessClassName,
+        } = extractGlamorStyles(className)
+        const glamorClassName = css(
+          ...mappedArgs,
+          ...parentGlamorStyles,
+          cssOverrides,
+        ).toString()
+        const fullClassName = joinClasses(glamorlessClassName, glamorClassName)
+
+        return React.createElement(GlamorousComponent.comp, {
+          className: fullClassName,
+          ...toForward,
+        })
       }
     }
+
     GlamorousComponent.propTypes = {
       className: PropTypes.string,
       cssOverrides: PropTypes.object,
+      theme: PropTypes.object,
+    }
+
+    GlamorousComponent.contextTypes = {
+      [CHANNEL]: PropTypes.object,
     }
 
     Object.assign(
@@ -204,20 +239,5 @@ function joinClasses(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-// some manual magic umd here because Rollup isn't capable of
-// exposing our module the way we want
-// see dist-test/index.js
-/* istanbul ignore next */
-// if (typeof exports === 'object' && typeof module !== 'undefined') {
-//   glamorous.default = glamorous
-//   module.exports = glamorous
-//   Object.defineProperty(exports, '__esModule', {value: true})
-//   // eslint-disable-next-line no-undef
-// } else if (typeof define === 'function' && define.amd) {
-//   // eslint-disable-next-line no-undef
-//   define(() => glamorous)
-// } else {
-//   // eslint-disable-next-line no-undef
-//   globalObject.glamorous = glamorous
-// }
 export default glamorous
+export {ThemeProvider}

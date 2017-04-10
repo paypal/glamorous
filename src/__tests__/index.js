@@ -1,14 +1,22 @@
 /* eslint func-style:0 */
 import React from 'react'
 import * as glamor from 'glamor'
-import {render} from 'enzyme'
+import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
-// eslint-disable-next-line import/default
 import glamorous from '../'
+import {CHANNEL} from '../theme-provider'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
+
+const getMockedContext = unsubscribe => ({
+  [CHANNEL]: {
+    getState: () => {},
+    setState: () => {},
+    subscribe: () => unsubscribe,
+  },
+})
 
 test('sanity test', () => {
   const Div = glamorous.div({marginLeft: 24})
@@ -146,7 +154,9 @@ test('forwards props when the GlamorousComponent.rootEl is known', () => {
   })()
   // no need to pass anything. This will just create be a no-op class,
   // no problem
-  const MyWrappedVersionMock = jest.fn(MyWrappedVersion)
+  const MyWrappedVersionMock = jest.fn(props => (
+    <MyWrappedVersion {...props} />
+  ))
 
   // from there we can use our wrapped version and it will function the
   // same as the original
@@ -191,4 +201,47 @@ test('forwards props when the GlamorousComponent.rootEl is known', () => {
     expect.anything(),
   )
   expect(ui).toMatchSnapshotWithGlamor()
+})
+
+test('renders a component with theme properties', () => {
+  const Comp = glamorous.div(
+    {
+      color: 'red',
+    },
+    (props, theme) => ({padding: theme.padding}),
+  )
+  expect(
+    render(<Comp theme={{padding: '10px'}} />),
+  ).toMatchSnapshotWithGlamor()
+})
+
+test('passes an updated theme when theme prop changes', () => {
+  const Comp = glamorous.div(
+    {
+      color: 'red',
+    },
+    (props, theme) => ({padding: theme.padding}),
+  )
+  const wrapper = mount(<Comp theme={{padding: 10}} />)
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
+  wrapper.setProps({theme: {padding: 20}})
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
+})
+
+test('cleans up theme subscription when unmounts', () => {
+  const unsubscribe = jest.fn()
+  const context = getMockedContext(unsubscribe)
+  const Comp = glamorous.div()
+  const wrapper = mount(<Comp />, {context})
+  wrapper.unmount()
+  expect(unsubscribe).toHaveBeenCalled()
+})
+
+test('ignores context if a theme props is passed', () => {
+  const unsubscribe = jest.fn()
+  const context = getMockedContext(unsubscribe)
+  const Comp = glamorous.div()
+  const wrapper = mount(<Comp theme={{}} />, {context})
+  wrapper.unmount()
+  expect(unsubscribe).toHaveBeenCalledTimes(0)
 })

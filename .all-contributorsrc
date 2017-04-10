@@ -16,7 +16,8 @@
         "code",
         "doc",
         "infra",
-        "test"
+        "test",
+        "review"
       ]
     },
     {
@@ -81,6 +82,62 @@
       "profile": "https://github.com/pksjce",
       "contributions": [
         "example"
+      ]
+    },
+    {
+      "login": "vesparny",
+      "name": "Alessandro Arnodo",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/82070?v=3",
+      "profile": "http://alessandro.arnodo.net",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "developit",
+      "name": "Jason Miller",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/105127?v=3",
+      "profile": "https://jasonformat.com",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "kwelch",
+      "name": "Kyle Welch",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1295580?v=3",
+      "profile": "http://krwelch.com",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "javivelasco",
+      "name": "Javi Velasco",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1634922?v=3",
+      "profile": "http://javivelasco.com",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "aweary",
+      "name": "Brandon Dail",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6886061?v=3",
+      "profile": "https://twitter.com/aweary",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "browniefed",
+      "name": "Jason Brown",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1714673?v=3",
+      "profile": "http://browniefed.com",
+      "contributions": [
+        "review"
       ]
     }
   ]

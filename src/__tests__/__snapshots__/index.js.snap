@@ -65,6 +65,18 @@ exports[`merges composed component styles for reasonable overrides 1`] = `
 />
 `;
 
+exports[`renders a component with theme properties 1`] = `
+.css-1fyph4i,
+[data-css-1fyph4i] {
+  color: red;
+  padding: 10px;
+}
+
+<div
+  class="css-1fyph4i"
+/>
+`;
+
 exports[`sanity test 1`] = `
 .css-1b98bkc,
 [data-css-1b98bkc] {
@@ -103,4 +115,44 @@ exports[`will not forward \`color\` to a div 1`] = `
 <div
   class="css-1ezp9xe"
 />
+`;
+
+exports[`with theme prop of padding 10px 1`] = `
+.css-1p841yy,
+[data-css-1p841yy] {
+  color: red;
+  padding: 10px;
+}
+
+<glamorous(div)
+  theme={
+    Object {
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="css-1p841yy"
+  />
+</glamorous(div)>
+`;
+
+exports[`with theme prop of padding 20px 1`] = `
+.css-1e41o48,
+[data-css-1e41o48] {
+  color: red;
+  padding: 20px;
+}
+
+<glamorous(div)
+  theme={
+    Object {
+      "padding": 20,
+    }
+  }
+>
+  <div
+    className="css-1e41o48"
+  />
+</glamorous(div)>
 `;

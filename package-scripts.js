@@ -32,15 +32,21 @@ module.exports = {
       description: 'delete the dist directory and run all builds',
       default: series(
         rimraf('dist'),
-        concurrent.nps('build.rollup', 'build.min')
+        concurrent.nps('build.es', 'build.umd.main', 'build.umd.min')
       ),
-      rollup: {
+      es: {
         description: 'run the build with rollup (uses rollup.config.js)',
-        script: 'rollup --config',
+        script: 'rollup --config --environment FORMAT:es',
       },
-      min: {
-        description: 'run the rollup build with sourcemaps',
-        script: 'rollup --config --sourcemap --environment MINIFY',
+      umd: {
+        min: {
+          description: 'run the rollup build with sourcemaps',
+          script: 'rollup --config --sourcemap --environment MINIFY,FORMAT:umd',
+        },
+        main: {
+          description: 'builds the cjs and umd files',
+          script: 'rollup --config --sourcemap --environment FORMAT:umd',
+        },
       },
       andTest: series.nps('build', 'test.build'),
     },

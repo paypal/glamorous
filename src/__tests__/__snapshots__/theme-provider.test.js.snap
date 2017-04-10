@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merges nested themes 1`] = `
+.css-mhpxxj,
+[data-css-mhpxxj] {
+  padding: 1px;
+  margin: 1px;
+}
+
+.css-19cobm9,
+[data-css-19cobm9] {
+  padding: 1px;
+  margin: 2px;
+}
+
+<div>
+  <ThemeProvider
+    theme={
+      Object {
+        "margin": 1,
+        "padding": 1,
+      }
+    }
+  >
+    <div>
+      <glamorous(div)>
+        <div
+          className="css-mhpxxj"
+        />
+      </glamorous(div)>
+      <ThemeProvider
+        theme={
+          Object {
+            "margin": 2,
+          }
+        }
+      >
+        <glamorous(div)>
+          <div
+            className="css-19cobm9"
+          />
+        </glamorous(div)>
+      </ThemeProvider>
+    </div>
+  </ThemeProvider>
+</div>
+`;
+
+exports[`renders a component with theme 1`] = `
+.css-1fyph4i,
+[data-css-1fyph4i] {
+  color: red;
+  padding: 10px;
+}
+
+<div
+  class="css-1fyph4i"
+/>
+`;
+
+exports[`renders if children are null 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "padding": 1,
+    }
+  }
+/>
+`;
+
+exports[`with theme prop of margin 2px 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": 2,
+    }
+  }
+/>
+`;
+
+exports[`with theme prop of margin 2px 2`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": 2,
+    }
+  }
+/>
+`;
+
+exports[`with theme prop of padding 10px 1`] = `
+.css-1p841yy,
+[data-css-1p841yy] {
+  color: red;
+  padding: 10px;
+}
+
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 10,
+      }
+    }
+  >
+    <glamorous(div)>
+      <div
+        className="css-1p841yy"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`with theme prop of padding 20px 1`] = `
+.css-1e41o48,
+[data-css-1e41o48] {
+  color: red;
+  padding: 20px;
+}
+
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 20,
+      }
+    }
+  >
+    <glamorous(div)>
+      <div
+        className="css-1e41o48"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</Parent>
+`;
