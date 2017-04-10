@@ -128,7 +128,7 @@ const {ThemeProvider} = glamorous
 If you're transpiling (and/or using the `jsnext:main`):
 
 ```javascript
-import glamorous from 'glamorous'
+import glamorous, {ThemeProvider} from 'glamorous'
 ```
 
 If you want to use the global:
