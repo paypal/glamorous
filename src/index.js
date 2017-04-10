@@ -250,18 +250,15 @@ function joinClasses(...classes) {
 // exposing our module the way we want
 // see dist-test/index.js
 /* istanbul ignore next */
-// if (typeof exports === 'object' && typeof module !== 'undefined') {
-//   glamorous.default = glamorous
-//   module.exports = glamorous
-//   Object.defineProperty(exports, '__esModule', {value: true})
-//   // eslint-disable-next-line no-undef
-// } else if (typeof define === 'function' && define.amd) {
-//   // eslint-disable-next-line no-undef
-//   define(() => glamorous)
-// } else {
-//   // eslint-disable-next-line no-undef
-//   globalObject.glamorous = glamorous
-// }
-
-export default glamorous
-export {ThemeProvider}
+if (typeof exports === 'object' && typeof module !== 'undefined') {
+  glamorous.default = glamorous
+  module.exports = glamorous
+  module.exports.ThemeProvider = glamorous.ThemeProvider
+  // eslint-disable-next-line no-undef
+} else if (typeof define === 'function' && define.amd) {
+  // eslint-disable-next-line no-undef
+  define(() => glamorous)
+} else {
+  // eslint-disable-next-line no-undef
+  globalObject.glamorous = glamorous
+}
