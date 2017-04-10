@@ -15,7 +15,7 @@ export default {
         {dest: 'dist/glamorous.es.js', format: 'es'},
         {dest: 'dist/glamorous.cjs.js', format: 'cjs'},
   ],
-  exports: 'default',
+  exports: 'named',
   moduleName: 'glamorous',
   format: 'umd',
   external: ['react', 'glamor', 'prop-types'],
