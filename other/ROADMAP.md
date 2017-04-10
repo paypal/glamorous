@@ -6,8 +6,6 @@ We haven't filled this out yet though. Care to help? See `CONTRIBUTING.md`
 
 ## Want to do
 
-- Support theming via some sort of `ThemeProvider`
-
 ## Might do
 
 ## Wont do
