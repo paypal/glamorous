@@ -23,6 +23,10 @@ module.exports = {
     test: {
       default: 'jest --coverage',
       watch: 'jest --watch',
+      build: {
+        description: 'validates the built files',
+        script: 'babel-node dist-test/index.js',
+      },
     },
     build: {
       description: 'delete the dist directory and run all builds',
@@ -38,6 +42,7 @@ module.exports = {
         description: 'run the rollup build with sourcemaps',
         script: 'rollup --config --sourcemap --environment MINIFY',
       },
+      andTest: series.nps('build', 'test.build'),
     },
     lint: {
       description: 'lint the entire project',
@@ -68,7 +73,7 @@ module.exports = {
     },
     validate: {
       description: 'This runs several scripts to make sure things look good before committing or on clean install',
-      default: concurrent.nps('lint', 'build', 'test'),
+      default: concurrent.nps('lint', 'build.andTest', 'test'),
       examples: {
         description: 'Validates the examples folder',
         script: 'nps examples.withJest',
