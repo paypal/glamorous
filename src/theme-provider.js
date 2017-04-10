@@ -18,7 +18,8 @@ class ThemeProvider extends Component {
   // create theme, by merging with outer theme, if present
   getTheme(passedTheme) {
     const theme = passedTheme || this.props.theme
-    return {...this.outerTheme, ...theme}
+    const outerTheme = this.outerTheme || {}
+    return {...outerTheme, ...theme}
   }
 
   getChildContext() {
@@ -29,6 +30,7 @@ class ThemeProvider extends Component {
 
   setOuterTheme = theme => {
     this.outerTheme = theme
+    this.broadcast.setState(this.getTheme())
   }
 
   componentDidMount() {
@@ -42,7 +44,6 @@ class ThemeProvider extends Component {
     // set broadcast state by merging outer theme with own
     if (this.context[CHANNEL]) {
       this.setOuterTheme(this.context[CHANNEL].getState())
-      this.broadcast.setState(this.getTheme())
     }
   }
 
