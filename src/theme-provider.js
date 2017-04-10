@@ -8,6 +8,8 @@ export const CHANNEL = '__glamorous__'
  * This is a component which will provide a theme to the entire tree
  * via context and event listener
  * (because pure components block context updates)
+ * inspired by the styled-components implementation
+ * https://github.com/styled-components/styled-components
  * @param {Object} theme the theme object..
  */
 class ThemeProvider extends Component {
