@@ -297,6 +297,8 @@ One other tip... This totally works:
 
 It provides the `theme` to all glamorous components down the tree.
 
+> Try this out in your browser [here](https://codesandbox.io/s/o2yq9MkQk)!
+
 ```jsx
 import glamorous, {ThemeProvider} from glamorous
 
