@@ -3,7 +3,7 @@
 # glamorous
 
 React component styling solved with an elegant ([inspired](#inspiration)) API,
-small footprint (<5kb gzipped), and great performance (via [`glamor`][glamor]).
+small footprint (~6kb gzipped), and great performance (via [`glamor`][glamor]).
 
 > Read [the intro blogpost][intro-blogpost]
 
@@ -286,6 +286,57 @@ One other tip... This totally works:
 <glamorous.Div color="blue">
   JSX is pretty wild!
 </glamorous.Div>
+```
+
+### Theming
+
+`glamorous` fully supports theming using a special `<ThemeProvider>` component.
+
+It provides the `theme` to all glamorous components down the tree.
+
+```javascript
+import glamorous, {ThemeProvider} from glamorous
+
+// our main theme object
+const theme = {
+  main: {color: 'red'}
+}
+
+// our secondary theme object
+const secondaryTheme = {
+  main: {color: 'blue'}
+}
+
+// a themed <Title> components
+const Title = glamorous.h1({
+  fontSize: '10px'
+}, (props, theme) => ({
+  color: theme.main.color
+}))
+
+// use <ThemeProvider> to pass theme down the tree
+<ThemeProvider theme={theme}>
+  <Title>Hello!</Title>
+</ThemeProvider>
+
+// it is possible to nest themes
+// inner themes will be merged with outers
+<ThemeProvider theme={theme}>
+  <div>
+    <Title>Hello!</Title>
+    <ThemeProvider theme={secondaryTheme}>
+      {/* this will be blue */}
+      <Title>Hello from here!</Title>
+    </ThemeProvider>
+  </div>
+</ThemeProvider>
+
+// to override a theme, just pass a theme prop to a glamorous component
+// the component will ignore any surrounding theme, applying the one passed directly via props
+<ThemeProvider theme={theme}>
+  {/* this will be yellow */}
+  <Title theme={{main: {color: 'yellow'}}}>Hello!</Title>
+</ThemeProvider>
 ```
 
 ### Server Side Rendering (SSR)
