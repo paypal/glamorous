@@ -13,13 +13,13 @@ import assert from 'assert'
 import {oneLine} from 'common-tags'
 
 import esImport from '../dist/glamorous.es'
-import cjsImport from '../dist/glamorous.cjs'
+import cjsImport from '../' // picks up the main from package.json
 import umdImport from '../dist/glamorous.umd'
 
 // intentionally left out because you shouldn't ever
 // try to require the ES file in CommonJS
 // const esRequire = require('../dist/glamorous.es')
-const cjsRequire = require('../dist/glamorous.cjs')
+const cjsRequire = require('../') // picks up the main from package.json
 const umdRequire = require('../dist/glamorous.umd')
 
 assert(isGlamorousFunction(esImport), 'ES build has a problem with ES Modules')
@@ -56,15 +56,6 @@ function isGlamorousFunction(thing) {
     )
     return false
   }
-  if (thing.name !== 'glamorous') {
-    console.error(
-      oneLine`
-        the function is not called "glamorous".
-        It's called ${thing.name}
-      `,
-    )
-    return false
-  }
   return true
 }
 
@@ -72,5 +63,6 @@ function isGlamorousFunction(thing) {
  eslint
   no-console: 0,
   import/extensions: 0,
-  import/no-unresolved: 0
+  import/no-unresolved: 0,
+  import/no-duplicates: 0,
  */

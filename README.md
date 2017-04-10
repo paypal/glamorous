@@ -121,6 +121,7 @@ The most common use-case is consuming this module via CommonJS:
 
 ```javascript
 const glamorous = require('glamorous')
+const {ThemeProvider} = glamorous
 // etc.
 ```
 
@@ -141,6 +142,8 @@ If you want to use the global:
 <script src="https://unpkg.com/glamorous/dist/glamorous.umd.js"></script>
 <script>
 // Use window.glamorous here...
+const glamorous = window.glamorous
+const {ThemeProvider} = glamorous
 </script>
 ```
 
