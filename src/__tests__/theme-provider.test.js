@@ -2,8 +2,6 @@
 import React, {Component} from 'react'
 import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
-import toJson from 'enzyme-to-json'
-// eslint-disable-next-line import/default
 import glamorous from '../'
 import ThemeProvider, {CHANNEL} from '../theme-provider'
 
@@ -37,9 +35,9 @@ test('renders a component with theme', () => {
 test('theme properties updates get propagated down the tree', () => {
   class Parent extends Component {
     state = {
-      padding: '10px',
+      padding: 10,
     }
-    setPadding = () => this.setState({padding: '20px'})
+
     render() {
       return (
         <ThemeProvider theme={{padding: this.state.padding}}>
@@ -55,23 +53,27 @@ test('theme properties updates get propagated down the tree', () => {
     (props, theme) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Parent />)
-  expect(toJson(wrapper)).toMatchSnapshotWithGlamor(`enzyme.mount`)
-  wrapper.instance().setPadding()
-  expect(toJson(wrapper)).toMatchSnapshotWithGlamor(`enzyme.mount`)
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
+  wrapper.setState({padding: 20})
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
 })
 
 test('merges nested themes', () => {
-  const One = glamorous.div({}, (props, themes) => ({padding: themes.padding}))
-  const Two = glamorous.div({}, (props, themes) => {
-    return {padding: themes.padding, margin: themes.margin}
-  })
+  const One = glamorous.div({}, (props, {padding, margin}) => ({
+    padding,
+    margin,
+  }))
+  const Two = glamorous.div({}, (props, {padding, margin}) => ({
+    padding,
+    margin,
+  }))
   expect(
     mount(
       <div>
-        <ThemeProvider theme={{padding: '1px'}}>
+        <ThemeProvider theme={{padding: 1, margin: 1}}>
           <div>
             <One />
-            <ThemeProvider theme={{margin: '2px'}}>
+            <ThemeProvider theme={{margin: 2}}>
               <Two />
             </ThemeProvider>
           </div>
@@ -84,7 +86,7 @@ test('merges nested themes', () => {
 test('renders if children are null', () => {
   expect(
     mount(
-      <ThemeProvider theme={{padding: '1px'}}>
+      <ThemeProvider theme={{padding: 1}}>
         {false && <div />}
       </ThemeProvider>,
     ),
@@ -100,9 +102,9 @@ test('cleans up outer theme subscription when unmounts', () => {
 })
 
 test('does nothing when receive same theme via props', () => {
-  const theme = {margin: '2px'}
+  const theme = {margin: 2}
   const wrapper = mount(<ThemeProvider theme={theme} />)
-  expect(toJson(wrapper)).toMatchSnapshotWithGlamor(`enzyme.mount`)
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
   wrapper.setProps({theme})
-  expect(toJson(wrapper)).toMatchSnapshotWithGlamor(`enzyme.mount`)
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
 })

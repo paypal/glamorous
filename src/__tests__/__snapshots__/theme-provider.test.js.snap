@@ -1,81 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`enzyme.mount 1`] = `
-.css-1fyph4i,
-[data-css-1fyph4i] {
-  color: red;
-  padding: 10px;
-}
-
-<Parent>
-  <ThemeProvider
-    theme={
-      Object {
-        "padding": "10px",
-      }
-    }
-  >
-    <glamorous(div)>
-      <div
-        className="css-1fyph4i"
-      />
-    </glamorous(div)>
-  </ThemeProvider>
-</Parent>
-`;
-
-exports[`enzyme.mount 2`] = `
-.css-1t91z0n,
-[data-css-1t91z0n] {
-  color: red;
-  padding: 20px;
-}
-
-<Parent>
-  <ThemeProvider
-    theme={
-      Object {
-        "padding": "20px",
-      }
-    }
-  >
-    <glamorous(div)>
-      <div
-        className="css-1t91z0n"
-      />
-    </glamorous(div)>
-  </ThemeProvider>
-</Parent>
-`;
-
-exports[`enzyme.mount 3`] = `
-<ThemeProvider
-  theme={
-    Object {
-      "margin": "2px",
-    }
-  }
-/>
-`;
-
-exports[`enzyme.mount 4`] = `
-<ThemeProvider
-  theme={
-    Object {
-      "margin": "2px",
-    }
-  }
-/>
-`;
-
 exports[`merges nested themes 1`] = `
-.css-e5hgul,
-[data-css-e5hgul] {
+.css-mhpxxj,
+[data-css-mhpxxj] {
   padding: 1px;
+  margin: 1px;
 }
 
-.css-45n9js,
-[data-css-45n9js] {
+.css-19cobm9,
+[data-css-19cobm9] {
   padding: 1px;
   margin: 2px;
 }
@@ -84,26 +17,27 @@ exports[`merges nested themes 1`] = `
   <ThemeProvider
     theme={
       Object {
-        "padding": "1px",
+        "margin": 1,
+        "padding": 1,
       }
     }
   >
     <div>
       <glamorous(div)>
         <div
-          className="css-e5hgul"
+          className="css-mhpxxj"
         />
       </glamorous(div)>
       <ThemeProvider
         theme={
           Object {
-            "margin": "2px",
+            "margin": 2,
           }
         }
       >
         <glamorous(div)>
           <div
-            className="css-45n9js"
+            className="css-19cobm9"
           />
         </glamorous(div)>
       </ThemeProvider>
@@ -128,8 +62,76 @@ exports[`renders if children are null 1`] = `
 <ThemeProvider
   theme={
     Object {
-      "padding": "1px",
+      "padding": 1,
     }
   }
 />
+`;
+
+exports[`with theme prop of margin 2px 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": 2,
+    }
+  }
+/>
+`;
+
+exports[`with theme prop of margin 2px 2`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": 2,
+    }
+  }
+/>
+`;
+
+exports[`with theme prop of padding 10px 1`] = `
+.css-1p841yy,
+[data-css-1p841yy] {
+  color: red;
+  padding: 10px;
+}
+
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 10,
+      }
+    }
+  >
+    <glamorous(div)>
+      <div
+        className="css-1p841yy"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`with theme prop of padding 20px 1`] = `
+.css-1e41o48,
+[data-css-1e41o48] {
+  color: red;
+  padding: 20px;
+}
+
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 20,
+      }
+    }
+  >
+    <glamorous(div)>
+      <div
+        className="css-1e41o48"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</Parent>
 `;

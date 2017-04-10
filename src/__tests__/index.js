@@ -4,8 +4,6 @@ import * as glamor from 'glamor'
 import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
-import toJson from 'enzyme-to-json'
-// eslint-disable-next-line import/default
 import glamorous from '../'
 import {CHANNEL} from '../theme-provider'
 
@@ -224,10 +222,10 @@ test('passes an updated theme when theme prop changes', () => {
     },
     (props, theme) => ({padding: theme.padding}),
   )
-  const wrapper = mount(<Comp theme={{padding: '10px'}} />)
-  expect(toJson(wrapper)).toMatchSnapshotWithGlamor(`enzyme.mount`)
-  wrapper.setProps({theme: {padding: '20px'}})
-  expect(toJson(wrapper)).toMatchSnapshotWithGlamor(`enzyme.mount`)
+  const wrapper = mount(<Comp theme={{padding: 10}} />)
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
+  wrapper.setProps({theme: {padding: 20}})
+  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
 })
 
 test('cleans up theme subscription when unmounts', () => {

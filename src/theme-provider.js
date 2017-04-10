@@ -1,18 +1,20 @@
-import React, {PropTypes, Component} from 'react'
+import React, {Component} from 'react'
 import brcast from 'brcast'
+import {PropTypes} from './react-compat'
 
 export const CHANNEL = '__glamorous__'
 
 /**
  * This is a component which will provide a theme to the entire tree
- * via context and event listener (because pure components block context updates)
+ * via context and event listener
+ * (because pure components block context updates)
  * @param {Object} theme the theme object..
  */
 class ThemeProvider extends Component {
   broadcast = brcast(this.props.theme)
 
   // create theme, by merging with outer theme, if present
-  getTheme = passedTheme => {
+  getTheme(passedTheme) {
     const theme = passedTheme || this.props.theme
     return {...this.outerTheme, ...theme}
   }

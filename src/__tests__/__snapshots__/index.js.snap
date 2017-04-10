@@ -35,46 +35,6 @@ exports[`can use pre-glamorous components with css attributes 1`] = `
 />
 `;
 
-exports[`enzyme.mount 1`] = `
-.css-1fyph4i,
-[data-css-1fyph4i] {
-  color: red;
-  padding: 10px;
-}
-
-<glamorous(div)
-  theme={
-    Object {
-      "padding": "10px",
-    }
-  }
->
-  <div
-    className="css-1fyph4i"
-  />
-</glamorous(div)>
-`;
-
-exports[`enzyme.mount 2`] = `
-.css-1t91z0n,
-[data-css-1t91z0n] {
-  color: red;
-  padding: 20px;
-}
-
-<glamorous(div)
-  theme={
-    Object {
-      "padding": "20px",
-    }
-  }
->
-  <div
-    className="css-1t91z0n"
-  />
-</glamorous(div)>
-`;
-
 exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 .css-mhpxxj,
 [data-css-mhpxxj] {
@@ -155,4 +115,44 @@ exports[`will not forward \`color\` to a div 1`] = `
 <div
   class="css-1ezp9xe"
 />
+`;
+
+exports[`with theme prop of padding 10px 1`] = `
+.css-1p841yy,
+[data-css-1p841yy] {
+  color: red;
+  padding: 10px;
+}
+
+<glamorous(div)
+  theme={
+    Object {
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="css-1p841yy"
+  />
+</glamorous(div)>
+`;
+
+exports[`with theme prop of padding 20px 1`] = `
+.css-1e41o48,
+[data-css-1e41o48] {
+  color: red;
+  padding: 20px;
+}
+
+<glamorous(div)
+  theme={
+    Object {
+      "padding": 20,
+    }
+  }
+>
+  <div
+    className="css-1e41o48"
+  />
+</glamorous(div)>
 `;
