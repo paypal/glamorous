@@ -294,7 +294,7 @@ One other tip... This totally works:
 
 It provides the `theme` to all glamorous components down the tree.
 
-```javascript
+```jsx
 import glamorous, {ThemeProvider} from glamorous
 
 // our main theme object
@@ -307,7 +307,7 @@ const secondaryTheme = {
   main: {color: 'blue'}
 }
 
-// a themed <Title> components
+// a themed <Title> component
 const Title = glamorous.h1({
   fontSize: '10px'
 }, (props, theme) => ({

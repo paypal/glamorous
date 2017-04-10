@@ -5,7 +5,7 @@ export const CHANNEL = '__glamorous__'
 
 /**
  * This is a component which will provide a theme to the entire tree
- * via context and event listener (because pure components block conext updates)
+ * via context and event listener (because pure components block context updates)
  * @param {Object} theme the theme object..
  */
 class ThemeProvider extends Component {
