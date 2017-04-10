@@ -183,13 +183,6 @@ Object.assign(
   ),
 )
 
-/*
- * This adds ThemeProvider to the default export
- * simply do:
- * import glamorous, {ThemeProvider} from 'glamorous'
- */
-Object.assign(glamorous, {ThemeProvider})
-
 /**
  * This function takes a className string and gets all the
  * associated glamor styles. It's used to merge glamor styles
@@ -246,19 +239,5 @@ function joinClasses(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-// some manual magic umd here because Rollup isn't capable of
-// exposing our module the way we want
-// see dist-test/index.js
-/* istanbul ignore next */
-if (typeof exports === 'object' && typeof module !== 'undefined') {
-  glamorous.default = glamorous
-  module.exports = glamorous
-  module.exports.ThemeProvider = glamorous.ThemeProvider
-  // eslint-disable-next-line no-undef
-} else if (typeof define === 'function' && define.amd) {
-  // eslint-disable-next-line no-undef
-  define(() => glamorous)
-} else {
-  // eslint-disable-next-line no-undef
-  globalObject.glamorous = glamorous
-}
+export default glamorous
+export {ThemeProvider}
