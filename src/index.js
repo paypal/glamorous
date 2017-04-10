@@ -183,6 +183,13 @@ Object.assign(
   ),
 )
 
+/*
+ * This adds ThemeProvider to the default export
+ * simply do:
+ * import glamorous, {ThemeProvider} from 'glamorous'
+ */
+Object.assign(glamorous, {ThemeProvider})
+
 /**
  * This function takes a className string and gets all the
  * associated glamor styles. It's used to merge glamor styles
