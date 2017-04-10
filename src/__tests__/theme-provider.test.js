@@ -108,25 +108,3 @@ test('does nothing when receive same theme via props', () => {
   wrapper.setProps({theme})
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
 })
-
-test('works fine when the outer theme is set to null', () => {
-  const subscribers = []
-  let state
-  const mockedContext = {
-    [CHANNEL]: {
-      getState: () => {
-        return state
-      },
-      setState: newState => {
-        state = newState
-        subscribers.forEach(s => s(state))
-      },
-      subscribe: subscriber => {
-        subscribers.push(subscriber)
-      },
-    },
-  }
-  mount(<ThemeProvider theme={{}} />, {context: mockedContext})
-  expect(subscribers).toHaveLength(1)
-  expect(() => mockedContext[CHANNEL].setState(null)).not.toThrow()
-})
