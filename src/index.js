@@ -217,6 +217,12 @@ function splitProps(
   const returnValue = {toForward: {}, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     returnValue.cssOverrides = cssOverrides
+    if (typeof rootEl !== 'string') {
+      // if it's not a string, then we can forward everything
+      // (because it's a component)
+      returnValue.toForward = rest
+      return returnValue
+    }
   }
   return Object.keys(rest).reduce(
     (split, propName) => {
