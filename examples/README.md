@@ -1,6 +1,8 @@
 # Examples
 
-There aren't any examples yet! Want to add one? See `CONTRIBUTING.md`
+### [Simple Example](https://github.com/MicheleBertoli/css-in-js/blob/master/glamorous/button.js)
+This example includes both the object literal styles and prop based styles.
+Additionally, shows how to to psuedo selectors and a media query. 
 
 ## Dynamic + Static Styles
 
