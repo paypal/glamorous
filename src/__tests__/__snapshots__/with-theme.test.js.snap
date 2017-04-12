@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a component with theme in props 1`] = `
+.css-1kle2qo,
+[data-css-1kle2qo] {
+  padding: 10px;
+}
+
+<div
+  class="css-1kle2qo"
+/>
+`;
