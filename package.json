@@ -28,7 +28,7 @@
     "brcast": "^1.1.6",
     "html-tag-names": "^1.1.1",
     "svg-tag-names": "^1.1.0",
-    "react-html-attributes": "^1.0.2"
+    "react-html-attributes": "^1.2.1"
   },
   "peerDependencies": {
     "glamor": ">=2",

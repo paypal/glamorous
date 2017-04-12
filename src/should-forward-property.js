@@ -25,21 +25,23 @@ const isCustomAttribute = RegExp.prototype.test.bind(
   new RegExp(`^(data|aria)-[${ATTRIBUTE_NAME_CHAR}]*$`),
 )
 
-const hasItem = (list, name) => list.indexOf(name) !== -1
 const isHtmlProp = (name, tagName) => {
   const elementAttributes = reactHTMLAttributes[tagName]
 
-  return hasItem([...globalReactHtmlProps, ...elementAttributes], name)
+  return globalReactHtmlProps.indexOf(name) !== -1 ||
+    (elementAttributes === undefined ?
+      false :
+      elementAttributes.indexOf(name) !== -1)
 }
-const isCssProp = name => hasItem(cssProps, name)
-const isReactProp = name => hasItem(reactProps, name)
+const isCssProp = name => cssProps.indexOf(name) !== -1
+const isReactProp = name => reactProps.indexOf(name) !== -1
 
 // eslint-disable-next-line complexity
 const shouldForwardProperty = (tagName, name) =>
   typeof tagName !== 'string' ||
   ((isHtmlProp(name, tagName) ||
-    isCustomAttribute(name.toLowerCase()) ||
-    isReactProp(name)) &&
+    isReactProp(name) ||
+    isCustomAttribute(name.toLowerCase())) &&
     (tagName === 'svg' || !isCssProp(name)))
 
 export default shouldForwardProperty
