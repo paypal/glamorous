@@ -3,7 +3,7 @@
 # glamorous
 
 React component styling solved with an elegant ([inspired](#inspiration)) API,
-small footprint (~7kb gzipped), and great performance (via [`glamor`][glamor]).
+small footprint, and great performance (via [`glamor`][glamor]).
 
 > Read [the intro blogpost][intro-blogpost]
 

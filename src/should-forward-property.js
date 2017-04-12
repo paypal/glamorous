@@ -6,6 +6,7 @@
  by filtering by React's attribute whitelist.
  */
 
+import memoize from 'fast-memoize'
 import reactHTMLAttributes from 'react-html-attributes'
 import reactProps from './react-props'
 
@@ -44,4 +45,4 @@ const shouldForwardProperty = (tagName, name) =>
     isCustomAttribute(name.toLowerCase())) &&
     (tagName === 'svg' || !isCssProp(name)))
 
-export default shouldForwardProperty
+export default memoize(shouldForwardProperty)
