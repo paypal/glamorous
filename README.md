@@ -3,7 +3,7 @@
 # glamorous
 
 React component styling solved with an elegant ([inspired](#inspiration)) API,
-small footprint (~6kb gzipped), and great performance (via [`glamor`][glamor]).
+small footprint, and great performance (via [`glamor`][glamor]).
 
 > Read [the intro blogpost][intro-blogpost]
 
@@ -14,7 +14,7 @@ small footprint (~6kb gzipped), and great performance (via [`glamor`][glamor]).
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
 [![Donate][donate-badge]][donate]
@@ -501,6 +501,7 @@ Thanks goes to these people ([emoji key][emojis]):
 | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds) [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds) 👀 | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />💡 | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar) | [<img src="https://avatars0.githubusercontent.com/u/14236753?v=3" width="100px;"/><br /><sub>Chandan Rai</sub>](https://github.com/crowchirp)<br />[📖](https://github.com/paypal/glamorous/commits?author=crowchirp) | [<img src="https://avatars3.githubusercontent.com/u/16726210?v=3" width="100px;"/><br /><sub>BinHong Lee</sub>](https://binhonglee.github.io)<br />[📖](https://github.com/paypal/glamorous/commits?author=binhonglee) | [<img src="https://avatars2.githubusercontent.com/u/737065?v=3" width="100px;"/><br /><sub>Paul Molluzzo</sub>](https://paul.molluzzo.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=paulmolluzzo) 💡 | [<img src="https://avatars0.githubusercontent.com/u/450559?v=3" width="100px;"/><br /><sub>Sriram Thiagarajan</sub>](http://tsriram.in)<br />[💻](https://github.com/paypal/glamorous/commits?author=tsriram) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars1.githubusercontent.com/u/417268?v=3" width="100px;"/><br /><sub>Pavithra Kodmad</sub>](https://github.com/pksjce)<br />💡 | [<img src="https://avatars0.githubusercontent.com/u/82070?v=3" width="100px;"/><br /><sub>Alessandro Arnodo</sub>](http://alessandro.arnodo.net)<br />[💻](https://github.com/paypal/glamorous/commits?author=vesparny) [📖](https://github.com/paypal/glamorous/commits?author=vesparny) [⚠️](https://github.com/paypal/glamorous/commits?author=vesparny) | [<img src="https://avatars1.githubusercontent.com/u/105127?v=3" width="100px;"/><br /><sub>Jason Miller</sub>](https://jasonformat.com)<br />👀 | [<img src="https://avatars0.githubusercontent.com/u/1295580?v=3" width="100px;"/><br /><sub>Kyle Welch</sub>](http://www.krwelch.com)<br />👀 💡 | [<img src="https://avatars0.githubusercontent.com/u/1634922?v=3" width="100px;"/><br /><sub>Javi Velasco</sub>](http://javivelasco.com)<br />👀 | [<img src="https://avatars1.githubusercontent.com/u/6886061?v=3" width="100px;"/><br /><sub>Brandon Dail</sub>](https://twitter.com/aweary)<br />👀 | [<img src="https://avatars2.githubusercontent.com/u/1714673?v=3" width="100px;"/><br /><sub>Jason Brown</sub>](http://browniefed.com)<br />👀 |
+| [<img src="https://avatars3.githubusercontent.com/u/25375401?v=3" width="100px;"/><br /><sub>jackyho112</sub>](https://github.com/jackyho112)<br />[💻](https://github.com/paypal/glamorous/commits?author=jackyho112) [⚠️](https://github.com/paypal/glamorous/commits?author=jackyho112) |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification.

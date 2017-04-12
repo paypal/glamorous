@@ -2953,6 +2953,10 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.1.5:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.4.1.tgz#4b0445e41c004a8bd1337773a4ff790ca40318c8"
 
+html-element-attributes@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/html-element-attributes/-/html-element-attributes-1.2.0.tgz#8b1c7aaf94353fd9b455c27ec7ebaf1583e29fd0"
+
 html-encoding-sniffer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-1.0.1.tgz#79bf7a785ea495fe66165e734153f363ff5437da"
@@ -5025,6 +5029,12 @@ react-dom@^15.5.3:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
     prop-types "~15.5.0"
+
+react-html-attributes@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-html-attributes/-/react-html-attributes-1.2.1.tgz#e697b510710d771193a9e80fe1cceee0158712a0"
+  dependencies:
+    html-element-attributes "^1.0.0"
 
 react@^15.5.3:
   version "15.5.3"

@@ -140,6 +140,16 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "jackyho112",
+      "name": "jackyho112",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/25375401?v=3",
+      "profile": "https://github.com/jackyho112",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }
