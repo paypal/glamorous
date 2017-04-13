@@ -344,6 +344,72 @@ const Title = glamorous.h1({
 </ThemeProvider>
 ```
 
+`glamorous` also exports a `withTheme` higher order component (HOC) so you can access your theme in any component!
+> Try this out in your browser [here](https://codesandbox.io/s/qYmJjE4jy)!
+
+```jsx
+import glamorous, {ThemeProvider,  withTheme} from glamorous
+
+// our main theme object
+const theme = {
+  main: {color: 'red'}
+}
+
+// a themed <Title> component
+const Title = glamorous.h1({
+  fontSize: '10px'
+}, (props, theme) => ({
+  color: theme.main.color
+}))
+
+// normal component that takes a theme prop
+const SubTitle = ({children, theme: {color}}) => (
+  <h3 style={{color}}>{children}</h3>
+);
+
+// extended component with theme prop
+const ThemedSubTitle = withTheme(SubTitle);
+
+<ThemeProvider theme={theme}>
+  <Title>Hello!</Title>
+  <ThemedSubTitle>from withTheme!</ThemedSubTitle>
+</ThemeProvider>
+```
+
+Or if you prefer decorator syntax:
+
+```jsx
+import React, {Component} from 'react';
+import glamorous, {ThemeProvider,  withTheme} from glamorous
+
+// our main theme object
+const theme = {
+  main: {color: 'red'}
+}
+
+// a themed <Title> component
+const Title = glamorous.h1({
+  fontSize: '10px'
+}, (props, theme) => ({
+  color: theme.main.color
+}))
+
+// extended component with theme prop
+@withTheme
+class SubTitle extends Component {
+  render() {
+    const {children, theme: {color}} = this.props;
+    return <h3 style={{color}}>{children}</h3>;
+  }
+}
+
+<ThemeProvider theme={theme}>
+  <Title>Hello!</Title>
+  <SubTitle>from withTheme!</SubTitle>
+</ThemeProvider>
+```
+> `withTheme` expects a `ThemeProvider` further up the render tree and will warn in `development` if one is not found!
+
 ### Server Side Rendering (SSR)
 
 Because both `glamor` and `react` support SSR, `glamorous` does too! I actually

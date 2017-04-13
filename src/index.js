@@ -8,6 +8,7 @@ import shouldForwardProperty from './should-forward-property'
 import domElements from './dom-elements'
 import {PropTypes} from './react-compat'
 import ThemeProvider, {CHANNEL} from './theme-provider'
+import withTheme from './with-theme'
 
 /**
  * This is the main export and the function that people
@@ -246,4 +247,4 @@ function joinClasses(...classes) {
 }
 
 export default glamorous
-export {ThemeProvider}
+export {ThemeProvider, withTheme}

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a non-glamorous component with theme 1`] = `
+<div
+  style="padding:10px;"
+/>
+`;
+
+exports[`with theme prop of padding 10px 1`] = `
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 10,
+      }
+    }
+  >
+    <ThemedComponent>
+      <Component
+        theme={
+          Object {
+            "padding": 10,
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "padding": 10,
+            }
+          }
+        />
+      </Component>
+    </ThemedComponent>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`with theme prop of padding 10px 2`] = `
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 10,
+      }
+    }
+  >
+    <ThemedComponent>
+      <Child
+        theme={
+          Object {
+            "padding": 10,
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "padding": 10,
+            }
+          }
+        />
+      </Child>
+    </ThemedComponent>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`with theme prop of padding 20px 1`] = `
+<Parent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 20,
+      }
+    }
+  >
+    <ThemedComponent>
+      <Component
+        theme={
+          Object {
+            "padding": 20,
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "padding": 20,
+            }
+          }
+        />
+      </Component>
+    </ThemedComponent>
+  </ThemeProvider>
+</Parent>
+`;
+
+exports[`without theme provider 1`] = `
+<Parent>
+  <ThemedComponent>
+    <Component
+      theme={Object {}}
+    >
+      <div />
+    </Component>
+  </ThemedComponent>
+</Parent>
+`;
