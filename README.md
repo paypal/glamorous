@@ -244,7 +244,7 @@ A use case for doing something like this would be for dynamic styles:
 
 ```javascript
 const staticStyles = {color: 'green'}
-const dynamicStyles = props => {fontSize: props.size === 'big' ? 32 : 24}
+const dynamicStyles = props => ({fontSize: props.size === 'big' ? 32 : 24})
 const MyDynamicallyStyledDiv = glamorous.div(staticStyles, dynamicStyles)
 ```
 
@@ -289,6 +289,112 @@ One other tip... This totally works:
 <glamorous.Div color="blue">
   JSX is pretty wild!
 </glamorous.Div>
+```
+
+### glamorous API
+
+The `glamorous` function allows you to create your own
+`glamorousComponentFactory` (see [above](#glamorouscomponentfactory)) for any
+component you have. For [example](https://codesandbox.io/s/g5kDAyB9):
+
+```jsx
+const MyComponent = props => <div {...props} />
+const myGlamorousComponentFactory = glamorous(MyComponent)
+const MyGlamorousComponent = myGlamorousComponentFactory({/* styles */})
+
+<MyGlamorousComponent id="i-am-forwarded-to-the-div" />
+```
+
+You can also provide a few options to help glamorous know how to handle your
+component:
+
+#### displayName
+
+The `displayName` of a React component is used by React in the
+[React DevTools][react-devtools] and is really handy for debugging React
+applications. Glamorous will do its best to give a good `displayName` for your
+component, but, for the example above, the best it can do is:
+`glamorous(MyComponent)`. If you want to specify a `displayName`, you can do
+so with this property. For [example](https://codesandbox.io/s/P3Lyw5j2):
+
+```jsx
+const MyComponent = props => <div {...props} />
+const myGlamorousComponentFactory = glamorous(
+  MyComponent,
+  {displayName: 'MyGlamorousComponent'}
+)
+```
+
+And now all components created by the `myGlamorousComponentFactory` will have
+the `displayName` of `MyGlamorousComponent`.
+
+> Tip: you can also monkey-patch the `displayName` onto the components that you
+> create from your component factory. There's currently an effort to make
+> [a babel plugin][babel-plugin] that will do this for you to give you even
+> better `displayName`s
+
+#### rootEl
+
+React has an [Unknown Prop Warning][unknown-prop-warning] that it logs when you
+pass spurious props to DOM elements: (i.e. `<div big={true} />`). Because you
+can style your components using props, glamorous needs to filter out the props
+you pass so it doesn't forward these on to the underlying DOM element. However,
+if you create your own factory using a custom component, glamorous will just
+forward all the props (because the component may actually need them and
+glamorous has no way of knowing). But in some cases, the component may be
+spreading all of the props onto the root element that it renders. For these
+cases, you can tell glamorous which element is being rendered and glamorous will
+apply the same logic for which props to forward that it does for the built-in
+factories. For [example](https://codesandbox.io/s/P18oV4kD2):
+
+```jsx
+const MyComponent = props => <div {...props} />
+const myGlamorousComponentFactory = glamorous(
+  MyComponent,
+  {rootEl: 'div'}
+)
+
+const MyGlamorousComponent = myGlamorousComponentFactory(big => ({
+  fontSize: big ? 36 : 24,
+}))
+
+<MyGlamorousComponent big={true} id="room423" />
+// this will render:
+// <div id="room423" />
+// with {fontSize: 36}
+// big is not forwarded to MyComponent because the `rootEl` is a div and `big`
+// is not a valid attribute for a `div` however `id` will be forwarded because
+// `id` is a valid prop
+```
+
+#### forwardProps
+
+There are some cases where you're making a `glamorousComponentFactory` out of
+a custom component that spreads _some_ of the properties across an underlying
+DOM element, but not all of them. In this case you should use `rootEl` to
+forward only the right props to be spread on the DOM element, but you can also
+use `forwardProps` to specify extra props that should be forwarded. For
+[example](https://codesandbox.io/s/GZEo8jOyy):
+
+```jsx
+const MyComponent = ({shouldRender, ...rest}) => (
+  shouldRender ? <div {...rest} /> : null
+)
+const MyStyledComponent = glamorous(MyComponent, {
+  forwardProps: ['shouldRender'],
+  rootEl: 'div',
+})(big => ({
+  fontSize: big ? 36 : 24,
+}))
+<MyStyledComponent shouldRender={true} big={false} id="hello" />
+// this will render:
+// <div id="hello" />
+// with {fontSize: 24}
+// `shouldRender` will be forwarded to `MyComponent` because it is included in
+// `forwardProps`. `big` will not be forwarded to `MyComponent` because `rootEl`
+// is a `div` and that's not a valid prop for a `div`, but it _will_ be used in
+// the styles object function that determines the `fontSize`. Finally `id` will
+// be forwarded to `MyComponent` because it is a valid prop for a `div`.
 ```
 
 ### Theming
@@ -423,7 +529,7 @@ Style objects can affect pseudo-classes and pseduo-elements, complex CSS
 selectors, introduce keyframe animations, and use media queries:
 
 <details>
-  <summary>pseudo-class</summary>
+<summary>pseudo-class</summary>
 
 ```javascript
 const MyLink = glamorous.a({
@@ -438,7 +544,7 @@ const MyLink = glamorous.a({
 </details>
 
 <details>
-  <summary>pseudo-element</summary>
+<summary>pseudo-element</summary>
 
 ```jsx
 const MyListItem = glamorous.li({
@@ -463,7 +569,7 @@ const MyListItem = glamorous.li({
 </details>
 
 <details>
-  <summary>Relational CSS Selectors</summary>
+<summary>Relational CSS Selectors</summary>
 
 ```jsx
 const MyDiv = glamorous.div({
@@ -483,7 +589,7 @@ const MyDiv = glamorous.div({
 </details>
 
 <details>
-  <summary>Animations</summary>
+<summary>Animations</summary>
 
 ```jsx
 // import css from glamor
@@ -509,7 +615,7 @@ const AnimatedDiv = glamorous.div(animationStyles)
 </details>
 
 <details>
-  <summary>Media Queries</summary>
+<summary>Media Queries</summary>
 
 ```jsx
 const MyResponsiveDiv = glamorous.div({
@@ -556,7 +662,7 @@ unaware of any which supports _all_ of the features which this library supports.
 
 ## Support
 
-If you need help, please fork [this codepen][help-pen] and bring it up in
+If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up in
 [the chat][chat]
 
 ## Contributors
@@ -623,4 +729,7 @@ MIT
 [intro-blogpost]: https://medium.com/p/fb3c9f4ed20e
 [react-ssr]: https://facebook.github.io/react/docs/react-dom-server.html
 [glamor-ssr]: https://github.com/threepointone/glamor/blob/5e7d988211330b8e2fca5bb8da78e35051444efd/docs/server.md
-[help-pen]: http://kcd.im/glamorous-help
+[help-sandbox]: http://kcd.im/glamorous-help
+[react-devtools]: https://github.com/facebook/react-devtools
+[babel-plugin]: https://github.com/paypal/glamorous/issues/29
+[unknown-prop-warning]: https://facebook.github.io/react/warnings/unknown-prop.html
