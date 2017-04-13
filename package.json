@@ -5,7 +5,7 @@
   "main": "dist/glamorous.cjs.js",
   "jsnext:main": "dist/glamorous.es.js",
   "module": "dist/glamorous.es.js",
-  "typings": "typings/glamorous.d.ts",
+  "typings": "dist/glamorous.d.ts",
   "scripts": {
     "start": "nps",
     "test": "nps test",
