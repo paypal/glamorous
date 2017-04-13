@@ -5,9 +5,11 @@
   "main": "dist/glamorous.cjs.js",
   "jsnext:main": "dist/glamorous.es.js",
   "module": "dist/glamorous.es.js",
+  "typings": "typings/glamorous.d.ts",
   "scripts": {
     "start": "nps",
     "test": "nps test",
+    "test:ts": "tsc ./typings/glamorous.test.tsx --noEmit --jsx react --target es6 --module es2015 --moduleResolution node",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
@@ -36,6 +38,7 @@
     "react": ">=14"
   },
   "devDependencies": {
+    "@types/react": "^15.0.21",
     "all-contributors-cli": "^4.1.0",
     "babel-cli": "^6.24.1",
     "babel-jest": "^19.0.0",
@@ -72,6 +75,9 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "semantic-release": "^6.3.6",
+    "tslint": "^5.1.0",
+    "tslint-microsoft-contrib": "^4.0.1",
+    "typescript": "^2.2.2",
     "validate-commit-msg": "^2.12.1"
   },
   "eslintConfig": {
