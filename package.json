@@ -9,12 +9,13 @@
   "scripts": {
     "start": "nps",
     "test": "nps test",
-    "test:ts": "tsc -p ./typings/tsconfig.json",
+    "test:ts": "tsc -p ./tsconfig.json",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
   "files": [
-    "dist"
+    "dist",
+    "typings"
   ],
   "keywords": [
     "react",
