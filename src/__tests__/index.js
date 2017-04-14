@@ -1,4 +1,4 @@
-/* eslint func-style:0 */
+/* eslint func-style:0, react/prop-types:0 */
 import React from 'react'
 import * as glamor from 'glamor'
 import {render, mount} from 'enzyme'
@@ -244,4 +244,31 @@ test('ignores context if a theme props is passed', () => {
   const wrapper = mount(<Comp theme={{}} />, {context})
   wrapper.unmount()
   expect(unsubscribe).toHaveBeenCalledTimes(0)
+})
+
+test('allows you to pass custom props that are allowed', () => {
+  const MyComponent = jest.fn(function MyComponent({shouldRender, ...rest}) {
+    return shouldRender ? <div {...rest} /> : null
+  })
+  const MyStyledComponent = glamorous(MyComponent, {
+    forwardProps: ['shouldRender'],
+    rootEl: 'div',
+  })({
+    padding: 1,
+  })
+  expect(
+    render(
+      <MyStyledComponent shouldRender={true} otherThing={false} id="hello" />,
+    ),
+  ).toMatchSnapshotWithGlamor()
+  expect(MyComponent).toHaveBeenCalledTimes(1)
+  expect(MyComponent).toHaveBeenCalledWith(
+    {
+      shouldRender: true,
+      id: 'hello',
+      className: expect.any(String),
+    },
+    expect.any(Object),
+    expect.any(Object),
+  )
 })
