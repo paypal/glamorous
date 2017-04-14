@@ -3,4 +3,4 @@ coverage
 dist
 .opt-in
 .opt-out
-
+typings/*.js

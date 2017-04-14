@@ -1,5 +1,10 @@
 import glamorous from "../";
 
+glamorous.svg({
+  fill: 'blue'
+})
+
+
 // static styles
 const MyStyledDiv = glamorous.div({
   fontSize: 20,
