@@ -163,6 +163,14 @@ For every DOM element, there is an associated `glamorous` component factory
 attached to the `glamorous` function. As above, you can access these factories
 like so: `glamorous.div`, `glamorous.a`, `glamorous.article`, etc.
 
+```javascript
+const MyStyledSection = glamorous.section({ margin: 1 })
+
+render(<MyStyledSection>content</MyStyledSection>);
+
+// rendered output: <section class="<glamor-generated-id>">content</section>
+```
+
 #### glamorousComponentFactory
 
 Whether you create one yourself or use one of the built-in ones mentioned above,
