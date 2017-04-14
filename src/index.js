@@ -20,7 +20,7 @@ import withTheme from './with-theme'
  * @param {Object} options helpful info for the GlamorousComponents
  * @return {Function} the glamorousComponentFactory
  */
-function glamorous(comp, {rootEl, displayName} = {}) {
+function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
   return glamorousComponentFactory
 
   /**
@@ -111,13 +111,21 @@ function glamorous(comp, {rootEl, displayName} = {}) {
 
     Object.assign(
       GlamorousComponent,
-      getGlamorousComponentMetadata({comp, styles, rootEl, displayName}),
+      getGlamorousComponentMetadata({
+        comp,
+        styles,
+        rootEl,
+        forwardProps,
+        displayName,
+      }),
     )
     return GlamorousComponent
   }
 }
 
-function getGlamorousComponentMetadata({comp, styles, rootEl, displayName}) {
+function getGlamorousComponentMetadata(
+  {comp, styles, rootEl, forwardProps, displayName},
+) {
   const componentsComp = comp.comp ? comp.comp : comp
   return {
     // join styles together (for anyone doing: glamorous(glamorous.a({}), {}))
@@ -128,6 +136,7 @@ function getGlamorousComponentMetadata({comp, styles, rootEl, displayName}) {
     // component in glamorous
     comp: componentsComp,
     rootEl: rootEl || componentsComp,
+    forwardProps,
     // set the displayName to something that's slightly more
     // helpful than `GlamorousComponent` :)
     displayName: displayName || `glamorous(${getDisplayName(comp)})`,
@@ -213,7 +222,7 @@ function extractGlamorStyles(className = '') {
 
 function splitProps(
   {css: cssOverrides = {}, ...rest},
-  {propsAreCssOverrides, rootEl},
+  {propsAreCssOverrides, rootEl, forwardProps},
 ) {
   const returnValue = {toForward: {}, cssOverrides: {}}
   if (!propsAreCssOverrides) {
@@ -227,7 +236,10 @@ function splitProps(
   }
   return Object.keys(rest).reduce(
     (split, propName) => {
-      if (shouldForwardProperty(rootEl, propName)) {
+      if (
+        forwardProps.indexOf(propName) !== -1 ||
+        shouldForwardProperty(rootEl, propName)
+      ) {
         split.toForward[propName] = rest[propName]
       } else if (propsAreCssOverrides) {
         split.cssOverrides[propName] = rest[propName]
