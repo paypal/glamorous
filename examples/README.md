@@ -62,3 +62,25 @@ Here's a [deployed example](https://with-glamorous-zrqwerosse.now.sh/) of using
 
 [Here](https://github.com/patitonar/create-react-app-glamorous) is an example  of using
 `glamorous` with `create-react-app`.
+
+## Providing props to underlying components
+
+When you wrap a component with `glamorous`, you may want to have pre-defined props
+that your component will pass by default. You may be tempted to make a new component
+that forwards props to that component with some defaults, but don't do that!
+[Just use `defaultProps`](https://codesandbox.io/s/82vZm5q2o)!
+
+```jsx
+const MyComponent = ({ shouldRender, ...rest }) => (
+  shouldRender ? <div {...rest} /> : null
+)
+const MyGlamorousComponent = glamorous(MyComponent)(({ color, big }) => ({
+  color,
+  fontSize: big ? 46 : 30,
+}))
+MyGlamorousComponent.defaultProps = {
+  shouldRender: true,
+  color: '#F27777',
+  big: true,
+}
+```
