@@ -161,6 +161,15 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "braposo",
+      "name": "Bernardo Raposo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/38172?v=3",
+      "profile": "http://bernardoraposo.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
