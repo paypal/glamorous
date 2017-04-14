@@ -215,7 +215,7 @@ const myCustomGlamorStyles = glamor.css({fontSize: 2})
 // as well as any styles custom-class applies
 ```
 
-##### `cssOverrides`
+##### `css`
 
 This is an object and if provided, it will be merged with this component's and
 take highest priority over the component's predefined styles.
@@ -224,7 +224,7 @@ take highest priority over the component's predefined styles.
 const myCustomGlamorStyles = glamor.css({fontSize: 2, padding: 2})
 <MyStyledDiv
   className={`${myCustomGlamorStyles} custom-class`}
-  cssOverrides={{padding: 3}}
+  css={{padding: 3}}
 />
 // styles applied:
 // {margin: 1, fontSize: 2, padding: 3}
