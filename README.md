@@ -182,6 +182,15 @@ wrapping a component you intend to style, you'll need to make sure you accept
 the `className` as a prop and apply it to where you want the styles applied in
 your custom component (normally the root element).
 
+```javascript
+const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`>{children}</div>;
+const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 });
+
+render(<MyStyledComp>content</MyStyledComp>);
+
+// rendered output: <div class="<glamor generated id> other-class">content</div>
+```
+
 ##### ...styles
 
 The `glamorousComponentFactory` accepts any number of style object arguments.
