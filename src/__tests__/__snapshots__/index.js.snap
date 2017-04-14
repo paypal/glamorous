@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`allows you to pass custom props that are allowed 1`] = `
+.css-1r7lsit,
+[data-css-1r7lsit] {
+  padding: 1px;
+}
+
+<div
+  class="css-1r7lsit"
+  id="hello"
+/>
+`;
+
 exports[`allows you to specify the tag rendered by a component 1`] = `
 .css-110n7f9,
 [data-css-110n7f9] {
