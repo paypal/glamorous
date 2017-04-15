@@ -183,8 +183,8 @@ the `className` as a prop and apply it to where you want the styles applied in
 your custom component (normally the root element).
 
 ```jsx
-const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`>{children}</div>;
-const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 });
+const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`>{children}</div>
+const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 })
 
 <MyStyledComp>content</MyStyledComp>
 // rendered output: <div class="<glamor-generated-class> other-class">content</div>
@@ -206,7 +206,7 @@ const MyStyledDiv = glamorous.div([
   (props) => ({
     padding: props.noPadding ? 0 : 4,
   })
-]);
+])
 
 <MyStyledDiv /> // styles applied: {margin: 1, padding: 4}
 <MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0}
@@ -546,10 +546,10 @@ const Title = glamorous.h1({
 // normal component that takes a theme prop
 const SubTitle = ({children, theme: {color}}) => (
   <h3 style={{color}}>{children}</h3>
-);
+)
 
 // extended component with theme prop
-const ThemedSubTitle = withTheme(SubTitle);
+const ThemedSubTitle = withTheme(SubTitle)
 
 <ThemeProvider theme={theme}>
   <Title>Hello!</Title>
@@ -560,8 +560,8 @@ const ThemedSubTitle = withTheme(SubTitle);
 Or if you prefer decorator syntax:
 
 ```jsx
-import React, {Component} from 'react';
-import glamorous, {ThemeProvider,  withTheme} from glamorous
+import React, {Component} from 'react'
+import glamorous, {ThemeProvider,  withTheme} from 'glamorous'
 
 // our main theme object
 const theme = {
@@ -579,8 +579,8 @@ const Title = glamorous.h1({
 @withTheme
 class SubTitle extends Component {
   render() {
-    const {children, theme: {main: {color}}} = this.props;
-    return <h3 style={{color}}>{children}</h3>;
+    const {children, theme: {main: {color}}} = this.props
+    return <h3 style={{color}}>{children}</h3>
   }
 }
 
