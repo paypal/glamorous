@@ -14,7 +14,7 @@ small footprint, and great performance (via [`glamor`][glamor]).
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
 [![Donate][donate-badge]][donate]
@@ -184,7 +184,7 @@ can look like, please take a look at the [`glamor`][glamor] documentation.
 #### GlamorousComponent
 
 The `GlamorousComponent` is what is returned from the
-`glamorousComponentFactory`. Its job is to get all the styles together get a
+`glamorousComponentFactory`. Its job is to get all the styles together to get a
 `className` (from [`glamor`][glamor]) and forward that on to your component.
 
 For examples below, we'll use this as our GlamorousComponent:
@@ -217,7 +217,7 @@ const myCustomGlamorStyles = glamor.css({fontSize: 2})
 
 ##### `cssOverrides`
 
-This is an object and if provided, it will be merged with this component's and
+This is an object and if provided, it will be merged with this component's styles and
 take highest priority over the component's predefined styles.
 
 ```jsx
@@ -408,7 +408,7 @@ const MyStyledComponent = glamorous(MyComponent, {
 // with {fontSize: 24}
 // `shouldRender` will be forwarded to `MyComponent` because it is included in
 // `forwardProps`. `big` will not be forwarded to `MyComponent` because `rootEl`
-// is a `div` and that's not a valid prop for a `div`, but it _will_ be used in
+// is a `div` and that's not a valid prop for a `div`, but it will be used in
 // the styles object function that determines the `fontSize`. Finally `id` will
 // be forwarded to `MyComponent` because it is a valid prop for a `div`.
 ```
@@ -541,7 +541,7 @@ which is generated at build-time on the server. Learn about rendering
 
 ### Example Style Objects
 
-Style objects can affect pseudo-classes and pseduo-elements, complex CSS
+Style objects can affect pseudo-classes and pseudo-elements, complex CSS
 selectors, introduce keyframe animations, and use media queries:
 
 <details>
@@ -689,7 +689,7 @@ Thanks goes to these people ([emoji key][emojis]):
 | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/paypal/glamorous/commits?author=kentcdodds "Code") [📖](https://github.com/paypal/glamorous/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/paypal/glamorous/commits?author=kentcdodds "Tests") [👀](#review-kentcdodds "Reviewed Pull Requests") | [<img src="https://avatars0.githubusercontent.com/u/587016?v=3" width="100px;"/><br /><sub>Ives van Hoorne</sub>](http://ivesvh.com)<br />[💡](#example-CompuIves "Examples") | [<img src="https://avatars3.githubusercontent.com/u/4614574?v=3" width="100px;"/><br /><sub>Gerardo Nardelli</sub>](https://gnardelli.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=patitonar "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/14236753?v=3" width="100px;"/><br /><sub>Chandan Rai</sub>](https://github.com/crowchirp)<br />[📖](https://github.com/paypal/glamorous/commits?author=crowchirp "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/16726210?v=3" width="100px;"/><br /><sub>BinHong Lee</sub>](https://binhonglee.github.io)<br />[📖](https://github.com/paypal/glamorous/commits?author=binhonglee "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/737065?v=3" width="100px;"/><br /><sub>Paul Molluzzo</sub>](https://paul.molluzzo.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=paulmolluzzo "Documentation") [💡](#example-paulmolluzzo "Examples") | [<img src="https://avatars0.githubusercontent.com/u/450559?v=3" width="100px;"/><br /><sub>Sriram Thiagarajan</sub>](http://tsriram.in)<br />[💻](https://github.com/paypal/glamorous/commits?author=tsriram "Code") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars1.githubusercontent.com/u/417268?v=3" width="100px;"/><br /><sub>Pavithra Kodmad</sub>](https://github.com/pksjce)<br />[💡](#example-pksjce "Examples") | [<img src="https://avatars0.githubusercontent.com/u/82070?v=3" width="100px;"/><br /><sub>Alessandro Arnodo</sub>](http://alessandro.arnodo.net)<br />[💻](https://github.com/paypal/glamorous/commits?author=vesparny "Code") [📖](https://github.com/paypal/glamorous/commits?author=vesparny "Documentation") [⚠️](https://github.com/paypal/glamorous/commits?author=vesparny "Tests") | [<img src="https://avatars1.githubusercontent.com/u/105127?v=3" width="100px;"/><br /><sub>Jason Miller</sub>](https://jasonformat.com)<br />[👀](#review-developit "Reviewed Pull Requests") | [<img src="https://avatars0.githubusercontent.com/u/1295580?v=3" width="100px;"/><br /><sub>Kyle Welch</sub>](http://www.krwelch.com)<br />[👀](#review-kwelch "Reviewed Pull Requests") [💡](#example-kwelch "Examples") | [<img src="https://avatars0.githubusercontent.com/u/1634922?v=3" width="100px;"/><br /><sub>Javi Velasco</sub>](http://javivelasco.com)<br />[👀](#review-javivelasco "Reviewed Pull Requests") | [<img src="https://avatars1.githubusercontent.com/u/6886061?v=3" width="100px;"/><br /><sub>Brandon Dail</sub>](https://twitter.com/aweary)<br />[👀](#review-aweary "Reviewed Pull Requests") | [<img src="https://avatars2.githubusercontent.com/u/1714673?v=3" width="100px;"/><br /><sub>Jason Brown</sub>](http://browniefed.com)<br />[👀](#review-browniefed "Reviewed Pull Requests") |
-| [<img src="https://avatars3.githubusercontent.com/u/25375401?v=3" width="100px;"/><br /><sub>jackyho112</sub>](https://github.com/jackyho112)<br />[💻](https://github.com/paypal/glamorous/commits?author=jackyho112 "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=jackyho112 "Tests") | [<img src="https://avatars0.githubusercontent.com/u/3629876?v=3" width="100px;"/><br /><sub>Kurtis Kemple</sub>](https://twitter.com/kurtiskemple)<br />[💻](https://github.com/paypal/glamorous/commits?author=kkemple "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=kkemple "Tests") [📖](https://github.com/paypal/glamorous/commits?author=kkemple "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/6325382?v=3" width="100px;"/><br /><sub>Ryan Delaney</sub>](http://rdel.io)<br />[💻](https://github.com/paypal/glamorous/commits?author=rrdelaney "Code") |
+| [<img src="https://avatars3.githubusercontent.com/u/25375401?v=3" width="100px;"/><br /><sub>jackyho112</sub>](https://github.com/jackyho112)<br />[💻](https://github.com/paypal/glamorous/commits?author=jackyho112 "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=jackyho112 "Tests") | [<img src="https://avatars0.githubusercontent.com/u/3629876?v=3" width="100px;"/><br /><sub>Kurtis Kemple</sub>](https://twitter.com/kurtiskemple)<br />[💻](https://github.com/paypal/glamorous/commits?author=kkemple "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=kkemple "Tests") [📖](https://github.com/paypal/glamorous/commits?author=kkemple "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/6325382?v=3" width="100px;"/><br /><sub>Ryan Delaney</sub>](http://rdel.io)<br />[💻](https://github.com/paypal/glamorous/commits?author=rrdelaney "Code") | [<img src="https://avatars2.githubusercontent.com/u/14035529?v=3" width="100px;"/><br /><sub>Anthony Ng</sub>](http://anthonyng.me)<br />[📖](https://github.com/paypal/glamorous/commits?author=newyork-anthonyng "Documentation") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification.
