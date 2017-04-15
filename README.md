@@ -163,7 +163,7 @@ For every DOM element, there is an associated `glamorous` component factory
 attached to the `glamorous` function. As above, you can access these factories
 like so: `glamorous.div`, `glamorous.a`, `glamorous.article`, etc.
 
-```javascript
+```jsx
 const MyStyledSection = glamorous.section({ margin: 1 })
 
 render(<MyStyledSection>content</MyStyledSection>);
@@ -182,7 +182,7 @@ wrapping a component you intend to style, you'll need to make sure you accept
 the `className` as a prop and apply it to where you want the styles applied in
 your custom component (normally the root element).
 
-```javascript
+```jsx
 const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`>{children}</div>;
 const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 });
 
@@ -198,7 +198,7 @@ These can be style objects or functions which are invoked with `props` on every
 render and return style objects. To learn more about what these style objects
 can look like, please take a look at the [`glamor`][glamor] documentation.
 
-```javascript
+```jsx
 const MyStyledDiv = glamorous.div([
   {
     margin: 1,
