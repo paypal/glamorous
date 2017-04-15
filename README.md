@@ -167,7 +167,7 @@ like so: `glamorous.div`, `glamorous.a`, `glamorous.article`, etc.
 const MyStyledSection = glamorous.section({ margin: 1 })
 
 <MyStyledSection>content</MyStyledSection>
-// rendered output: <section class="<glamor-generated-id>">content</section>
+// rendered output: <section class="<glamor-generated-class>">content</section>
 // styles applied: {margin: 1}
 ```
 
@@ -187,7 +187,7 @@ const UnstyledComp = ({ className, children }) => <div className={`${className} 
 const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 });
 
 <MyStyledComp>content</MyStyledComp>
-// rendered output: <div class="<glamor generated id> other-class">content</div>
+// rendered output: <div class="<glamor-generated-class> other-class">content</div>
 // styles applied: {margin: 1}
 ```
 
