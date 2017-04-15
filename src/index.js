@@ -72,7 +72,7 @@ function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
       }
 
       render() {
-        const {className, ...rest} = this.props
+        const {className, innerRef, ...rest} = this.props
         const {toForward, cssOverrides} = splitProps(rest, GlamorousComponent)
         // create className to apply
         const mappedArgs = GlamorousComponent.styles.map(glamorRules => {
@@ -94,6 +94,7 @@ function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
 
         return React.createElement(GlamorousComponent.comp, {
           className: fullClassName,
+          ref: innerRef,
           ...toForward,
         })
       }
@@ -103,6 +104,7 @@ function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
       className: PropTypes.string,
       cssOverrides: PropTypes.object,
       theme: PropTypes.object,
+      innerRef: PropTypes.func,
     }
 
     GlamorousComponent.contextTypes = {
@@ -123,9 +125,13 @@ function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
   }
 }
 
-function getGlamorousComponentMetadata(
-  {comp, styles, rootEl, forwardProps, displayName},
-) {
+function getGlamorousComponentMetadata({
+  comp,
+  styles,
+  rootEl,
+  forwardProps,
+  displayName,
+}) {
   const componentsComp = comp.comp ? comp.comp : comp
   return {
     // join styles together (for anyone doing: glamorous(glamorous.a({}), {}))
@@ -160,13 +166,10 @@ function getDisplayName(comp) {
  */
 Object.assign(
   glamorous,
-  domElements.reduce(
-    (getters, tag) => {
-      getters[tag] = glamorous(tag)
-      return getters
-    },
-    {},
-  ),
+  domElements.reduce((getters, tag) => {
+    getters[tag] = glamorous(tag)
+    return getters
+  }, {}),
 )
 
 /*
@@ -181,16 +184,13 @@ Object.assign(
  */
 Object.assign(
   glamorous,
-  domElements.reduce(
-    (comps, tag) => {
-      const capitalTag = capitalize(tag)
-      comps[capitalTag] = glamorous[tag]()
-      comps[capitalTag].displayName = `glamorous.${capitalTag}`
-      comps[capitalTag].propsAreCssOverrides = true
-      return comps
-    },
-    {},
-  ),
+  domElements.reduce((comps, tag) => {
+    const capitalTag = capitalize(tag)
+    comps[capitalTag] = glamorous[tag]()
+    comps[capitalTag].displayName = `glamorous.${capitalTag}`
+    comps[capitalTag].propsAreCssOverrides = true
+    return comps
+  }, {}),
 )
 
 /**
@@ -234,20 +234,17 @@ function splitProps(
       return returnValue
     }
   }
-  return Object.keys(rest).reduce(
-    (split, propName) => {
-      if (
-        forwardProps.indexOf(propName) !== -1 ||
-        shouldForwardProperty(rootEl, propName)
-      ) {
-        split.toForward[propName] = rest[propName]
-      } else if (propsAreCssOverrides) {
-        split.cssOverrides[propName] = rest[propName]
-      }
-      return split
-    },
-    returnValue,
-  )
+  return Object.keys(rest).reduce((split, propName) => {
+    if (
+      forwardProps.indexOf(propName) !== -1 ||
+      shouldForwardProperty(rootEl, propName)
+    ) {
+      split.toForward[propName] = rest[propName]
+    } else if (propsAreCssOverrides) {
+      split.cssOverrides[propName] = rest[propName]
+    }
+    return split
+  }, returnValue)
 }
 
 function capitalize(s) {

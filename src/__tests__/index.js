@@ -64,15 +64,13 @@ test('merges composed component styles for reasonable overrides', () => {
   })
   const wrapper = render(
     <Grandchild
-      className={
-        oneLine`
+      className={oneLine`
           other classes
           ${otherGlamorStyles1}
           are not
           ${otherGlamorStyles2}
           removed
-        `
-      }
+        `}
       css={{
         paddingRight: 6,
       }}
@@ -271,4 +269,15 @@ test('allows you to pass custom props that are allowed', () => {
     expect.any(Object),
     expect.any(Object),
   )
+})
+
+test('should recieve inner ref if specified', () => {
+  const getRef = jest.fn()
+  const Comp = glamorous.div({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} />)
+
+  expect(getRef).toHaveBeenCalled()
 })
