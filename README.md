@@ -166,9 +166,9 @@ like so: `glamorous.div`, `glamorous.a`, `glamorous.article`, etc.
 ```jsx
 const MyStyledSection = glamorous.section({ margin: 1 })
 
-render(<MyStyledSection>content</MyStyledSection>);
-
+<MyStyledSection>content</MyStyledSection>
 // rendered output: <section class="<glamor-generated-id>">content</section>
+// styles applied: {margin: 1}
 ```
 
 #### glamorousComponentFactory
@@ -186,9 +186,9 @@ your custom component (normally the root element).
 const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`>{children}</div>;
 const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 });
 
-render(<MyStyledComp>content</MyStyledComp>);
-
+<MyStyledComp>content</MyStyledComp>
 // rendered output: <div class="<glamor generated id> other-class">content</div>
+// styles applied: {margin: 1}
 ```
 
 ##### ...styles
@@ -310,6 +310,7 @@ styles of a component. Let's see how that can be done in the examples below.
 > Try this out in your browser [here](https://codesandbox.io/s/Kro5369wG)!
 
 We'll use this as our `GlamorousComponent`:
+
 ```javascript
 const MyStyledDiv = glamorous.div({margin: 1, fontSize: 1, padding: 1})
 ```
