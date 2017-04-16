@@ -371,7 +371,7 @@ const MyComposedStyledDiv = glamorous(MyStyledDiv)({fontSize: 4, padding: 4})
 ```
 
 In fact, the built-in DOM component factories provided are just an abstraction
-of this function so `glamorous.div` could be written as `glamorous("div")` instead.
+of this function so `glamorous.div` could be written as `glamorous('div')` instead.
 
 ### glamorous API
 
