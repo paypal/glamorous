@@ -183,7 +183,7 @@ the `className` as a prop and apply it to where you want the styles applied in
 your custom component (normally the root element).
 
 ```jsx
-const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`>{children}</div>
+const UnstyledComp = ({ className, children }) => <div className={`${className} other-class`}>{children}</div>
 const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 })
 
 <MyStyledComp>content</MyStyledComp>
