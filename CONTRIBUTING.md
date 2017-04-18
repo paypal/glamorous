@@ -14,6 +14,23 @@ Thanks for being willing to contribute!
 
 This project uses [`nps`][nps] and you can run `npm start` to see what scripts are available.
 
+## Add an example
+
+Is the example just a code snippet or is it a full fledged project? If it is a code snippet, go ahead and add it to our [examples readme file][examples-readme]
+If it is an example that requires you to create a new, albeit, mini-project, here are the steps to add it.
+  - Create a new folder inside our [`examples`][examples-readme] folder.
+  - Name it to describe what your example is about.
+  - You can create a new `npm`/`yarn` setup inside this folder.
+  - Don't forget to add a `readme.md` inside your example folder.
+  - Now add the commands to validate and build your example project to our `package-scripts`.
+  - Navigate to the `package-scripts.js` and the `examples` command.
+  - Add a new command specific to your example folder.
+  - Here, you can provide the scripts that need to be run to validate and build your folder. Use the awesome [`nps`][nps], which has a ton of utilities to help you.
+  - Run `npm start examples` to make sure all your setup is correct.
+
+You should have a great example running on `glamorous` by now. Go ahead and submit a PR!
+Also you can refer to the existing example at [`with-jest`][with-jest]
+
 ## Add yourself as a contributor
 
 This project follows the [all contributors][all-contributors] specification. To add yourself to the table of
@@ -65,3 +82,5 @@ Also, please watch the repo and respond to questions/bug reports/feature request
 [all-contributors]: https://github.com/kentcdodds/all-contributors
 [ROADMAP]: ./other/ROADMAP.md
 [nps]: https://npmjs.com/package/nps
+[examples-readme]: ./examples
+[with-jest]: ./examples/with-jest
