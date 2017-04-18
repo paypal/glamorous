@@ -72,30 +72,37 @@ function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
       }
 
       render() {
-        const {className, innerRef, ...rest} = this.props
-        const {toForward, cssOverrides} = splitProps(rest, GlamorousComponent)
+        // in this function, we're willing to sacrafice a little on
+        // readability to get better performance because it actually
+        // matters.
+        const props = this.props
+        const {toForward, cssOverrides} = splitProps(props, GlamorousComponent)
+        // freeze the theme object in dev mode
+        const theme = process.env.NODE_ENV === 'production' ?
+          this.state.theme :
+          Object.freeze(this.state.theme)
         // create className to apply
-        const mappedArgs = GlamorousComponent.styles.map(glamorRules => {
-          if (typeof glamorRules === 'function') {
-            return glamorRules(this.props, {...this.state.theme})
+        const mappedArgs = GlamorousComponent.styles.slice()
+        for (let i = mappedArgs.length; i--;) {
+          if (typeof mappedArgs[i] === 'function') {
+            mappedArgs[i] = mappedArgs[i](props, theme)
           }
-          return glamorRules
-        })
+        }
         const {
           glamorStyles: parentGlamorStyles,
           glamorlessClassName,
-        } = extractGlamorStyles(className)
+        } = extractGlamorStyles(props.className)
         const glamorClassName = css(
           ...mappedArgs,
           ...parentGlamorStyles,
           cssOverrides,
         ).toString()
-        const fullClassName = joinClasses(glamorlessClassName, glamorClassName)
+        const fullClassName = `${glamorlessClassName} ${glamorClassName}`.trim()
 
         return React.createElement(GlamorousComponent.comp, {
-          className: fullClassName,
-          ref: innerRef,
+          ref: props.innerRef,
           ...toForward,
+          className: fullClassName,
         })
       }
     }
@@ -211,17 +218,22 @@ function extractGlamorStyles(className = '') {
       const {style} = styleSheet.registered[id]
       groups.glamorStyles.push(style)
     } else {
-      groups.glamorlessClassName = joinClasses(
-        groups.glamorlessClassName,
-        name,
-      )
+      // eslint-disable-next-line max-len
+      groups.glamorlessClassName = `${groups.glamorlessClassName} ${name}`.trim()
     }
     return groups
   }, {glamorlessClassName: '', glamorStyles: []})
 }
 
 function splitProps(
-  {css: cssOverrides = {}, ...rest},
+  {
+    css: cssOverrides = {},
+    // these are plucked off
+    className, // because they
+    innerRef, // should never
+    // be forwarded
+    ...rest
+  },
   {propsAreCssOverrides, rootEl, forwardProps},
 ) {
   const returnValue = {toForward: {}, cssOverrides: {}}
@@ -249,10 +261,6 @@ function splitProps(
 
 function capitalize(s) {
   return s.slice(0, 1).toUpperCase() + s.slice(1)
-}
-
-function joinClasses(...classes) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export default glamorous

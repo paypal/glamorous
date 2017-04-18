@@ -213,6 +213,41 @@ test('renders a component with theme properties', () => {
   ).toMatchSnapshotWithGlamor()
 })
 
+test('in development mode the theme is frozen and cannot be changed', () => {
+  expect.assertions(1)
+  const Comp = glamorous.div(
+    {
+      color: 'red',
+    },
+    (props, theme) => {
+      expect(() => {
+        theme.foo = 'bar'
+      }).toThrow()
+      return {}
+    },
+  )
+  render(<Comp theme={{foo: 'baz'}} />)
+})
+
+test('in production mode the theme is not frozen and can be changed', () => {
+  const env = process.env.NODE_ENV
+  process.env.NODE_ENV = 'production'
+  expect.assertions(1)
+  const Comp = glamorous.div(
+    {
+      color: 'red',
+    },
+    (props, theme) => {
+      expect(() => {
+        theme.foo = 'bar'
+      }).not.toThrow()
+      return {}
+    },
+  )
+  render(<Comp theme={{foo: 'baz'}} />)
+  process.env.NODE_ENV = env
+})
+
 test('passes an updated theme when theme prop changes', () => {
   const Comp = glamorous.div(
     {
