@@ -109,6 +109,7 @@ export default function createGlamorous(splitProps) {
         cssOverrides: PropTypes.object,
         theme: PropTypes.object,
         innerRef: PropTypes.func,
+        glam: PropTypes.object,
       }
 
       GlamorousComponent.contextTypes = {
