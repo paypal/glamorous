@@ -89,7 +89,10 @@
       "kentcdodds/jest",
       "kentcdodds/react",
       "kentcdodds/prettier"
-    ]
+    ],
+    "rules": {
+      "import/prefer-default-export": 0
+    }
   },
   "lint-staged": {
     "*.js": [
