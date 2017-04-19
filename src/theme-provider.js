@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import brcast from 'brcast'
 import {PropTypes} from './react-compat'
-
-export const CHANNEL = '__glamorous__'
-
+import {CHANNEL} from './constants'
 /**
  * This is a component which will provide a theme to the entire tree
  * via context and event listener
