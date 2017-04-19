@@ -2,7 +2,7 @@
 
 ### [Simple Example](https://github.com/MicheleBertoli/css-in-js/blob/master/glamorous/button.js)
 This example includes both the object literal styles and prop based styles.
-Additionally, shows how to to psuedo selectors and a media query. 
+Additionally, shows how to to psuedo selectors and a media query.
 
 ## Dynamic + Static Styles
 
@@ -48,6 +48,31 @@ const MyGrid = glamorous.div({
       "footer  footer  footer"
     `,
   },
+})
+```
+
+## Ampersands & CSS Combinators
+
+You can use an ampersand (`&`) as a reference to the generated selector. This approach can be useful for CSS combinators: adjacent sibling selectors (`+`), general sibling selectors (`~`) and child selectors (`>`).
+
+Play with it [here](https://codesandbox.io/s/W7j7BAQ9x):
+
+```javascript
+const Item = glamorous.div({
+  'background-color': 'red',
+  '& + &': {
+    'margin-top': '10px',
+    'background-color': 'orange'
+  },
+  '&:first-of-type + &': {
+    'background-color': 'yellow'
+  },
+  '& ~ &': {
+    'background-color': 'green'
+  },
+  '& > &': {
+    'background-color': 'blue'
+  }
 })
 ```
 
