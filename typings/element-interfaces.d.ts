@@ -1,124 +1,144 @@
-import { CSSProperties, SVGAttributes } from 'react'
-
-import { StyledFunction } from './glamorous'
+import { CSSProperties, SVGAttributes } from "react";
+import {
+  HtmlStyledFunction,
+  SvgStyledFunction,
+} from "./glamorous";
 
 export interface HTMLGlamorousInterface {
-    a: StyledFunction<CSSProperties>
-    abbr: StyledFunction<CSSProperties>
-    address: StyledFunction<CSSProperties>
-    area: StyledFunction<CSSProperties>
-    article: StyledFunction<CSSProperties>
-    aside: StyledFunction<CSSProperties>
-    audio: StyledFunction<CSSProperties>
-    b: StyledFunction<CSSProperties>
-    base: StyledFunction<CSSProperties>
-    bdi: StyledFunction<CSSProperties>
-    bdo: StyledFunction<CSSProperties>
-    big: StyledFunction<CSSProperties>
-    blockquote: StyledFunction<CSSProperties>
-    body: StyledFunction<CSSProperties>
-    br: StyledFunction<CSSProperties>
-    button: StyledFunction<CSSProperties>
-    canvas: StyledFunction<CSSProperties>
-    caption: StyledFunction<CSSProperties>
-    cite: StyledFunction<CSSProperties>
-    code: StyledFunction<CSSProperties>
-    col: StyledFunction<CSSProperties>
-    colgroup: StyledFunction<CSSProperties>
-    data: StyledFunction<CSSProperties>
-    datalist: StyledFunction<CSSProperties>
-    dd: StyledFunction<CSSProperties>
-    del: StyledFunction<CSSProperties>
-    details: StyledFunction<CSSProperties>
-    dfn: StyledFunction<CSSProperties>
-    dialog: StyledFunction<CSSProperties>
-    div: StyledFunction<CSSProperties>
-    dl: StyledFunction<CSSProperties>
-    dt: StyledFunction<CSSProperties>
-    em: StyledFunction<CSSProperties>
-    embed: StyledFunction<CSSProperties>
-    fieldset: StyledFunction<CSSProperties>
-    figcaption: StyledFunction<CSSProperties>
-    figure: StyledFunction<CSSProperties>
-    footer: StyledFunction<CSSProperties>
-    form: StyledFunction<CSSProperties>
-    h1: StyledFunction<CSSProperties>
-    h2: StyledFunction<CSSProperties>
-    h3: StyledFunction<CSSProperties>
-    h4: StyledFunction<CSSProperties>
-    h5: StyledFunction<CSSProperties>
-    h6: StyledFunction<CSSProperties>
-    head: StyledFunction<CSSProperties>
-    header: StyledFunction<CSSProperties>
-    hgroup: StyledFunction<CSSProperties>
-    hr: StyledFunction<CSSProperties>
-    html: StyledFunction<CSSProperties>
-    i: StyledFunction<CSSProperties>
-    iframe: StyledFunction<CSSProperties>
-    img: StyledFunction<CSSProperties>
-    input: StyledFunction<CSSProperties>
-    ins: StyledFunction<CSSProperties>
-    kbd: StyledFunction<CSSProperties>
-    keygen: StyledFunction<CSSProperties>
-    label: StyledFunction<CSSProperties>
-    legend: StyledFunction<CSSProperties>
-    li: StyledFunction<CSSProperties>
-    link: StyledFunction<CSSProperties>
-    main: StyledFunction<CSSProperties>
-    map: StyledFunction<CSSProperties>
-    mark: StyledFunction<CSSProperties>
-    menu: StyledFunction<CSSProperties>
-    menuitem: StyledFunction<CSSProperties>
-    meta: StyledFunction<CSSProperties>
-    meter: StyledFunction<CSSProperties>
-    nav: StyledFunction<CSSProperties>
-    noscript: StyledFunction<CSSProperties>
-    object: StyledFunction<CSSProperties>
-    ol: StyledFunction<CSSProperties>
-    optgroup: StyledFunction<CSSProperties>
-    option: StyledFunction<CSSProperties>
-    output: StyledFunction<CSSProperties>
-    p: StyledFunction<CSSProperties>
-    param: StyledFunction<CSSProperties>
-    picture: StyledFunction<CSSProperties>
-    pre: StyledFunction<CSSProperties>
-    progress: StyledFunction<CSSProperties>
-    q: StyledFunction<CSSProperties>
-    rp: StyledFunction<CSSProperties>
-    rt: StyledFunction<CSSProperties>
-    ruby: StyledFunction<CSSProperties>
-    s: StyledFunction<CSSProperties>
-    samp: StyledFunction<CSSProperties>
-    script: StyledFunction<CSSProperties>
-    section: StyledFunction<CSSProperties>
-    select: StyledFunction<CSSProperties>
-    small: StyledFunction<CSSProperties>
-    source: StyledFunction<CSSProperties>
-    span: StyledFunction<CSSProperties>
-    strong: StyledFunction<CSSProperties>
-    style: StyledFunction<CSSProperties>
-    sub: StyledFunction<CSSProperties>
-    summary: StyledFunction<CSSProperties>
-    sup: StyledFunction<CSSProperties>
-    table: StyledFunction<CSSProperties>
-    tbody: StyledFunction<CSSProperties>
-    td: StyledFunction<CSSProperties>
-    textarea: StyledFunction<CSSProperties>
-    tfoot: StyledFunction<CSSProperties>
-    th: StyledFunction<CSSProperties>
-    thead: StyledFunction<CSSProperties>
-    time: StyledFunction<CSSProperties>
-    title: StyledFunction<CSSProperties>
-    tr: StyledFunction<CSSProperties>
-    track: StyledFunction<CSSProperties>
-    u: StyledFunction<CSSProperties>
-    ul: StyledFunction<CSSProperties>
-    var: StyledFunction<CSSProperties>
-    video: StyledFunction<CSSProperties>
-    wbr: StyledFunction<CSSProperties>
+  a: HtmlStyledFunction<HTMLAnchorElement, CSSProperties>;
+  abbr: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  address: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  area: HtmlStyledFunction<HTMLAreaElement, CSSProperties>;
+  article: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  aside: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  audio: HtmlStyledFunction<HTMLAudioElement, CSSProperties>;
+  b: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  base: HtmlStyledFunction<HTMLBaseElement, CSSProperties>;
+  bdi: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  bdo: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  big: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  blockquote: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  body: HtmlStyledFunction<HTMLBodyElement, CSSProperties>;
+  br: HtmlStyledFunction<HTMLBRElement, CSSProperties>;
+  button: HtmlStyledFunction<HTMLButtonElement, CSSProperties>;
+  canvas: HtmlStyledFunction<HTMLCanvasElement, CSSProperties>;
+  caption: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  cite: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  code: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  col: HtmlStyledFunction<HTMLTableColElement, CSSProperties>;
+  colgroup: HtmlStyledFunction<HTMLTableColElement, CSSProperties>;
+  data: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  datalist: HtmlStyledFunction<HTMLDataListElement, CSSProperties>;
+  dd: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  del: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  details: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  dfn: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  dialog: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  div: HtmlStyledFunction<HTMLDivElement, CSSProperties>;
+  dl: HtmlStyledFunction<HTMLDListElement, CSSProperties>;
+  dt: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  em: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  embed: HtmlStyledFunction<HTMLEmbedElement, CSSProperties>;
+  fieldset: HtmlStyledFunction<HTMLFieldSetElement, CSSProperties>;
+  figcaption: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  figure: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  footer: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  form: HtmlStyledFunction<HTMLFormElement, CSSProperties>;
+  h1: HtmlStyledFunction<HTMLHeadingElement, CSSProperties>;
+  h2: HtmlStyledFunction<HTMLHeadingElement, CSSProperties>;
+  h3: HtmlStyledFunction<HTMLHeadingElement, CSSProperties>;
+  h4: HtmlStyledFunction<HTMLHeadingElement, CSSProperties>;
+  h5: HtmlStyledFunction<HTMLHeadingElement, CSSProperties>;
+  h6: HtmlStyledFunction<HTMLHeadingElement, CSSProperties>;
+  head: HtmlStyledFunction<HTMLHeadElement, CSSProperties>;
+  header: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  hgroup: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  hr: HtmlStyledFunction<HTMLHRElement, CSSProperties>;
+  html: HtmlStyledFunction<HTMLHtmlElement, CSSProperties>;
+  i: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  iframe: HtmlStyledFunction<HTMLIFrameElement, CSSProperties>;
+  img: HtmlStyledFunction<HTMLImageElement, CSSProperties>;
+  input: HtmlStyledFunction<HTMLInputElement, CSSProperties>;
+  ins: HtmlStyledFunction<HTMLModElement, CSSProperties>;
+  kbd: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  keygen: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  label: HtmlStyledFunction<HTMLLabelElement, CSSProperties>;
+  legend: HtmlStyledFunction<HTMLLegendElement, CSSProperties>;
+  li: HtmlStyledFunction<HTMLLIElement, CSSProperties>;
+  link: HtmlStyledFunction<HTMLLinkElement, CSSProperties>;
+  main: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  map: HtmlStyledFunction<HTMLMapElement, CSSProperties>;
+  mark: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  menu: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  menuitem: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  meta: HtmlStyledFunction<HTMLMetaElement, CSSProperties>;
+  meter: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  nav: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  noscript: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  object: HtmlStyledFunction<HTMLObjectElement, CSSProperties>;
+  ol: HtmlStyledFunction<HTMLOListElement, CSSProperties>;
+  optgroup: HtmlStyledFunction<HTMLOptGroupElement, CSSProperties>;
+  option: HtmlStyledFunction<HTMLOptionElement, CSSProperties>;
+  output: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  p: HtmlStyledFunction<HTMLParagraphElement, CSSProperties>;
+  param: HtmlStyledFunction<HTMLParamElement, CSSProperties>;
+  picture: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  pre: HtmlStyledFunction<HTMLPreElement, CSSProperties>;
+  progress: HtmlStyledFunction<HTMLProgressElement, CSSProperties>;
+  q: HtmlStyledFunction<HTMLQuoteElement, CSSProperties>;
+  rp: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  rt: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  ruby: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  s: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  samp: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  script: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  section: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  select: HtmlStyledFunction<HTMLSelectElement, CSSProperties>;
+  small: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  source: HtmlStyledFunction<HTMLSourceElement, CSSProperties>;
+  span: HtmlStyledFunction<HTMLSpanElement, CSSProperties>;
+  strong: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  style: HtmlStyledFunction<HTMLStyleElement, CSSProperties>;
+  sub: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  summary: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  sup: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  table: HtmlStyledFunction<HTMLTableElement, CSSProperties>;
+  tbody: HtmlStyledFunction<HTMLTableSectionElement, CSSProperties>;
+  td: HtmlStyledFunction<HTMLTableDataCellElement, CSSProperties>;
+  textarea: HtmlStyledFunction<HTMLTextAreaElement, CSSProperties>;
+  tfoot: HtmlStyledFunction<HTMLTableSectionElement, CSSProperties>;
+  th: HtmlStyledFunction<HTMLTableHeaderCellElement, CSSProperties>;
+  thead: HtmlStyledFunction<HTMLTableSectionElement, CSSProperties>;
+  time: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  title: HtmlStyledFunction<HTMLTitleElement, CSSProperties>;
+  tr: HtmlStyledFunction<HTMLTableRowElement, CSSProperties>;
+  track: HtmlStyledFunction<HTMLTrackElement, CSSProperties>;
+  u: HtmlStyledFunction<HTMLElement, CSSProperties>;
+  ul: HtmlStyledFunction<HTMLUListElement, CSSProperties>;
+  "var": HtmlStyledFunction<HTMLElement, CSSProperties>;
+  video: HtmlStyledFunction<HTMLVideoElement, CSSProperties>;
+  wbr: HtmlStyledFunction<HTMLElement, CSSProperties>;
 }
 
 
 export interface SVGGlamorousInterface {
-    svg: StyledFunction<SVGAttributes<any>>
+  circle: SvgStyledFunction<SVGCircleElement, SVGAttributes<any>>;
+  clipPath: SvgStyledFunction<SVGClipPathElement, SVGAttributes<any>>;
+  defs: SvgStyledFunction<SVGDefsElement, SVGAttributes<any>>;
+  ellipse: SvgStyledFunction<SVGEllipseElement, SVGAttributes<any>>;
+  g: SvgStyledFunction<SVGGElement, SVGAttributes<any>>;
+  image: SvgStyledFunction<SVGImageElement, SVGAttributes<any>>;
+  line: SvgStyledFunction<SVGLineElement,SVGAttributes<any>>;
+  linearGradient: SvgStyledFunction<SVGLinearGradientElement, SVGAttributes<any>>;
+  mask: SvgStyledFunction<SVGMaskElement, SVGAttributes<any>>;
+  path: SvgStyledFunction<SVGPathElement, SVGAttributes<any>>;
+  pattern: SvgStyledFunction<SVGPatternElement, SVGAttributes<any>>;
+  polygon: SvgStyledFunction<SVGPolygonElement, SVGAttributes<any>>;
+  polyline: SvgStyledFunction<SVGPolylineElement, SVGAttributes<any>>;
+  radialGradient: SvgStyledFunction<SVGRadialGradientElement, SVGAttributes<any>>;
+  rect: SvgStyledFunction<SVGRectElement, SVGAttributes<any>>;
+  stop: SvgStyledFunction<SVGStopElement, SVGAttributes<any>>;
+  svg: SvgStyledFunction<SVGSVGElement, SVGAttributes<any>>;
+  text: SvgStyledFunction<SVGTextElement, SVGAttributes<any>>;
+  tspan: SvgStyledFunction<SVGTSpanElement, SVGAttributes<any>>;
 }
