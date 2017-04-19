@@ -100,18 +100,6 @@ exports[`sanity test 1`] = `
 />
 `;
 
-exports[`should forward glam prop 1`] = `
-.css-1468hcz,
-[data-css-1468hcz] {
-  margin-left: 24px;
-  font-size: 20px;
-}
-
-<div
-  class="css-1468hcz"
-/>
-`;
-
 exports[`styles can be functions that accept props 1`] = `
 .css-ig7b2c,
 [data-css-ig7b2c] {
