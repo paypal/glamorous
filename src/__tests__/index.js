@@ -5,7 +5,9 @@ import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
 import glamorous from '../'
-import {CHANNEL} from '../theme-provider'
+import glamorousTiny from '../tiny'
+
+import {CHANNEL} from '../constants'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
@@ -315,4 +317,17 @@ test('should recieve inner ref if specified', () => {
   mount(<Comp innerRef={getRef} />)
 
   expect(getRef).toHaveBeenCalled()
+})
+
+test('should forward glam prop', () => {
+  const Comp = glamorousTiny('div')(
+    {
+      marginLeft: '24px',
+    },
+    ({big}) => ({
+      fontSize: big ? 20 : 10,
+    }),
+  )
+
+  expect(render(<Comp glam={{big: true}} />)).toMatchSnapshotWithGlamor()
 })

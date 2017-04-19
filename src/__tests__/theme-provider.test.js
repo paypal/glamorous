@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import glamorous from '../'
-import ThemeProvider, {CHANNEL} from '../theme-provider'
+import ThemeProvider from '../theme-provider'
+import {CHANNEL} from '../constants'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
