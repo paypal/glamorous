@@ -648,6 +648,12 @@ import:
 The current size of `glamorous/dist/glamorous.umd.tiny.min.js` is: [![tiny size][tiny-size-badge]][unpkg-dist]
 [![tiny gzip size][tiny-gzip-badge]][unpkg-dist]
 
+> IMPORTANT NOTE ABOUT SIZE: Because `glamorous` depends on `glamor`, you should consider the full size you'll be adding
+> to your application if you don't already have `glamor`.
+> The current size of `glamor/umd/index.min.js` is: [![glamor size][glamor-size-badge]][unpkg-glamor]
+> [![glamor gzip size][glamor-gzip-badge]][unpkg-glamor]
+
+
 ### Server Side Rendering (SSR)
 
 Because both `glamor` and `react` support SSR, `glamorous` does too! I actually
@@ -860,6 +866,9 @@ MIT
 [tiny-gzip-badge]: http://img.badgesize.io/https://unpkg.com/glamorous/dist/glamorous.umd.tiny.min.js?compression=gzip&label=gzip%20size&style=flat-square
 [tiny-size-badge]: http://img.badgesize.io/https://unpkg.com/glamorous/dist/glamorous.umd.tiny.min.js?label=size&style=flat-square
 [unpkg-dist]: https://unpkg.com/glamorous/dist/
+[glamor-gzip-badge]: http://img.badgesize.io/https://unpkg.com/glamor/umd/index.min.js?compression=gzip&label=gzip%20size&style=flat-square
+[glamor-size-badge]: http://img.badgesize.io/https://unpkg.com/glamor/umd/index.min.js?label=size&style=flat-square
+[unpkg-glamor]: https://unpkg.com/glamor/umd/
 [module-formats-badge]: https://img.shields.io/badge/module%20formats-umd%2C%20cjs%2C%20es-green.svg?style=flat-square
 [mainFields]: https://webpack.js.org/configuration/resolve/#resolve-mainfields
 [umd]: https://github.com/umdjs/umd
