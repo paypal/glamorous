@@ -3,32 +3,42 @@
 // Definitions by: Kok Sam <https://github.com/sammkj>
 
 import * as React from 'react';
-import { ComponentClass, CSSProperties, StatelessComponent, SVGAttributes } from 'react'
+import {
+  HTMLGlamorousInterface,
+  SVGGlamorousInterface,
+} from "./element-interfaces.d";
 
-import { HTMLGlamorousInterface, SVGGlamorousInterface } from './element-interfaces'
+import { StyledFunction } from './styled-function'
 
-export type Component = ComponentClass<{}> | StatelessComponent<{}>;
+export { StyledFunction }
 
-export interface DynamicStyledFunction {
-  (props?: object, theme?: object): object;
+export type GlamorousComponent<P> = React.ComponentClass<P> | React.StatelessComponent<P>;
+
+export type HtmlStyledFunction<Element, Properties> = StyledFunction<React.HTMLProps<Element>, Properties>;
+
+export type SvgStyledFunction<Element extends SVGElement, Properties> = StyledFunction<React.SVGAttributes<Element>, Properties>;
+
+export interface GlamorousOptions {
+  displayName: string
+  rootEl: string | Element
+  forwardProps: String[]
 }
 
-export interface StyledFunction<Properties> {
-  (
-    staticStyles: Partial<Properties>,
-    dynamicStyles?: DynamicStyledFunction
-  ): Component;
+export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
+  <P>(
+    component: GlamorousComponent<P>,
+    options?: GlamorousOptions
+  ): StyledFunction<P, React.CSSProperties | React.SVGAttributes<any>>;
+
+  Div: React.StatelessComponent<React.CSSProperties>
+  Svg: React.StatelessComponent<React.SVGAttributes<any>>
 }
 
-export interface GlamorousBaseInterface {
-  (component: Component): StyledFunction<CSSProperties | SVGAttributes<any>>;
+interface ThemeProps {
+  theme: object;
 }
 
-export interface GlamorousInterface extends
-  GlamorousBaseInterface, HTMLGlamorousInterface, SVGGlamorousInterface {
-    Div: StatelessComponent<CSSProperties>
-    Svg: StatelessComponent<SVGAttributes<any>>
-  }
+export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
 declare const glamorous: GlamorousInterface;
 
