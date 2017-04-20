@@ -4,9 +4,11 @@ export default function splitProps(
   {
     css: cssOverrides = {},
     // these are plucked off
-    className, // because they
-    innerRef, // should never
-    // be forwarded
+    theme, // because they
+    className, // should never
+    innerRef, // be forwarded
+    glam, // to the lower
+    // component ever
     ...rest
   },
   {propsAreCssOverrides, rootEl, forwardProps},

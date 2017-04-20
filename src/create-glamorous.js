@@ -5,7 +5,7 @@
 import React, {Component} from 'react'
 import {PropTypes} from './react-compat'
 import {CHANNEL} from './constants'
-import extractGlamorfullClassName from './extract-glamor-full-classname'
+import getGlamorClassName from './get-glamor-classname'
 
 export default function createGlamorous(splitProps) {
   /**
@@ -89,7 +89,7 @@ export default function createGlamorous(splitProps) {
             this.state.theme :
             Object.freeze(this.state.theme)
           // create className to apply
-          const fullClassName = extractGlamorfullClassName(
+          const fullClassName = getGlamorClassName(
             GlamorousComponent.styles,
             props,
             cssOverrides,

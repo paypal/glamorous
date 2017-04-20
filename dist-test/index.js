@@ -12,34 +12,81 @@
 import assert from 'assert'
 import {oneLine} from 'common-tags'
 
+import * as esImportStar from '../dist/glamorous.es'
+import * as esImportStarTiny from '../dist/glamorous.es.tiny'
 import esImport from '../dist/glamorous.es'
+import esImportTiny from '../dist/glamorous.es.tiny'
+
 import cjsImport from '../' // picks up the main from package.json
+import cjsImportTiny from '../dist/glamorous.cjs.tiny'
+
 import umdImport from '../dist/glamorous.umd'
+import umdImportTiny from '../dist/glamorous.umd.tiny'
 
 // intentionally left out because you shouldn't ever
 // try to require the ES file in CommonJS
 // const esRequire = require('../dist/glamorous.es')
 const cjsRequire = require('../') // picks up the main from package.json
 const umdRequire = require('../dist/glamorous.umd')
-
-assert(isGlamorousFunction(esImport), 'ES build has a problem with ES Modules')
-
-// intentionally left out ☝️
-// assert(isGlamorousFunction(esRequire), 'ES build has a problem with CJS')
+const cjsRequireTiny = require('../dist/glamorous.cjs.tiny')
+const umdRequireTiny = require('../dist/glamorous.umd.tiny')
 
 assert(
-  isGlamorousFunction(cjsImport),
+  isGlamorousFunction(esImport) && hasExtraExports(esImportStar),
+  'ES build has a problem with ES Modules',
+)
+assert(
+  isGlamorousFunction(esImportTiny) && !hasExtraExports(esImportStarTiny),
+  'ES Tiny build has a problem with ES Modules',
+)
+
+// assert(
+//   isGlamorousFunction(esRequire) && hasExtraExports(esRequire),
+//   'ES build has a problem with CJS',
+// )
+// assert(
+//   isGlamorousFunction(esRequireTiny) && !hasExtraExports(esRequireTiny),
+//   'ES Tiny build has a problem with CJS',
+// )
+// intentionally left out ☝️
+
+assert(
+  isGlamorousFunction(cjsImport) && hasExtraExports(cjsImport),
   'CJS build has a problem with ES Modules',
 )
 
-assert(isGlamorousFunction(cjsRequire), 'CJS build has a problem with CJS')
+assert(
+  isGlamorousFunction(cjsImportTiny) && !hasExtraExports(cjsImportTiny),
+  'CJS Tiny build has a problem with ES Modules',
+)
 
 assert(
-  isGlamorousFunction(umdImport),
+  isGlamorousFunction(cjsRequire) && hasExtraExports(cjsRequire),
+  'CJS build has a problem with CJS',
+)
+assert(
+  isGlamorousFunction(cjsRequireTiny) && !hasExtraExports(cjsRequireTiny),
+  'CJS Tiny build has a problem with CJS',
+)
+
+assert(
+  isGlamorousFunction(umdImport) && hasExtraExports(umdImport),
   'UMD build has a problem with ES Modules',
 )
 
-assert(isGlamorousFunction(umdRequire), 'UMD build has a problem with CJS')
+assert(
+  isGlamorousFunction(umdImportTiny) && !hasExtraExports(umdImportTiny),
+  'UMD Tiny build has a problem with ES Modules',
+)
+
+assert(
+  isGlamorousFunction(umdRequire) && hasExtraExports(umdRequire),
+  'UMD build has a problem with CJS',
+)
+assert(
+  isGlamorousFunction(umdRequireTiny) && !hasExtraExports(umdRequireTiny),
+  'UMD Tiny build has a problem with CJS',
+)
 
 // TODO: how could we validate the global export?
 
@@ -59,10 +106,20 @@ function isGlamorousFunction(thing) {
   return true
 }
 
+function hasExtraExports(thing) {
+  const extraExports = {
+    ThemeProvider: 'function',
+    withTheme: 'function',
+  }
+  const keys = Object.keys(extraExports)
+  return keys.every(key => typeof thing[key] === extraExports[key])
+}
+
 /*
  eslint
   no-console: 0,
   import/extensions: 0,
   import/no-unresolved: 0,
   import/no-duplicates: 0,
+  no-duplicate-imports: 0,
  */

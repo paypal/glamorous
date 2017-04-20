@@ -9,5 +9,6 @@ exports[`should pass glam object prop 1`] = `
 
 <div
   class="css-1468hcz"
+  id="hey-there"
 />
 `;

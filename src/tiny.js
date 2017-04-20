@@ -1,10 +1,14 @@
+/* eslint no-unused-vars:0 */
 import createGlamorous from './create-glamorous'
 
 function splitProps({
   css: cssOverrides = {},
-  className, // eslint-disable-line
-  innerRef, // eslint-disable-line
-  glam, // eslint-disable-line
+  // these are plucked off
+  theme, // because they
+  className, // should never
+  innerRef, // be forwarded
+  glam, // to the lower
+  // component ever
   ...rest
 }) {
   return {toForward: rest, cssOverrides}

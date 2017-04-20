@@ -24,16 +24,13 @@ function extractGlamorStyles(className = '') {
   }, {glamorlessClassName: '', glamorStyles: []})
 }
 
-export default function extractGlamorfullClassName(
-  styles,
-  props,
-  cssOverrides,
-  theme,
-) {
+export default getGlamorClassName
+
+function getGlamorClassName(styles, props, cssOverrides, theme) {
   const mappedArgs = styles.slice()
   for (let i = mappedArgs.length; i--;) {
     if (typeof mappedArgs[i] === 'function') {
-      mappedArgs[i] = mappedArgs[i](props.glam ? props.glam : props, theme)
+      mappedArgs[i] = mappedArgs[i](props, theme)
     }
   }
   const {

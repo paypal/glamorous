@@ -1,7 +1,3 @@
-/*
- * This is a relatively small abstraction that's ripe for open sourcing.
- * Documentation is in the README.md
- */
 import domElements from './dom-elements'
 import withTheme from './with-theme'
 import ThemeProvider from './theme-provider'

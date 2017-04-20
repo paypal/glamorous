@@ -36,25 +36,33 @@ module.exports = {
           'build.es',
           'build.cjs',
           'build.umd.main',
-          'build.umd.min'
+          'build.umd.min',
+          'build.es.tiny',
+          'build.cjs.tiny',
+          'build.umd.main.tiny',
+          'build.umd.min.tiny'
         )
       ),
       es: {
         description: 'run the build with rollup (uses rollup.config.js)',
         script: 'rollup --config --environment FORMAT:es',
+        tiny: 'rollup --config --environment FORMAT:es,TINY',
       },
       cjs: {
         description: 'run rollup build with CommonJS format',
         script: 'rollup --config --environment FORMAT:cjs',
+        tiny: 'rollup --config --environment FORMAT:cjs,TINY',
       },
       umd: {
         min: {
           description: 'run the rollup build with sourcemaps',
           script: 'rollup --config --sourcemap --environment MINIFY,FORMAT:umd',
+          tiny: 'rollup --config --sourcemap --environment MINIFY,FORMAT:umd,TINY',
         },
         main: {
           description: 'builds the cjs and umd files',
           script: 'rollup --config --sourcemap --environment FORMAT:umd',
+          tiny: 'rollup --config --sourcemap --environment FORMAT:umd,TINY',
         },
       },
       andTest: series.nps('build', 'test.build'),
