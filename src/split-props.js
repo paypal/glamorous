@@ -13,9 +13,8 @@ export default function splitProps(
   },
   {propsAreCssOverrides, rootEl, forwardProps},
 ) {
-  const returnValue = {toForward: {}, cssOverrides: {}}
+  const returnValue = {toForward: {}, cssOverrides}
   if (!propsAreCssOverrides) {
-    returnValue.cssOverrides = cssOverrides
     if (typeof rootEl !== 'string') {
       // if it's not a string, then we can forward everything
       // (because it's a component)

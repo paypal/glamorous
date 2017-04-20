@@ -38,6 +38,24 @@ test('can use pre-glamorous components with css attributes', () => {
   ).toMatchSnapshotWithGlamor()
 })
 
+test('can use pre-glamorous components with css prop', () => {
+  const computed = 'background'
+  expect(
+    render(
+      <glamorous.A
+        display="flex"
+        flexDirection="column"
+        href="/is-forwarded"
+        id="is-forwarded"
+        className="is added to classes"
+        css={{
+          [computed]: 'blue',
+        }}
+      />,
+    ),
+  ).toMatchSnapshotWithGlamor()
+})
+
 test('merges composed component styles for reasonable overrides', () => {
   const Parent = glamorous.div({
     marginTop: 1,

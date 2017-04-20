@@ -47,6 +47,29 @@ exports[`can use pre-glamorous components with css attributes 1`] = `
 />
 `;
 
+exports[`can use pre-glamorous components with css prop 1`] = `
+.css-1n96jtr,
+[data-css-1n96jtr] {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  background: blue;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+<a
+  class="is added to classes css-1n96jtr"
+  href="/is-forwarded"
+  id="is-forwarded"
+/>
+`;
+
 exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 .css-mhpxxj,
 [data-css-mhpxxj] {
