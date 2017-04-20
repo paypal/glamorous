@@ -109,3 +109,11 @@ MyGlamorousComponent.defaultProps = {
   big: true,
 }
 ```
+
+## colour-contrast
+
+A brilliant app called [colour-contrast](https://colour-contrast.github.io/) ([source](https://github.com/colour-contrast/colour-contrast.github.io))
+that uses [`styled-components`](https://github.com/styled-components/styled-components) was created by [James Gee](https://twitter.com/Geeman201).
+[I](https://twitter.com/kentcdodds) forked it and made a version that uses `glamorous`. [colour-contrast.netlify.com](https://colour-contrast.netlify.com/) ([source](https://github.com/kentcdodds/colour-contrast.github.io))
+
+Fun stuff!
