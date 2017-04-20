@@ -3,7 +3,7 @@
 # glamorous
 
 React component styling solved with an elegant ([inspired](#inspiration)) API,
-small footprint, and great performance (via [`glamor`][glamor]).
+[small footprint](#size), and great performance (via [`glamor`][glamor]).
 
 > Read [the intro blogpost][intro-blogpost]
 
@@ -598,6 +598,53 @@ class SubTitle extends Component {
 ```
 > `withTheme` expects a `ThemeProvider` further up the render tree and will warn in `development` if one is not found!
 
+### Size
+
+If your use case is really size constrained, then you might consider using the "tiny" version of glamorous for your application.
+It's is a miniature version of `glamorous` with a few limitations:
+
+1. No built-in component factories (`glamorous.article({/* styles */})`)
+   So you have to create your own (`glamorous('article')({/* styles */})`)
+2. No built-in glamorous components (`glamorous.Span`)
+3. No props filtering for dynamic styles, instead, you place them on a special
+   `glam` prop (see the example below).
+4. If you need `ThemeProvider` or `withTheme`, you must import those manually.
+   They are not exported as part of `glamorous/tiny` like they are with `glamorous`.
+
+Here's an example of what you're able to do with it.
+
+```jsx
+import React from 'react'
+import glamorous from 'glamorous/dist/glamorous.es.tiny'
+
+const Comp = glamorous('div')({
+  color: 'red'
+}, (props) => ({
+  fontSize: props.glam.big ? 20 : 12
+}))
+function Root() {
+  return (
+    <Comp
+      glam={{big: true}}
+      thisWillBeForwardedAndReactWillWarn
+    >
+      ciao
+    </Comp>
+  )
+}
+
+export default Root
+```
+
+It's recommended to use either [`babel-plugin-module-resolver`][babel-plugin-module-resolver]
+or the [`resolve.alias`][resolve-alias] config with webpack so you don't have
+to import from that full path. You have the following options available for this
+import:
+
+1. `glamorous/dist/glamorous.es.tiny.js` - use if you're using Webpack@>=2 or Rollup
+2. `glamorous/dist/glamorous.cjs.tiny` - use if you're not transpiling ESModules
+3. `glamorous/dist/glamorous.umd.tiny.js` - use if you're including it as a script tag. (There's also a `.min.js` version).
+
 ### Server Side Rendering (SSR)
 
 Because both `glamor` and `react` support SSR, `glamorous` does too! I actually
@@ -819,3 +866,5 @@ MIT
 [react-devtools]: https://github.com/facebook/react-devtools
 [babel-plugin]: https://github.com/paypal/glamorous/issues/29
 [unknown-prop-warning]: https://facebook.github.io/react/warnings/unknown-prop.html
+[babel-plugin-module-resolver]: https://github.com/tleunen/babel-plugin-module-resolver
+[resolve-alias]: https://webpack.js.org/configuration/resolve/#resolve-alias

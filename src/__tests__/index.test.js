@@ -5,7 +5,8 @@ import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
 import glamorous from '../'
-import {CHANNEL} from '../theme-provider'
+
+import {CHANNEL} from '../constants'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)

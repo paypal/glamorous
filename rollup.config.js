@@ -7,32 +7,40 @@ import replace from 'rollup-plugin-replace'
 
 const minify = process.env.MINIFY
 const format = process.env.FORMAT
+const tiny = process.env.TINY
 const esm = format === 'es'
 const umd = format === 'umd'
 const cjs = format === 'cjs'
 
 let targets
 
+const tinyExt = tiny ? '.tiny' : ''
+
 if (esm) {
-  targets = [{dest: 'dist/glamorous.es.js', format: 'es'}]
+  targets = [{dest: `dist/glamorous.es${tinyExt}.js`, format: 'es'}]
 } else if (umd) {
   if (minify) {
-    targets = [{dest: 'dist/glamorous.umd.min.js', format: 'umd'}]
+    targets = [{dest: `dist/glamorous.umd${tinyExt}.min.js`, format: 'umd'}]
   } else {
-    targets = [{dest: 'dist/glamorous.umd.js', format: 'umd'}]
+    targets = [{dest: `dist/glamorous.umd${tinyExt}.js`, format: 'umd'}]
   }
 } else if (cjs) {
-  targets = [{dest: 'dist/glamorous.cjs.js', format: 'cjs'}]
+  targets = [{dest: `dist/glamorous.cjs${tinyExt}.js`, format: 'cjs'}]
 } else if (format) {
   throw new Error(`invalid format specified: "${format}".`)
 } else {
   throw new Error('no format specified. --environment FORMAT:xxx')
 }
 
+const umdEntry = tiny ? 'src/tiny.js' : 'src/umd-entry.js'
+const esmEntry = tiny ? 'src/tiny.js' : 'src/index.js'
+// eslint-disable-next-line no-nested-ternary
+const exports = tiny || !esm ? 'default' : 'named'
+
 export default {
-  entry: esm ? 'src/index.js' : 'src/umd-entry.js',
+  entry: esm ? esmEntry : umdEntry,
   targets,
-  exports: esm ? 'named' : 'default',
+  exports,
   moduleName: 'glamorous',
   format,
   external: ['react', 'glamor', 'prop-types'],

@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 import {render, mount} from 'enzyme'
 
 import withTheme from '../with-theme'
-import ThemeProvider, {CHANNEL} from '../theme-provider'
+import ThemeProvider from '../theme-provider'
+import {CHANNEL} from '../constants'
 import {PropTypes} from '../react-compat'
 
 const getMockedContext = unsubscribe => ({

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {CHANNEL} from './theme-provider'
+import {CHANNEL} from './constants'
 import {PropTypes} from './react-compat'
 
 function generateWarningMessage(componentName) {
