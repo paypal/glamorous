@@ -645,6 +645,9 @@ import:
 2. `glamorous/dist/glamorous.cjs.tiny` - use if you're not transpiling ESModules
 3. `glamorous/dist/glamorous.umd.tiny.js` - use if you're including it as a script tag. (There's also a `.min.js` version).
 
+The current size of `glamorous/dist/glamorous.umd.tiny.min.js` is: [![tiny size][tiny-size-badge]][unpkg-dist]
+[![tiny gzip size][tiny-gzip-badge]][unpkg-dist]
+
 ### Server Side Rendering (SSR)
 
 Because both `glamor` and `react` support SSR, `glamorous` does too! I actually
@@ -854,6 +857,8 @@ MIT
 [rtl-css-js]: https://github.com/kentcdodds/rtl-css-js
 [gzip-badge]: http://img.badgesize.io/https://unpkg.com/glamorous/dist/glamorous.umd.min.js?compression=gzip&label=gzip%20size&style=flat-square
 [size-badge]: http://img.badgesize.io/https://unpkg.com/glamorous/dist/glamorous.umd.min.js?label=size&style=flat-square
+[tiny-gzip-badge]: http://img.badgesize.io/https://unpkg.com/glamorous/dist/glamorous.umd.tiny.min.js?compression=gzip&label=gzip%20size&style=flat-square
+[tiny-size-badge]: http://img.badgesize.io/https://unpkg.com/glamorous/dist/glamorous.umd.tiny.min.js?label=size&style=flat-square
 [unpkg-dist]: https://unpkg.com/glamorous/dist/
 [module-formats-badge]: https://img.shields.io/badge/module%20formats-umd%2C%20cjs%2C%20es-green.svg?style=flat-square
 [mainFields]: https://webpack.js.org/configuration/resolve/#resolve-mainfields
