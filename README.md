@@ -715,6 +715,10 @@ const MyResponsiveDiv = glamorous.div({
 ```
 </details>
 
+## Users
+
+Who uses `glamorous`? See [other/USERS.md](https://github.com/paypal/glamorous/blob/master/other/USERS.md) and add yourself if you use `glamorous`!
+
 ## Inspiration
 
 This package was inspired by the work from people's work on the following
