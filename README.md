@@ -441,10 +441,9 @@ const myGlamorousComponentFactory = glamorous(
 And now all components created by the `myGlamorousComponentFactory` will have
 the `displayName` of `MyGlamorousComponent`.
 
-> Tip: you can also monkey-patch the `displayName` onto the components that you
-> create from your component factory. There's currently an effort to make
-> [a babel plugin][babel-plugin] that will do this for you to give you even
-> better `displayName`s
+There is also a [babel plugin](https://www.npmjs.com/package/babel-plugin-glamorous-displayname) that can monkey-patch the `displayName` onto 
+the components that you create from your component factory.
+
 
 #### rootEl
 
