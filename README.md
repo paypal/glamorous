@@ -1,4 +1,4 @@
-<img src="https://github.com/paypal/glamorous/raw/master/other/glamorous.png" alt="glamorous logo" title="glamorous" align="right" width="150" height="150" />
+<img src="https://github.com/paypal/glamorous/raw/master/other/logo/full.png" alt="glamorous logo" title="glamorous" align="right" width="150" height="150" />
 
 # glamorous
 
