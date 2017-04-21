@@ -292,6 +292,37 @@ for these components. Notice that glamorous can distinguish between props that
 are for styling and those that are have semantic meaning (like with the `Img`
 and `A` components which make use of `src` and `href` props).
 
+The `css` prop can be used to provide styles as an object.
+
+```jsx harmony
+import glamorous, {withTheme} from 'glamorous'
+const { Div, Span } = glamorous
+
+const predefinedStyle = {
+  color: '#767676',
+  fontSize: 18,
+}
+
+const MyUserInterface = withTheme(function ({tagline, theme}) {
+  return (
+    <Div 
+      css={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center',
+        [theme.mq.tablet]: {
+          flexDirection: 'row'
+        }
+      }}
+     >
+      <Span css={predefinedStyle}>
+        {tagline}
+      </Span>
+    </Div>
+  )
+})
+```
+
 One other tip... This totally works:
 
 ```jsx
