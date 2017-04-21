@@ -209,6 +209,16 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "bernard-lin",
+      "name": "Bernard Lin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/16327281?v=3",
+      "profile": "https://github.com/bernard-lin",
+      "contributions": [
+        "doc",
+        "plugin"
+      ]
     }
   ]
 }
