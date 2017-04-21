@@ -198,6 +198,17 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "tkh44",
+      "name": "Kye Hohenberger",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/662750?v=3",
+      "profile": "https://github.com/tkh44",
+      "contributions": [
+        "code",
+        "test",
+        "doc"
+      ]
     }
   ]
 }
