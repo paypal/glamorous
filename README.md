@@ -199,14 +199,14 @@ render and return style objects. To learn more about what these style objects
 can look like, please take a look at the [`glamor`][glamor] documentation.
 
 ```jsx
-const MyStyledDiv = glamorous.div([
+const MyStyledDiv = glamorous.div(
   {
     margin: 1,
   },
   (props) => ({
     padding: props.noPadding ? 0 : 4,
   })
-])
+)
 
 <MyStyledDiv /> // styles applied: {margin: 1, padding: 4}
 <MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0}
