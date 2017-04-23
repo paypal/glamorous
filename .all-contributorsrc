@@ -219,6 +219,15 @@
         "doc",
         "plugin"
       ]
+    },
+    {
+      "login": "miguelc1221",
+      "name": "Miguel Correa",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11799597?v=3",
+      "profile": "http://miguelc1221.github.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }

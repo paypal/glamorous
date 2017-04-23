@@ -84,6 +84,12 @@ exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 </div>
 `;
 
+exports[`merges composed component forwardProps 1`] = `
+<div
+  class="css-nil"
+/>
+`;
+
 exports[`merges composed component styles for reasonable overrides 1`] = `
 .css-1k8eh41,
 [data-css-1k8eh41] {
