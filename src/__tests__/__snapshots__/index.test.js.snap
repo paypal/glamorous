@@ -85,13 +85,8 @@ exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 `;
 
 exports[`merges composed component forwardProps 1`] = `
-.css-yizls7,
-[data-css-yizls7] {
-  forward-props: shouldRender;
-}
-
 <div
-  class="css-yizls7"
+  class="css-nil"
 />
 `;
 

@@ -108,7 +108,7 @@ test('merges composed component styles for reasonable overrides', () => {
 test('merges composed component forwardProps', () => {
   const parent = ({shouldRender, ...rest}) =>
     (shouldRender ? <div {...rest} /> : null)
-  const Child = glamorous(parent)({forwardProps: ['shouldRender']})
+  const Child = glamorous(parent, {forwardProps: ['shouldRender']})()
   const Grandchild = glamorous(Child)()
   const wrapper = render(<Grandchild shouldRender={true} />)
   expect(wrapper).toMatchSnapshotWithGlamor()
