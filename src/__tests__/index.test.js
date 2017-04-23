@@ -105,6 +105,15 @@ test('merges composed component styles for reasonable overrides', () => {
   expect(wrapper).toMatchSnapshotWithGlamor()
 })
 
+test('merges composed component forwardProps', () => {
+  const parent = ({shouldRender, ...rest}) =>
+    (shouldRender ? <div {...rest} /> : null)
+  const Child = glamorous(parent, {forwardProps: ['shouldRender']})()
+  const Grandchild = glamorous(Child)()
+  const wrapper = render(<Grandchild shouldRender={true} />)
+  expect(wrapper).toMatchSnapshotWithGlamor()
+})
+
 test('styles can be functions that accept props', () => {
   const MyDiv = glamorous.div({marginTop: 1}, ({margin}) => ({
     marginTop: margin,

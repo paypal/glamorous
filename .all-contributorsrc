@@ -221,11 +221,22 @@
       ]
     },
     {
+      "login": "miguelc1221",
+      "name": "Miguel Correa",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11799597?v=3",
+      "profile": "http://miguelc1221.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "ErikCupal",
       "name": "Erik Cupal",
       "avatar_url": "https://avatars3.githubusercontent.com/u/4950425?v=3",
       "profile": "https://github.com/ErikCupal",
-      "contributions": []
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }

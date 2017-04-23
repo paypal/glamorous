@@ -140,18 +140,23 @@ export default function createGlamorous(splitProps) {
     const componentsComp = comp.comp ? comp.comp : comp
     return {
       // join styles together (for anyone doing: glamorous(glamorous.a({}), {}))
-      styles: comp.styles ? comp.styles.concat(styles) : styles,
+      styles: when(comp.styles, styles),
       // keep track of the ultimate rootEl to render (we never
       // actually render anything but
       // the base component, even when people wrap a glamorous
       // component in glamorous
       comp: componentsComp,
       rootEl: rootEl || componentsComp,
-      forwardProps,
+      // join forwardProps (for anyone doing: glamorous(glamorous.a({}), {}))
+      forwardProps: when(comp.forwardProps, forwardProps),
       // set the displayName to something that's slightly more
       // helpful than `GlamorousComponent` :)
       displayName: displayName || `glamorous(${getDisplayName(comp)})`,
     }
+  }
+
+  function when(comp, prop) {
+    return comp ? comp.concat(prop) : prop
   }
 
   function getDisplayName(comp) {
