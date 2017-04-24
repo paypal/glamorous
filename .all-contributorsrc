@@ -237,6 +237,15 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "ErikCupal",
+      "name": "Erik Cupal",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4950425?v=3",
+      "profile": "https://github.com/ErikCupal",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
