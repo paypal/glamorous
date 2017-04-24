@@ -88,6 +88,36 @@ Here's a [deployed example](https://with-glamorous-zrqwerosse.now.sh/) of using
 [Here](https://github.com/patitonar/create-react-app-glamorous) is an example  of using
 `glamorous` with `create-react-app`.
 
+## with ✨ polished
+
+`glamorous` works with `✨ polished` mixins, helpers, and shorthands:
+
+```jsx
+const MyStyledParagraph = glamorous.p({
+  fontSize: 20,
+  color: lighten(0.5, '#000'),
+})
+```
+
+You can also use [object spread properties](https://github.com/tc39/proposal-object-rest-spread) to apply more complex `✨ polished` mixins directly onto `glamorous` components:
+
+```jsx
+function GlamorousLogo() {
+  return (
+    <glamorous.Div
+      width={400}
+      height={400}
+      border="2px solid"
+      borderColor={mix(0.5, '#fff', '#000')}
+      {...borderRadius('top', '5px')}
+    >
+    </glamorous.Div>
+  );
+}
+```
+
+You can play more with `✨ polished` and `glamorous` [here](https://codesandbox.io/s/9Qo9kMgRZ).
+
 ## Providing props to underlying components
 
 When you wrap a component with `glamorous`, you may want to have pre-defined props
