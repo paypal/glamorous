@@ -13,8 +13,7 @@ import {css, styleSheet} from 'glamor'
 function extractGlamorStyles(className = '') {
   return className.toString().split(' ').reduce((groups, name) => {
     if (name.indexOf('css-') === 0) {
-      const id = name.slice('css-'.length)
-      const {style} = styleSheet.registered[id]
+      const style = getGlamorStylesFromClassName(name)
       groups.glamorStyles.push(style)
     } else {
       // eslint-disable-next-line max-len
@@ -27,10 +26,22 @@ function extractGlamorStyles(className = '') {
 export default getGlamorClassName
 
 function getGlamorClassName(styles, props, cssOverrides, theme) {
-  const mappedArgs = styles.slice()
-  for (let i = mappedArgs.length; i--;) {
-    if (typeof mappedArgs[i] === 'function') {
-      mappedArgs[i] = mappedArgs[i](props, theme)
+  let className, current
+  const mappedArgs = []
+  const nonGlamorClassNames = []
+  for (let i = 0; i < styles.length; i++) {
+    current = styles[i]
+    if (typeof current === 'function') {
+      mappedArgs.push(current(props, theme))
+    } else if (typeof current === 'string') {
+      className = getGlamorStylesFromClassName(current)
+      if (className) {
+        mappedArgs.push(className)
+      } else {
+        nonGlamorClassNames.push(current)
+      }
+    } else {
+      mappedArgs.push(current)
     }
   }
   const {
@@ -42,5 +53,15 @@ function getGlamorClassName(styles, props, cssOverrides, theme) {
     ...parentGlamorStyles,
     cssOverrides,
   ).toString()
-  return `${glamorlessClassName} ${glamorClassName}`.trim()
+  const extras = nonGlamorClassNames.join(' ')
+  return `${glamorlessClassName} ${glamorClassName} ${extras}`.trim()
+}
+
+function getGlamorStylesFromClassName(className) {
+  const id = className.slice('css-'.length)
+  if (styleSheet.registered[id]) {
+    return styleSheet.registered[id].style
+  } else {
+    return null
+  }
 }
