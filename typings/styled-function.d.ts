@@ -3,7 +3,8 @@
  *
  * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
  */
-export type GlamorousComponent<P> = React.ComponentClass<P>
+
+export type GlamorousComponent<P> = React.ComponentClass<P & ExtraGlamorousProps>
 
 /**
  * StaticStyles are objects of CSS Properties.
@@ -52,7 +53,7 @@ export interface StyledFunction<Props, Properties> {
   <CustomProps>(
     style1: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>;
+  ): GlamorousComponent<Props & CustomProps>;
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -60,7 +61,7 @@ export interface StyledFunction<Props, Properties> {
     style1: StaticStyles<Properties>,
     style2: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -68,7 +69,7 @@ export interface StyledFunction<Props, Properties> {
     style1: StaticStyles<Properties>,
     style2: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -77,7 +78,7 @@ export interface StyledFunction<Props, Properties> {
     style2: DynamicStyledFunction<Properties, CustomProps>,
     style3: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -86,7 +87,7 @@ export interface StyledFunction<Props, Properties> {
     style2: DynamicStyledFunction<Properties, CustomProps>,
     style3: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -95,7 +96,7 @@ export interface StyledFunction<Props, Properties> {
     style2: StaticStyles<Properties>,
     style3: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -104,14 +105,14 @@ export interface StyledFunction<Props, Properties> {
     style2: StaticStyles<Properties>,
     style3: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
   <CustomProps>(
     style1: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -119,7 +120,7 @@ export interface StyledFunction<Props, Properties> {
     style1: DynamicStyledFunction<Properties, CustomProps>,
     style2: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -127,7 +128,7 @@ export interface StyledFunction<Props, Properties> {
     style1: DynamicStyledFunction<Properties, CustomProps>,
     style2: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -136,7 +137,7 @@ export interface StyledFunction<Props, Properties> {
     style2: StaticStyles<Properties>,
     style3: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -145,7 +146,7 @@ export interface StyledFunction<Props, Properties> {
     style2: StaticStyles<Properties>,
     style3: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -154,7 +155,7 @@ export interface StyledFunction<Props, Properties> {
     style2: DynamicStyledFunction<Properties, CustomProps>,
     style3: StaticStyles<Properties>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
@@ -163,7 +164,7 @@ export interface StyledFunction<Props, Properties> {
     style2: DynamicStyledFunction<Properties, CustomProps>,
     style3: DynamicStyledFunction<Properties, CustomProps>,
     ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps & ExtraGlamorousProps>
+  ): GlamorousComponent<Props & CustomProps>
 }
 
 export type HtmlStyledFunction<Element, Properties> = StyledFunction<React.HTMLProps<Element>, Properties>
