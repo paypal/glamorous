@@ -74,7 +74,7 @@ export const Balloon = () => (
     <Divider color="blue">
       <DividerInsideDivider color="blue">
         <Static>Static</Static>
-        <Title>Hello</Title>
+        <Title color="blue">Hello</Title>
       </DividerInsideDivider>
     </Divider>
   </ThemeProvider>
@@ -85,7 +85,7 @@ export class AirBalloon extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <Divider ref={(
+      <Divider innerRef={(
           c: HTMLSpanElement
         ) => { this.spanElem = c; }}>
         Hello
