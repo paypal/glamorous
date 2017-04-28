@@ -25,6 +25,20 @@ exports[`allows you to specify the tag rendered by a component 1`] = `
 />
 `;
 
+exports[`can accept classNames instead of style objects 1`] = `
+.css-164yopx,
+[data-css-164yopx] {
+  padding-top: 1px;
+  padding-right: 2px;
+  padding-bottom: 3px;
+  padding-left: 4px;
+}
+
+<div
+  class="css-164yopx extra-thing"
+/>
+`;
+
 exports[`can use pre-glamorous components with css attributes 1`] = `
 .css-1t62idy,
 [data-css-1t62idy] {
