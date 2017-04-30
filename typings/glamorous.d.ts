@@ -22,7 +22,9 @@ export interface GlamorousOptions {
 
 export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
   <P>(
-    component: GlamorousComponent<P>,
+    component: 
+      | React.ComponentClass<P>
+      | React.StatelessComponent<P>,
     options?: GlamorousOptions
   ): StyledFunction<P, React.CSSProperties | React.SVGAttributes<any>>
 

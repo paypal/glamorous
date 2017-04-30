@@ -103,3 +103,21 @@ class Test extends React.Component<object, object> {
     return <div ref={(c) => { this.div = c}}/>
   }
 }
+
+// React Class Wrapped Component
+
+class ClassToWrap extends React.Component<object, object> {
+  render() {
+    return <div />
+  }
+}
+
+const WrappedClass = glamorous(ClassToWrap)({})
+
+// React Stateless Wrapped Component
+
+const StatelessToWrap: React.StatelessComponent<object> = () => (
+  <div />
+)
+
+const WrappedStateless = glamorous(StatelessToWrap)({})
