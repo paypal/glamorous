@@ -11,6 +11,7 @@ import {
   StyledFunction,
   GlamorousComponent,
 } from './styled-function'
+import { CSSProperties } from './css-properties'
 
 export { StyledFunction }
 
@@ -26,9 +27,9 @@ export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorous
       | React.ComponentClass<P>
       | React.StatelessComponent<P>,
     options?: GlamorousOptions
-  ): StyledFunction<P, React.CSSProperties | React.SVGAttributes<any>>
+  ): StyledFunction<P, CSSProperties | React.SVGAttributes<any>>
 
-  Div: React.StatelessComponent<React.CSSProperties>
+  Div: React.StatelessComponent<CSSProperties>
   Svg: React.StatelessComponent<React.SVGAttributes<any>>
 }
 
