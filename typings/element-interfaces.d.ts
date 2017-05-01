@@ -1,4 +1,5 @@
-import { CSSProperties, SVGAttributes } from 'react'
+import { SVGAttributes } from 'react'
+import { CSSProperties } from './css-properties'
 import {
   HtmlStyledFunction,
   SvgStyledFunction,
@@ -128,7 +129,7 @@ export interface SVGGlamorousInterface {
   ellipse: SvgStyledFunction<SVGEllipseElement, SVGAttributes<any>>
   g: SvgStyledFunction<SVGGElement, SVGAttributes<any>>
   image: SvgStyledFunction<SVGImageElement, SVGAttributes<any>>
-  line: SvgStyledFunction<SVGLineElement,SVGAttributes<any>>
+  line: SvgStyledFunction<SVGLineElement, SVGAttributes<any>>
   linearGradient: SvgStyledFunction<SVGLinearGradientElement, SVGAttributes<any>>
   mask: SvgStyledFunction<SVGMaskElement, SVGAttributes<any>>
   path: SvgStyledFunction<SVGPathElement, SVGAttributes<any>>
