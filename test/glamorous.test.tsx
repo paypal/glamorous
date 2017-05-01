@@ -24,7 +24,7 @@ const Divider = glamorous.span(
     "fontSize": "10px",
     "zIndex": "auto"
   },
-  (props, theme: { main: { color: string; }}) => ({
+  (props, theme: { main: { color: string; } }) => ({
     "color": theme.main.color,
   }),
 );
@@ -34,8 +34,8 @@ const SpanDivider = glamorous.span(
   {
     "fontSize": "10px",
   },
-  (props, theme) => ({
-    "color": theme,
+  (props, theme: { awesome: { color: string } }) => ({
+    "color": theme.awesome.color,
   }),
   {
     "fontWeight": 500,
@@ -44,7 +44,7 @@ const SpanDivider = glamorous.span(
     "fontFamily": "Roboto",
     "fontWeight": 500,
   },
-  (props, theme: { main: { color: string; }}) => ({
+  (props, theme: { main: { color: string; } }) => ({
     "color": theme.main.color,
   }),
 );
@@ -58,7 +58,7 @@ const DividerInsideDivider = glamorous(Divider)(
   {
     "fontSize": "10px",
   },
-  (props, theme: { main: { color: string; }}) => ({
+  (props, theme: { main: { color: string; } }) => ({
     "color": theme.main.color,
   }),
 );
@@ -86,8 +86,8 @@ export class AirBalloon extends React.Component<{}, {}> {
   public render() {
     return (
       <Divider innerRef={(
-          c: HTMLSpanElement
-        ) => { this.spanElem = c; }}>
+        c: HTMLSpanElement
+      ) => { this.spanElem = c; }}>
         Hello
         <SpanDivider>
           Span Divider
@@ -100,7 +100,7 @@ export class AirBalloon extends React.Component<{}, {}> {
 class Test extends React.Component<object, object> {
   private div: HTMLDivElement
   render() {
-    return <div ref={(c) => { this.div = c}}/>
+    return <div ref={(c) => { this.div = c }} />
   }
 }
 
