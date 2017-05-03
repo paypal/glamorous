@@ -49,10 +49,20 @@ test('should forward a random react-specific attribute', () => {
 
 test("should not forward a valid css property with a 'div' tag", () => {
   validCssProps.forEach(cssProp =>
-    expect(shouldForwardProperty('div', cssProp)).toBeFalsy())
+    expect(shouldForwardProperty('div', cssProp)).toBeFalsy(),
+  )
 })
 
 test("should forward a valid css property with a 'svg' tag", () => {
   validCssProps.forEach(cssProp =>
-    expect(shouldForwardProperty('svg', cssProp)).toBeTruthy())
+    expect(shouldForwardProperty('svg', cssProp)).toBeTruthy(),
+  )
+})
+
+test("should forward the 'fill' property with a 'rect' tag", () => {
+  expect(shouldForwardProperty('rect', 'fill')).toBeTruthy()
+})
+
+test("should forward the 'cx' property with a 'circle' tag", () => {
+  expect(shouldForwardProperty('circle', 'cx')).toBeTruthy()
 })
