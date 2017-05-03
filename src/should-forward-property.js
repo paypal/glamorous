@@ -30,13 +30,13 @@ const isCustomAttribute = RegExp.prototype.test.bind(
 
 const isSvgTag = tagName => supportedSVGTagNames.indexOf(tagName) !== -1
 const isHtmlProp = (name, tagName) => {
-  let elementAttributes = []
+  let elementAttributes
 
   if (isSvgTag(tagName)) {
     // all SVG attributes supported by React are grouped under 'svg'
     elementAttributes = reactHTMLAttributes.svg
   } else {
-    elementAttributes = reactHTMLAttributes[tagName]
+    elementAttributes = reactHTMLAttributes[tagName] || []
   }
 
   return (
