@@ -30,7 +30,7 @@ const isCustomAttribute = RegExp.prototype.test.bind(
 
 const isSvgTag = tagName => supportedSVGTagNames.indexOf(tagName) !== -1
 const isHtmlProp = (name, tagName) => {
-  let elementAttributes
+  let elementAttributes = []
 
   if (isSvgTag(tagName)) {
     // all SVG attributes supported by React are grouped under 'svg'
@@ -41,9 +41,7 @@ const isHtmlProp = (name, tagName) => {
 
   return (
     globalReactHtmlProps.indexOf(name) !== -1 ||
-    (elementAttributes === undefined ?
-      false :
-      elementAttributes.indexOf(name) !== -1)
+    elementAttributes.indexOf(name) !== -1
   )
 }
 const isCssProp = name => cssProps.indexOf(name) !== -1
