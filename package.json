@@ -21,6 +21,7 @@
     "react",
     "css",
     "css-in-js",
+    "cssinjs",
     "styled-components",
     "glamor",
     "jsxstyle"
