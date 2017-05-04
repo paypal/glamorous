@@ -783,6 +783,8 @@ const MyDiv = glamorous.div({
 <details>
 <summary>Animations</summary>
 
+> Try this in [your browser](https://codesandbox.io/s/31VMyP7XO)
+
 ```jsx
 // import css from glamor
 import { css } from 'glamor'
