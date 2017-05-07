@@ -149,6 +149,12 @@ const {ThemeProvider} = glamorous
 </script>
 ```
 
+## Video Intro :tv:
+
+<a href="https://youtu.be/lmrQTpJ_3PM" title="glamorous walkthrough">
+  <img src="https://github.com/paypal/glamorous/raw/master/other/glamorous-walkthrough.png" alt="Video Screenshot" title="Video Screenshot" width="700" />
+</a>
+
 ## Terms and concepts
 
 ### glamorous
@@ -329,10 +335,10 @@ const predefinedStyle = {
 
 const MyUserInterface = withTheme(function ({tagline, theme}) {
   return (
-    <Div 
-      css={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
+    <Div
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         [theme.mq.tablet]: {
           flexDirection: 'row'
@@ -465,7 +471,7 @@ const myGlamorousComponentFactory = glamorous(
 And now all components created by the `myGlamorousComponentFactory` will have
 the `displayName` of `MyGlamorousComponent`.
 
-There is also a [babel plugin](https://www.npmjs.com/package/babel-plugin-glamorous-displayname) that can monkey-patch the `displayName` onto 
+There is also a [babel plugin](https://www.npmjs.com/package/babel-plugin-glamorous-displayname) that can monkey-patch the `displayName` onto
 the components that you create from your component factory.
 
 
