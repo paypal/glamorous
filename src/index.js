@@ -48,5 +48,12 @@ function capitalize(s) {
   return s.slice(0, 1).toUpperCase() + s.slice(1)
 }
 
+/*
+ * Fix importing in typescript after rollup compilation
+ * https://github.com/rollup/rollup/issues/1156
+ * https://github.com/Microsoft/TypeScript/issues/13017#issuecomment-268657860
+ */
+glamorous.default = glamorous
+
 export default glamorous
 export {ThemeProvider, withTheme}
