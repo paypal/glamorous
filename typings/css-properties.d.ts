@@ -330,6 +330,12 @@ export interface CSSProperties {
    */
   boxShadow?: CSSWideKeyword | string | number
 
+  /*
+   * Decides what sizing properties (width and height) should be taken into account when sizing elements relationally.
+   * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+   */
+  boxSizing?: CSSWideKeyword | 'content-box' | 'border-box'
+
   /**
    * The CSS break-after property allows you to force a break on multi-column layouts. More specifically, it allows you to force a break after an element. It allows you to determine if a break should occur, and what type of break it should be. The break-after CSS property describes how the page, column or region break behaves after the generated box. If there is no generated box, the property is ignored.
    */
