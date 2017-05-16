@@ -148,7 +148,7 @@ that uses [`styled-components`](https://github.com/styled-components/styled-comp
 
 Fun stuff!
 
-# Third party examples and project using Glamorous
+# Third party examples on codesanbox
 
 * [Material Design Component Styles with Glamorous on codesandbox.io](https://codesandbox.io/s/L9or75AEg) : How to design lean and themeable react component with glamorous.
-* [Starhack.it](http://www.starhack.it): A full stack starter kit.
+
