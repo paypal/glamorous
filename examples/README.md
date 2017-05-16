@@ -147,3 +147,8 @@ that uses [`styled-components`](https://github.com/styled-components/styled-comp
 [I](https://twitter.com/kentcdodds) forked it and made a version that uses `glamorous`. [colour-contrast.netlify.com](https://colour-contrast.netlify.com/) ([source](https://github.com/kentcdodds/colour-contrast.github.io))
 
 Fun stuff!
+
+# Third party examples and project using Glamorous
+
+* [Material Design Component Styles with Glamorous on codesandbox.io](https://codesandbox.io/s/L9or75AEg) : How to design lean and themeable react component with glamorous.
+* [Starhack.it](http://www.starhack.it): A full stack starter kit.
