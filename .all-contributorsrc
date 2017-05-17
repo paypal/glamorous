@@ -282,6 +282,16 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "ajwhite",
+      "name": "Atticus White",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/656630?v=3",
+      "profile": "https://atticuswhite.com",
+      "contributions": [
+        "doc",
+        "plugin"
+      ]
     }
   ]
 }
