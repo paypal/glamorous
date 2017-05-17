@@ -1525,5 +1525,5 @@ export interface CSSProperties {
   '::first-line'?: CSSProperties
   '::selection'?: CSSProperties
 
-  [propertyName: string]: string | number | CSSProperties | undefined
+  [propertyName: string]: string | number | boolean | Function | CSSProperties | undefined
 }
