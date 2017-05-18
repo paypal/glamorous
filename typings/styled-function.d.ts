@@ -1,3 +1,5 @@
+import { CSSProperties } from './css-properties'
+
 /**
  * `glamorousComponentFactory` returns a ComponentClass
  *
@@ -8,7 +10,7 @@ export type GlamorousComponent<P> = React.ComponentClass<P & ExtraGlamorousProps
 
 /**
  * StaticStyles are objects of CSS Properties.
- * 
+ *
  * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
  */
 export type StaticStyles<Properties> = Partial<Properties>
@@ -16,7 +18,7 @@ export type StaticStyles<Properties> = Partial<Properties>
 /**
  * DynamicStyledFunction generates styles based on props
  * and themes.
- * 
+ *
  * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
  */
 export type DynamicStyledFunction<Properties, CustomProps> = (
@@ -46,7 +48,8 @@ type Styles<Properties, CustomProps> = Array<DynamicStyledFunction<Properties, C
 // d,d,d
 
 export interface ExtraGlamorousProps {
-  innerRef?: (instance: any) => void
+  innerRef?: (instance: any) => void;
+  css?: CSSProperties;
 }
 
 export interface StyledFunction<Props, Properties> {
