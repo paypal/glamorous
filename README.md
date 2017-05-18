@@ -149,6 +149,17 @@ const {ThemeProvider} = glamorous
 </script>
 ```
 
+### React Native
+
+`glamorous` offers a version for React Native projects called `glamorous-native`.
+
+```js
+npm install glamorous-native --save
+```
+
+You can learn more at the [glamorous-native project][glamorous-native].
+
+
 ## Video Intro :tv:
 
 <a href="https://youtu.be/lmrQTpJ_3PM" title="glamorous walkthrough">
@@ -948,3 +959,4 @@ MIT
 [unknown-prop-warning]: https://facebook.github.io/react/warnings/unknown-prop.html
 [babel-plugin-module-resolver]: https://github.com/tleunen/babel-plugin-module-resolver
 [resolve-alias]: https://webpack.js.org/configuration/resolve/#resolve-alias
+[glamorous-native]: https://github.com/robinpowered/glamorous-native
