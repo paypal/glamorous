@@ -23,5 +23,14 @@ merge of your pull request!
 <!-- How were these changes implemented? -->
 **How**:
 
+<!-- Have you done all of these things?  -->
+**Checklist**:
+<!-- add "N/A" to the end of each line that's irrelevant to your changes -->
+<!-- to check an item, place an "x" in the box like so: "- [x] Documentation" -->
+- [ ] Documentation
+- [ ] Tests
+- [ ] Code complete
+- [ ] Added myself to contributors table <!-- this is optional, see the contributing guidelines for instructions -->
+- [ ] Followed the commit message format <!-- this is optional as well, we can fix it for you when we merge your PR, see the contributing guidelines for instructions -->
 
 <!-- feel free to add additional comments -->
