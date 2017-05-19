@@ -143,6 +143,21 @@ exports[`sanity test 1`] = `
 />
 `;
 
+exports[`style objects can be arrays and glamor will merge those 1`] = `
+@media (max-width: 640px) {
+  .css-1bzhvkr,
+  [data-css-1bzhvkr] {
+    line-height: 1.3;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+}
+
+<div
+  class="css-1bzhvkr"
+/>
+`;
+
 exports[`styles can be functions that accept props 1`] = `
 .css-ig7b2c,
 [data-css-ig7b2c] {
