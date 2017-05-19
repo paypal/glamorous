@@ -10,6 +10,7 @@ import {
 import {
   StyledFunction,
   GlamorousComponent,
+  ExtraGlamorousProps,
 } from './styled-function'
 import { CSSProperties } from './css-properties'
 
@@ -23,14 +24,14 @@ export interface GlamorousOptions {
 
 export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
   <P>(
-    component: 
+    component:
       | React.ComponentClass<P>
       | React.StatelessComponent<P>,
     options?: GlamorousOptions
   ): StyledFunction<P, CSSProperties | React.SVGAttributes<any>>
 
-  Div: React.StatelessComponent<CSSProperties>
-  Svg: React.StatelessComponent<React.SVGAttributes<any>>
+  Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
+  Svg: React.StatelessComponent<React.SVGAttributes<any> & ExtraGlamorousProps>
 }
 
 interface ThemeProps {
