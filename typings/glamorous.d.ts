@@ -15,6 +15,7 @@ import {
 import { CSSProperties } from './css-properties'
 
 export { StyledFunction }
+export { CSSProperties }
 
 export interface GlamorousOptions {
   displayName: string
