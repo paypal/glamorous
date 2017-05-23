@@ -25,14 +25,14 @@ function extractGlamorStyles(className = '') {
 
 export default getGlamorClassName
 
-function getGlamorClassName(styles, props, cssOverrides, theme) {
+function getGlamorClassName(styles, props, cssOverrides, context) {
   let className, current
   const mappedArgs = []
   const nonGlamorClassNames = []
   for (let i = 0; i < styles.length; i++) {
     current = styles[i]
     if (typeof current === 'function') {
-      mappedArgs.push(current(props, theme))
+      mappedArgs.push(current(props, context))
     } else if (typeof current === 'string') {
       className = getGlamorStylesFromClassName(current)
       if (className) {

@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`does not override user defined theme contexts 1`] = `
+.css-svxepe,
+[data-css-svxepe] {
+  font-size: 24px;
+}
+
+<div
+  class="css-svxepe"
+/>
+`;
+
 exports[`merges nested themes 1`] = `
 .css-mhpxxj,
 [data-css-mhpxxj] {
@@ -44,6 +55,18 @@ exports[`merges nested themes 1`] = `
     </div>
   </ThemeProvider>
 </div>
+`;
+
+exports[`monkey-patches \`theme\` into user defined context 1`] = `
+.css-2y5zek,
+[data-css-2y5zek] {
+  font-size: 36px;
+  color: blue;
+}
+
+<div
+  class="css-2y5zek"
+/>
 `;
 
 exports[`renders a component with theme 1`] = `

@@ -143,6 +143,17 @@ exports[`sanity test 1`] = `
 />
 `;
 
+exports[`should accept user defined contextTypes 1`] = `
+.css-svxepe,
+[data-css-svxepe] {
+  font-size: 24px;
+}
+
+<div
+  class="css-svxepe"
+/>
+`;
+
 exports[`style objects can be arrays and glamor will merge those 1`] = `
 @media (max-width: 640px) {
   .css-1bzhvkr,
