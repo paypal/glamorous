@@ -106,8 +106,9 @@ test('merges composed component styles for reasonable overrides', () => {
 })
 
 test('merges composed component forwardProps', () => {
-  const parent = ({shouldRender, ...rest}) =>
-    (shouldRender ? <div {...rest} /> : null)
+  const parent = ({shouldRender, ...rest}) => {
+    return shouldRender ? <div {...rest} /> : null
+  }
   const Child = glamorous(parent, {forwardProps: ['shouldRender']})()
   const Grandchild = glamorous(Child)()
   const wrapper = render(<Grandchild shouldRender={true} />)
@@ -119,6 +120,49 @@ test('styles can be functions that accept props', () => {
     marginTop: margin,
   }))
   expect(render(<MyDiv margin={2} />)).toMatchSnapshotWithGlamor()
+})
+
+test('style objects can be arrays and glamor will merge those', () => {
+  const phoneMediaQuery = '@media (max-width: 640px)'
+  const MyDiv = glamorous.div(
+    [
+      {
+        [phoneMediaQuery]: {
+          lineHeight: 1.2,
+        },
+      },
+      {
+        [phoneMediaQuery]: {
+          lineHeight: 1.3, // this should win
+        },
+      },
+    ],
+    ({big, square}) => {
+      const bigStyles = big ?
+      {
+        [phoneMediaQuery]: {
+          fontSize: 20,
+        },
+      } :
+        {}
+
+      const squareStyles = square ?
+      {
+        [phoneMediaQuery]: {
+          borderRadius: 0,
+        },
+      } :
+      {
+        [phoneMediaQuery]: {
+          borderRadius: '50%',
+        },
+      }
+      return [bigStyles, squareStyles]
+    },
+  )
+  expect(
+    render(<MyDiv big={true} square={false} />),
+  ).toMatchSnapshotWithGlamor()
 })
 
 test('falls back to `name` if displayName cannot be inferred', () => {
