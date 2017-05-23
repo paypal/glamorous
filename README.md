@@ -888,6 +888,18 @@ unaware of any which supports _all_ of the features which this library supports.
 If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up in
 [the chat][chat]
 
+## Swag
+
+A community member created this awesome t-shirt, and they're now available on Amazon! For every shirt purchased, GSM Studio will donate $1 to Girls Who Code to support the next generation of programmers. Check out other clever t-shirts by GSM Studio here: http://amzn.to/2rxvB1T
+
+<a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
+  <img src="https://images-na.ssl-images-amazon.com/images/I/71DiEnq5YgL._UX679_.jpg" alt="Glamorous Logo T-Shirt" title="Glamorous Logo T-Shirt" width="200" />
+</a>
+
+<a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
+  <img src="https://images-na.ssl-images-amazon.com/images/I/71EL4mHhCtL._UX679_.jpg" alt="Glamorous T-Shirt" title="Glamorous T-Shirt" width="200" />
+</a>
+
 ## Contributors
 
 Thanks goes to these people ([emoji key][emojis]):
