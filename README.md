@@ -890,7 +890,7 @@ If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up i
 
 ## Swag
 
-Order a Glamorous T-Shirt! For every shirt sold, $1 will be donated to https://girlswhocode.com.
+A community member created this awesome t-shirt, and they're now available on Amazon! For every shirt purchased, GSM Studio will donate $1 to Girls Who Code to support the next generation of programmers. Check out other clever t-shirts by GSM Studio here: http://amzn.to/2rxvB1T
 
 <a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
   <img src="https://images-na.ssl-images-amazon.com/images/I/71DiEnq5YgL._UX679_.jpg" alt="Glamorous Logo T-Shirt" title="Glamorous Logo T-Shirt" width="200" />
