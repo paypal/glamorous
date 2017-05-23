@@ -9,7 +9,7 @@
   "scripts": {
     "start": "nps",
     "test": "nps test",
-    "test:ts": "tsc -p ./tsconfig.json",
+    "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
@@ -71,6 +71,7 @@
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
+    "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
