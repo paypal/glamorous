@@ -5,6 +5,7 @@ import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
 import glamorous from '../'
+import {PropTypes} from '../react-compat'
 
 import {CHANNEL} from '../constants'
 
@@ -278,7 +279,7 @@ test('renders a component with theme properties', () => {
     {
       color: 'red',
     },
-    (props, theme) => ({padding: theme.padding}),
+    (props, {theme}) => ({padding: theme.padding}),
   )
   expect(
     render(<Comp theme={{padding: '10px'}} />),
@@ -291,7 +292,7 @@ test('in development mode the theme is frozen and cannot be changed', () => {
     {
       color: 'red',
     },
-    (props, theme) => {
+    (props, {theme}) => {
       expect(() => {
         theme.foo = 'bar'
       }).toThrow()
@@ -309,7 +310,7 @@ test('in production mode the theme is not frozen and can be changed', () => {
     {
       color: 'red',
     },
-    (props, theme) => {
+    (props, {theme}) => {
       expect(() => {
         theme.foo = 'bar'
       }).not.toThrow()
@@ -325,7 +326,7 @@ test('passes an updated theme when theme prop changes', () => {
     {
       color: 'red',
     },
-    (props, theme) => ({padding: theme.padding}),
+    (props, {theme}) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Comp theme={{padding: 10}} />)
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
@@ -403,4 +404,19 @@ test('can accept classNames instead of style objects', () => {
     'extra-thing',
   )
   expect(render(<Comp />)).toMatchSnapshotWithGlamor()
+})
+
+test('should accept user defined contextTypes', () => {
+  const Child = glamorous.div((props, context) => ({
+    fontSize: context.fontSize,
+  }))
+  Child.contextTypes = {
+    fontSize: PropTypes.number,
+  }
+
+  const context = {
+    fontSize: 24,
+  }
+
+  expect(render(<Child />, {context})).toMatchSnapshotWithGlamor()
 })
