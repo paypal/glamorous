@@ -904,6 +904,18 @@ Thanks goes to these people ([emoji key][emojis]):
 This project follows the [all-contributors][all-contributors] specification.
 Contributions of any kind welcome!
 
+## Swag
+
+Order a Glamorous T-Shirt! For every shirt sold, $1 will be donated to https://girlswhocode.com.
+
+<a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
+  <img src="https://images-na.ssl-images-amazon.com/images/I/71DiEnq5YgL._UX679_.jpg" alt="Glamorous Logo T-Shirt" title="Glamorous Logo T-Shirt" width="200" />
+</a>
+
+<a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
+  <img src="https://images-na.ssl-images-amazon.com/images/I/71EL4mHhCtL._UX679_.jpg" alt="Glamorous T-Shirt" title="Glamorous T-Shirt" width="200" />
+</a>
+
 ## LICENSE
 
 MIT
