@@ -14,7 +14,7 @@ import {
 } from './styled-function'
 import { CSSProperties } from './css-properties'
 
-export { StyledFunction }
+export { StyledFunction, ExtraGlamorousProps }
 
 export interface GlamorousOptions {
   displayName: string

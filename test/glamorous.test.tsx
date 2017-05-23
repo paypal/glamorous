@@ -1,6 +1,10 @@
 import * as React from "react";
 import glamorous, { ThemeProvider } from "../";
 
+// Needed if generating definition files
+// https://github.com/Microsoft/TypeScript/issues/5938
+import { ExtraGlamorousProps } from "../";
+
 // static styles
 const Static = glamorous.div({
   "fontSize": 20,
@@ -121,3 +125,6 @@ const StatelessToWrap: React.StatelessComponent<object> = () => (
 )
 
 const WrappedStateless = glamorous(StatelessToWrap)({})
+
+// Exported Component (for testing declaration generation)
+export const ExportTest = glamorous.div({})

@@ -3,5 +3,6 @@ coverage
 dist
 .opt-in
 .opt-out
+test-ts
 typings/*.js
 *.log
