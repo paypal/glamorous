@@ -4,6 +4,26 @@ The current bundled typescript definitions are incomplete and based around the n
 
 Pull requests to improve them are welcome and appreciated. If you've never contributed to open source before, then you may find [this free video course](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github) helpful.
 
+## Complete support
+
+### Dynamic styles
+
+To use dynamic styles with custom props use generics. Example:
+
+```ts
+const MyStyledDiv = glamorous.div<{noPadding?: boolean}>(
+  {
+    margin: 1,
+  },
+  props => ({
+    padding: props.noPadding ? 0 : 4,
+  })
+)
+
+<MyStyledDiv /> // styles applied: {margin: 1, padding: 4}
+<MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0}
+```
+
 ## Incomplete support
 
 ### CSS property safety
