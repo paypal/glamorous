@@ -159,6 +159,11 @@ npm install glamorous-native --save
 
 You can learn more at the [glamorous-native project][glamorous-native].
 
+### Typescript
+
+`glamorous` includes typescript definition files.
+
+For usage notes and known issues see [other/TYPESCRIPT_USAGE.md][typescript-usage].
 
 ## Video Intro :tv:
 
@@ -978,3 +983,4 @@ MIT
 [babel-plugin-module-resolver]: https://github.com/tleunen/babel-plugin-module-resolver
 [resolve-alias]: https://webpack.js.org/configuration/resolve/#resolve-alias
 [glamorous-native]: https://github.com/robinpowered/glamorous-native
+[typescript-usage]: https://github.com/paypal/glamorous/blob/master/other/TYPESCRIPT_USAGE.md
