@@ -279,7 +279,7 @@ test('renders a component with theme properties', () => {
     {
       color: 'red',
     },
-    (props, {theme}) => ({padding: theme.padding}),
+    (props, theme) => ({padding: theme.padding}),
   )
   expect(
     render(<Comp theme={{padding: '10px'}} />),
@@ -292,7 +292,7 @@ test('in development mode the theme is frozen and cannot be changed', () => {
     {
       color: 'red',
     },
-    (props, {theme}) => {
+    (props, theme) => {
       expect(() => {
         theme.foo = 'bar'
       }).toThrow()
@@ -310,7 +310,7 @@ test('in production mode the theme is not frozen and can be changed', () => {
     {
       color: 'red',
     },
-    (props, {theme}) => {
+    (props, theme) => {
       expect(() => {
         theme.foo = 'bar'
       }).not.toThrow()
@@ -326,7 +326,7 @@ test('passes an updated theme when theme prop changes', () => {
     {
       color: 'red',
     },
-    (props, {theme}) => ({padding: theme.padding}),
+    (props, theme) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Comp theme={{padding: 10}} />)
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
@@ -407,9 +407,8 @@ test('can accept classNames instead of style objects', () => {
 })
 
 test('should accept user defined contextTypes', () => {
-  const Child = glamorous.div((props, context) => ({
-    fontSize: context.fontSize,
-  }))
+  const dynamicStyles = jest.fn()
+  const Child = glamorous.div(dynamicStyles)
   Child.contextTypes = {
     fontSize: PropTypes.number,
   }
@@ -418,5 +417,9 @@ test('should accept user defined contextTypes', () => {
     fontSize: 24,
   }
 
-  expect(render(<Child />, {context})).toMatchSnapshotWithGlamor()
+  render(<Child />, {context})
+  expect(dynamicStyles).toHaveBeenCalledTimes(1)
+  const theme = {}
+  const props = {}
+  expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
 })

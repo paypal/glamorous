@@ -89,18 +89,13 @@ export default function createGlamorous(splitProps) {
             this.state.theme :
             Object.freeze(this.state.theme)
 
-          // patch the context with the `theme`, unless the user has
-          // provided their own theme context
-          const context = GlamorousComponent.contextTypes.theme ?
-            this.context :
-            {...this.context, theme}
-
           // create className to apply
           const fullClassName = getGlamorClassName(
             GlamorousComponent.styles,
             props,
             cssOverrides,
-            context,
+            theme,
+            this.context,
           )
 
           return React.createElement(GlamorousComponent.comp, {
