@@ -45,7 +45,7 @@ module.exports = {
       ),
       es: {
         description: 'run the build with rollup (uses rollup.config.js)',
-        script: 'rollup --config --environment FORMAT:es',
+        script: 'rollup --config --environment FORMAT:es && node other/concat-exports.js',
         tiny: 'rollup --config --environment FORMAT:es,TINY',
       },
       cjs: {
