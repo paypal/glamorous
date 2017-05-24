@@ -677,6 +677,40 @@ class SubTitle extends Component {
 ```
 > `withTheme` expects a `ThemeProvider` further up the render tree and will warn in `development` if one is not found!
 
+### Context
+
+[context](https://facebook.github.io/react/docs/context.html) is an unstable
+API and it's not recommended to use it directly. However, if you need to use it
+for some reason, here's an example of how you could do that:
+
+```jsx
+const dynamicStyles = (props, theme, context) => (
+  <div>{context.foo}</div>
+)
+const MyDiv = glamorous.div(dynamicStyles)
+MyDiv.contextTypes = {
+  foo: PropTypes.string,
+}
+
+class Parent extends React.Component {
+  getChildContext() {
+    return {
+      foo: 'Hello world',
+    }
+  }
+  render() {
+    return <MyDiv />
+  }
+}
+
+Parent.childContextTypes = {
+  foo: PropTypes.string,
+}
+
+<Parent />
+// renders <div>Hello world</div>
+```
+
 ### Size
 
 If your use case is really size constrained, then you might consider using the "tiny" version of glamorous for your application.

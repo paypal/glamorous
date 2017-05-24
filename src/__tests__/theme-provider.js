@@ -5,7 +5,6 @@ import * as jestGlamorReact from 'jest-glamor-react'
 import glamorous from '../'
 import ThemeProvider from '../theme-provider'
 import {CHANNEL} from '../constants'
-import {PropTypes} from '../react-compat'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
@@ -23,7 +22,7 @@ test('renders a component with theme', () => {
     {
       color: 'red',
     },
-    (props, {theme}) => ({padding: theme.padding}),
+    (props, theme) => ({padding: theme.padding}),
   )
   expect(
     render(
@@ -52,7 +51,7 @@ test('theme properties updates get propagated down the tree', () => {
     {
       color: 'red',
     },
-    (props, {theme}) => ({padding: theme.padding}),
+    (props, theme) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Parent />)
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
@@ -61,11 +60,11 @@ test('theme properties updates get propagated down the tree', () => {
 })
 
 test('merges nested themes', () => {
-  const One = glamorous.div({}, (props, {theme: {padding, margin}}) => ({
+  const One = glamorous.div({}, (props, {padding, margin}) => ({
     padding,
     margin,
   }))
-  const Two = glamorous.div({}, (props, {theme: {padding, margin}}) => ({
+  const Two = glamorous.div({}, (props, {padding, margin}) => ({
     padding,
     margin,
   }))
@@ -109,70 +108,4 @@ test('does nothing when receive same theme via props', () => {
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
   wrapper.setProps({theme})
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
-})
-
-test('does not override user defined theme contexts', () => {
-  const Child = glamorous.div((props, context) => ({
-    fontSize: context.theme.fontSize,
-  }))
-  Child.contextTypes = {
-    theme: PropTypes.object,
-  }
-
-  class Parent extends React.Component {
-    getChildContext() {
-      return {
-        theme: {fontSize: 24},
-      }
-    }
-    render() {
-      return <Child />
-    }
-  }
-
-  Parent.childContextTypes = {
-    theme: PropTypes.object,
-  }
-
-  expect(
-    render(
-      <ThemeProvider theme={{fontSize: 36}}>
-        <Parent />
-      </ThemeProvider>,
-    ),
-  ).toMatchSnapshotWithGlamor()
-})
-
-test('monkey-patches `theme` into user defined context', () => {
-  const Child = glamorous.div((props, context) => ({
-    fontSize: context.theme.fontSize,
-    color: context.userTheme.color,
-  }))
-
-  Child.contextTypes = {
-    userTheme: PropTypes.object,
-  }
-
-  class Parent extends React.Component {
-    getChildContext() {
-      return {
-        userTheme: {color: 'blue'},
-      }
-    }
-    render() {
-      return <Child />
-    }
-  }
-
-  Parent.childContextTypes = {
-    userTheme: PropTypes.object,
-  }
-
-  expect(
-    render(
-      <ThemeProvider theme={{fontSize: 36}}>
-        <Parent />
-      </ThemeProvider>,
-    ),
-  ).toMatchSnapshotWithGlamor()
 })

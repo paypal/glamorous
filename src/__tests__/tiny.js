@@ -31,6 +31,7 @@ test('should pass glam object prop', () => {
       id: 'hey-there',
       theme, // this is just insidental because we have a theme prop
     },
-    {theme},
+    theme,
+    expect.any(Object), // the context
   )
 })
