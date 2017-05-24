@@ -5,6 +5,7 @@ import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
 import glamorous from '../'
+import {PropTypes} from '../react-compat'
 
 import {CHANNEL} from '../constants'
 
@@ -403,4 +404,22 @@ test('can accept classNames instead of style objects', () => {
     'extra-thing',
   )
   expect(render(<Comp />)).toMatchSnapshotWithGlamor()
+})
+
+test('should accept user defined contextTypes', () => {
+  const dynamicStyles = jest.fn()
+  const Child = glamorous.div(dynamicStyles)
+  Child.contextTypes = {
+    fontSize: PropTypes.number,
+  }
+
+  const context = {
+    fontSize: 24,
+  }
+
+  render(<Child />, {context})
+  expect(dynamicStyles).toHaveBeenCalledTimes(1)
+  const theme = {}
+  const props = {}
+  expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
 })

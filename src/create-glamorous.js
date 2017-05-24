@@ -88,12 +88,14 @@ export default function createGlamorous(splitProps) {
           const theme = process.env.NODE_ENV === 'production' ?
             this.state.theme :
             Object.freeze(this.state.theme)
+
           // create className to apply
           const fullClassName = getGlamorClassName(
             GlamorousComponent.styles,
             props,
             cssOverrides,
             theme,
+            this.context,
           )
 
           return React.createElement(GlamorousComponent.comp, {
@@ -112,9 +114,32 @@ export default function createGlamorous(splitProps) {
         glam: PropTypes.object,
       }
 
-      GlamorousComponent.contextTypes = {
+      const defaultContextTypes = {
         [CHANNEL]: PropTypes.object,
       }
+
+      let userDefinedContextTypes = null
+
+      // configure the contextTypes to be settable by the user,
+      // however also retaining the glamorous channel.
+      Object.defineProperty(GlamorousComponent, 'contextTypes', {
+        enumerable: true,
+        configurable: true,
+        set(value) {
+          userDefinedContextTypes = value
+        },
+        get() {
+          // if the user has provided a contextTypes definition,
+          // merge the default context types with the provided ones.
+          if (userDefinedContextTypes) {
+            return {
+              ...defaultContextTypes,
+              ...userDefinedContextTypes,
+            }
+          }
+          return defaultContextTypes
+        },
+      })
 
       Object.assign(
         GlamorousComponent,

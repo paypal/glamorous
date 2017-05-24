@@ -25,12 +25,11 @@ test('should pass glam object prop', () => {
     render(<Comp id="hey-there" glam={glam} theme={theme} />),
   ).toMatchSnapshotWithGlamor()
   expect(dynamicStyles).toHaveBeenCalledTimes(1)
-  expect(dynamicStyles).toHaveBeenCalledWith(
-    {
-      glam,
-      id: 'hey-there',
-      theme, // this is just insidental because we have a theme prop
-    },
-    theme,
-  )
+  const props = {
+    glam,
+    id: 'hey-there',
+    theme, // this is just insidental because we have a theme prop
+  }
+  const context = expect.any(Object) // the context
+  expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
 })
