@@ -29,6 +29,30 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+**Table of Contents**
+
+- [The problem](#the-problem)
+- [This solution](#this-solution)
+- [Installation](#installation)
+  - [React Native](#react-native)
+  - [Typescript](#typescript)
+- [Video Intro :tv:](#video-intro-tv)
+- [Terms and concepts](#terms-and-concepts)
+  - [glamorous](#glamorous)
+  - [glamorous API](#glamorous-api)
+  - [Theming](#theming)
+  - [Context](#context)
+  - [Size](#size)
+  - [Server Side Rendering (SSR)](#server-side-rendering-ssr)
+  - [Example Style Objects](#example-style-objects)
+- [Users](#users)
+- [Inspiration](#inspiration)
+- [Other Solutions](#other-solutions)
+- [Support](#support)
+- [Swag](#swag)
+- [Contributors](#contributors)
+- [LICENSE](#license)
+
 ## The problem
 
 You like CSS in JS, but you don't like having to create entire component
