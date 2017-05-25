@@ -88,6 +88,11 @@ assert(
   'UMD Tiny build has a problem with CJS',
 )
 
+assert(
+  hasNamedExports(esImportStar) && !hasNamedExports(esImportTiny),
+  'ES build has a problem with helper tags exports',
+)
+
 // TODO: how could we validate the global export?
 
 console.log('Built modules look good 👍')
@@ -113,6 +118,19 @@ function hasExtraExports(thing) {
   }
   const keys = Object.keys(extraExports)
   return keys.every(key => typeof thing[key] === extraExports[key])
+}
+
+function hasNamedExports(thing) {
+  const GlamorousComponents = {
+    Div: 'function',
+    ObjectTag: 'function',
+  }
+  const keys = Object.keys(GlamorousComponents)
+  return keys.every(
+    key =>
+      typeof thing[key] === GlamorousComponents[key] &&
+      thing[key].name === 'GlamorousComponent',
+  )
 }
 
 /*
