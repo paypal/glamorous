@@ -29,6 +29,8 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
 - [The problem](#the-problem)
@@ -52,6 +54,8 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 - [Swag](#swag)
 - [Contributors](#contributors)
 - [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## The problem
 
