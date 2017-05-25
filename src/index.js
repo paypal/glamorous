@@ -18,6 +18,8 @@ const glamorous = createGlamorous(splitProps)
 Object.assign(
   glamorous,
   domElements.reduce((getters, tag) => {
+    // TODO: next breaking change, let's make
+    // the `displayName` be: `glamorous.${tag}`
     getters[tag] = glamorous(tag)
     return getters
   }, {}),
