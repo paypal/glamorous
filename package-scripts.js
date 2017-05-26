@@ -71,10 +71,6 @@ module.exports = {
       description: 'lint the entire project',
       script: 'eslint .',
     },
-    doctoc: {
-      description: 'generates a Table of Contents in the README',
-      script: 'doctoc --maxlevel 3 --title "**Table of Contents**" README.md',
-    },
     reportCoverage: {
       description: 'Report coverage stats to codecov. This should be run after the `test` script',
       script: 'codecov',

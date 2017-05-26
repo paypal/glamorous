@@ -8,6 +8,7 @@
   "typings": "typings/glamorous.d.ts",
   "scripts": {
     "start": "nps",
+    "doctoc": "doctoc --maxlevel 3 --title \"**Table of Contents**\"",
     "test": "nps test",
     "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
@@ -103,7 +104,7 @@
       "git add"
     ],
     "README.md": [
-      "npm start doctoc",
+      "npm run doctoc",
       "git add"
     ]
   },
