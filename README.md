@@ -53,7 +53,7 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 - [Inspiration](#inspiration)
 - [Other Solutions](#other-solutions)
 - [Support](#support)
-- [Swag](#swag)
+- [Swag 👕](#swag-)
 - [Contributors](#contributors)
 - [LICENSE](#license)
 
@@ -1008,7 +1008,7 @@ unaware of any which supports _all_ of the features which this library supports.
 If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up in
 [the chat][chat]
 
-## Swag
+## Swag 👕
 
 A community member created this awesome t-shirt, and they're now available on
 Amazon! For every shirt purchased, GSM Studio will donate $1 to
