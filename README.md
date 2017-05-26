@@ -937,13 +937,17 @@ If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up i
 
 ## Swag
 
-A community member created this awesome t-shirt, and they're now available on Amazon! For every shirt purchased, GSM Studio will donate $1 to Girls Who Code to support the next generation of programmers. Check out other clever t-shirts by GSM Studio here: http://amzn.to/2rxvB1T
+A community member created this awesome t-shirt, and they're now available on
+Amazon! For every shirt purchased, GSM Studio will donate $1 to
+[Girls Who Code][gwc] to support the next generation of programmers. The shirts
+come in various colors and sizes. In addition you can check out other clever
+t-shirts by [GSM Studio](http://amzn.to/2rxvB1T).
 
 <a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
   <img src="https://images-na.ssl-images-amazon.com/images/I/71DiEnq5YgL._UX679_.jpg" alt="Glamorous Logo T-Shirt" title="Glamorous Logo T-Shirt" width="200" />
 </a>
 
-<a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
+<a href="https://www.amazon.com/dp/B072LV68S2" title="glamorous swag">
   <img src="https://images-na.ssl-images-amazon.com/images/I/71EL4mHhCtL._UX679_.jpg" alt="Glamorous T-Shirt" title="Glamorous T-Shirt" width="200" />
 </a>
 
@@ -1026,3 +1030,4 @@ MIT
 [resolve-alias]: https://webpack.js.org/configuration/resolve/#resolve-alias
 [glamorous-native]: https://github.com/robinpowered/glamorous-native
 [typescript-usage]: https://github.com/paypal/glamorous/blob/master/other/TYPESCRIPT_USAGE.md
+[gwc]: https://girlswhocode.com/
