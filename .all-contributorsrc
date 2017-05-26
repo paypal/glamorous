@@ -301,6 +301,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "iwantmyname",
+      "name": "iwantmyname",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4074973?v=3",
+      "profile": "https://iwantmyname.com/",
+      "contributions": [
+        "infra"
+      ]
     }
   ]
 }
