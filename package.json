@@ -8,6 +8,7 @@
   "typings": "typings/glamorous.d.ts",
   "scripts": {
     "start": "nps",
+    "doctoc": "doctoc --maxlevel 3 --title \"**Table of Contents**\"",
     "test": "nps test",
     "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
@@ -30,6 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "brcast": "^2.0.0",
+    "doctoc": "^1.3.0",
     "fast-memoize": "^2.2.7",
     "html-tag-names": "^1.1.1",
     "react-html-attributes": "^1.3.0",
@@ -99,6 +101,10 @@
   "lint-staged": {
     "*.js": [
       "prettier-eslint --write",
+      "git add"
+    ],
+    "README.md": [
+      "npm run doctoc",
       "git add"
     ]
   },

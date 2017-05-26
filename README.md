@@ -29,6 +29,36 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [The problem](#the-problem)
+- [This solution](#this-solution)
+- [Installation](#installation)
+  - [React Native](#react-native)
+  - [Typescript](#typescript)
+- [Video Intro :tv:](#video-intro-tv)
+- [Terms and concepts](#terms-and-concepts)
+  - [glamorous](#glamorous)
+  - [glamorous API](#glamorous-api)
+  - [Theming](#theming)
+  - [Config](#config)
+  - [Context](#context)
+  - [Size](#size)
+  - [Server Side Rendering (SSR)](#server-side-rendering-ssr)
+  - [Example Style Objects](#example-style-objects)
+- [Related projects](#related-projects)
+- [Users](#users)
+- [Inspiration](#inspiration)
+- [Other Solutions](#other-solutions)
+- [Support](#support)
+- [Swag 👕](#swag-)
+- [Contributors](#contributors)
+- [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## The problem
 
 You like CSS in JS, but you don't like having to create entire component
@@ -978,7 +1008,7 @@ unaware of any which supports _all_ of the features which this library supports.
 If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up in
 [the chat][chat]
 
-## Swag
+## Swag 👕
 
 A community member created this awesome t-shirt, and they're now available on
 Amazon! For every shirt purchased, GSM Studio will donate $1 to
