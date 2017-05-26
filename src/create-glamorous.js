@@ -7,22 +7,26 @@ import {PropTypes} from './react-compat'
 import {CHANNEL} from './constants'
 import getGlamorClassName from './get-glamor-classname'
 
-export default function createGlamorous(splitProps) {
+export default createGlamorous
+
+function createGlamorous(splitProps) {
+  // TODO: in a breaking version, make this default to true
+  glamorous.config = {useDisplayNameInClassName: false}
+
+  return glamorous
+
   /**
-   * This is the main export and the function that people
-   * interact with most directly.
-   *
-   * It accepts a component which can be a string or
-   * a React Component and returns
-   * a "glamorousComponentFactory"
-   * @param {String|ReactComponent} comp the component to render
-   * @param {Object} options helpful info for the GlamorousComponents
-   * @return {Function} the glamorousComponentFactory
-   */
-  return function glamorous(
-    comp,
-    {rootEl, displayName, forwardProps = []} = {},
-  ) {
+  * This is the main export and the function that people
+  * interact with most directly.
+  *
+  * It accepts a component which can be a string or
+  * a React Component and returns
+  * a "glamorousComponentFactory"
+  * @param {String|ReactComponent} comp the component to render
+  * @param {Object} options helpful info for the GlamorousComponents
+  * @return {Function} the glamorousComponentFactory
+  */
+  function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
     return glamorousComponentFactory
 
     /**
@@ -97,11 +101,15 @@ export default function createGlamorous(splitProps) {
             theme,
             this.context,
           )
+          const debugClassName = glamorous.config.useDisplayNameInClassName ?
+            cleanClassname(GlamorousComponent.displayName) :
+            ''
+          const className = `${fullClassName} ${debugClassName}`.trim()
 
           return React.createElement(GlamorousComponent.comp, {
             ref: props.innerRef,
             ...toForward,
-            className: fullClassName,
+            className,
           })
         }
       }
@@ -189,4 +197,8 @@ export default function createGlamorous(splitProps) {
       comp :
       comp.displayName || comp.name || 'unknown'
   }
+}
+
+function cleanClassname(className) {
+  return className.replace(/ /g, '-').replace(/[^A-Za-z0-9\-_]/g, '_')
 }

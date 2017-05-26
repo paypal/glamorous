@@ -39,6 +39,12 @@ exports[`can accept classNames instead of style objects 1`] = `
 />
 `;
 
+exports[`can be configured to use the displayName in the className 1`] = `
+<div
+  class="css-nil Hi-There"
+/>
+`;
+
 exports[`can use pre-glamorous components with css attributes 1`] = `
 .css-1t62idy,
 [data-css-1t62idy] {
