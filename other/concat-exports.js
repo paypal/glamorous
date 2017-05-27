@@ -26,7 +26,7 @@ const componentExports = htmlTagNames
     const validJsName = dashToCamelCase(capitalName)
     // add postfix if name collides with js constructors
     const tagName = unCollide(validJsName)
-    return `export const ${tagName} = glamorous['${capitalName}'];`
+    return `export var ${tagName} = glamorous['${capitalName}'];`
   }).join`\n`
 
 const introText =
