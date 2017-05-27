@@ -3,6 +3,7 @@ import withTheme from './with-theme'
 import ThemeProvider from './theme-provider'
 import createGlamorous from './create-glamorous'
 import splitProps from './split-props'
+import getGlamorClassName from './get-glamor-classname'
 
 const glamorous = createGlamorous(splitProps)
 
@@ -58,4 +59,4 @@ function capitalize(s) {
 glamorous.default = glamorous
 
 export default glamorous
-export {ThemeProvider, withTheme}
+export {ThemeProvider, withTheme, getGlamorClassName}
