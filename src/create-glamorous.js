@@ -27,6 +27,7 @@ function createGlamorous(splitProps) {
   * @return {Function} the glamorousComponentFactory
   */
   function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
+    glamorousComponentFactory.withProps = withProps
     return glamorousComponentFactory
 
     /**
@@ -160,6 +161,56 @@ function createGlamorous(splitProps) {
         }),
       )
       return GlamorousComponent
+    }
+
+    /**
+     * This returns a glamorousComponentFactory that will be composed with
+     * the provided properties.
+     * @param {...Object|Function} outerProps the properties to provide to the
+     *  GlamorousComponent.
+     *  If any of these are functions, they will be invoked with the component
+     *  props and the return value is used.
+     * @return {Function} the glamorousComponentFactory function.
+     */
+    function withProps(...outerProps) {
+      /**
+       * This returns a React Component with the provided properties
+       * and a className based on the given glamor styles object(s)
+       * @see glamorousComponentFactory
+       * @param {...Object|Function} styles the styles to create with glamor.
+       *   If any of these are functions, they are invoked with the component
+       *   props and the return value is used.
+       * @return {ReactComponent} the ReactComponent function
+       */
+      return function glamorousComponentFactoryWithProps(...styles) {
+        const GlamorousComponent = glamorousComponentFactory(...styles)
+
+        // this is a higher order component of the GlamorousComponent that will
+        // evaluate the properties from withProps.
+        return function GlamorousComponentWithProps(innerProps) {
+          // take the properties provided to the GlamorousComponent and evaluate
+          // the properties from `withProps`
+          const evalutatedOuterProps = outerProps.reduce((props, prop) => {
+            const evaluated = typeof prop === 'function' ?
+              prop(innerProps) :
+              prop
+
+            if (evaluated) {
+              return {
+                ...props,
+                ...evaluated,
+              }
+            }
+            return props
+          }, {})
+
+          // decorate the GlamorousComponent with the evaluated props and the
+          // provided props
+          return (
+            <GlamorousComponent {...evalutatedOuterProps} {...innerProps} />
+          )
+        }
+      }
     }
   }
 

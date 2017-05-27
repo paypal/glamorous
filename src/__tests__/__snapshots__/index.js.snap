@@ -232,3 +232,40 @@ exports[`with theme prop of padding 20px 1`] = `
   />
 </glamorous(div)>
 `;
+
+exports[`withProps composes the component with the provided props 1`] = `
+.css-1ezp9xe,
+[data-css-1ezp9xe] {
+  color: red;
+}
+
+<input
+  class="css-1ezp9xe"
+  type="text"
+/>
+`;
+
+exports[`withProps should accept a function producing props 1`] = `
+.css-1ezp9xe,
+[data-css-1ezp9xe] {
+  color: red;
+}
+
+<input
+  class="css-1ezp9xe"
+  pattern="/[0-9]/"
+  type="credit-card"
+/>
+`;
+
+exports[`withProps should have a lower priority than component props 1`] = `
+.css-1ezp9xe,
+[data-css-1ezp9xe] {
+  color: red;
+}
+
+<input
+  class="css-1ezp9xe"
+  type="number"
+/>
+`;
