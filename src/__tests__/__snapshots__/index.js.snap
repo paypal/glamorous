@@ -39,6 +39,18 @@ exports[`can accept classNames instead of style objects 1`] = `
 />
 `;
 
+exports[`can accept functions which return string class names 1`] = `
+.css-14wicqh,
+[data-css-14wicqh] {
+  padding-right: 2px;
+  padding-bottom: 2px;
+}
+
+<div
+  class="css-14wicqh is-active extra-thing"
+/>
+`;
+
 exports[`can be configured to use the displayName in the className 1`] = `
 <div
   class="css-nil Hi-There"
