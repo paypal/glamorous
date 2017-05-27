@@ -289,14 +289,16 @@ const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
 const styles2 = {paddingRight: 2, paddingBottom: 2}
 const className3 = glamor.css({paddingBottom: 3, paddingLeft: 3}).toString()
 const styles4 = {paddingLeft: 4}
+const styles5 = props => (props.active ? 'active' : 'not-active')
 const MyStyledDiv = glamorous.div(
   className1,
   styles2,
   className3,
   styles4,
+  styles5,
   'extra-thing',
 )
-<MyStyledDiv /> // styles applied: {padding-top: 1, padding-right: 2, padding-bottom: 3, padding-left: 4} and anything coming from `extra-thing`.
+<MyStyledDiv /> // styles applied: {padding-top: 1, padding-right: 2, padding-bottom: 3, padding-left: 4}, 'not-active' and anything coming from `extra-thing`.
 ```
 
 #### GlamorousComponent
