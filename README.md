@@ -299,6 +299,39 @@ const MyStyledDiv = glamorous.div(
 <MyStyledDiv /> // styles applied: {padding-top: 1, padding-right: 2, padding-bottom: 3, padding-left: 4} and anything coming from `extra-thing`.
 ```
 
+##### withProps
+
+The `glamorousComponentFactory` has a `withProps` property, which is another
+factory function accepting any number of property object arguments to be applied
+to the `GlamorousComponent`. Just like styles, these can either be property objects
+or functions wich are invoked with `props` on every render and return property objects.
+The result is a `GlamorousComponent` with the specified props:
+
+```jsx
+const StyledTextInput = glamorous.input.withProps({type: 'text'})({
+  padding: 10
+})
+
+const StyledValidatedTextInput = glamorous(MyStyledInput).withProps(
+  props => {
+    if (props.creditCard) {
+      return {
+        pattern: /([0-9]{4}){4}/
+      }
+    }
+    return null
+  }
+)
+
+<StyledTextInput />
+// renders: <input type="text" />
+// styles applied: {padding: 10}
+
+<StyledValidatedTextInput creditCard />
+// renders: <input type="text" pattern="/([0-9]{4}){4}/" />
+// styles applied: {padding: 10}
+```
+
 #### GlamorousComponent
 
 The `GlamorousComponent` is what is returned from the `glamorousComponentFactory`.
