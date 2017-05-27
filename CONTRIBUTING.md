@@ -7,6 +7,7 @@ Thanks for being willing to contribute!
 
 ## Project setup
 
+(`node` v6 is required to run tests.)
 1. Fork and clone the repo
 2. `$ npm install` to install dependencies
 3. `$ npm start validate` to validate you've got it working
