@@ -26,20 +26,20 @@ function extractGlamorStyles(className = '') {
 export default getGlamorClassName
 
 function getGlamorClassName(styles, props, cssOverrides, theme, context) {
-  let className, current
+  let current
   const mappedArgs = []
   const nonGlamorClassNames = []
   for (let i = 0; i < styles.length; i++) {
     current = styles[i]
     if (typeof current === 'function') {
-      mappedArgs.push(current(props, theme, context))
-    } else if (typeof current === 'string') {
-      className = getGlamorStylesFromClassName(current)
-      if (className) {
-        mappedArgs.push(className)
+      const result = current(props, theme, context)
+      if (typeof result === 'string') {
+        processStringClass(result, mappedArgs, nonGlamorClassNames)
       } else {
-        nonGlamorClassNames.push(current)
+        mappedArgs.push(result)
       }
+    } else if (typeof current === 'string') {
+      processStringClass(current, mappedArgs, nonGlamorClassNames)
     } else {
       mappedArgs.push(current)
     }
@@ -55,6 +55,15 @@ function getGlamorClassName(styles, props, cssOverrides, theme, context) {
   ).toString()
   const extras = nonGlamorClassNames.join(' ')
   return `${glamorlessClassName} ${glamorClassName} ${extras}`.trim()
+}
+
+function processStringClass(str, mappedArgs, nonGlamorClassNames) {
+  const className = getGlamorStylesFromClassName(str)
+  if (className) {
+    mappedArgs.push(className)
+  } else {
+    nonGlamorClassNames.push(str)
+  }
 }
 
 function getGlamorStylesFromClassName(className) {

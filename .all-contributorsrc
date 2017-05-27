@@ -317,6 +317,15 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/11809142?v=3",
       "profile": "http://ethangodt.com",
       "contributions": []
+    },
+    {
+      "login": "zillding",
+      "name": "Zill Ding",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2175447?v=3",
+      "profile": "https://github.com/zillding",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }

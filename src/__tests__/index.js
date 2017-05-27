@@ -404,7 +404,9 @@ test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
   const styles2 = {paddingRight: 2, paddingBottom: 2}
-  const className3 = glamor.css({paddingBottom: 3, paddingLeft: 3}).toString()
+  const className3 = glamor
+    .css({paddingBottom: 3, paddingLeft: 3})
+    .toString()
   const styles4 = {paddingLeft: 4}
   const Comp = glamorous.div(
     className1,
@@ -414,6 +416,13 @@ test('can accept classNames instead of style objects', () => {
     'extra-thing',
   )
   expect(render(<Comp />)).toMatchSnapshotWithGlamor()
+})
+
+test('can accept functions which return string class names', () => {
+  const styles1 = {paddingRight: 2, paddingBottom: 2}
+  const styles2 = props => (props.active ? 'is-active' : '')
+  const Comp = glamorous.div(styles1, styles2, 'extra-thing')
+  expect(render(<Comp active />)).toMatchSnapshotWithGlamor()
 })
 
 test('should accept user defined contextTypes', () => {
