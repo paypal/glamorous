@@ -22,12 +22,12 @@ export interface GlamorousOptions {
   forwardProps: String[]
 }
 
+export type Component<T> = React.ComponentClass<T> | React.StatelessComponent<T>
+
 export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
   <P>(
-    component:
-      | React.ComponentClass<P>
-      | React.StatelessComponent<P>,
-    options?: GlamorousOptions
+    component:Component<P>,
+    options?: GlamorousOptions,
   ): StyledFunction<P, CSSProperties | React.SVGAttributes<any>>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
@@ -40,11 +40,15 @@ interface ThemeProps {
 
 export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
+
+export declare function withTheme<P>(component: Component<P & ThemeProps>): GlamorousComponent<P>
+
+
 export declare function withTheme
   <P>(
     component:
       | React.ComponentClass<P>
-      | React.StatelessComponent<P>): GlamorousComponent<P>;
+      | React.StatelessComponent<P>): GlamorousComponent<P>
 
 declare const glamorous: GlamorousInterface
 
