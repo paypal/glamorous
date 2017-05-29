@@ -1,5 +1,5 @@
 import * as React from "react";
-import glamorous, { ThemeProvider } from "../";
+import glamorous, { withTheme, ThemeProvider } from "../";
 
 // Needed if generating definition files
 // https://github.com/Microsoft/TypeScript/issues/5938
@@ -115,6 +115,8 @@ class ClassToWrap extends React.Component<object, object> {
     return <div />
   }
 }
+
+const ThemedClass = withTheme(ClassToWrap)
 
 const WrappedClass = glamorous(ClassToWrap)({})
 
