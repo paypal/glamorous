@@ -17,7 +17,6 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 [![All Contributors](https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
-[![Donate][donate-badge]][donate]
 [![Code of Conduct][coc-badge]][coc]
 [![Roadmap][roadmap-badge]][roadmap]
 [![Examples][examples-badge]][examples]
@@ -1062,8 +1061,6 @@ MIT
 [license]: https://github.com/paypal/glamorous/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
-[donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
-[donate]: http://kcd.im/donate
 [chat]: https://gitter.im/paypal/glamorous
 [chat-badge]: https://img.shields.io/gitter/room/paypal/glamorous.svg?style=flat-square
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
