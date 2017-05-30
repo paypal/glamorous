@@ -51,7 +51,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
-    "codecov": "^2.2.0",
     "commitizen": "^2",
     "common-tags": "^1.4.0",
     "cz-conventional-changelog": "^2.0.0",

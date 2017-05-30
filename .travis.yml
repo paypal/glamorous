@@ -10,7 +10,8 @@ node_js:
 script:
   - yarn start validate
 after_success:
-  - yarn start report-coverage
+  - yarn global add codecov
+  - codecov
   - yarn start release
   - yarn start validate.examples
 branches:
