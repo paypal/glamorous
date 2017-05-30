@@ -12,9 +12,8 @@ script:
 after_success:
   - yarn global add codecov semantic-release
   - codecov
-  - yarn start release
-  - yarn start validate.examples
   - semantic-release pre && npm publish && semantic-release post
+  - yarn start validate.examples
 branches:
   only:
     - master
