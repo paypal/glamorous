@@ -10,10 +10,11 @@ node_js:
 script:
   - yarn start validate
 after_success:
-  - yarn global add codecov
+  - yarn global add codecov semantic-release
   - codecov
   - yarn start release
   - yarn start validate.examples
+  - semantic-release pre && npm publish && semantic-release post
 branches:
   only:
     - master

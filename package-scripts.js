@@ -71,14 +71,6 @@ module.exports = {
       description: 'lint the entire project',
       script: 'eslint .',
     },
-    release: {
-      description: 'We automate releases with semantic-release. This should only be run on travis',
-      script: series(
-        'semantic-release pre',
-        'npm publish',
-        'semantic-release post'
-      ),
-    },
     examples: {
       withJest: {
         description: 'This jumpstarts and validates the with-jest example.',
