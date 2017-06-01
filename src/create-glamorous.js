@@ -149,6 +149,13 @@ function createGlamorous(splitProps) {
         },
       })
 
+      function withComponent(newComp, options) {
+        return glamorous(newComp, {
+          ...options,
+          forwardProps: GlamorousComponent.forwardProps,
+        })(GlamorousComponent.styles)
+      }
+
       Object.assign(
         GlamorousComponent,
         getGlamorousComponentMetadata({
@@ -158,6 +165,7 @@ function createGlamorous(splitProps) {
           forwardProps,
           displayName,
         }),
+        {withComponent},
       )
       return GlamorousComponent
     }
