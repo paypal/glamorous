@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withComponent composes the component with styles 1`] = `
+exports[`withComponent composes the component with provided styles 1`] = `
 .css-5qt57y,
 [data-css-5qt57y] {
   color: red;
