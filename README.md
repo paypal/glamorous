@@ -41,6 +41,7 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 - [Terms and concepts](#terms-and-concepts)
   - [glamorous](#glamorous)
   - [glamorous API](#glamorous-api)
+  - [withComponent](#withcomponent)
   - [Theming](#theming)
   - [Config](#config)
   - [Context](#context)
@@ -604,6 +605,32 @@ const MyStyledComponent = glamorous(MyComponent, {
 // is a `div` and that's not a valid prop for a `div`, but it will be used in
 // the styles object function that determines the `fontSize`. Finally `id` will
 // be forwarded to `MyComponent` because it is a valid prop for a `div`.
+```
+
+### withComponent
+
+In some cases you might want to just copy the styles of an already created glamorous component with a different tag altogether, `withComponent` function comes in handy then. For example:
+
+```jsx
+const Button = glamorous.button({
+  display: 'inline-block',
+  color: 'red',
+  fontSize: '16px',
+  margin: '16px',
+  padding: '8px 16px',
+  border: '1px solid red',
+  borderRadius: '4px',
+});
+
+// We're replacing the <button> tag with an <a> tag, but reuse all the same styles
+const Link = Button.withComponent('a')
+
+<Button>Normal Button</Button>
+<Link>Normal Link</Link>
+// this will render:
+// <button>Normal Button</button>
+// <a>Normal Link</a>
+// both with the same styles
 ```
 
 ### Theming
