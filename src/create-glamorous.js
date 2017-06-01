@@ -149,13 +149,11 @@ function createGlamorous(splitProps) {
         },
       })
 
-      function withComponent(newComp) {
-        return Object.assign(GlamorousComponent, {
-          comp: newComp,
-          rootEl: newComp.comp ? newComp.comp : newComp,
-          displayName: `glamorous(${getDisplayName(newComp)})`,
+      function withComponent(newComp, options) {
+        return glamorous(newComp, {
+          ...options,
           forwardProps: GlamorousComponent.forwardProps,
-        })
+        })(GlamorousComponent.styles)
       }
 
       Object.assign(
