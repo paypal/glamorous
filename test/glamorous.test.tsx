@@ -12,34 +12,38 @@ const Static = glamorous.div({
 });
 
 // dynamic styles
-const Title = glamorous.h1(
+const Title = glamorous.h1<{ color: string }>(
   {
     "fontSize": "10px",
     "zIndex": "auto",
   },
-  (props: { color: string; }) => ({
+  (props) => ({
     "color": props.color,
   }),
 );
 
+const UseTitle = () => (
+  <Title color="red" />
+)
+
 // theme styles
-const Divider = glamorous.span(
+const Divider = glamorous.span<{}, { main: { color: string; } }>(
   {
     "fontSize": "10px",
     "zIndex": "auto"
   },
-  (props, theme: { main: { color: string; } }) => ({
-    "color": theme.main.color,
+  (props, theme) => ({
+    "color": theme && theme.main.color,
   }),
 );
 
 // n-number of styles
-const SpanDivider = glamorous.span(
+const SpanDivider = glamorous.span<{}, { awesome: string, main: string }>(
   {
     "fontSize": "10px",
   },
-  (props, theme: { awesome: { color: string } }) => ({
-    "color": theme.awesome.color,
+  (props, theme) => ({
+    "color": theme && theme.awesome,
   }),
   {
     "fontWeight": 500,
@@ -48,8 +52,8 @@ const SpanDivider = glamorous.span(
     "fontFamily": "Roboto",
     "fontWeight": 500,
   },
-  (props, theme: { main: { color: string; } }) => ({
-    "color": theme.main.color,
+  (props, theme) => ({
+    "color": theme && theme.main,
   }),
 );
 
@@ -116,8 +120,6 @@ class ClassToWrap extends React.Component<object, object> {
   }
 }
 
-const ThemedClass = withTheme(ClassToWrap)
-
 const WrappedClass = glamorous(ClassToWrap)({})
 
 // React Stateless Wrapped Component
@@ -130,3 +132,47 @@ const WrappedStateless = glamorous(StatelessToWrap)({})
 
 // Exported Component (for testing declaration generation)
 export const ExportTest = glamorous.div({})
+
+// Theme Provider
+
+interface ExampleTheme {
+  color: string
+}
+
+const exampleTheme: ExampleTheme = {
+  color: "red",
+}
+
+const ThemedComponent = glamorous.h1<
+  {},
+  ExampleTheme
+>({
+  fontSize: '10px'
+}, (props, theme) => ({
+  color: theme ? theme.color : 'blue'
+}))
+
+export const ThemeProviderAndThemedComponent = () => (
+  <ThemeProvider theme={exampleTheme}>
+    <ThemedComponent />
+  </ThemeProvider>
+);
+
+// Extended component with theme prop
+
+interface ExampleTheme {
+  color: string
+}
+
+const ComponentWithTheme: React.SFC<{
+  theme: ExampleTheme
+  title: string
+}> = ({title, theme: {color}}) => (
+  <h3 style={{color}}>{title}</h3>
+)
+
+const NonGlamorousThemedComponent = withTheme<ExampleTheme>(ComponentWithTheme)
+
+const UseNonGlamorousThemedComponent = (
+  <NonGlamorousThemedComponent color={'red'} />
+)
