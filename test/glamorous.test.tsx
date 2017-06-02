@@ -12,7 +12,7 @@ const Static = glamorous.div({
 });
 
 // dynamic styles
-const Title = glamorous.h1<{ color: string }, {}>(
+const Title = glamorous.h1<{ color: string }>(
   {
     "fontSize": "10px",
     "zIndex": "auto",
