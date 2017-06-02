@@ -21,12 +21,12 @@ export type StaticStyles<Properties> = Partial<Properties>
  *
  * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
  */
-export type DynamicStyledFunction<Properties, CustomProps> = (
+export type DynamicStyledFunction<Properties, CustomProps, ThemeProps> = (
   props: CustomProps,
-  theme?: object
+  theme?: ThemeProps
 ) => Partial<Properties>
 
-type Styles<Properties, CustomProps> = Array<DynamicStyledFunction<Properties, CustomProps> | StaticStyles<Properties>>
+type Styles<Properties, CustomProps, ThemeProps> = Array<DynamicStyledFunction<Properties, CustomProps, ThemeProps> | StaticStyles<Properties>>
 
 // TODO: Using a union for a parameter kills autocomplete so we
 // use overloading to give autocomplete on the first two styles
@@ -53,120 +53,120 @@ export interface ExtraGlamorousProps {
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
+  <CustomProps, ThemeProps = {}>(
     style1: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>;
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
+  <CustomProps, ThemeProps = {}>(
     style1: StaticStyles<Properties>,
     style2: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
+  <CustomProps, ThemeProps = {}>(
     style1: StaticStyles<Properties>,
-    style2: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
+    style2: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
+  <CustomProps, ThemeProps = {}>(
     style1: StaticStyles<Properties>,
-    style2: DynamicStyledFunction<Properties, CustomProps>,
+    style2: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
     style3: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
+  <CustomProps, ThemeProps = {}>(
     style1: StaticStyles<Properties>,
-    style2: DynamicStyledFunction<Properties, CustomProps>,
-    style3: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
+    style2: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style3: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: StaticStyles<Properties>,
-    style2: StaticStyles<Properties>,
-    style3: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps>
-}
-
-export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
+  <CustomProps, ThemeProps = {}>(
     style1: StaticStyles<Properties>,
     style2: StaticStyles<Properties>,
-    style3: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
+    style3: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps>
-}
-
-export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
-    style2: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps>
-}
-
-export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
-    style2: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps>
-}
-
-export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
-    style2: StaticStyles<Properties>,
-    style3: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
-  ): GlamorousComponent<Props & CustomProps>
-}
-
-export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
+  <CustomProps, ThemeProps = {}>(
+    style1: StaticStyles<Properties>,
     style2: StaticStyles<Properties>,
     style3: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
-    style2: DynamicStyledFunction<Properties, CustomProps>,
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
+  ): GlamorousComponent<Props & CustomProps>
+}
+
+export interface StyledFunction<Props, Properties> {
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style2: StaticStyles<Properties>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
+  ): GlamorousComponent<Props & CustomProps>
+}
+
+export interface StyledFunction<Props, Properties> {
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style2: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
+  ): GlamorousComponent<Props & CustomProps>
+}
+
+export interface StyledFunction<Props, Properties> {
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style2: StaticStyles<Properties>,
+    style3: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
+  ): GlamorousComponent<Props & CustomProps>
+}
+
+export interface StyledFunction<Props, Properties> {
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style2: StaticStyles<Properties>,
     style3: StaticStyles<Properties>,
-    ...styles: Styles<Properties, CustomProps>
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
 export interface StyledFunction<Props, Properties> {
-  <CustomProps>(
-    style1: DynamicStyledFunction<Properties, CustomProps>,
-    style2: DynamicStyledFunction<Properties, CustomProps>,
-    style3: DynamicStyledFunction<Properties, CustomProps>,
-    ...styles: Styles<Properties, CustomProps>
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style2: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style3: StaticStyles<Properties>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
+  ): GlamorousComponent<Props & CustomProps>
+}
+
+export interface StyledFunction<Props, Properties> {
+  <CustomProps, ThemeProps = {}>(
+    style1: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style2: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    style3: DynamicStyledFunction<Properties, CustomProps, ThemeProps>,
+    ...styles: Styles<Properties, CustomProps, ThemeProps>
   ): GlamorousComponent<Props & CustomProps>
 }
 
