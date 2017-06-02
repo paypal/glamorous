@@ -47,15 +47,11 @@ interface ThemeProps {
 
 export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
-
-export declare function withTheme<P>(component: Component<P & ThemeProps>): GlamorousComponent<P>
-
-
-export declare function withTheme
-  <P>(
-    component:
-      | React.ComponentClass<P>
-      | React.StatelessComponent<P>): GlamorousComponent<P>
+export function withTheme<Theme>(component: Component<{ theme: Theme }>): GlamorousComponent<Theme>
+export function withTheme<Theme>(component: 
+  | React.ComponentClass<{ theme: Theme }>
+  | React.StatelessComponent<{ theme: Theme }>
+): GlamorousComponent<Theme>
 
 declare const glamorous: GlamorousInterface
 
