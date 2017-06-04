@@ -1,4 +1,3 @@
-/* eslint import/no-mutable-exports:0, import/prefer-default-export:0 */
 import React from 'react'
 
 let PropTypes
@@ -17,3 +16,10 @@ if (React.version.slice(0, 4) === '15.5') {
 PropTypes = PropTypes || React.PropTypes
 
 export {PropTypes}
+
+/*
+eslint
+  import/no-mutable-exports:0,
+  import/prefer-default-export:0,
+  react/no-deprecated:0
+ */
