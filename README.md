@@ -39,7 +39,7 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
   - [Typescript](#typescript)
 - [Video Intro :tv:](#video-intro-tv)
 - [Terms and concepts](#terms-and-concepts)
-  - [glamorous](#glamorous)
+  - [glamorous](#glamorous-1)
   - [glamorous API](#glamorous-api)
   - [Theming](#theming)
   - [Config](#config)
