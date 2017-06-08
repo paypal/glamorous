@@ -608,7 +608,9 @@ const MyStyledComponent = glamorous(MyComponent, {
 
 #### withComponent
 
-In some cases you might want to just copy the styles of an already created glamorous component with a different tag altogether, `withComponent` function comes in handy then. For example:
+In some cases you might want to just copy the styles of an already created
+glamorous component with a different tag altogether, `withComponent` function
+comes in handy then. For example:
 
 ```jsx
 const Button = glamorous.button({
@@ -631,6 +633,9 @@ const Link = Button.withComponent('a')
 // <a>Normal Link</a>
 // both with the same styles
 ```
+
+> Note: to override styles, you can do the same thing you do with a regular
+> component (`css` prop, wrap it in `glamorous()`, or regular `className` prop).
 
 ### Theming
 
