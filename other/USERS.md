@@ -10,3 +10,6 @@ we may have a website to showcase these (wanna build it!?)
 - [Resto 'N Go](http://restongo.com/en/) uses it in it's food-order app integrated on every restaurant Websites
 - [Starhack.it](http://www.starhack.it): A full stack starter kit.
 - [Uniteam.pl](http://uniteam.pl): Wherever we use react.
+- [The West Australian](https://thewest.com.au) is
+  * undergoing a feature by feature migration from sass to glamorous
+  * and uses it on our internal component library to support theming for unreleased products.
