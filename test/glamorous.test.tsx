@@ -5,6 +5,9 @@ import glamorous, { withTheme, ThemeProvider } from "../";
 // https://github.com/Microsoft/TypeScript/issues/5938
 import { ExtraGlamorousProps } from "../";
 
+// Glamorous config
+glamorous.config.useDisplayNameInClassName = true
+
 // static styles
 const Static = glamorous.div({
   "fontSize": 20,

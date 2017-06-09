@@ -6,6 +6,10 @@ Pull requests to improve them are welcome and appreciated. If you've never contr
 
 ## Complete support
 
+### Config
+
+- [x] useDisplayNameInClassName
+
 ### Dynamic styles
 
 To use dynamic styles with custom props use generics. Example:
