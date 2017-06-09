@@ -41,12 +41,12 @@
     "react": ">=14"
   },
   "devDependencies": {
-    "@types/react": "^15.0.26",
+    "@types/react": "^15.0.27",
     "all-contributors-cli": "^4.3.0",
     "babel-cli": "^6.24.1",
     "babel-jest": "^20.0.3",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.5.1",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
@@ -66,7 +66,7 @@
     "nps": "^5.3.1",
     "nps-utils": "^1.1.2",
     "opt-cli": "^1.5.1",
-    "prettier-eslint-cli": "^4.0.2",
+    "prettier-eslint-cli": "^4.1.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
@@ -80,10 +80,10 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-uglify": "^2.0.1",
-    "tslint": "^5.4.2",
+    "tslint": "^5.4.3",
     "tslint-microsoft-contrib": "^5.0.0",
     "typescript": "^2.3.4",
-    "validate-commit-msg": "^2.12.1"
+    "validate-commit-msg": "^2.12.2"
   },
   "eslintConfig": {
     "extends": [

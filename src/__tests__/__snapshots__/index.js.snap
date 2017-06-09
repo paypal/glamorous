@@ -57,7 +57,7 @@ exports[`can be configured to use the displayName in the className 1`] = `
 />
 `;
 
-exports[`can use pre-glamorous components with css attributes 1`] = `
+exports[`can use pre-built glamorous components with css attributes 1`] = `
 .css-1t62idy,
 [data-css-1t62idy] {
   -webkit-flex-direction: column;
@@ -79,7 +79,7 @@ exports[`can use pre-glamorous components with css attributes 1`] = `
 />
 `;
 
-exports[`can use pre-glamorous components with css prop 1`] = `
+exports[`can use pre-built glamorous components with css prop 1`] = `
 .css-1n96jtr,
 [data-css-1n96jtr] {
   -webkit-flex-direction: column;
@@ -99,6 +99,52 @@ exports[`can use pre-glamorous components with css prop 1`] = `
   class="is added to classes css-1n96jtr"
   href="/is-forwarded"
   id="is-forwarded"
+/>
+`;
+
+exports[`css prop with a className 1`] = `
+.css-1ezp9xe,
+[data-css-1ezp9xe] {
+  color: red;
+}
+
+<section
+  class="css-nil css-1ezp9xe abc-123"
+/>
+`;
+
+exports[`css prop with a function 1`] = `
+.css-1xnhj1e,
+[data-css-1xnhj1e] {
+  padding: 20px;
+}
+
+<section
+  class="css-1xnhj1e"
+/>
+`;
+
+exports[`css prop with an array 1`] = `
+.css-10ql5rd,
+[data-css-10ql5rd] {
+  margin-top: 1px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+}
+
+<section
+  class="css-10ql5rd"
+/>
+`;
+
+exports[`css prop with an object 1`] = `
+.css-1dmiui7,
+[data-css-1dmiui7] {
+  font-size: 12px;
+}
+
+<section
+  class="css-1dmiui7"
 />
 `;
 

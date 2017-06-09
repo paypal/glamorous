@@ -25,7 +25,7 @@ test('sanity test', () => {
   expect(render(<Div />)).toMatchSnapshotWithGlamor()
 })
 
-test('can use pre-glamorous components with css attributes', () => {
+test('can use pre-built glamorous components with css attributes', () => {
   expect(
     render(
       <glamorous.A
@@ -39,7 +39,7 @@ test('can use pre-glamorous components with css attributes', () => {
   ).toMatchSnapshotWithGlamor()
 })
 
-test('can use pre-glamorous components with css prop', () => {
+test('can use pre-built glamorous components with css prop', () => {
   const computed = 'background'
   expect(
     render(
@@ -55,6 +55,41 @@ test('can use pre-glamorous components with css prop', () => {
       />,
     ),
   ).toMatchSnapshotWithGlamor()
+})
+
+test('the css prop accepts "GlamorousStyles"', () => {
+  const object = {fontSize: 12}
+  expect(render(<glamorous.Section css={object} />)).toMatchSnapshotWithGlamor(
+    'css prop with an object',
+  )
+
+  const array = [
+    {marginTop: 1, marginRight: 1},
+    {marginRight: 2, marginBottom: 2},
+  ]
+  expect(render(<glamorous.Section css={array} />)).toMatchSnapshotWithGlamor(
+    'css prop with an array',
+  )
+
+  // this one's weird, but could enable some Ahead of Time
+  // compilation in the future
+  const className = `${glamor.css({color: 'red'})} abc-123`
+  expect(
+    render(<glamorous.Section css={className} />),
+  ).toMatchSnapshotWithGlamor('css prop with a className')
+
+  const fn = jest.fn(() => ({padding: 20}))
+  const props = {css: fn, otherThing: 43, theme: {color: 'red'}}
+  expect(render(<glamorous.Section {...props} />)).toMatchSnapshotWithGlamor(
+    'css prop with a function',
+  )
+  expect(fn).toHaveBeenCalledTimes(1)
+  const context = {__glamorous__: undefined}
+  expect(fn).toHaveBeenCalledWith(
+    expect.objectContaining(props),
+    expect.objectContaining(props.theme),
+    expect.objectContaining(context),
+  )
 })
 
 test('merges composed component styles for reasonable overrides', () => {
@@ -404,9 +439,7 @@ test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
   const styles2 = {paddingRight: 2, paddingBottom: 2}
-  const className3 = glamor
-    .css({paddingBottom: 3, paddingLeft: 3})
-    .toString()
+  const className3 = glamor.css({paddingBottom: 3, paddingLeft: 3}).toString()
   const styles4 = {paddingLeft: 4}
   const Comp = glamorous.div(
     className1,

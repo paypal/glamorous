@@ -467,8 +467,10 @@ const myCustomGlamorStyles = glamor.css({fontSize: 2})
 
 ##### using `css`
 
-This is an object and if provided, it will be merged with this component's and
-take highest priority over the component's predefined styles.
+This can be the same type as any of the styles provided
+(as in `glamorous.div(...styles)`). If specified, it will be merged with this
+component's styles and take highest priority over the component's predefined
+styles.
 
 ```jsx
 const myCustomGlamorStyles = glamor.css({fontSize: 2, padding: 2})

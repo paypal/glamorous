@@ -26,6 +26,31 @@ function extractGlamorStyles(className = '') {
 export default getGlamorClassName
 
 function getGlamorClassName(styles, props, cssOverrides, theme, context) {
+  const {mappedArgs, nonGlamorClassNames} = handleStyles(
+    styles,
+    props,
+    theme,
+    context,
+  )
+  const {
+    mappedArgs: cssOverridesArgs,
+    nonGlamorClassNames: cssOverridesClassNames,
+  } = handleStyles([cssOverrides], props, theme, context)
+  const {
+    glamorStyles: parentGlamorStyles,
+    glamorlessClassName,
+  } = extractGlamorStyles(props.className)
+
+  const glamorClassName = css(
+    ...mappedArgs,
+    ...parentGlamorStyles,
+    ...cssOverridesArgs,
+  ).toString()
+  const extras = nonGlamorClassNames.concat(cssOverridesClassNames).join(' ')
+  return `${glamorlessClassName} ${glamorClassName} ${extras}`.trim()
+}
+
+function handleStyles(styles, props, theme, context) {
   let current
   const mappedArgs = []
   const nonGlamorClassNames = []
@@ -44,17 +69,7 @@ function getGlamorClassName(styles, props, cssOverrides, theme, context) {
       mappedArgs.push(current)
     }
   }
-  const {
-    glamorStyles: parentGlamorStyles,
-    glamorlessClassName,
-  } = extractGlamorStyles(props.className)
-  const glamorClassName = css(
-    ...mappedArgs,
-    ...parentGlamorStyles,
-    cssOverrides,
-  ).toString()
-  const extras = nonGlamorClassNames.join(' ')
-  return `${glamorlessClassName} ${glamorClassName} ${extras}`.trim()
+  return {mappedArgs, nonGlamorClassNames}
 }
 
 function processStringClass(str, mappedArgs, nonGlamorClassNames) {
