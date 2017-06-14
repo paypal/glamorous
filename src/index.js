@@ -1,8 +1,12 @@
+import * as glamor from 'glamor'
 import domElements from './dom-elements'
 import withTheme from './with-theme'
 import ThemeProvider from './theme-provider'
 import createGlamorous from './create-glamorous'
 import splitProps from './split-props'
+import nestedClassNamePlugin from './glamor-plugin-nested-class-name'
+
+glamor.plugins.add(nestedClassNamePlugin)
 
 const glamorous = createGlamorous(splitProps)
 
