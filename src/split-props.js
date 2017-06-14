@@ -2,7 +2,7 @@ import shouldForwardProperty from './should-forward-property'
 
 export default function splitProps(
   {
-    css: cssOverrides = {},
+    css: cssProp,
     // these are plucked off
     theme, // because they
     className, // should never
@@ -13,7 +13,7 @@ export default function splitProps(
   },
   {propsAreCssOverrides, rootEl, forwardProps},
 ) {
-  const returnValue = {toForward: {}, cssOverrides}
+  const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     if (typeof rootEl !== 'string') {
       // if it's not a string, then we can forward everything

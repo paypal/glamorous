@@ -80,23 +80,23 @@ exports[`can use pre-built glamorous components with css attributes 1`] = `
 `;
 
 exports[`can use pre-built glamorous components with css prop 1`] = `
-.css-1n96jtr,
-[data-css-1n96jtr] {
+.css-1d3tm0b,
+[data-css-1d3tm0b] {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  background: blue;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  background: blue;
 }
 
 <a
-  class="css-1n96jtr is added to classes"
+  class="css-1d3tm0b is added to classes"
   href="/is-forwarded"
   id="is-forwarded"
 />
@@ -114,13 +114,15 @@ exports[`css prop with a className 1`] = `
 `;
 
 exports[`css prop with a function 1`] = `
-.css-1xnhj1e,
-[data-css-1xnhj1e] {
+.css-1ps4aij,
+[data-css-1ps4aij] {
+  font-size: 10px;
   padding: 20px;
+  margin: 30px;
 }
 
 <section
-  class="css-1xnhj1e"
+  class="css-1ps4aij"
 />
 `;
 

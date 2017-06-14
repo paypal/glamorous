@@ -2,7 +2,7 @@
 import createGlamorous from './create-glamorous'
 
 function splitProps({
-  css: cssOverrides = {},
+  css: cssProp,
   // these are plucked off
   theme, // because they
   className, // should never
@@ -11,7 +11,7 @@ function splitProps({
   // component ever
   ...rest
 }) {
-  return {toForward: rest, cssOverrides}
+  return {toForward: rest, cssProp}
 }
 
 const glamorous = createGlamorous(splitProps)
