@@ -7,5 +7,20 @@ git clone https://github.com/paypal/glamorous.git
 cd glamorous/examples/with-jest
 npm install
 npm run test
-``` 
+```
 
+### Jest tests
+
+#### Snapshot
+
+Relative to [Jest documentation][jest-snapshot-documentation], you don't need to create snapshot manually.
+
+#### Create react app
+
+Using [Create react app][cra-repository], you won't be able to set `setupTestFrameworkScriptFile` configuration for Jest.
+
+See [how to][cra-test-environment] use `testSetup.js` file in the CRA test environment.
+
+[cra-repository]: https://github.com/facebookincubator/create-react-app
+[cra-test-environment]: https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#initializing-test-environment
+[jest-snapshot-documentation]: https://facebook.github.io/jest/docs/en/snapshot-testing.html
