@@ -25,29 +25,20 @@ function extractGlamorStyles(className = '') {
 
 export default getGlamorClassName
 
-function getGlamorClassName(styles, props, cssOverrides, theme, context) {
-  const {mappedArgs, nonGlamorClassNames} = handleStyles(
-    styles,
-    props,
-    theme,
-    context,
-  )
-  const {
-    mappedArgs: cssOverridesArgs,
-    nonGlamorClassNames: cssOverridesClassNames,
-  } = handleStyles([cssOverrides], props, theme, context)
+function getGlamorClassName({styles, props, cssOverrides, theme, context}) {
   const {
     glamorStyles: parentGlamorStyles,
     glamorlessClassName,
   } = extractGlamorStyles(props.className)
-
-  const glamorClassName = css(
-    ...mappedArgs,
-    ...parentGlamorStyles,
-    ...cssOverridesArgs,
-  ).toString()
-  const extras = nonGlamorClassNames.concat(cssOverridesClassNames).join(' ')
-  return `${glamorlessClassName} ${glamorClassName} ${extras}`.trim()
+  const {mappedArgs, nonGlamorClassNames} = handleStyles(
+    [...styles, parentGlamorStyles, cssOverrides],
+    props,
+    theme,
+    context,
+  )
+  const glamorClassName = css(...mappedArgs).toString()
+  const extras = [...nonGlamorClassNames, glamorlessClassName].join(' ').trim()
+  return `${glamorClassName} ${extras}`.trim()
 }
 
 function handleStyles(styles, props, theme, context) {

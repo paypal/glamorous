@@ -73,7 +73,7 @@ exports[`can use pre-built glamorous components with css attributes 1`] = `
 }
 
 <a
-  class="is added to classes css-1t62idy"
+  class="css-1t62idy is added to classes"
   href="/is-forwarded"
   id="is-forwarded"
 />
@@ -96,7 +96,7 @@ exports[`can use pre-built glamorous components with css prop 1`] = `
 }
 
 <a
-  class="is added to classes css-1n96jtr"
+  class="css-1n96jtr is added to classes"
   href="/is-forwarded"
   id="is-forwarded"
 />
@@ -180,7 +180,7 @@ exports[`merges composed component styles for reasonable overrides 1`] = `
 }
 
 <div
-  class="other classes are not removed css-1k8eh41"
+  class="css-1k8eh41 other classes are not removed"
 />
 `;
 

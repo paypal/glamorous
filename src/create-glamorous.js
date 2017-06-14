@@ -94,13 +94,13 @@ function createGlamorous(splitProps) {
             Object.freeze(this.state.theme)
 
           // create className to apply
-          const fullClassName = getGlamorClassName(
-            GlamorousComponent.styles,
+          const fullClassName = getGlamorClassName({
+            styles: GlamorousComponent.styles,
             props,
             cssOverrides,
             theme,
-            this.context,
-          )
+            context: this.context,
+          })
           const debugClassName = glamorous.config.useDisplayNameInClassName ?
             cleanClassname(GlamorousComponent.displayName) :
             ''
