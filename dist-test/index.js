@@ -129,7 +129,7 @@ function hasNamedExports(thing) {
   return keys.every(
     key =>
       typeof thing[key] === GlamorousComponents[key] &&
-      thing[key].name === 'GlamorousComponent',
+      thing[key].isGlamorousComponent,
   )
 }
 
