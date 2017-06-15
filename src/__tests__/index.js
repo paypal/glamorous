@@ -4,20 +4,17 @@ import * as glamor from 'glamor'
 import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
-import glamorous from '../'
+import glamorous, {ThemeProvider} from '../'
 import {PropTypes} from '../react-compat'
-
 import {CHANNEL} from '../constants'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
 
-const getMockedContext = unsubscribe => ({
-  [CHANNEL]: {
-    getState: () => {},
-    setState: () => {},
-    subscribe: () => unsubscribe,
-  },
+const nodeEnv = process.env.NODE_ENV
+
+afterEach(() => {
+  process.env.NODE_ENV = nodeEnv
 })
 
 test('sanity test', () => {
@@ -340,6 +337,7 @@ test('renders a component with theme properties', () => {
 
 test('in development mode the theme is frozen and cannot be changed', () => {
   expect.assertions(1)
+  process.env.NODE_ENV = 'development'
   const Comp = glamorous.div(
     {
       color: 'red',
@@ -386,22 +384,15 @@ test('passes an updated theme when theme prop changes', () => {
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
 })
 
-test('cleans up theme subscription when unmounts', () => {
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
+test('passes `theme` to the css prop if it is a function', () => {
   const Comp = glamorous.div()
-  const wrapper = mount(<Comp />, {context})
-  wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalled()
-})
-
-test('ignores context if a theme props is passed', () => {
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
-  const Comp = glamorous.div()
-  const wrapper = mount(<Comp theme={{}} />, {context})
-  wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalledTimes(0)
+  const css = jest.fn()
+  const props = {css}
+  const theme = {color: 'blue'}
+  mount(<ThemeProvider theme={theme}><Comp {...props} /></ThemeProvider>)
+  expect(css).toHaveBeenCalledTimes(1)
+  const context = expect.objectContaining({[CHANNEL]: expect.any(Object)})
+  expect(css).toHaveBeenCalledWith({...props, theme}, theme, context)
 })
 
 test('allows you to pass custom props that are allowed', () => {
@@ -431,7 +422,7 @@ test('allows you to pass custom props that are allowed', () => {
   )
 })
 
-test('should recieve inner ref if specified', () => {
+test('should receive inner ref if specified', () => {
   const getRef = jest.fn()
   const Comp = glamorous.div({
     marginLeft: '24px',
@@ -468,17 +459,13 @@ test('can accept functions which return string class names', () => {
 test('should accept user defined contextTypes', () => {
   const dynamicStyles = jest.fn()
   const Child = glamorous.div(dynamicStyles)
-  Child.contextTypes = {
-    fontSize: PropTypes.number,
-  }
+  Child.contextTypes = {fontSize: PropTypes.number}
 
-  const context = {
-    fontSize: 24,
-  }
+  const context = {fontSize: 24}
 
   render(<Child />, {context})
   expect(dynamicStyles).toHaveBeenCalledTimes(1)
   const theme = {}
-  const props = {}
+  const props = {theme}
   expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
 })

@@ -2,9 +2,9 @@
  * This is a relatively small abstraction that's ripe for open sourcing.
  * Documentation is in the README.md
  */
-import React, {Component} from 'react'
+import React from 'react'
 import {PropTypes} from './react-compat'
-import {CHANNEL} from './constants'
+import withTheme from './with-theme'
 import getGlamorClassName from './get-glamor-classname'
 
 export default createGlamorous
@@ -42,47 +42,10 @@ function createGlamorous(splitProps) {
        * This is a component which will render the comp (closure)
        * with the glamorous styles (closure). Forwards any valid
        * props to the underlying component.
-       * @param {Object} theme the theme object
-       * @return {ReactElement} React.createElement
        */
-      class GlamorousComponent extends Component {
-        state = {theme: null}
-        setTheme = theme => this.setState({theme})
-
-        componentWillMount() {
-          const {theme} = this.props
-          if (this.context[CHANNEL]) {
-            // if a theme is provided via props,
-            // it takes precedence over context
-            this.setTheme(theme ? theme : this.context[CHANNEL].getState())
-          } else {
-            this.setTheme(theme || {})
-          }
-        }
-
-        componentWillReceiveProps(nextProps) {
-          if (this.props.theme !== nextProps.theme) {
-            this.setTheme(nextProps.theme)
-          }
-        }
-
-        componentDidMount() {
-          if (this.context[CHANNEL] && !this.props.theme) {
-            // subscribe to future theme changes
-            this.unsubscribe = this.context[CHANNEL].subscribe(this.setTheme)
-          }
-        }
-
-        componentWillUnmount() {
-          // cleanup subscription
-          this.unsubscribe && this.unsubscribe()
-        }
-
-        render() {
-          // in this function, we're willing to sacrafice a little on
-          // readability to get better performance because it actually
-          // matters.
-          const props = this.props
+      const GlamorousComponent = withTheme(
+        (props, context) => {
+          /* eslint no-use-before-define: 0 */
           const {toForward, cssOverrides, cssProp} = splitProps(
             props,
             GlamorousComponent,
@@ -90,8 +53,8 @@ function createGlamorous(splitProps) {
 
           // freeze the theme object in dev mode
           const theme = process.env.NODE_ENV === 'production' ?
-            this.state.theme :
-            Object.freeze(this.state.theme)
+            props.theme :
+            Object.freeze(props.theme)
 
           // create className to apply
           const fullClassName = getGlamorClassName({
@@ -100,7 +63,7 @@ function createGlamorous(splitProps) {
             cssOverrides,
             cssProp,
             theme,
-            context: this.context,
+            context,
           })
           const debugClassName = glamorous.config.useDisplayNameInClassName ?
             cleanClassname(GlamorousComponent.displayName) :
@@ -112,8 +75,9 @@ function createGlamorous(splitProps) {
             ...toForward,
             className,
           })
-        }
-      }
+        },
+        {noWarn: true, createElement: false},
+      )
 
       GlamorousComponent.propTypes = {
         className: PropTypes.string,
@@ -122,33 +86,6 @@ function createGlamorous(splitProps) {
         innerRef: PropTypes.func,
         glam: PropTypes.object,
       }
-
-      const defaultContextTypes = {
-        [CHANNEL]: PropTypes.object,
-      }
-
-      let userDefinedContextTypes = null
-
-      // configure the contextTypes to be settable by the user,
-      // however also retaining the glamorous channel.
-      Object.defineProperty(GlamorousComponent, 'contextTypes', {
-        enumerable: true,
-        configurable: true,
-        set(value) {
-          userDefinedContextTypes = value
-        },
-        get() {
-          // if the user has provided a contextTypes definition,
-          // merge the default context types with the provided ones.
-          if (userDefinedContextTypes) {
-            return {
-              ...defaultContextTypes,
-              ...userDefinedContextTypes,
-            }
-          }
-          return defaultContextTypes
-        },
-      })
 
       function withComponent(newComp, options = {}) {
         return glamorous(newComp, {
@@ -166,7 +103,7 @@ function createGlamorous(splitProps) {
           forwardProps,
           displayName,
         }),
-        {withComponent},
+        {withComponent, isGlamorousComponent: true},
       )
       return GlamorousComponent
     }
