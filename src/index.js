@@ -1,3 +1,4 @@
+// @flow
 import domElements from './dom-elements'
 import withTheme from './with-theme'
 import ThemeProvider from './theme-provider'
