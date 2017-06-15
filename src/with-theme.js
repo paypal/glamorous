@@ -1,25 +1,54 @@
+// @flow
 import React, {Component} from 'react'
+import type {Element} from 'react' // eslint-disable-line no-duplicate-imports
+import type {UnsubscribeFunction} from 'brcast'
 
 import {CHANNEL} from './constants'
 import {PropTypes} from './react-compat'
+import type {Theme, ThemeProviderContext} from './theme-provider'
 
-function generateWarningMessage(Comp) {
+type FunctionalComponent = ({[key: string]: mixed}) => Element<*> | null;
+// eslint-disable-next-line no-undef
+type ComponentClassOrFunction = Class<Component<*, *, *>> | FunctionalComponent;
+
+function generateWarningMessage(Comp: ComponentClassOrFunction) {
   const componentName = Comp.displayName || Comp.name || 'FunctionComponent'
   // eslint-disable-next-line max-len
   return `glamorous warning: Expected component called "${componentName}" which uses withTheme to be within a ThemeProvider but none was found.`
 }
 
+type WithThemeOptions = {
+  noWarn?: boolean,
+  createElement?: boolean,
+}
+
 export default function withTheme(
-  ComponentToTheme,
-  {noWarn = false, createElement = true} = {},
+  ComponentToTheme: ComponentClassOrFunction,
+  {noWarn = false, createElement = true}: WithThemeOptions = {},
 ) {
+  type Props = {
+    theme: Theme,
+  }
+
   class ThemedComponent extends Component {
+    state: {theme: Theme}
+    // TODO: {[typeof CHANNEL]: void} is an object with the entry
+    // `[CHANNEL]: undefined`, but an empty object should be allowed here, too.
+    // Flow complains about the missing property if I type it as {}, though,
+    // even though an empty object should still return `undefined` when
+    // accessing the missing property.
+    context: ThemeProviderContext | {[typeof CHANNEL]: void}
+    unsubscribe: UnsubscribeFunction
+    warned: boolean
+    props: Props
+
     static propTypes = {
       theme: PropTypes.object,
     }
     warned = noWarn
+
     state = {theme: {}}
-    setTheme = theme => this.setState({theme})
+    setTheme = (theme: Theme) => this.setState({theme})
 
     // eslint-disable-next-line complexity
     componentWillMount() {
@@ -40,7 +69,7 @@ export default function withTheme(
       }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Props) {
       if (this.props.theme !== nextProps.theme) {
         this.setTheme(nextProps.theme)
       }
@@ -66,8 +95,10 @@ export default function withTheme(
         // as our `render` method without going through lifecycle hooks.
         // Also allows us to forward the context in the scenario where
         // a user wants to add more context.
-        // eslint-disable-next-line babel/new-cap
-        return ComponentToTheme({...this.props, ...this.state}, this.context)
+
+        // eslint-disable-next-line max-len
+        // $FlowFixMe: This may produce undesired behavior when ComponentToTheme is a class
+        return ComponentToTheme({...this.props, ...this.state}, this.context) //eslint-disable-line max-len,babel/new-cap
       }
     }
   }
@@ -80,6 +111,7 @@ export default function withTheme(
 
   // configure the contextTypes to be settable by the user,
   // however also retaining the glamorous channel.
+  // $FlowFixMe https://github.com/facebook/flow/issues/285
   Object.defineProperty(ThemedComponent, 'contextTypes', {
     enumerable: true,
     configurable: true,
