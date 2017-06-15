@@ -7,3 +7,4 @@
 [libs]
 
 [options]
+module.name_mapper='^types/\(.*\)$' -> '<PROJECT_ROOT>/types/\1.js'
