@@ -25,31 +25,32 @@ function extractGlamorStyles(className = '') {
 
 export default getGlamorClassName
 
-function getGlamorClassName(styles, props, cssOverrides, theme, context) {
-  const {mappedArgs, nonGlamorClassNames} = handleStyles(
-    styles,
-    props,
-    theme,
-    context,
-  )
-  const {
-    mappedArgs: cssOverridesArgs,
-    nonGlamorClassNames: cssOverridesClassNames,
-  } = handleStyles([cssOverrides], props, theme, context)
+function getGlamorClassName({
+  styles,
+  props,
+  cssOverrides,
+  cssProp,
+  theme,
+  context,
+}) {
   const {
     glamorStyles: parentGlamorStyles,
     glamorlessClassName,
   } = extractGlamorStyles(props.className)
-
-  const glamorClassName = css(
-    ...mappedArgs,
-    ...parentGlamorStyles,
-    ...cssOverridesArgs,
-  ).toString()
-  const extras = nonGlamorClassNames.concat(cssOverridesClassNames).join(' ')
-  return `${glamorlessClassName} ${glamorClassName} ${extras}`.trim()
+  const {mappedArgs, nonGlamorClassNames} = handleStyles(
+    [...styles, parentGlamorStyles, cssOverrides, cssProp],
+    props,
+    theme,
+    context,
+  )
+  const glamorClassName = css(...mappedArgs).toString()
+  const extras = [...nonGlamorClassNames, glamorlessClassName].join(' ').trim()
+  return `${glamorClassName} ${extras}`.trim()
 }
 
+// this next function is on a "hot" code-path
+// so it's pretty complex to make sure it's fast.
+// eslint-disable-next-line complexity
 function handleStyles(styles, props, theme, context) {
   let current
   const mappedArgs = []
@@ -65,6 +66,10 @@ function handleStyles(styles, props, theme, context) {
       }
     } else if (typeof current === 'string') {
       processStringClass(current, mappedArgs, nonGlamorClassNames)
+    } else if (Array.isArray(current)) {
+      const recursed = handleStyles(current, props, theme, context)
+      mappedArgs.push(...recursed.mappedArgs)
+      nonGlamorClassNames.push(...recursed.nonGlamorClassNames)
     } else {
       mappedArgs.push(current)
     }

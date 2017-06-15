@@ -78,14 +78,21 @@ test('the css prop accepts "GlamorousStyles"', () => {
     render(<glamorous.Section css={className} />),
   ).toMatchSnapshotWithGlamor('css prop with a className')
 
-  const fn = jest.fn(() => ({padding: 20}))
-  const props = {css: fn, otherThing: 43, theme: {color: 'red'}}
+  const fn1 = jest.fn(() => ({padding: 20}))
+  const fn2 = jest.fn(() => ({margin: 30}))
+  const props = {css: [fn1, fn2], fontSize: 10, theme: {color: 'red'}}
   expect(render(<glamorous.Section {...props} />)).toMatchSnapshotWithGlamor(
     'css prop with a function',
   )
-  expect(fn).toHaveBeenCalledTimes(1)
+  expect(fn1).toHaveBeenCalledTimes(1)
+  expect(fn2).toHaveBeenCalledTimes(1)
   const context = {__glamorous__: undefined}
-  expect(fn).toHaveBeenCalledWith(
+  expect(fn1).toHaveBeenCalledWith(
+    expect.objectContaining(props),
+    expect.objectContaining(props.theme),
+    expect.objectContaining(context),
+  )
+  expect(fn2).toHaveBeenCalledWith(
     expect.objectContaining(props),
     expect.objectContaining(props.theme),
     expect.objectContaining(context),

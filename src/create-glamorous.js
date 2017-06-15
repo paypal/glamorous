@@ -83,7 +83,7 @@ function createGlamorous(splitProps) {
           // readability to get better performance because it actually
           // matters.
           const props = this.props
-          const {toForward, cssOverrides} = splitProps(
+          const {toForward, cssOverrides, cssProp} = splitProps(
             props,
             GlamorousComponent,
           )
@@ -94,13 +94,14 @@ function createGlamorous(splitProps) {
             Object.freeze(this.state.theme)
 
           // create className to apply
-          const fullClassName = getGlamorClassName(
-            GlamorousComponent.styles,
+          const fullClassName = getGlamorClassName({
+            styles: GlamorousComponent.styles,
             props,
             cssOverrides,
+            cssProp,
             theme,
-            this.context,
-          )
+            context: this.context,
+          })
           const debugClassName = glamorous.config.useDisplayNameInClassName ?
             cleanClassname(GlamorousComponent.displayName) :
             ''
