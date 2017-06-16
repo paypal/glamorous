@@ -1,4 +1,29 @@
+// @flow
+import type {Component} from 'react'
 import shouldForwardProperty from './should-forward-property'
+import type {
+  FunctionalComponent,
+  ComponentClass,
+  RefCallback,
+} from './types/React'
+import type {CSSProperties} from './types/CSSProperties'
+import type {Theme} from './theme-provider'
+
+type Props = {
+  css: CSSProperties,
+  theme: Theme,
+  className: string,
+  // TODO: Use rootEl to give a more specific typing for this innerRef's
+  // instance type
+  innerRef: RefCallback<Component<*, *, *> | HTMLElement>,
+  glam: {[key: string]: mixed},
+};
+
+type SplitPropsOptions = {
+  propsAreCssOverrides: boolean,
+  rootEl: string | FunctionalComponent | ComponentClass,
+  forwardProps: Array<string>,
+};
 
 export default function splitProps(
   {
@@ -10,9 +35,13 @@ export default function splitProps(
     glam, // to the lower
     // component ever
     ...rest
-  },
-  {propsAreCssOverrides, rootEl, forwardProps},
-) {
+  }: Props,
+  {propsAreCssOverrides, rootEl, forwardProps}: SplitPropsOptions,
+): {
+  toForward: {[key: string]: any},
+  cssProp: CSSProperties,
+  cssOverrides: CSSProperties,
+} {
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     if (typeof rootEl !== 'string') {

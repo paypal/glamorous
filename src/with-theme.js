@@ -1,17 +1,13 @@
 // @flow
 import React, {Component} from 'react'
-import type {Element} from 'react' // eslint-disable-line no-duplicate-imports
 import type {UnsubscribeFunction} from 'brcast'
 
 import {CHANNEL} from './constants'
 import {PropTypes} from './react-compat'
 import type {Theme, ThemeProviderContext} from './theme-provider'
+import type {FunctionalComponent, ComponentClass} from './types/React'
 
-type FunctionalComponent = ({[key: string]: mixed}) => Element<*> | null;
-// eslint-disable-next-line no-undef
-type ComponentClassOrFunction = Class<Component<*, *, *>> | FunctionalComponent;
-
-function generateWarningMessage(Comp: ComponentClassOrFunction) {
+function generateWarningMessage(Comp: ComponentClass | FunctionalComponent) {
   const componentName = Comp.displayName || Comp.name || 'FunctionComponent'
   // eslint-disable-next-line max-len
   return `glamorous warning: Expected component called "${componentName}" which uses withTheme to be within a ThemeProvider but none was found.`
@@ -20,15 +16,15 @@ function generateWarningMessage(Comp: ComponentClassOrFunction) {
 type WithThemeOptions = {
   noWarn?: boolean,
   createElement?: boolean,
-}
+};
 
 export default function withTheme(
-  ComponentToTheme: ComponentClassOrFunction,
+  ComponentToTheme: ComponentClass | FunctionalComponent,
   {noWarn = false, createElement = true}: WithThemeOptions = {},
 ) {
   type Props = {
     theme: Theme,
-  }
+  };
 
   class ThemedComponent extends Component {
     state: {theme: Theme}
@@ -96,9 +92,10 @@ export default function withTheme(
         // Also allows us to forward the context in the scenario where
         // a user wants to add more context.
 
-        // eslint-disable-next-line max-len
-        // $FlowFixMe: This may produce undesired behavior when ComponentToTheme is a class
-        return ComponentToTheme({...this.props, ...this.state}, this.context) //eslint-disable-line max-len,babel/new-cap
+        /* eslint-disable max-len */
+        // $FlowFixMe: This may produce undesirable behavior when ComponentToTheme is a class instead of a function.
+        return ComponentToTheme({...this.props, ...this.state}, this.context) //eslint-disable-line babel/new-cap
+        /* eslint-enable max-len */
       }
     }
   }
