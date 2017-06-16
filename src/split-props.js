@@ -9,20 +9,26 @@ import type {
 import type {CSSProperties} from './types/CSSProperties'
 import type {Theme} from './theme-provider'
 
-type Props = {
+export type SplittableProps = {
   css: CSSProperties,
   theme: Theme,
   className: string,
   // TODO: Use rootEl to give a more specific typing for this innerRef's
   // instance type
   innerRef: RefCallback<Component<*, *, *> | HTMLElement>,
-  glam: {[key: string]: mixed},
+  glam: {[key: string]: any},
 };
 
 type SplitPropsOptions = {
   propsAreCssOverrides: boolean,
   rootEl: string | FunctionalComponent | ComponentClass,
   forwardProps: Array<string>,
+};
+
+type SplitPropsResult = {
+  toForward: {[key: string]: any},
+  cssProp: CSSProperties,
+  cssOverrides: CSSProperties,
 };
 
 export default function splitProps(
@@ -35,13 +41,9 @@ export default function splitProps(
     glam, // to the lower
     // component ever
     ...rest
-  }: Props,
+  }: SplittableProps,
   {propsAreCssOverrides, rootEl, forwardProps}: SplitPropsOptions,
-): {
-  toForward: {[key: string]: any},
-  cssProp: CSSProperties,
-  cssOverrides: CSSProperties,
-} {
+): SplitPropsResult {
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     if (typeof rootEl !== 'string') {

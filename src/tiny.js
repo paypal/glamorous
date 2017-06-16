@@ -1,5 +1,7 @@
+// @flow
 /* eslint no-unused-vars:0 */
 import createGlamorous from './create-glamorous'
+import type {SplittableProps} from './split-props'
 
 function splitProps({
   css: cssProp,
@@ -10,7 +12,7 @@ function splitProps({
   glam, // to the lower
   // component ever
   ...rest
-}) {
+}: SplittableProps) {
   return {toForward: rest, cssProp}
 }
 
