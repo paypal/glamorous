@@ -363,6 +363,16 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "acgrdumlu",
+      "name": "Aydın Çağrı Dumlu",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11290953?v=3",
+      "profile": "https://github.com/acgrdumlu",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ]
 }

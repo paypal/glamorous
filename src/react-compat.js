@@ -3,7 +3,7 @@ import React from 'react'
 let PropTypes
 
 /* istanbul ignore next */
-if (React.version.slice(0, 4) === '15.5') {
+if (parseFloat(React.version.slice(0, 4)) >= 15.5) {
   /* istanbul ignore next */
   try {
     PropTypes = require('prop-types')
