@@ -354,6 +354,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "laduke",
+      "name": "Travis LaDuke",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11598?v=3",
+      "profile": "http://-",
+      "contributions": [
+        "example"
+      ]
     }
   ]
 }

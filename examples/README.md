@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Examples](#examples)
+    - [Simple Example](#simple-example)
+  - [Dynamic + Static Styles](#dynamic--static-styles)
+  - [@supports + CSS Grid](#supports--css-grid)
+  - [Ampersands & CSS Combinators](#ampersands--css-combinators)
+  - [with Next.js](#with-nextjs)
+  - [with create-react-app](#with-create-react-app)
+  - [with ✨ polished](#with--polished)
+  - [Providing props to underlying components](#providing-props-to-underlying-components)
+  - [colour-contrast](#colour-contrast)
+- [Third party examples on codesandbox](#third-party-examples-on-codesandbox)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Examples
 
 ### [Simple Example](https://github.com/MicheleBertoli/css-in-js/blob/master/glamorous/button.js)
@@ -213,3 +231,5 @@ Fun stuff!
 # Third party examples on codesandbox
 
 * [Material Design Component Styles with Glamorous on codesandbox.io](https://codesandbox.io/s/L9or75AEg) : How to design lean and themeable react component with glamorous.
+
+* [React Transition Groups](https://codesandbox.io/s/0lKnOAP3) : An easy way to perform animations when a React component enters or leaves the DOM
