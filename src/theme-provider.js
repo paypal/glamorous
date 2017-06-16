@@ -20,6 +20,13 @@ type Props = {
   children: string | number | false | null | Array<Element<*>>,
 };
 
+// TODO: {[typeof CHANNEL]: void} is an object with the entry
+// `[CHANNEL]: undefined`, but an empty object should be allowed here, too.
+// Flow complains about the missing property if I type it as {}, though,
+// even though an empty object should still return `undefined` when
+// accessing the missing property.
+type Context = ThemeProviderContext | {[typeof CHANNEL]: void};
+
 /**
  * This is a component which will provide a theme to the entire tree
  * via context and event listener
@@ -32,6 +39,7 @@ class ThemeProvider extends Component {
   broadcast: Broadcast<Theme>
   outerTheme: Theme
   props: Props
+  context: Context
   unsubscribe: UnsubscribeFunction
 
   broadcast = brcast(this.props.theme)
