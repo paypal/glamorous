@@ -167,15 +167,29 @@ interface ExampleTheme {
   color: string
 }
 
-const ComponentWithTheme: React.SFC<{
-  theme: ExampleTheme
+interface ExternalProps {
   title: string
-}> = ({title, theme: {color}}) => (
-  <h3 style={{color}}>{title}</h3>
+}
+
+interface Props extends ExternalProps {
+  theme: ExampleTheme
+}
+
+const ComponentWithTheme: React.SFC<Props> = (props) => (
+  <h3 style={{
+    color: props.theme.color
+  }}>
+    {props.title}
+  </h3>
 )
 
-const NonGlamorousThemedComponent = withTheme<ExampleTheme>(ComponentWithTheme)
+const NonGlamorousThemedComponent = withTheme<
+  ExternalProps,
+  ExampleTheme
+>(ComponentWithTheme)
 
 const UseNonGlamorousThemedComponent = (
-  <NonGlamorousThemedComponent color={'red'} />
+  <NonGlamorousThemedComponent
+    title='test'
+  />
 )
