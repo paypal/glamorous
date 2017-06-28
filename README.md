@@ -52,6 +52,7 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 - [Inspiration](#inspiration)
 - [Other Solutions](#other-solutions)
 - [Support](#support)
+- [Got Questions?](#got-questions)
 - [Swag 👕](#swag-)
 - [Contributors](#contributors)
 - [LICENSE](#license)
@@ -1041,6 +1042,10 @@ unaware of any which supports _all_ of the features which this library supports.
 
 If you need help, please fork [this CodeSandbox][help-sandbox] and bring it up in
 [the chat][chat]
+
+## Got Questions?
+
+Check out the [FAQ](docs/FAQ.md).
 
 ## Swag 👕
 
