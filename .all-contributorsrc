@@ -382,6 +382,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "gt3240",
+      "name": "Tom Liu",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6845263?v=3",
+      "profile": "https://github.com/gt3240",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
