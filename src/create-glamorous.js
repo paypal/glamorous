@@ -43,7 +43,8 @@ function createGlamorous(splitProps) {
        * with the glamorous styles (closure). Forwards any valid
        * props to the underlying component.
        */
-      const GlamorousComponent = withTheme(
+      let GlamorousComponent // eslint-disable-line prefer-const
+      const ThemedComponentForGlamorous = withTheme(
         (props, context) => {
           /* eslint no-use-before-define: 0 */
           const {toForward, cssOverrides, cssProp} = splitProps(
@@ -78,13 +79,14 @@ function createGlamorous(splitProps) {
         },
         {noWarn: true, createElement: false},
       )
-
-      GlamorousComponent.propTypes = {
-        className: PropTypes.string,
-        cssOverrides: PropTypes.object,
-        theme: PropTypes.object,
-        innerRef: PropTypes.func,
-        glam: PropTypes.object,
+      GlamorousComponent = class extends ThemedComponentForGlamorous {
+        static propTypes = {
+          className: PropTypes.string,
+          cssOverrides: PropTypes.object,
+          theme: PropTypes.object,
+          innerRef: PropTypes.func,
+          glam: PropTypes.object,
+        }
       }
 
       function withComponent(newComp, options = {}) {
