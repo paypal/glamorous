@@ -50,6 +50,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
+    "bundlesize": "^0.5.7",
     "commitizen": "^2",
     "common-tags": "^1.4.0",
     "cz-conventional-changelog": "^2.0.0",
@@ -137,5 +138,19 @@
   "bugs": {
     "url": "https://github.com/paypal/glamorous/issues"
   },
-  "homepage": "https://github.com/paypal/glamorous#readme"
+  "homepage": "https://github.com/paypal/glamorous#readme",
+  "bundlesize": [
+    {
+      "path": "dist/glamorous.umd.tiny.min.js",
+      "threshold": "3kB"
+    },
+    {
+      "path": "dist/glamorous.es.tiny.js",
+      "threshold": "5kB"
+    },
+    {
+      "path": "dist/glamorous.cjs.tiny.js",
+      "threshold": "5kB"
+    }
+  ]
 }

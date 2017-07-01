@@ -17,7 +17,8 @@ module.exports = {
       },
     },
     commit: {
-      description: 'This uses commitizen to help us generate well formatted commit messages',
+      description:
+        'This uses commitizen to help us generate well formatted commit messages',
       script: 'git-cz',
     },
     test: {
@@ -26,6 +27,10 @@ module.exports = {
       build: {
         description: 'validates the built files',
         script: 'babel-node dist-test/index.js',
+      },
+      size: {
+        description: 'check the size of the bundle',
+        script: 'bundlesize',
       },
     },
     build: {
@@ -45,7 +50,8 @@ module.exports = {
       ),
       es: {
         description: 'run the build with rollup (uses rollup.config.js)',
-        script: 'rollup --config --environment FORMAT:es && node other/concat-exports.js',
+        script:
+          'rollup --config --environment FORMAT:es && node other/concat-exports.js',
         tiny: 'rollup --config --environment FORMAT:es,TINY',
       },
       cjs: {
@@ -57,7 +63,8 @@ module.exports = {
         min: {
           description: 'run the rollup build with sourcemaps',
           script: 'rollup --config --sourcemap --environment MINIFY,FORMAT:umd',
-          tiny: 'rollup --config --sourcemap --environment MINIFY,FORMAT:umd,TINY',
+          tiny:
+            'rollup --config --sourcemap --environment MINIFY,FORMAT:umd,TINY',
         },
         main: {
           description: 'builds the cjs and umd files',
@@ -65,7 +72,7 @@ module.exports = {
           tiny: 'rollup --config --sourcemap --environment FORMAT:umd,TINY',
         },
       },
-      andTest: series.nps('build', 'test.build'),
+      andTest: series.nps('build', 'test.build', 'test.size'),
     },
     lint: {
       description: 'lint the entire project',
@@ -83,7 +90,8 @@ module.exports = {
       },
     },
     validate: {
-      description: 'This runs several scripts to make sure things look good before committing or on clean install',
+      description:
+        'This runs several scripts to make sure things look good before committing or on clean install',
       default: concurrent.nps('lint', 'build.andTest', 'test'),
       examples: {
         description: 'Validates the examples folder',
