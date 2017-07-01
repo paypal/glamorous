@@ -19,17 +19,22 @@ export type SplittableProps = {
   glam: {[key: string]: any},
 };
 
-type SplitPropsOptions = {
+export type SplitPropsOptions = {
   propsAreCssOverrides: boolean,
   rootEl: string | FunctionalComponent | ComponentClass,
   forwardProps: Array<string>,
 };
 
-type SplitPropsResult = {
+type TinySplitPropsResult = {
   toForward: {[key: string]: any},
   cssProp: CSSProperties,
+};
+
+type NonTinySplitPropsResult = TinySplitPropsResult & {
   cssOverrides: CSSProperties,
 };
+
+export type SplitPropsResult = TinySplitPropsResult | NonTinySplitPropsResult;
 
 export default function splitProps(
   {
@@ -43,7 +48,7 @@ export default function splitProps(
     ...rest
   }: SplittableProps,
   {propsAreCssOverrides, rootEl, forwardProps}: SplitPropsOptions,
-): SplitPropsResult {
+): NonTinySplitPropsResult {
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     if (typeof rootEl !== 'string') {
