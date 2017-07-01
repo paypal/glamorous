@@ -1,19 +1,8 @@
 // @flow
 import {css, styleSheet} from 'glamor'
 import type {CSSProperties} from './types/CSSProperties'
+import type {Style} from './types/Style'
 import type {Theme} from './theme-provider'
-
-type ObjectMap = {[key: string]: any};
-type StyleFunction = (
-  ObjectMap, // props
-  Theme, // theme
-  ObjectMap, // context
-) => string | CSSProperties;
-
-type Styles = Array<
-  // TODO: Is null okay here?
-  StyleFunction | string | CSSProperties | Styles | null,
->;
 
 /**
  * This function takes a className string and gets all the
@@ -49,12 +38,12 @@ function getGlamorClassName({
   theme,
   context,
 }: {
-  styles: Styles,
-  props: ObjectMap,
+  styles: Array<Style>,
+  props: {[key: string]: any},
   cssOverrides: CSSProperties,
   cssProp: CSSProperties,
   theme: Theme,
-  context: ObjectMap,
+  context: ?{[key: string]: any},
 }) {
   const {
     glamorStyles: parentGlamorStyles,
@@ -75,10 +64,10 @@ function getGlamorClassName({
 // so it's pretty complex to make sure it's fast.
 // eslint-disable-next-line complexity
 function handleStyles(
-  styles: Styles,
-  props: ObjectMap,
+  styles: Array<Style>,
+  props: {[key: string]: any},
   theme: Theme,
-  context: ObjectMap,
+  context: ?{[key: string]: any},
 ) {
   let current
   const mappedArgs = []
