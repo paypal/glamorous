@@ -391,6 +391,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "siddharthkp",
+      "name": "Siddharth Kshetrapal",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1863771?v=3",
+      "profile": "https://github.com/siddharthkp",
+      "contributions": [
+        "test",
+        "tool"
+      ]
     }
   ]
 }

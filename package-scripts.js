@@ -27,6 +27,10 @@ module.exports = {
         description: 'validates the built files',
         script: 'babel-node dist-test/index.js',
       },
+      size: {
+        description: 'check the size of the bundle',
+        script: 'bundlesize',
+      },
     },
     build: {
       description: 'delete the dist directory and run all builds',
@@ -65,7 +69,7 @@ module.exports = {
           tiny: 'rollup --config --sourcemap --environment FORMAT:umd,TINY',
         },
       },
-      andTest: series.nps('build', 'test.build'),
+      andTest: series.nps('build', 'test.build', 'test.size'),
     },
     lint: {
       description: 'lint the entire project',
