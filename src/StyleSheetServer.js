@@ -41,7 +41,6 @@ const StyleSheetServer = {
     rehydrate(classNames)
 
     // Or, we can use this which is also similar
-
     // let injectingContainer = {};
 
     // classNames.forEach(className => {
