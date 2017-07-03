@@ -18,8 +18,8 @@ const StyleSheetServer = {
     if (!fn || typeof fn !== 'function') {
       throw new Error(
         `renderStaticMarkup expects a callback to render the component. You provided a ${typeof fn} instead.
-				 Pass a callback, ReactDOMServer.renderToString(<Component />) or ReactDOMServer.renderToStaticMarkup(<Component />).
-				`,
+	 Pass a callback, ReactDOMServer.renderToString(<Component />) or ReactDOMServer.renderToStaticMarkup(<Component />).
+	`,
       )
     }
     // This will continue to work till glamorous changes its way to call css() internally using glamor (because it collects all the calls to css()).
