@@ -401,6 +401,15 @@
         "test",
         "tool"
       ]
+    },
+    {
+      "login": "WillowHQ",
+      "name": "WillowHQ",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5257243?v=3",
+      "profile": "https://github.com/WillowHQ",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
