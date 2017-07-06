@@ -49,7 +49,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
-    "bundlesize": "^0.5.7",
+    "bundlesize": "^0.11.0",
     "common-tags": "^1.4.0",
     "doctoc": "^1.3.0",
     "enzyme": "^2.8.2",
