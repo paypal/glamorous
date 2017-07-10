@@ -9,7 +9,6 @@ React component styling solved with an elegant ([inspired](#inspiration)) API,
 
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
-[![Dependencies][dependencyci-badge]][dependencyci]
 [![version][version-badge]][package]
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
@@ -1094,8 +1093,6 @@ MIT
 [build]: https://travis-ci.org/paypal/glamorous
 [coverage-badge]: https://img.shields.io/codecov/c/github/paypal/glamorous.svg?style=flat-square
 [coverage]: https://codecov.io/github/paypal/glamorous
-[dependencyci-badge]: https://dependencyci.com/github/paypal/glamorous/badge?style=flat-square
-[dependencyci]: https://dependencyci.com/github/paypal/glamorous
 [version-badge]: https://img.shields.io/npm/v/glamorous.svg?style=flat-square
 [package]: https://www.npmjs.com/package/glamorous
 [downloads-badge]: https://img.shields.io/npm/dm/glamorous.svg?style=flat-square
