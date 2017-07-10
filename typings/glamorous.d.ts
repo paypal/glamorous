@@ -4,24 +4,27 @@
 
 import * as React from 'react'
 import {
-  HTMLGlamorousInterface,
-  SVGGlamorousInterface,
-} from './element-interfaces'
+  HTMLComponentFactory,
+  SVGComponentFactory,
+} from './built-in-component-factories'
 import {
-  StyledFunction,
   GlamorousComponent,
   ExtraGlamorousProps,
-} from './styled-function'
+} from './glamorous-component'
+import {
+  GlamorousComponentFactory
+} from './component-factory'
 import { CSSProperties } from './css-properties'
 import { SVGProperties } from './svg-properties'
 
 export {
   CSSProperties,
+  SVGProperties,
   ExtraGlamorousProps,
   GlamorousComponent,
-  HTMLGlamorousInterface,
-  StyledFunction,
-  SVGGlamorousInterface,
+  GlamorousComponentFactory,
+  HTMLComponentFactory,
+  SVGComponentFactory,
 }
 
 export interface GlamorousOptions {
@@ -36,15 +39,15 @@ export interface Config {
   useDisplayNameInClassName: boolean
 }
 
-export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
+export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
   <Props>(
     component:Component<Props>,
     options?: GlamorousOptions,
-  ): StyledFunction<Props, CSSProperties>
+  ): GlamorousComponentFactory<Props, CSSProperties>
   <Props>(
     component:Component<Props>,
     options?: GlamorousOptions,
-  ): StyledFunction<Props, SVGProperties>
+  ): GlamorousComponentFactory<Props, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<React.SVGAttributes<any> & ExtraGlamorousProps>
