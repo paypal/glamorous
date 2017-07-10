@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows you to use a component as a child selector 1`] = `
+.css-3v2xme .g-1-1,
+[data-css-3v2xme] .g-1-1 {
+  color: blue;
+}
+
+.css-1ezp9xe,
+[data-css-1ezp9xe] {
+  color: red;
+}
+
+<div
+  class="css-3v2xme"
+>
+  <div
+    class="css-1ezp9xe g-1-1"
+  >
+    Hello
+  </div>
+</div>
+`;
+
+exports[`allows you to use a component as any kind of selector 1`] = `
+.css-icjsl7,
+[data-css-icjsl7] {
+  color: blue;
+}
+
+.g-1-1 .css-1ha6yxt,
+.g-1-1 [data-css-1ha6yxt] {
+  color: green;
+}
+
+<div
+  class="css-icjsl7 g-1-1"
+>
+  <div
+    class="css-1ha6yxt"
+  >
+    Hello
+  </div>
+</div>
+`;

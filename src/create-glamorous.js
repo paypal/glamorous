@@ -7,11 +7,17 @@ import {PropTypes} from './react-compat'
 import withTheme from './with-theme'
 import getGlamorClassName from './get-glamor-classname'
 
+let glamorousInstance = 1
+
 export default createGlamorous
 
 function createGlamorous(splitProps) {
   // TODO: in a breaking version, make this default to true
-  glamorous.config = {useDisplayNameInClassName: false}
+  glamorous.config = {
+    useDisplayNameInClassName: false,
+    idCounter: 1,
+    instanceId: glamorousInstance++,
+  }
 
   return glamorous
 
@@ -68,7 +74,14 @@ function createGlamorous(splitProps) {
           const debugClassName = glamorous.config.useDisplayNameInClassName ?
             cleanClassname(GlamorousComponent.displayName) :
             ''
-          const className = `${fullClassName} ${debugClassName}`.trim()
+          const className = [
+            fullClassName,
+            debugClassName,
+            GlamorousComponent.toStringClassName,
+          ]
+            .filter(Boolean)
+            .join(' ')
+            .trim()
 
           return React.createElement(GlamorousComponent.comp, {
             ref: props.innerRef,
@@ -94,6 +107,15 @@ function createGlamorous(splitProps) {
         })(GlamorousComponent.styles)
       }
 
+      function toString() {
+        if (!GlamorousComponent.toStringClassName) {
+          GlamorousComponent.toStringClassName = cleanClassname(
+            `g-${GlamorousComponent.glamorousId}`,
+          )
+        }
+        return `.${GlamorousComponent.toStringClassName}`
+      }
+
       Object.assign(
         GlamorousComponent,
         getGlamorousComponentMetadata({
@@ -103,7 +125,7 @@ function createGlamorous(splitProps) {
           forwardProps,
           displayName,
         }),
-        {withComponent, isGlamorousComponent: true},
+        {withComponent, isGlamorousComponent: true, toString},
       )
       return GlamorousComponent
     }
@@ -131,6 +153,10 @@ function createGlamorous(splitProps) {
       // set the displayName to something that's slightly more
       // helpful than `GlamorousComponent` :)
       displayName: displayName || `glamorous(${getDisplayName(comp)})`,
+      glamorousId: `${glamorous.config.instanceId}-${glamorous.config.idCounter++}`,
+      // initialize to an empty string
+      // this will be set if `toString()` is ever called
+      toStringClassName: '',
     }
   }
 

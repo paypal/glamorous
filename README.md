@@ -1006,6 +1006,48 @@ const MyResponsiveDiv = glamorous.div({
 ```
 </details>
 
+In addition to all this, you can reference a `glamorous` component inside the
+styles of other `glamorous` components (this works because they each implement
+the `toString` method):
+
+<details>
+<summary>Contextual Overrides</summary>
+
+This API is inspired by `styled-components`.
+
+```javascript
+const Link = glamorous.a({
+  color: 'inherit',
+  textDecoration: 'none',
+  '&:hover, &:active': {
+    textDecoration: 'underline',
+  }
+})
+
+const P = glamorous.p({
+  [Link]: {
+    textDecoration: 'underline',
+  }
+})
+
+render(
+  <P>
+    Hello!
+    <Link href="https://github.com/paypal/glamorous">
+      glamorous on GitHub
+    </Link>
+  </P>
+)
+// this will render glamorous on GitHub textDecoration as underline.
+
+```
+
+> Tip: in unit tests using snapshots where you don't want the glamorous IDs to
+> change every time you add a glamorous component between tests, you can reset
+> the `glamorous.config.idCounter = 1`.
+
+</details>
+
 ## Related projects
 
 - [babel-plugin-glamorous-displayname][babel-displayname]: Automatically adds a `displayName` to your glamorous components for a better debugging experience.

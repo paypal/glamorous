@@ -96,12 +96,13 @@
     "rules": {
       "import/prefer-default-export": 0,
       "react/no-unused-prop-types": 0,
-      "valid-jsdoc": 0
+      "valid-jsdoc": 0,
+      "max-len": 0
     }
   },
   "lint-staged": {
     "*.js": [
-      "prettier-eslint --write",
+      "prettier-eslint --write --print-width=80",
       "git add"
     ],
     "README.md": [
