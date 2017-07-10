@@ -15,6 +15,7 @@
 [![MIT License][license-badge]][LICENSE]
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-46-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-45-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
 [![Code of Conduct][coc-badge]][coc]
@@ -856,6 +857,40 @@ class SubTitle extends Component {
 ```
 > `withTheme` expects a `ThemeProvider` further up the render tree and will warn in `development` if one is not found!
 
+### Config
+
+You can configure glamorous globally with the `config` object which you can
+access via `glamorous.config`.
+
+#### useDisplayNameInClassName
+
+Defaults to process.env.NODE_ENV !== 'test'
+This should _only_ be used for debugging purposes. It is strongly discouraged
+from referencing this className in your CSS due to the level of indirection that
+will add (making it easier for you to break something when refactoring in the
+future).
+
+Example:
+
+```jsx
+import glamorous from 'glamorous'
+glamorous.config.useDisplayNameInClassName = true
+
+const MyComponent = props => <div {...props} />
+const myGlamorousComponentFactory = glamorous(
+  MyComponent,
+  {displayName: 'MyGlamorousComponent'}
+)
+
+const MyGlamorousComponent = myGlamorousComponentFactory()
+<MyGlamorousComponent />
+// renders <div class="css-nil MyGlamorousComponent" />
+```
+
+If you don't want to provide the `displayName` for all of your components, then
+you can use [this babel-plugin][babel-displayname]. Otherwise, the className
+will be simply: `glamorous(MyComponent)`
+
 ### Context
 
 [context](https://facebook.github.io/react/docs/context.html) is an unstable
@@ -1139,6 +1174,7 @@ Thanks goes to these people ([emoji key][emojis]):
 | [<img src="https://avatars2.githubusercontent.com/u/4118089?v=3" width="100px;"/><br /><sub>FredericH</sub>](http://fr.linkedin.com/in/fredericheem)<br />[💡](#example-FredericHeem "Examples") | [<img src="https://avatars3.githubusercontent.com/u/656630?v=3" width="100px;"/><br /><sub>Atticus White</sub>](https://atticuswhite.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=ajwhite "Documentation") [🔌](#plugin-ajwhite "Plugin/utility libraries") | [<img src="https://avatars0.githubusercontent.com/u/13483453?v=3" width="100px;"/><br /><sub>marzelin</sub>](https://github.com/marzelin)<br />[💻](https://github.com/paypal/glamorous/commits?author=marzelin "Code") | [<img src="https://avatars2.githubusercontent.com/u/4074973?v=3" width="100px;"/><br /><sub>iwantmyname</sub>](https://iwantmyname.com/)<br />[🚇](#infra-iwantmyname "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/11809142?v=3" width="100px;"/><br /><sub>Ethan Godt</sub>](http://ethangodt.com)<br /> | [<img src="https://avatars3.githubusercontent.com/u/2175447?v=3" width="100px;"/><br /><sub>Zill Ding</sub>](https://github.com/zillding)<br />[💻](https://github.com/paypal/glamorous/commits?author=zillding "Code") | [<img src="https://avatars3.githubusercontent.com/u/411643?v=3" width="100px;"/><br /><sub>Dan Bradley</sub>](https://github.com/debradley)<br />[💻](https://github.com/paypal/glamorous/commits?author=debradley "Code") |
 | [<img src="https://avatars3.githubusercontent.com/u/22868432?v=3" width="100px;"/><br /><sub>Lufty Wiranda</sub>](http://instagram.com/luftywiranda13)<br />[💻](https://github.com/paypal/glamorous/commits?author=luftywiranda13 "Code") | [<img src="https://avatars3.githubusercontent.com/u/3208863?v=3" width="100px;"/><br /><sub>Ansuman Shah</sub>](https://github.com/ansumanshah)<br />[💻](https://github.com/paypal/glamorous/commits?author=ansumanshah "Code") [📖](https://github.com/paypal/glamorous/commits?author=ansumanshah "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/11598?v=3" width="100px;"/><br /><sub>Travis LaDuke</sub>](http://-)<br />[💡](#example-laduke "Examples") | [<img src="https://avatars2.githubusercontent.com/u/11290953?v=3" width="100px;"/><br /><sub>Aydın Çağrı Dumlu</sub>](https://github.com/acgrdumlu)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Aacgrdumlu "Bug reports") [💻](https://github.com/paypal/glamorous/commits?author=acgrdumlu "Code") | [<img src="https://avatars2.githubusercontent.com/u/1383861?v=3" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amajapw "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/6845263?v=3" width="100px;"/><br /><sub>Tom Liu</sub>](https://github.com/gt3240)<br />[📖](https://github.com/paypal/glamorous/commits?author=gt3240 "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/1863771?v=3" width="100px;"/><br /><sub>Siddharth Kshetrapal</sub>](https://github.com/siddharthkp)<br />[⚠️](https://github.com/paypal/glamorous/commits?author=siddharthkp "Tests") [🔧](#tool-siddharthkp "Tools") |
 | [<img src="https://avatars2.githubusercontent.com/u/5257243?v=3" width="100px;"/><br /><sub>WillowHQ</sub>](https://github.com/WillowHQ)<br />[📖](https://github.com/paypal/glamorous/commits?author=WillowHQ "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/12202757?v=4" width="100px;"/><br /><sub>Mohammad Rajabifard</sub>](https://tarino.ir)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amorajabi "Bug reports") [📖](https://github.com/paypal/glamorous/commits?author=morajabi "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/17005317?v=3" width="100px;"/><br /><sub>Omar Albacha</sub>](https://github.com/Oalbacha)<br />[💻](https://github.com/paypal/glamorous/commits?author=Oalbacha "Code") [📖](https://github.com/paypal/glamorous/commits?author=Oalbacha "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/28659384?v=3" width="100px;"/><br /><sub>tdeschryver</sub>](https://github.com/tdeschryver)<br />[💻](https://github.com/paypal/glamorous/commits?author=tdeschryver "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=tdeschryver "Tests") |
+| [<img src="https://avatars2.githubusercontent.com/u/5257243?v=3" width="100px;"/><br /><sub>WillowHQ</sub>](https://github.com/WillowHQ)<br />[📖](https://github.com/paypal/glamorous/commits?author=WillowHQ "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/17005317?v=3" width="100px;"/><br /><sub>Omar Albacha</sub>](https://github.com/Oalbacha)<br />[💻](https://github.com/paypal/glamorous/commits?author=Oalbacha "Code") [📖](https://github.com/paypal/glamorous/commits?author=Oalbacha "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/28659384?v=3" width="100px;"/><br /><sub>tdeschryver</sub>](https://github.com/tdeschryver)<br />[💻](https://github.com/paypal/glamorous/commits?author=tdeschryver "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=tdeschryver "Tests") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification.
