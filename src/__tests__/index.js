@@ -86,12 +86,10 @@ test('the css prop accepts "GlamorousStyles"', () => {
   const context = {__glamorous__: undefined}
   expect(fn1).toHaveBeenCalledWith(
     expect.objectContaining(props),
-    expect.objectContaining(props.theme),
     expect.objectContaining(context),
   )
   expect(fn2).toHaveBeenCalledWith(
     expect.objectContaining(props),
-    expect.objectContaining(props.theme),
     expect.objectContaining(context),
   )
 })
@@ -306,47 +304,11 @@ test('renders a component with theme properties', () => {
     {
       color: 'red',
     },
-    (props, theme) => ({padding: theme.padding}),
+    ({theme}) => ({padding: theme.padding}),
   )
   expect(
     render(<Comp theme={{padding: '10px'}} />),
   ).toMatchSnapshotWithGlamor()
-})
-
-test('in development mode the theme is frozen and cannot be changed', () => {
-  expect.assertions(1)
-  process.env.NODE_ENV = 'development'
-  const Comp = glamorous.div(
-    {
-      color: 'red',
-    },
-    (props, theme) => {
-      expect(() => {
-        theme.foo = 'bar'
-      }).toThrow()
-      return {}
-    },
-  )
-  render(<Comp theme={{foo: 'baz'}} />)
-})
-
-test('in production mode the theme is not frozen and can be changed', () => {
-  const env = process.env.NODE_ENV
-  process.env.NODE_ENV = 'production'
-  expect.assertions(1)
-  const Comp = glamorous.div(
-    {
-      color: 'red',
-    },
-    (props, theme) => {
-      expect(() => {
-        theme.foo = 'bar'
-      }).not.toThrow()
-      return {}
-    },
-  )
-  render(<Comp theme={{foo: 'baz'}} />)
-  process.env.NODE_ENV = env
 })
 
 test('passes an updated theme when theme prop changes', () => {
@@ -354,7 +316,7 @@ test('passes an updated theme when theme prop changes', () => {
     {
       color: 'red',
     },
-    (props, theme) => ({padding: theme.padding}),
+    ({theme}) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Comp theme={{padding: 10}} />)
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
@@ -374,7 +336,7 @@ test('passes `theme` to the css prop if it is a function', () => {
   )
   expect(css).toHaveBeenCalledTimes(1)
   const context = expect.objectContaining({[CHANNEL]: expect.any(Object)})
-  expect(css).toHaveBeenCalledWith({...props, theme}, theme, context)
+  expect(css).toHaveBeenCalledWith({...props, theme}, context)
 })
 
 test('allows you to pass custom props that are allowed', () => {
@@ -451,5 +413,5 @@ test('should accept user defined contextTypes', () => {
   expect(dynamicStyles).toHaveBeenCalledTimes(1)
   const theme = {}
   const props = {theme}
-  expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
+  expect(dynamicStyles).toHaveBeenCalledWith(props, context)
 })
