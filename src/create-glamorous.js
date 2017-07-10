@@ -10,9 +10,9 @@ import getGlamorClassName from './get-glamor-classname'
 export default createGlamorous
 
 function createGlamorous(splitProps) {
-  // TODO: in a breaking version, make this default to true
-  glamorous.config = {useDisplayNameInClassName: false}
-
+  glamorous.config = {
+    useDisplayNameInClassName: process.env.NODE_ENV !== 'test',
+  }
   return glamorous
 
   /**
