@@ -14,7 +14,7 @@
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-44-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-46-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
 [![Code of Conduct][coc-badge]][coc]
@@ -42,7 +42,6 @@
   - [glamorous](#glamorous)
   - [glamorous API](#glamorous-api)
   - [Theming](#theming)
-  - [Config](#config)
   - [Context](#context)
   - [Size](#size)
   - [Server Side Rendering (SSR)](#server-side-rendering-ssr)
@@ -249,7 +248,7 @@ const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 })
 
 <MyStyledComp>content</MyStyledComp>
 // rendered output: <div class="<glamor-generated-class> other-class">content</div>
-// styles applied: 
+// styles applied:
 // <glamor-generated-class> {
 //  margin: 1px;
 // }
@@ -612,6 +611,32 @@ const MyStyledComponent = glamorous(MyComponent, {
 // be forwarded to `MyComponent` because it is a valid prop for a `div`.
 ```
 
+#### shouldClassNameUpdate
+
+Most of the time, glamor is super fast, but in some scenarios it may be nice to
+prevent glamor from computing your styles when you know the class name should
+not change. In these cases, you can implement `shouldClassNameUpdate`. For
+example:
+
+```jsx
+const pureDivFactory = glamorous('div', {
+  shouldClassNameUpdate(props, previousProps, context, previousContext) {
+    // return `true` to update the classname and
+    // `false` to skip updating the class name
+    return true
+  },
+})
+const Div = pureDivFactory({marginLeft: 1})
+render(<Div css={{marginLeft: 2}} />)
+// this will render:
+// <div />
+// with {marginLeft: 2}
+```
+
+Note that this is _not_ the same as `shouldComponentUpdate`. Your component will
+still be rerendered. `shouldClassNameUpdate` is only for allowing you to opt-out
+of generating the `className` unnecessarily.
+
 #### withComponent
 
 In some cases you might want to just copy the styles of an already created
@@ -762,40 +787,6 @@ class SubTitle extends Component {
 ```
 > `withTheme` expects a `ThemeProvider` further up the render tree and will warn in `development` if one is not found!
 
-### Config
-
-You can configure glamorous globally with the `config` object which you can
-access via `glamorous.config`.
-
-#### useDisplayNameInClassName
-
-Defaults to `false` (will default to `true` in a future major release).
-This should _only_ be used for debugging purposes. It is strongly discouraged
-from referencing this className in your CSS due to the level of indirection that
-will add (making it easier for you to break something when refactoring in the
-future).
-
-Example:
-
-```jsx
-import glamorous from 'glamorous'
-glamorous.config.useDisplayNameInClassName = true
-
-const MyComponent = props => <div {...props} />
-const myGlamorousComponentFactory = glamorous(
-  MyComponent,
-  {displayName: 'MyGlamorousComponent'}
-)
-
-const MyGlamorousComponent = myGlamorousComponentFactory()
-<MyGlamorousComponent />
-// renders <div class="css-nil MyGlamorousComponent" />
-```
-
-If you don't want to provide the `displayName` for all of your components, then
-you can use [this babel-plugin][babel-displayname]. Otherwise, the className
-will be simply: `glamorous(MyComponent)`
-
 ### Context
 
 [context](https://facebook.github.io/react/docs/context.html) is an unstable
@@ -803,10 +794,7 @@ API and it's not recommended to use it directly. However, if you need to use it
 for some reason, here's an example of how you could do that:
 
 ```jsx
-// NOTE!! In the next major version of glamorous, the API will be: (props, context)
-// this is because it maps more directly to the React function component API
-// and the `theme` is already available on the `props`
-const dynamicStyles = (props, theme, context) => ({
+const dynamicStyles = (props, context) => ({
   color: context.isLoggedIn ? 'green' : 'red'
 })
 const MyDiv = glamorous.div(dynamicStyles)
@@ -1081,7 +1069,7 @@ Thanks goes to these people ([emoji key][emojis]):
 | [<img src="https://avatars3.githubusercontent.com/u/16327281?v=3" width="100px;"/><br /><sub>Bernard Lin</sub>](https://github.com/bernard-lin)<br />[📖](https://github.com/paypal/glamorous/commits?author=bernard-lin "Documentation") [🔌](#plugin-bernard-lin "Plugin/utility libraries") | [<img src="https://avatars2.githubusercontent.com/u/11799597?v=3" width="100px;"/><br /><sub>Miguel Correa</sub>](http://miguelc1221.github.io/)<br />[💻](https://github.com/paypal/glamorous/commits?author=miguelc1221 "Code") | [<img src="https://avatars2.githubusercontent.com/u/769339?v=3" width="100px;"/><br /><sub>Brian Hough</sub>](http://rallypoint.gg)<br />[💡](#example-bhough "Examples") | [<img src="https://avatars3.githubusercontent.com/u/4950425?v=3" width="100px;"/><br /><sub>Erik Cupal</sub>](https://github.com/ErikCupal)<br />[💻](https://github.com/paypal/glamorous/commits?author=ErikCupal "Code") | [<img src="https://avatars1.githubusercontent.com/u/9153498?v=3" width="100px;"/><br /><sub>Kok J Sam</sub>](https://github.com/sammkj)<br />[💻](https://github.com/paypal/glamorous/commits?author=sammkj "Code") | [<img src="https://avatars2.githubusercontent.com/u/14885189?v=3" width="100px;"/><br /><sub>Oleg Proskurin</sub>](http://twitter.com/#!/usulpro)<br />[📖](https://github.com/paypal/glamorous/commits?author=UsulPro "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/848525?v=3" width="100px;"/><br /><sub>Luke John</sub>](https://github.com/luke-john)<br />[💻](https://github.com/paypal/glamorous/commits?author=luke-john "Code") |
 | [<img src="https://avatars2.githubusercontent.com/u/4118089?v=3" width="100px;"/><br /><sub>FredericH</sub>](http://fr.linkedin.com/in/fredericheem)<br />[💡](#example-FredericHeem "Examples") | [<img src="https://avatars3.githubusercontent.com/u/656630?v=3" width="100px;"/><br /><sub>Atticus White</sub>](https://atticuswhite.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=ajwhite "Documentation") [🔌](#plugin-ajwhite "Plugin/utility libraries") | [<img src="https://avatars0.githubusercontent.com/u/13483453?v=3" width="100px;"/><br /><sub>marzelin</sub>](https://github.com/marzelin)<br />[💻](https://github.com/paypal/glamorous/commits?author=marzelin "Code") | [<img src="https://avatars2.githubusercontent.com/u/4074973?v=3" width="100px;"/><br /><sub>iwantmyname</sub>](https://iwantmyname.com/)<br />[🚇](#infra-iwantmyname "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/11809142?v=3" width="100px;"/><br /><sub>Ethan Godt</sub>](http://ethangodt.com)<br /> | [<img src="https://avatars3.githubusercontent.com/u/2175447?v=3" width="100px;"/><br /><sub>Zill Ding</sub>](https://github.com/zillding)<br />[💻](https://github.com/paypal/glamorous/commits?author=zillding "Code") | [<img src="https://avatars3.githubusercontent.com/u/411643?v=3" width="100px;"/><br /><sub>Dan Bradley</sub>](https://github.com/debradley)<br />[💻](https://github.com/paypal/glamorous/commits?author=debradley "Code") |
 | [<img src="https://avatars3.githubusercontent.com/u/22868432?v=3" width="100px;"/><br /><sub>Lufty Wiranda</sub>](http://instagram.com/luftywiranda13)<br />[💻](https://github.com/paypal/glamorous/commits?author=luftywiranda13 "Code") | [<img src="https://avatars3.githubusercontent.com/u/3208863?v=3" width="100px;"/><br /><sub>Ansuman Shah</sub>](https://github.com/ansumanshah)<br />[💻](https://github.com/paypal/glamorous/commits?author=ansumanshah "Code") [📖](https://github.com/paypal/glamorous/commits?author=ansumanshah "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/11598?v=3" width="100px;"/><br /><sub>Travis LaDuke</sub>](http://-)<br />[💡](#example-laduke "Examples") | [<img src="https://avatars2.githubusercontent.com/u/11290953?v=3" width="100px;"/><br /><sub>Aydın Çağrı Dumlu</sub>](https://github.com/acgrdumlu)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Aacgrdumlu "Bug reports") [💻](https://github.com/paypal/glamorous/commits?author=acgrdumlu "Code") | [<img src="https://avatars2.githubusercontent.com/u/1383861?v=3" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amajapw "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/6845263?v=3" width="100px;"/><br /><sub>Tom Liu</sub>](https://github.com/gt3240)<br />[📖](https://github.com/paypal/glamorous/commits?author=gt3240 "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/1863771?v=3" width="100px;"/><br /><sub>Siddharth Kshetrapal</sub>](https://github.com/siddharthkp)<br />[⚠️](https://github.com/paypal/glamorous/commits?author=siddharthkp "Tests") [🔧](#tool-siddharthkp "Tools") |
-| [<img src="https://avatars2.githubusercontent.com/u/5257243?v=3" width="100px;"/><br /><sub>WillowHQ</sub>](https://github.com/WillowHQ)<br />[📖](https://github.com/paypal/glamorous/commits?author=WillowHQ "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/12202757?v=4" width="100px;"/><br /><sub>Mohammad Rajabifard</sub>](https://tarino.ir)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amorajabi "Bug reports") [📖](https://github.com/paypal/glamorous/commits?author=morajabi "Documentation") |
+| [<img src="https://avatars2.githubusercontent.com/u/5257243?v=3" width="100px;"/><br /><sub>WillowHQ</sub>](https://github.com/WillowHQ)<br />[📖](https://github.com/paypal/glamorous/commits?author=WillowHQ "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/12202757?v=4" width="100px;"/><br /><sub>Mohammad Rajabifard</sub>](https://tarino.ir)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amorajabi "Bug reports") [📖](https://github.com/paypal/glamorous/commits?author=morajabi "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/17005317?v=3" width="100px;"/><br /><sub>Omar Albacha</sub>](https://github.com/Oalbacha)<br />[💻](https://github.com/paypal/glamorous/commits?author=Oalbacha "Code") [📖](https://github.com/paypal/glamorous/commits?author=Oalbacha "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/28659384?v=3" width="100px;"/><br /><sub>tdeschryver</sub>](https://github.com/tdeschryver)<br />[💻](https://github.com/paypal/glamorous/commits?author=tdeschryver "Code") [⚠️](https://github.com/paypal/glamorous/commits?author=tdeschryver "Tests") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification.

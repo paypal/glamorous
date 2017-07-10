@@ -10,7 +10,7 @@ test('enzyme', () => {
     </Wrapper>
   )
 
-  expect(shallow(ui)).toMatchSnapshotWithGlamor(`enzyme.shallow`)
-  expect(mount(ui)).toMatchSnapshotWithGlamor(`enzyme.mount`)
-  expect(render(ui)).toMatchSnapshotWithGlamor(`enzyme.render`)
+  expect(shallow(ui)).toMatchSnapshot(`enzyme.shallow`)
+  expect(mount(ui)).toMatchSnapshot(`enzyme.mount`)
+  expect(render(ui)).toMatchSnapshot(`enzyme.render`)
 })

@@ -420,6 +420,26 @@
         "bug",
         "doc"
       ]
+    },
+    {
+      "login": "Oalbacha",
+      "name": "Omar Albacha",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17005317?v=3",
+      "profile": "https://github.com/Oalbacha",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "tdeschryver",
+      "name": "tdeschryver",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/28659384?v=3",
+      "profile": "https://github.com/tdeschryver",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }

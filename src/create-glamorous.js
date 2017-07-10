@@ -10,9 +10,6 @@ import getGlamorClassName from './get-glamor-classname'
 export default createGlamorous
 
 function createGlamorous(splitProps) {
-  // TODO: in a breaking version, make this default to true
-  glamorous.config = {useDisplayNameInClassName: false}
-
   return glamorous
 
   /**
@@ -26,7 +23,10 @@ function createGlamorous(splitProps) {
   * @param {Object} options helpful info for the GlamorousComponents
   * @return {Function} the glamorousComponentFactory
   */
-  function glamorous(comp, {rootEl, displayName, forwardProps = []} = {}) {
+  function glamorous(
+    comp,
+    {rootEl, displayName, shouldClassNameUpdate, forwardProps = []} = {},
+  ) {
     return glamorousComponentFactory
 
     /**
@@ -45,35 +45,29 @@ function createGlamorous(splitProps) {
        */
       const GlamorousComponent = withTheme(
         (props, context) => {
-          /* eslint no-use-before-define: 0 */
+          const updateClassName = shouldUpdate(props, context)
+
           const {toForward, cssOverrides, cssProp} = splitProps(
             props,
             GlamorousComponent,
           )
 
-          // freeze the theme object in dev mode
-          const theme = process.env.NODE_ENV === 'production' ?
-            props.theme :
-            Object.freeze(props.theme)
-
           // create className to apply
-          const fullClassName = getGlamorClassName({
-            styles: GlamorousComponent.styles,
-            props,
-            cssOverrides,
-            cssProp,
-            theme,
-            context,
-          })
-          const debugClassName = glamorous.config.useDisplayNameInClassName ?
-            cleanClassname(GlamorousComponent.displayName) :
-            ''
-          const className = `${fullClassName} ${debugClassName}`.trim()
+          GlamorousComponent.className = updateClassName ?
+            getGlamorClassName({
+              styles: GlamorousComponent.styles,
+              props,
+              cssOverrides,
+              cssProp,
+              context,
+              displayName: GlamorousComponent.displayName,
+            }) :
+            GlamorousComponent.className
 
           return React.createElement(GlamorousComponent.comp, {
             ref: props.innerRef,
             ...toForward,
-            className,
+            className: GlamorousComponent.className,
           })
         },
         {noWarn: true, createElement: false},
@@ -82,7 +76,6 @@ function createGlamorous(splitProps) {
       GlamorousComponent.propTypes = {
         className: PropTypes.string,
         cssOverrides: PropTypes.object,
-        theme: PropTypes.object,
         innerRef: PropTypes.func,
         glam: PropTypes.object,
       }
@@ -94,6 +87,30 @@ function createGlamorous(splitProps) {
         })(GlamorousComponent.styles)
       }
 
+      function shouldUpdate(props, context) {
+        // exiting early so components which do not use this
+        // optimization are not penalized by hanging onto
+        // references to previous props and context
+        if (!shouldClassNameUpdate) {
+          return true
+        }
+        let update = true
+        if (GlamorousComponent.previous) {
+          if (
+            !shouldClassNameUpdate(
+              props,
+              GlamorousComponent.previous.props,
+              context,
+              GlamorousComponent.previous.context,
+            )
+          ) {
+            update = false
+          }
+        }
+        GlamorousComponent.previous = {props, context}
+        return update
+      }
+
       Object.assign(
         GlamorousComponent,
         getGlamorousComponentMetadata({
@@ -103,7 +120,7 @@ function createGlamorous(splitProps) {
           forwardProps,
           displayName,
         }),
-        {withComponent, isGlamorousComponent: true},
+        {withComponent, isGlamorousComponent: true, previous: null},
       )
       return GlamorousComponent
     }
@@ -143,8 +160,4 @@ function createGlamorous(splitProps) {
       comp :
       comp.displayName || comp.name || 'unknown'
   }
-}
-
-function cleanClassname(className) {
-  return className.replace(/ /g, '-').replace(/[^A-Za-z0-9\-_]/g, '_')
 }
