@@ -799,10 +799,7 @@ API and it's not recommended to use it directly. However, if you need to use it
 for some reason, here's an example of how you could do that:
 
 ```jsx
-// NOTE!! In the next major version of glamorous, the API will be: (props, context)
-// this is because it maps more directly to the React function component API
-// and the `theme` is already available on the `props`
-const dynamicStyles = (props, theme, context) => ({
+const dynamicStyles = (props, context) => ({
   color: context.isLoggedIn ? 'green' : 'red'
 })
 const MyDiv = glamorous.div(dynamicStyles)
