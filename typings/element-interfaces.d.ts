@@ -1,5 +1,5 @@
-import { SVGAttributes } from 'react'
 import { CSSProperties } from './css-properties'
+import { SVGProperties } from './svg-properties'
 import {
   HtmlStyledFunction,
   SvgStyledFunction,
@@ -123,23 +123,23 @@ export interface HTMLGlamorousInterface {
 
 
 export interface SVGGlamorousInterface {
-  circle: SvgStyledFunction<SVGCircleElement, SVGAttributes<any>>
-  clipPath: SvgStyledFunction<SVGClipPathElement, SVGAttributes<any>>
-  defs: SvgStyledFunction<SVGDefsElement, SVGAttributes<any>>
-  ellipse: SvgStyledFunction<SVGEllipseElement, SVGAttributes<any>>
-  g: SvgStyledFunction<SVGGElement, SVGAttributes<any>>
-  image: SvgStyledFunction<SVGImageElement, SVGAttributes<any>>
-  line: SvgStyledFunction<SVGLineElement, SVGAttributes<any>>
-  linearGradient: SvgStyledFunction<SVGLinearGradientElement, SVGAttributes<any>>
-  mask: SvgStyledFunction<SVGMaskElement, SVGAttributes<any>>
-  path: SvgStyledFunction<SVGPathElement, SVGAttributes<any>>
-  pattern: SvgStyledFunction<SVGPatternElement, SVGAttributes<any>>
-  polygon: SvgStyledFunction<SVGPolygonElement, SVGAttributes<any>>
-  polyline: SvgStyledFunction<SVGPolylineElement, SVGAttributes<any>>
-  radialGradient: SvgStyledFunction<SVGRadialGradientElement, SVGAttributes<any>>
-  rect: SvgStyledFunction<SVGRectElement, SVGAttributes<any>>
-  stop: SvgStyledFunction<SVGStopElement, SVGAttributes<any>>
-  svg: SvgStyledFunction<SVGSVGElement, SVGAttributes<any>>
-  text: SvgStyledFunction<SVGTextElement, SVGAttributes<any>>
-  tspan: SvgStyledFunction<SVGTSpanElement, SVGAttributes<any>>
+  circle: SvgStyledFunction<SVGCircleElement, SVGProperties>
+  clipPath: SvgStyledFunction<SVGClipPathElement, SVGProperties>
+  defs: SvgStyledFunction<SVGDefsElement, SVGProperties>
+  ellipse: SvgStyledFunction<SVGEllipseElement, SVGProperties>
+  g: SvgStyledFunction<SVGGElement, SVGProperties>
+  image: SvgStyledFunction<SVGImageElement, SVGProperties>
+  line: SvgStyledFunction<SVGLineElement, SVGProperties>
+  linearGradient: SvgStyledFunction<SVGLinearGradientElement, SVGProperties>
+  mask: SvgStyledFunction<SVGMaskElement, SVGProperties>
+  path: SvgStyledFunction<SVGPathElement, SVGProperties>
+  pattern: SvgStyledFunction<SVGPatternElement, SVGProperties>
+  polygon: SvgStyledFunction<SVGPolygonElement, SVGProperties>
+  polyline: SvgStyledFunction<SVGPolylineElement, SVGProperties>
+  radialGradient: SvgStyledFunction<SVGRadialGradientElement, SVGProperties>
+  rect: SvgStyledFunction<SVGRectElement, SVGProperties>
+  stop: SvgStyledFunction<SVGStopElement, SVGProperties>
+  svg: SvgStyledFunction<SVGSVGElement, SVGProperties>
+  text: SvgStyledFunction<SVGTextElement, SVGProperties>
+  tspan: SvgStyledFunction<SVGTSpanElement, SVGProperties>
 }
