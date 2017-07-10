@@ -1,0 +1,1368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flow expected failures 1`] = `
+"Error: src/index.js.flow:8
+  8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2
+ 29: declare class React$Component<Props, State = void> {
+                                   ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+
+Error: src/index.js.flow:44
+ 44: declare export var ThemeProvider: ReactClassComponent<{ theme: Object }>;
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2
+ 29: declare class React$Component<Props, State = void> {
+                                   ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+
+Error: test/flow/glamorous-failure.test.js:3
+  3: import glamorous, {ThemeProvider, withTheme, asd} from '../../src/'
+                                                  ^^^ Named import from module \`../../src/\`. This module has no named export called \`asd\`.
+
+Error: test/flow/glamorous-failure.test.js:19
+ 19: ui = <TestDiv /> // Missing prop border
+          ^^^^^^^^^^^ React element \`TestDiv\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                     v-------------
+ 10: const TestDiv = glamorous.div(
+ 11:   {
+ 12:     backgroundColor: 'red',
+...:
+ 17: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   19: ui = <TestDiv /> // Missing prop border
+            ^^^^^^^^^^^ React element \`TestDiv\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:21
+ 21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                      ^^^^^^^^^^^^^^^^^^ function call. Function cannot be called on any member of intersection type
+                      v
+ 49: type glamorous = {
+ 50:   <Props, ExtraProps>(
+ 51:     component: ReactClassComponent<Props> | string,
+...:
+335: };
+     ^ intersection. See: src/index.js.flow:49
+  Member 1:
+         v-------------------
+   50:   <Props, ExtraProps>(
+   51:     component: ReactClassComponent<Props> | string,
+   52:     options?: GlamorousOptions
+   53:   ): GlamorousFactoryHTMLComponent<Props, ExtraProps>,
+         --------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:50
+  Error:
+   21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                  ^^^^^^^ intersection type. This type is incompatible with
+   51:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:51
+    Member 1:
+     51:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:51
+    Error:
+     21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     51:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:51
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+        8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+       29: declare class React$Component<Props, State = void> {
+                                         ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       51:     component: ReactClassComponent<Props> | string,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:51
+    Member 2:
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+    Error:
+     21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. This type is incompatible with. See: src/index.js.flow:16
+       51:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:51
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       51:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:51
+  Member 2:
+         v-------------------
+   54:   <Props, ExtraProps>(
+   55:     component: ReactClassComponent<Props> | string,
+   56:     options?: GlamorousOptions
+   57:   ): GlamorousFactorySVGComponent<Props, ExtraProps>,
+         -------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:54
+  Error:
+   21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                  ^^^^^^^ intersection type. This type is incompatible with
+   55:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:55
+    Member 1:
+     55:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:55
+    Error:
+     21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     55:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:55
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+        8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+       29: declare class React$Component<Props, State = void> {
+                                         ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       55:     component: ReactClassComponent<Props> | string,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:55
+    Member 2:
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+    Error:
+     21: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. This type is incompatible with. See: src/index.js.flow:16
+       55:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:55
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       55:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:55
+
+Error: test/flow/glamorous-failure.test.js:40
+ 40: ui = <TestDivWithMultipleDynamicStyles border=\\"1px solid black\\" />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestDivWithMultipleDynamicStyles\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                                              v-------------
+ 28: const TestDivWithMultipleDynamicStyles = glamorous.div(
+ 29:   {
+ 30:     backgroundColor: 'red',
+...:
+ 38: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   40: ui = <TestDivWithMultipleDynamicStyles border=\\"1px solid black\\" />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestDivWithMultipleDynamicStyles\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:45
+ 45: ui = <TestSpan />
+          ^^^^^^^^^^^^ React element \`TestSpan\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+ 43: const TestSpan = TestDiv.withComponent('span')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   45: ui = <TestSpan />
+            ^^^^^^^^^^^^ React element \`TestSpan\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:62
+ 62: ui = <DivOfStyledArray />
+          ^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledArray\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                              v-------------
+ 48: const DivOfStyledArray = glamorous.div(
+ 49:   [
+ 50:     {
+...:
+ 60: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   62: ui = <DivOfStyledArray />
+            ^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledArray\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:77
+ 77: ui = <DivOfStyledObjects />
+          ^^^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledObjects\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                                v-------------
+ 65: const DivOfStyledObjects = glamorous.div(
+ 66:   {
+ 67:     backgroundColor: 'green',
+...:
+ 75: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   77: ui = <DivOfStyledObjects />
+            ^^^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledObjects\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:105
+105: class MyComponent extends React.Component {
+                               ^^^^^^^^^^^^^^^ property \`Component\`. Too few type arguments. Expected at least 1
+ 29: declare class React$Component<Props, State = void> {
+                                   ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+
+Error: test/flow/glamorous-failure.test.js:113
+113:       alert(this._inputRef.values) // Property values not found
+                                ^^^^^^ property \`values\`. Property not found in
+113:       alert(this._inputRef.values) // Property values not found
+                 ^^^^^^^^^^^^^^ HTMLInputElement
+
+Error: test/flow/glamorous-failure.test.js:119
+             v-------
+119:         <MyInput
+120:           innerRef={(r: HTMLInputElement) => {
+121:             this._inputRef = r
+122:           }}
+123:         />
+             -^ React element \`MyInput\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+104: const MyInput = glamorous.input({borderRadius: 4, padding: '4px 8px'})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+               v-------
+  119:         <MyInput
+  120:           innerRef={(r: HTMLInputElement) => {
+  121:             this._inputRef = r
+  122:           }}
+  123:         />
+               -^ React element \`MyInput\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:124
+124:         <glamorous.Button type=\\"submit\\" marginTop={12} display=\\"block\\">
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`glamorous.Button\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+124:         <glamorous.Button type=\\"submit\\" marginTop={12} display=\\"block\\">
+              ^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  124:         <glamorous.Button type=\\"submit\\" marginTop={12} display=\\"block\\">
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`glamorous.Button\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:133
+133: ui = <MyInput css={{zIndex: 'asd'}} /> // zIndex can only be number
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`MyInput\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+104: const MyInput = glamorous.input({borderRadius: 4, padding: '4px 8px'})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  133: ui = <MyInput css={{zIndex: 'asd'}} /> // zIndex can only be number
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`MyInput\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:141
+                   v------------
+141: const Title = glamorous.h1(
+142:   {
+143:     fontSize: '10px',
+...:
+150: )
+     ^ call of method \`h1\`
+       v--------------------------------------------
+146:   (props: mixed, theme: typeof someTheme) => ({
+147:     //Since theme is possible undefined, we have to do some sanity check for its existence
+148:     color: theme && theme.main.color,
+149:   }),
+       -^ function. This type is incompatible with
+ 99:   h1<Props>(...styles: Array<CSSStyles<Props>>): GlamorousComponent<Props>,
+                                  ^^^^^^^^^^^^^^^^ union: CSSProperties | array type | function type. See: src/index.js.flow:99
+  Member 1:
+   28:   | CSSProperties
+           ^^^^^^^^^^^^^ CSSProperties. See: src/index.js.flow:28
+  Error:
+         v--------------------------------------------
+  146:   (props: mixed, theme: typeof someTheme) => ({
+  147:     //Since theme is possible undefined, we have to do some sanity check for its existence
+  148:     color: theme && theme.main.color,
+  149:   }),
+         -^ statics of function. This type is incompatible with
+   28:   | CSSProperties
+           ^^^^^^^^^^^^^ object type. See: src/index.js.flow:28
+    Property \`$call\` is incompatible:
+             v--------------------------------------------
+      146:   (props: mixed, theme: typeof someTheme) => ({
+      147:     //Since theme is possible undefined, we have to do some sanity check for its existence
+      148:     color: theme && theme.main.color,
+      149:   }),
+             -^ function. This type is incompatible with
+      899:   $call?: empty
+                     ^^^^^ empty. See: src/types/css-properties.js.flow:899
+  Member 2:
+   29:   | Array<CSSProperties>
+           ^^^^^^^^^^^^^^^^^^^^ array type. See: src/index.js.flow:29
+  Error:
+         v--------------------------------------------
+  146:   (props: mixed, theme: typeof someTheme) => ({
+  147:     //Since theme is possible undefined, we have to do some sanity check for its existence
+  148:     color: theme && theme.main.color,
+  149:   }),
+         -^ function. This type is incompatible with
+   29:   | Array<CSSProperties>
+           ^^^^^^^^^^^^^^^^^^^^ array type. See: src/index.js.flow:29
+  Member 3:
+   30:   | ((props: Props, theme?: Object) => CSSProperties);
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ function type. See: src/index.js.flow:30
+  Error:
+   30:   | ((props: Props, theme?: Object) => CSSProperties);
+                                   ^^^^^^ undefined. This type is incompatible with the expected param type of. See: src/index.js.flow:30
+  146:   (props: mixed, theme: typeof someTheme) => ({
+                               ^^^^^^^^^^^^^^^^ object literal
+
+Error: test/flow/glamorous-failure.test.js:153
+153:   <div css={{color: theme.main.colors}} />
+                                    ^^^^^^ property \`colors\`. Property not found in
+153:   <div css={{color: theme.main.colors}} />
+                         ^^^^^^^^^^ object literal
+
+Error: test/flow/glamorous-failure.test.js:160
+160:   <ThemeProvider theme={someTheme}>
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`ThemeProvider\`. This type is incompatible with
+  8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                             ^^^^ undefined. See: src/index.js.flow:8
+
+Error: test/flow/glamorous-failure.test.js:161
+161:     <Title>Hello!</Title>
+         ^^^^^^^ React element \`Title\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                   v------------
+141: const Title = glamorous.h1(
+142:   {
+143:     fontSize: '10px',
+...:
+150: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  161:     <Title>Hello!</Title>
+           ^^^^^^^ React element \`Title\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:162
+162:     <MyStyledSubTitle /> {/* theme props not needed here*/}
+         ^^^^^^^^^^^^^^^^^^^^ React element \`MyStyledSubTitle\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+155: const MyStyledSubTitle = withTheme(SubTitle)
+                              ^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  162:     <MyStyledSubTitle /> {/* theme props not needed here*/}
+           ^^^^^^^^^^^^^^^^^^^^ React element \`MyStyledSubTitle\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:168
+                                         v-----------------
+168: const myGlamorousComponentFactory = glamorous('div', {
+169:   displayName: 123, // should be string
+170:   propsAreCssOverrides: 'ad', // propsAreCssOverrides should be boolean
+171: })
+     -^ function call. Function cannot be called on any member of intersection type
+                      v
+ 49: type glamorous = {
+ 50:   <Props, ExtraProps>(
+ 51:     component: ReactClassComponent<Props> | string,
+...:
+335: };
+     ^ intersection. See: src/index.js.flow:49
+  Member 1:
+         v-------------------
+   50:   <Props, ExtraProps>(
+   51:     component: ReactClassComponent<Props> | string,
+   52:     options?: GlamorousOptions
+   53:   ): GlamorousFactoryHTMLComponent<Props, ExtraProps>,
+         --------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:50
+  Error:
+                                                            v
+  168: const myGlamorousComponentFactory = glamorous('div', {
+  169:   displayName: 123, // should be string
+  170:   propsAreCssOverrides: 'ad', // propsAreCssOverrides should be boolean
+  171: })
+       ^ object literal. This type is incompatible with the expected param type of
+   52:     options?: GlamorousOptions
+                     ^^^^^^^^^^^^^^^^ object type. See: src/index.js.flow:52
+    Property \`displayName\` is incompatible:
+      169:   displayName: 123, // should be string
+                          ^^^ number. This type is incompatible with
+       21:   displayName?: string,
+                           ^^^^^^ string. See: src/index.js.flow:21
+  Member 2:
+         v-------------------
+   54:   <Props, ExtraProps>(
+   55:     component: ReactClassComponent<Props> | string,
+   56:     options?: GlamorousOptions
+   57:   ): GlamorousFactorySVGComponent<Props, ExtraProps>,
+         -------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:54
+  Error:
+                                                            v
+  168: const myGlamorousComponentFactory = glamorous('div', {
+  169:   displayName: 123, // should be string
+  170:   propsAreCssOverrides: 'ad', // propsAreCssOverrides should be boolean
+  171: })
+       ^ object literal. This type is incompatible with the expected param type of
+   56:     options?: GlamorousOptions
+                     ^^^^^^^^^^^^^^^^ object type. See: src/index.js.flow:56
+    Property \`displayName\` is incompatible:
+      169:   displayName: 123, // should be string
+                          ^^^ number. This type is incompatible with
+       21:   displayName?: string,
+                           ^^^^^^ string. See: src/index.js.flow:21
+
+Error: test/flow/glamorous-failure.test.js:182
+                               v-----------------------
+182: const MyStyledComponent = glamorous(MyComponent, {
+183:   forwardProps: [1], // should be array of numbers
+184:   rootEl: 100, // should be string
+185: })(props => ({
+     -^ function call. Function cannot be called on any member of intersection type
+                      v
+ 49: type glamorous = {
+ 50:   <Props, ExtraProps>(
+ 51:     component: ReactClassComponent<Props> | string,
+...:
+335: };
+     ^ intersection. See: src/index.js.flow:49
+  Member 1:
+         v-------------------
+   50:   <Props, ExtraProps>(
+   51:     component: ReactClassComponent<Props> | string,
+   52:     options?: GlamorousOptions
+   53:   ): GlamorousFactoryHTMLComponent<Props, ExtraProps>,
+         --------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:50
+  Error:
+  182: const MyStyledComponent = glamorous(MyComponent, {
+                                           ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+   51:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:51
+    Member 1:
+     51:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:51
+    Error:
+      8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+     29: declare class React$Component<Props, State = void> {
+                                       ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+    Member 2:
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+    Error:
+    182: const MyStyledComponent = glamorous(MyComponent, {
+                                             ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+  Member 2:
+         v-------------------
+   54:   <Props, ExtraProps>(
+   55:     component: ReactClassComponent<Props> | string,
+   56:     options?: GlamorousOptions
+   57:   ): GlamorousFactorySVGComponent<Props, ExtraProps>,
+         -------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:54
+  Error:
+  182: const MyStyledComponent = glamorous(MyComponent, {
+                                           ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+   55:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:55
+    Member 1:
+     55:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:55
+    Error:
+      8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+     29: declare class React$Component<Props, State = void> {
+                                       ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+    Member 2:
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+    Error:
+    182: const MyStyledComponent = glamorous(MyComponent, {
+                                             ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+
+Error: test/flow/glamorous-failure.test.js:194
+194: ui = <Div float={'asd'} />
+          ^^^^^^^^^^^^^^^^^^^^^ React element \`Div\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+  5: const {Div, Circle} = glamorous
+            ^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  194: ui = <Div float={'asd'} />
+            ^^^^^^^^^^^^^^^^^^^^^ React element \`Div\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-failure.test.js:197
+197: ui = <Circle cx={10} cy={() => 5} />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`Circle\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+  5: const {Div, Circle} = glamorous
+                 ^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  197: ui = <Circle cx={10} cy={() => 5} />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`Circle\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:18
+ 18: ui = <TestDiv border=\\"1px solid black\\" />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestDiv\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                     v-------------
+ 10: const TestDiv = glamorous.div(
+ 11:   {
+ 12:     backgroundColor: 'red',
+...:
+ 17: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   18: ui = <TestDiv border=\\"1px solid black\\" />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestDiv\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:20
+ 20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                      ^^^^^^^^^^^^^^^^^^ function call. Function cannot be called on any member of intersection type
+                      v
+ 49: type glamorous = {
+ 50:   <Props, ExtraProps>(
+ 51:     component: ReactClassComponent<Props> | string,
+...:
+335: };
+     ^ intersection. See: src/index.js.flow:49
+  Member 1:
+         v-------------------
+   50:   <Props, ExtraProps>(
+   51:     component: ReactClassComponent<Props> | string,
+   52:     options?: GlamorousOptions
+   53:   ): GlamorousFactoryHTMLComponent<Props, ExtraProps>,
+         --------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:50
+  Error:
+   20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                  ^^^^^^^ intersection type. This type is incompatible with
+   51:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:51
+    Member 1:
+     51:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:51
+    Error:
+     20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     51:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:51
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+        8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+       29: declare class React$Component<Props, State = void> {
+                                         ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       51:     component: ReactClassComponent<Props> | string,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:51
+    Member 2:
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+    Error:
+     20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. This type is incompatible with. See: src/index.js.flow:16
+       51:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:51
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       51:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:51
+  Member 2:
+         v-------------------
+   54:   <Props, ExtraProps>(
+   55:     component: ReactClassComponent<Props> | string,
+   56:     options?: GlamorousOptions
+   57:   ): GlamorousFactorySVGComponent<Props, ExtraProps>,
+         -------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:54
+  Error:
+   20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                  ^^^^^^^ intersection type. This type is incompatible with
+   55:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:55
+    Member 1:
+     55:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:55
+    Error:
+     20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     55:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:55
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+        8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+       29: declare class React$Component<Props, State = void> {
+                                         ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       55:     component: ReactClassComponent<Props> | string,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. See: src/index.js.flow:55
+    Member 2:
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+    Error:
+     20: const TestDiv2 = glamorous(TestDiv)((props: {color: string}) => ({
+                                    ^^^^^^^ intersection. This type is incompatible with
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+      Member 1:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+      Error:
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ class type: type application of identifier \`React$Component\`. This type is incompatible with. See: src/index.js.flow:16
+       55:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:55
+      Member 2:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. See: src/index.js.flow:16
+      Error:
+                                                                                                      v
+       16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+       17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+       18: };
+           ^ object type. This type is incompatible with. See: src/index.js.flow:16
+       55:     component: ReactClassComponent<Props> | string,
+                                                       ^^^^^^ string. See: src/index.js.flow:55
+
+Error: test/flow/glamorous-success.test.js:37
+ 37: ui = <TestDivWithMultipleDynamicStyles border=\\"1px solid black\\" color=\\"red\\" />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestDivWithMultipleDynamicStyles\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                                              v-------------
+ 26: const TestDivWithMultipleDynamicStyles = glamorous.div(
+ 27:   {
+ 28:     backgroundColor: 'red',
+...:
+ 36: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   37: ui = <TestDivWithMultipleDynamicStyles border=\\"1px solid black\\" color=\\"red\\" />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestDivWithMultipleDynamicStyles\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:41
+ 41: ui = <TestSpan border=\\"asd\\" />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestSpan\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+ 40: const TestSpan = TestDiv.withComponent('span')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   41: ui = <TestSpan border=\\"asd\\" />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`TestSpan\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:57
+ 57: ui = <DivOfStyledArray color=\\"red\\" />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledArray\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                              v-------------
+ 44: const DivOfStyledArray = glamorous.div(
+ 45:   [
+ 46:     {
+...:
+ 56: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   57: ui = <DivOfStyledArray color=\\"red\\" />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledArray\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:71
+ 71: ui = <DivOfStyledObjects color=\\"red\\" />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledObjects\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                                v-------------
+ 60: const DivOfStyledObjects = glamorous.div(
+ 61:   {
+ 62:     backgroundColor: 'green',
+...:
+ 70: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+   71: ui = <DivOfStyledObjects color=\\"red\\" />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`DivOfStyledObjects\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:97
+ 97: class MyComponent extends React.Component {
+                               ^^^^^^^^^^^^^^^ property \`Component\`. Too few type arguments. Expected at least 1
+ 29: declare class React$Component<Props, State = void> {
+                                   ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+
+Error: test/flow/glamorous-success.test.js:111
+             v-------
+111:         <MyInput
+112:           innerRef={(r: HTMLInputElement) => {
+113:             this._inputRef = r
+114:           }}
+115:         />
+             -^ React element \`MyInput\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+ 96: const MyInput = glamorous.input({borderRadius: 4, padding: '4px 8px'})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+               v-------
+  111:         <MyInput
+  112:           innerRef={(r: HTMLInputElement) => {
+  113:             this._inputRef = r
+  114:           }}
+  115:         />
+               -^ React element \`MyInput\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:116
+116:         <glamorous.Button type=\\"submit\\" marginTop={12} display=\\"block\\">
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`glamorous.Button\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+116:         <glamorous.Button type=\\"submit\\" marginTop={12} display=\\"block\\">
+              ^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  116:         <glamorous.Button type=\\"submit\\" marginTop={12} display=\\"block\\">
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`glamorous.Button\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:125
+125: ui = <MyInput css={{zIndex: 1}} />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`MyInput\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+ 96: const MyInput = glamorous.input({borderRadius: 4, padding: '4px 8px'})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  125: ui = <MyInput css={{zIndex: 1}} />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`MyInput\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:151
+151:   <ThemeProvider theme={someTheme}>
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`ThemeProvider\`. This type is incompatible with
+  8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                             ^^^^ undefined. See: src/index.js.flow:8
+
+Error: test/flow/glamorous-success.test.js:152
+152:     <Title>Hello!</Title>
+         ^^^^^^^ React element \`Title\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+                   v------------
+133: const Title = glamorous.h1(
+134:   {
+135:     fontSize: '10px',
+...:
+141: )
+     ^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  152:     <Title>Hello!</Title>
+           ^^^^^^^ React element \`Title\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:153
+153:     <MyStyledSubTitle /> {/* theme props not needed here*/}
+         ^^^^^^^^^^^^^^^^^^^^ React element \`MyStyledSubTitle\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+146: const MyStyledSubTitle = withTheme(SubTitle)
+                              ^^^^^^^^^^^^^^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  153:     <MyStyledSubTitle /> {/* theme props not needed here*/}
+           ^^^^^^^^^^^^^^^^^^^^ React element \`MyStyledSubTitle\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:173
+                               v-----------------------
+173: const MyStyledComponent = glamorous(MyComponent, {
+174:   forwardProps: ['shouldRender'],
+175:   rootEl: 'div',
+176: })(props => ({
+     -^ function call. Function cannot be called on any member of intersection type
+                      v
+ 49: type glamorous = {
+ 50:   <Props, ExtraProps>(
+ 51:     component: ReactClassComponent<Props> | string,
+...:
+335: };
+     ^ intersection. See: src/index.js.flow:49
+  Member 1:
+         v-------------------
+   50:   <Props, ExtraProps>(
+   51:     component: ReactClassComponent<Props> | string,
+   52:     options?: GlamorousOptions
+   53:   ): GlamorousFactoryHTMLComponent<Props, ExtraProps>,
+         --------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:50
+  Error:
+  173: const MyStyledComponent = glamorous(MyComponent, {
+                                           ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+   51:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:51
+    Member 1:
+     51:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:51
+    Error:
+      8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+     29: declare class React$Component<Props, State = void> {
+                                       ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+    Member 2:
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+    Error:
+    173: const MyStyledComponent = glamorous(MyComponent, {
+                                             ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+     51:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:51
+  Member 2:
+         v-------------------
+   54:   <Props, ExtraProps>(
+   55:     component: ReactClassComponent<Props> | string,
+   56:     options?: GlamorousOptions
+   57:   ): GlamorousFactorySVGComponent<Props, ExtraProps>,
+         -------------------------------------------------^ polymorphic type: function type. See: src/index.js.flow:54
+  Error:
+  173: const MyStyledComponent = glamorous(MyComponent, {
+                                           ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+   55:     component: ReactClassComponent<Props> | string,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ union: type application of polymorphic type: type \`ReactClassComponent\` | string. See: src/index.js.flow:55
+    Member 1:
+     55:     component: ReactClassComponent<Props> | string,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:55
+    Error:
+      8: type ReactClassComponent<Props> = Class<React$Component<void, Props, void>>;
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:8
+     29: declare class React$Component<Props, State = void> {
+                                       ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+    Member 2:
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+    Error:
+    173: const MyStyledComponent = glamorous(MyComponent, {
+                                             ^^^^^^^^^^^ class type: MyComponent. This type is incompatible with
+     55:     component: ReactClassComponent<Props> | string,
+                                                     ^^^^^^ string. See: src/index.js.flow:55
+
+Error: test/flow/glamorous-success.test.js:183
+183: ui = <Div float={'left'} />
+          ^^^^^^^^^^^^^^^^^^^^^^ React element \`Div\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+  5: const {Div, Circle} = glamorous
+            ^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  183: ui = <Div float={'left'} />
+            ^^^^^^^^^^^^^^^^^^^^^^ React element \`Div\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+Error: test/flow/glamorous-success.test.js:184
+184: ui = <Circle cx={10} cy={10} />
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`Circle\`. Type is incompatible with (unclassified use type: ReactKitT) any member of intersection type
+  5: const {Div, Circle} = glamorous
+                 ^^^^^^ intersection
+  Member 1:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of polymorphic type: type \`ReactClassComponent\`. See: src/index.js.flow:16
+  Error:
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ type application of identifier \`React$Component\`. Too many type arguments. Expected at most 2. See: src/index.js.flow:16
+   29: declare class React$Component<Props, State = void> {
+                                     ^^^^^^^^^^^^ See type parameters of definition here. See lib: /private/tmp/flow/flowlib_30e18620/react.js:29
+  Member 2:
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+  Error:
+  184: ui = <Circle cx={10} cy={10} />
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^ React element \`Circle\`. Expected React component instead of
+                                                                                                  v
+   16: export type GlamorousComponent<Props> = ReactClassComponent<Props & ExtraGlamorousProps> & {
+   17:   withComponent: (tagName: string) => GlamorousComponent<Props>
+   18: };
+       ^ object type. See: src/index.js.flow:16
+
+
+Found 39 errors
+"
+`;

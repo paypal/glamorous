@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "func-style": "off",
+    "no-unused-vars": "off"
+  }
+}

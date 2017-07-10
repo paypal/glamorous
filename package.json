@@ -56,6 +56,7 @@
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.3.0",
     "eslint-config-kentcdodds": "^12.4.2",
+    "flow-bin": "^0.53.1",
     "glamor": "^2.20.37",
     "husky": "^0.14.3",
     "jest-cli": "^20.0.4",
