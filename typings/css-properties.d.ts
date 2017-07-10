@@ -4,7 +4,7 @@
 type CSSWideKeyword = 'initial' | 'inherit' | 'unset'
 
 // Based on [CSSProperties from React types](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts)
-export interface CSSProperties {
+export interface CSSPropertiesComplete {
 
   /**
    * Aligns a flex container's lines within the flex container when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
@@ -1524,6 +1524,12 @@ export interface CSSProperties {
   ':first-line'?: CSSProperties
   '::first-line'?: CSSProperties
   '::selection'?: CSSProperties
+}
 
+export interface CSSPropertiesLossy {
   [propertyName: string]: string | number | CSSProperties | undefined
 }
+
+type CSSProperties =
+  & CSSPropertiesComplete
+  & CSSPropertiesLossy

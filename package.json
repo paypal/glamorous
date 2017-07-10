@@ -13,10 +13,7 @@
     "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
     "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
-  "files": [
-    "dist",
-    "typings"
-  ],
+  "files": ["dist", "typings"],
   "keywords": [
     "react",
     "css",
@@ -56,10 +53,10 @@
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.3.0",
     "eslint-config-kentcdodds": "^12.4.2",
-    "glamor": "^2.20.31",
+    "glamor": "^2.20.37",
     "husky": "^0.14.3",
     "jest-cli": "^20.0.4",
-    "jest-glamor-react": "^2.0.0",
+    "jest-glamor-react": "^3.0.0",
     "lint-staged": "^4.0.2",
     "nps": "^5.3.1",
     "nps-utils": "^1.1.2",
@@ -81,7 +78,7 @@
     "tslint": "^5.4.3",
     "tslint-microsoft-contrib": "^5.0.0",
     "tsutils": "^1.9.1",
-    "typescript": "^2.3.4"
+    "typescript": "^2.4.2"
   },
   "eslintConfig": {
     "extends": [
@@ -97,14 +94,8 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
-      "git add"
-    ],
-    "README.md": [
-      "npm run doctoc",
-      "git add"
-    ]
+    "*.+(js|json)": ["prettier-eslint --write", "git add"],
+    "README.md": ["npm run doctoc", "git add"]
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -116,12 +107,8 @@
         "statements": 100
       }
     },
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "roots": [
-      "src"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer", "jest-glamor-react"],
+    "roots": ["src"]
   },
   "repository": {
     "type": "git",

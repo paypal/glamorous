@@ -48,16 +48,18 @@ function getGlamorClassName({
   props,
   cssOverrides,
   cssProp,
-  theme,
   context,
+  displayName,
 }) {
   const {mappedArgs, nonGlamorClassNames} = handleStyles(
     [...styles, props.className, cssOverrides, cssProp],
     props,
-    theme,
     context,
   )
-  const glamorClassName = css(...mappedArgs).toString()
+  // eslint-disable-next-line max-len
+  const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+  const devRules = isDev ? {label: displayName} : null
+  const glamorClassName = css(devRules, ...mappedArgs).toString()
   const extras = nonGlamorClassNames.join(' ').trim()
   return `${glamorClassName} ${extras}`.trim()
 }
@@ -65,31 +67,27 @@ function getGlamorClassName({
 // this next function is on a "hot" code-path
 // so it's pretty complex to make sure it's fast.
 // eslint-disable-next-line complexity
-function handleStyles(styles, props, theme, context) {
+function handleStyles(styles, props, context) {
   let current
   const mappedArgs = []
   const nonGlamorClassNames = []
   for (let i = 0; i < styles.length; i++) {
     current = styles[i]
     if (typeof current === 'function') {
-      const result = current(props, theme, context)
+      const result = current(props, context)
       if (typeof result === 'string') {
-        const {glamorStyles, glamorlessClassName} = extractGlamorStyles(
-          result,
-        )
+        const {glamorStyles, glamorlessClassName} = extractGlamorStyles(result)
         mappedArgs.push(...glamorStyles)
         nonGlamorClassNames.push(...glamorlessClassName)
       } else {
         mappedArgs.push(result)
       }
     } else if (typeof current === 'string') {
-      const {glamorStyles, glamorlessClassName} = extractGlamorStyles(
-        current,
-      )
+      const {glamorStyles, glamorlessClassName} = extractGlamorStyles(current)
       mappedArgs.push(...glamorStyles)
       nonGlamorClassNames.push(...glamorlessClassName)
     } else if (Array.isArray(current)) {
-      const recursed = handleStyles(current, props, theme, context)
+      const recursed = handleStyles(current, props, context)
       mappedArgs.push(...recursed.mappedArgs)
       nonGlamorClassNames.push(...recursed.nonGlamorClassNames)
     } else {
