@@ -2,7 +2,7 @@ import {
   CSSProperties,
   ExtraGlamorousProps,
   GlamorousComponent,
-  HTMLGlamorousInterface,
-  StyledFunction,
-  SVGGlamorousInterface,
+  HTMLComponentFactory,
+  GlamorousComponentFactory,
+  SVGComponentFactory,
 } from '../'
