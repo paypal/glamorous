@@ -32,7 +32,7 @@ What happened:
 Reproduction:
 
 <!--
-Please reproduce your issue with this: http://kcd.im/glamorous-help
+Please reproduce your issue with this: https://help.glamorous.rocks
 with as minimal amount of code possible. Then paste a link below:
 -->
 
@@ -43,4 +43,3 @@ Problem description:
 
 
 Suggested solution:
-

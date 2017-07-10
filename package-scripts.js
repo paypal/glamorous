@@ -3,6 +3,7 @@ const npsUtils = require('nps-utils')
 const series = npsUtils.series
 const concurrent = npsUtils.concurrent
 const rimraf = npsUtils.rimraf
+const crossEnv = npsUtils.crossEnv
 
 module.exports = {
   scripts: {
@@ -21,8 +22,9 @@ module.exports = {
       script: 'git-cz',
     },
     test: {
-      default: 'jest --coverage',
-      watch: 'jest --watch',
+      default: crossEnv('NODE_ENV=test jest --coverage'),
+      update: crossEnv('NODE_ENV=test jest --coverage --updateSnapshot'),
+      watch: crossEnv('NODE_ENV=test jest --watch'),
       build: {
         description: 'validates the built files',
         script: 'babel-node dist-test/index.js',
