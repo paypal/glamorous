@@ -22,7 +22,7 @@ test('renders a component with theme', () => {
     {
       color: 'red',
     },
-    (props, theme) => ({padding: theme.padding}),
+    ({theme}) => ({padding: theme.padding}),
   )
   expect(
     render(
@@ -51,7 +51,7 @@ test('theme properties updates get propagated down the tree', () => {
     {
       color: 'red',
     },
-    (props, theme) => ({padding: theme.padding}),
+    ({theme}) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Parent />)
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
@@ -60,11 +60,11 @@ test('theme properties updates get propagated down the tree', () => {
 })
 
 test('merges nested themes', () => {
-  const One = glamorous.div({}, (props, {padding, margin}) => ({
+  const One = glamorous.div({}, ({theme: {padding, margin}}) => ({
     padding,
     margin,
   }))
-  const Two = glamorous.div({}, (props, {padding, margin}) => ({
+  const Two = glamorous.div({}, ({theme: {padding, margin}}) => ({
     padding,
     margin,
   }))
