@@ -25,14 +25,7 @@ function extractGlamorStyles(className = '') {
 
 export default getGlamorClassName
 
-function getGlamorClassName({
-  styles,
-  props,
-  cssOverrides,
-  cssProp,
-  theme,
-  context,
-}) {
+function getGlamorClassName({styles, props, cssOverrides, cssProp, context}) {
   const {
     glamorStyles: parentGlamorStyles,
     glamorlessClassName,
@@ -40,7 +33,6 @@ function getGlamorClassName({
   const {mappedArgs, nonGlamorClassNames} = handleStyles(
     [...styles, parentGlamorStyles, cssOverrides, cssProp],
     props,
-    theme,
     context,
   )
   const glamorClassName = css(...mappedArgs).toString()
@@ -51,14 +43,14 @@ function getGlamorClassName({
 // this next function is on a "hot" code-path
 // so it's pretty complex to make sure it's fast.
 // eslint-disable-next-line complexity
-function handleStyles(styles, props, theme, context) {
+function handleStyles(styles, props, context) {
   let current
   const mappedArgs = []
   const nonGlamorClassNames = []
   for (let i = 0; i < styles.length; i++) {
     current = styles[i]
     if (typeof current === 'function') {
-      const result = current(props, theme, context)
+      const result = current(props, context)
       if (typeof result === 'string') {
         processStringClass(result, mappedArgs, nonGlamorClassNames)
       } else {
@@ -67,7 +59,7 @@ function handleStyles(styles, props, theme, context) {
     } else if (typeof current === 'string') {
       processStringClass(current, mappedArgs, nonGlamorClassNames)
     } else if (Array.isArray(current)) {
-      const recursed = handleStyles(current, props, theme, context)
+      const recursed = handleStyles(current, props, context)
       mappedArgs.push(...recursed.mappedArgs)
       nonGlamorClassNames.push(...recursed.nonGlamorClassNames)
     } else {

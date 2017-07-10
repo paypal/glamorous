@@ -51,18 +51,12 @@ function createGlamorous(splitProps) {
             GlamorousComponent,
           )
 
-          // freeze the theme object in dev mode
-          const theme = process.env.NODE_ENV === 'production' ?
-            props.theme :
-            Object.freeze(props.theme)
-
           // create className to apply
           const fullClassName = getGlamorClassName({
             styles: GlamorousComponent.styles,
             props,
             cssOverrides,
             cssProp,
-            theme,
             context,
           })
           const debugClassName = glamorous.config.useDisplayNameInClassName ?
@@ -82,7 +76,6 @@ function createGlamorous(splitProps) {
       GlamorousComponent.propTypes = {
         className: PropTypes.string,
         cssOverrides: PropTypes.object,
-        theme: PropTypes.object,
         innerRef: PropTypes.func,
         glam: PropTypes.object,
       }

@@ -31,5 +31,5 @@ test('should pass glam object prop', () => {
     theme, // this is just insidental because we have a theme prop
   }
   const context = expect.any(Object) // the context
-  expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
+  expect(dynamicStyles).toHaveBeenCalledWith(props, context)
 })
