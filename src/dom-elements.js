@@ -1,3 +1,4 @@
+// @flow
 import htmlTagNames from 'html-tag-names'
 import svgTagNames from 'svg-tag-names'
 

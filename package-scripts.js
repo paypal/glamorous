@@ -79,6 +79,10 @@ module.exports = {
       description: 'lint the entire project',
       script: 'eslint .',
     },
+    flow: {
+      description: 'Typecheck the codebase using flow',
+      script: 'flow check',
+    },
     examples: {
       withJest: {
         description: 'This jumpstarts and validates the with-jest example.',
@@ -92,7 +96,7 @@ module.exports = {
     },
     validate: {
       description: 'This runs several scripts to make sure things look good before committing or on clean install',
-      default: concurrent.nps('lint', 'build.andTest', 'test'),
+      default: concurrent.nps('lint', 'flow', 'build.andTest', 'test'),
       examples: {
         description: 'Validates the examples folder',
         script: 'nps examples.withJest',

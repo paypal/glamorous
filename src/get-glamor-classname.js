@@ -1,4 +1,9 @@
+// @flow
 import {css, styleSheet} from 'glamor'
+import type {CSSProperties} from './types/CSSProperties'
+import type {Style} from './types/Style'
+import type {Theme} from './theme-provider'
+
 /**
  * This function takes a className string and gets all the
  * associated glamor styles. It's used to merge glamor styles
@@ -32,6 +37,13 @@ function getGlamorClassName({
   cssProp,
   theme,
   context,
+}: {
+  styles: Array<Style>,
+  props: {[key: string]: any},
+  cssOverrides: CSSProperties,
+  cssProp: CSSProperties,
+  theme: Theme,
+  context: ?{[key: string]: any},
 }) {
   const {
     glamorStyles: parentGlamorStyles,
@@ -51,7 +63,12 @@ function getGlamorClassName({
 // this next function is on a "hot" code-path
 // so it's pretty complex to make sure it's fast.
 // eslint-disable-next-line complexity
-function handleStyles(styles, props, theme, context) {
+function handleStyles(
+  styles: Array<Style>,
+  props: {[key: string]: any},
+  theme: Theme,
+  context: ?{[key: string]: any},
+) {
   let current
   const mappedArgs = []
   const nonGlamorClassNames = []
@@ -86,7 +103,7 @@ function processStringClass(str, mappedArgs, nonGlamorClassNames) {
   }
 }
 
-function getGlamorStylesFromClassName(className) {
+function getGlamorStylesFromClassName(className): string | null {
   const id = className.slice('css-'.length)
   if (styleSheet.registered[id]) {
     return styleSheet.registered[id].style
