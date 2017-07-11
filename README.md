@@ -1,9 +1,10 @@
-<img src="https://github.com/paypal/glamorous/raw/master/other/logo/full.png" alt="glamorous logo" title="glamorous" align="right" width="150" height="150" />
-
-# glamorous
-
-React component styling solved with an elegant ([inspired](#inspiration)) API,
-[small footprint](#size), and great performance (via [`glamor`][glamor]).
+<h1 align="center">
+  <img src="https://github.com/paypal/glamorous/raw/master/other/logo/full.png" alt="glamorous" title="glamorous" width="200">
+  <br>
+  glamorous 💄
+  <br>
+</h1>
+<p align="center" style="font-size: 1.2rem;">Maintainable CSS with React</p>
 
 > Read [the intro blogpost][intro-blogpost]
 
