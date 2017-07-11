@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typescript expected failures 1`] = `
+"test/should-fail.test.tsx(16,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<SVGProperties>'.
+  Types of property 'fillRule' are incompatible.
+    Type '\\"cat\\"' is not assignable to type '\\"nonzero\\" | \\"evenodd\\" | \\"inherit\\" | undefined'.
+test/should-fail.test.tsx(29,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<SVGProperties>'.
+  Index signature is missing in type '() => { fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(43,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
+  Types of property 'float' are incompatible.
+    Type '\\"cat\\"' is not assignable to type '\\"left\\" | \\"right\\" | \\"none\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"inline-start\\" | \\"inline-end\\" | und...'.
+test/should-fail.test.tsx(55,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
+  Index signature is missing in type '() => { float: \\"cat\\"; }'.
+test/should-fail.test.tsx(71,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
+  Types of property 'fillRule' are incompatible.
+    Type '\\"cat\\"' is not assignable to type '\\"nonzero\\" | \\"evenodd\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | undefined'.
+test/should-fail.test.tsx(77,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
+  Index signature is missing in type '() => { fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(83,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
+  Types of property 'float' are incompatible.
+    Type '\\"cat\\"' is not assignable to type '\\"left\\" | \\"right\\" | \\"none\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"inline-start\\" | \\"inline-end\\" | und...'.
+test/should-fail.test.tsx(89,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
+  Index signature is missing in type '() => { float: \\"cat\\"; }'.
+"
+`;
