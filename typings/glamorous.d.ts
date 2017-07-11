@@ -13,6 +13,7 @@ import {
   ExtraGlamorousProps,
 } from './styled-function'
 import { CSSProperties } from './css-properties'
+import { SVGProperties } from './svg-properties'
 
 export {
   CSSProperties,
@@ -36,10 +37,14 @@ export interface Config {
 }
 
 export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
-  <P>(
-    component:Component<P>,
+  <Props>(
+    component:Component<Props>,
     options?: GlamorousOptions,
-  ): StyledFunction<P, CSSProperties | React.SVGAttributes<any>>
+  ): StyledFunction<Props, CSSProperties>
+  <Props>(
+    component:Component<Props>,
+    options?: GlamorousOptions,
+  ): StyledFunction<Props, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<React.SVGAttributes<any> & ExtraGlamorousProps>
