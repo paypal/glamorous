@@ -3,6 +3,7 @@ const npsUtils = require('nps-utils')
 const series = npsUtils.series
 const concurrent = npsUtils.concurrent
 const rimraf = npsUtils.rimraf
+const crossEnv = npsUtils.crossEnv
 
 module.exports = {
   scripts: {
@@ -21,11 +22,18 @@ module.exports = {
       script: 'git-cz',
     },
     test: {
-      default: 'jest --coverage',
-      watch: 'jest --watch',
+      default: crossEnv('NODE_ENV=test jest --coverage'),
+      update: crossEnv('NODE_ENV=test jest --coverage --updateSnapshot'),
+      watch: crossEnv('NODE_ENV=test jest --watch'),
       build: {
         description: 'validates the built files',
         script: 'babel-node dist-test/index.js',
+      },
+      size: {
+        description: 'check the size of the bundle',
+        // TODO: when we get PayPal admins to authorize bundlesize,
+        // then set `script` to "bundlesize"
+        script: 'echo "bundlesize disabled for now"',
       },
     },
     build: {
@@ -45,7 +53,7 @@ module.exports = {
       ),
       es: {
         description: 'run the build with rollup (uses rollup.config.js)',
-        script: 'rollup --config --environment FORMAT:es',
+        script: 'rollup --config --environment FORMAT:es && node other/concat-exports.js',
         tiny: 'rollup --config --environment FORMAT:es,TINY',
       },
       cjs: {
@@ -65,23 +73,11 @@ module.exports = {
           tiny: 'rollup --config --sourcemap --environment FORMAT:umd,TINY',
         },
       },
-      andTest: series.nps('build', 'test.build'),
+      andTest: series.nps('build', 'test.build', 'test.size'),
     },
     lint: {
       description: 'lint the entire project',
       script: 'eslint .',
-    },
-    reportCoverage: {
-      description: 'Report coverage stats to codecov. This should be run after the `test` script',
-      script: 'codecov',
-    },
-    release: {
-      description: 'We automate releases with semantic-release. This should only be run on travis',
-      script: series(
-        'semantic-release pre',
-        'npm publish',
-        'semantic-release post'
-      ),
     },
     examples: {
       withJest: {

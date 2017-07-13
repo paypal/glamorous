@@ -13,8 +13,7 @@ import {css, styleSheet} from 'glamor'
 function extractGlamorStyles(className = '') {
   return className.toString().split(' ').reduce((groups, name) => {
     if (name.indexOf('css-') === 0) {
-      const id = name.slice('css-'.length)
-      const {style} = styleSheet.registered[id]
+      const style = getGlamorStylesFromClassName(name)
       groups.glamorStyles.push(style)
     } else {
       // eslint-disable-next-line max-len
@@ -26,21 +25,72 @@ function extractGlamorStyles(className = '') {
 
 export default getGlamorClassName
 
-function getGlamorClassName(styles, props, cssOverrides, theme) {
-  const mappedArgs = styles.slice()
-  for (let i = mappedArgs.length; i--;) {
-    if (typeof mappedArgs[i] === 'function') {
-      mappedArgs[i] = mappedArgs[i](props, theme)
-    }
-  }
+function getGlamorClassName({
+  styles,
+  props,
+  cssOverrides,
+  cssProp,
+  theme,
+  context,
+}) {
   const {
     glamorStyles: parentGlamorStyles,
     glamorlessClassName,
   } = extractGlamorStyles(props.className)
-  const glamorClassName = css(
-    ...mappedArgs,
-    ...parentGlamorStyles,
-    cssOverrides,
-  ).toString()
-  return `${glamorlessClassName} ${glamorClassName}`.trim()
+  const {mappedArgs, nonGlamorClassNames} = handleStyles(
+    [...styles, parentGlamorStyles, cssOverrides, cssProp],
+    props,
+    theme,
+    context,
+  )
+  const glamorClassName = css(...mappedArgs).toString()
+  const extras = [...nonGlamorClassNames, glamorlessClassName].join(' ').trim()
+  return `${glamorClassName} ${extras}`.trim()
+}
+
+// this next function is on a "hot" code-path
+// so it's pretty complex to make sure it's fast.
+// eslint-disable-next-line complexity
+function handleStyles(styles, props, theme, context) {
+  let current
+  const mappedArgs = []
+  const nonGlamorClassNames = []
+  for (let i = 0; i < styles.length; i++) {
+    current = styles[i]
+    if (typeof current === 'function') {
+      const result = current(props, theme, context)
+      if (typeof result === 'string') {
+        processStringClass(result, mappedArgs, nonGlamorClassNames)
+      } else {
+        mappedArgs.push(result)
+      }
+    } else if (typeof current === 'string') {
+      processStringClass(current, mappedArgs, nonGlamorClassNames)
+    } else if (Array.isArray(current)) {
+      const recursed = handleStyles(current, props, theme, context)
+      mappedArgs.push(...recursed.mappedArgs)
+      nonGlamorClassNames.push(...recursed.nonGlamorClassNames)
+    } else {
+      mappedArgs.push(current)
+    }
+  }
+  return {mappedArgs, nonGlamorClassNames}
+}
+
+function processStringClass(str, mappedArgs, nonGlamorClassNames) {
+  const className = getGlamorStylesFromClassName(str)
+  if (className) {
+    mappedArgs.push(className)
+  } else {
+    nonGlamorClassNames.push(str)
+  }
+}
+
+function getGlamorStylesFromClassName(className) {
+  const id = className.slice('css-'.length)
+  if (styleSheet.registered[id]) {
+    return styleSheet.registered[id].style
+  } else {
+    return null
+  }
 }

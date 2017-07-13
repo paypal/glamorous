@@ -4,19 +4,17 @@ import * as glamor from 'glamor'
 import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
-import glamorous from '../'
-
+import glamorous, {ThemeProvider} from '../'
+import {PropTypes} from '../react-compat'
 import {CHANNEL} from '../constants'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
 
-const getMockedContext = unsubscribe => ({
-  [CHANNEL]: {
-    getState: () => {},
-    setState: () => {},
-    subscribe: () => unsubscribe,
-  },
+const nodeEnv = process.env.NODE_ENV
+
+afterEach(() => {
+  process.env.NODE_ENV = nodeEnv
 })
 
 test('sanity test', () => {
@@ -24,7 +22,7 @@ test('sanity test', () => {
   expect(render(<Div />)).toMatchSnapshotWithGlamor()
 })
 
-test('can use pre-glamorous components with css attributes', () => {
+test('can use pre-built glamorous components with css attributes', () => {
   expect(
     render(
       <glamorous.A
@@ -38,7 +36,7 @@ test('can use pre-glamorous components with css attributes', () => {
   ).toMatchSnapshotWithGlamor()
 })
 
-test('can use pre-glamorous components with css prop', () => {
+test('can use pre-built glamorous components with css prop', () => {
   const computed = 'background'
   expect(
     render(
@@ -54,6 +52,48 @@ test('can use pre-glamorous components with css prop', () => {
       />,
     ),
   ).toMatchSnapshotWithGlamor()
+})
+
+test('the css prop accepts "GlamorousStyles"', () => {
+  const object = {fontSize: 12}
+  expect(render(<glamorous.Section css={object} />)).toMatchSnapshotWithGlamor(
+    'css prop with an object',
+  )
+
+  const array = [
+    {marginTop: 1, marginRight: 1},
+    {marginRight: 2, marginBottom: 2},
+  ]
+  expect(render(<glamorous.Section css={array} />)).toMatchSnapshotWithGlamor(
+    'css prop with an array',
+  )
+
+  // this one's weird, but could enable some Ahead of Time
+  // compilation in the future
+  const className = `${glamor.css({color: 'red'})} abc-123`
+  expect(
+    render(<glamorous.Section css={className} />),
+  ).toMatchSnapshotWithGlamor('css prop with a className')
+
+  const fn1 = jest.fn(() => ({padding: 20}))
+  const fn2 = jest.fn(() => ({margin: 30}))
+  const props = {css: [fn1, fn2], fontSize: 10, theme: {color: 'red'}}
+  expect(render(<glamorous.Section {...props} />)).toMatchSnapshotWithGlamor(
+    'css prop with a function',
+  )
+  expect(fn1).toHaveBeenCalledTimes(1)
+  expect(fn2).toHaveBeenCalledTimes(1)
+  const context = {__glamorous__: undefined}
+  expect(fn1).toHaveBeenCalledWith(
+    expect.objectContaining(props),
+    expect.objectContaining(props.theme),
+    expect.objectContaining(context),
+  )
+  expect(fn2).toHaveBeenCalledWith(
+    expect.objectContaining(props),
+    expect.objectContaining(props.theme),
+    expect.objectContaining(context),
+  )
 })
 
 test('merges composed component styles for reasonable overrides', () => {
@@ -105,11 +145,64 @@ test('merges composed component styles for reasonable overrides', () => {
   expect(wrapper).toMatchSnapshotWithGlamor()
 })
 
+test('merges composed component forwardProps', () => {
+  const parent = ({shouldRender, ...rest}) => {
+    return shouldRender ? <div {...rest} /> : null
+  }
+  const Child = glamorous(parent, {forwardProps: ['shouldRender']})()
+  const Grandchild = glamorous(Child)()
+  const wrapper = render(<Grandchild shouldRender={true} />)
+  expect(wrapper).toMatchSnapshotWithGlamor()
+})
+
 test('styles can be functions that accept props', () => {
   const MyDiv = glamorous.div({marginTop: 1}, ({margin}) => ({
     marginTop: margin,
   }))
   expect(render(<MyDiv margin={2} />)).toMatchSnapshotWithGlamor()
+})
+
+test('style objects can be arrays and glamor will merge those', () => {
+  const phoneMediaQuery = '@media (max-width: 640px)'
+  const MyDiv = glamorous.div(
+    [
+      {
+        [phoneMediaQuery]: {
+          lineHeight: 1.2,
+        },
+      },
+      {
+        [phoneMediaQuery]: {
+          lineHeight: 1.3, // this should win
+        },
+      },
+    ],
+    ({big, square}) => {
+      const bigStyles = big ?
+      {
+        [phoneMediaQuery]: {
+          fontSize: 20,
+        },
+      } :
+        {}
+
+      const squareStyles = square ?
+      {
+        [phoneMediaQuery]: {
+          borderRadius: 0,
+        },
+      } :
+      {
+        [phoneMediaQuery]: {
+          borderRadius: '50%',
+        },
+      }
+      return [bigStyles, squareStyles]
+    },
+  )
+  expect(
+    render(<MyDiv big={true} square={false} />),
+  ).toMatchSnapshotWithGlamor()
 })
 
 test('falls back to `name` if displayName cannot be inferred', () => {
@@ -125,9 +218,19 @@ test('falls back to `unknown` if name cannot be inferred', () => {
 
 test('allows you to specify a displayName', () => {
   const MyComp = glamorous(props => <div {...props} />, {
-    displayName: 'HiThere',
+    displayName: 'Hi There',
   })()
-  expect(MyComp.displayName).toBe('HiThere')
+  expect(MyComp.displayName).toBe('Hi There')
+})
+
+test('can be configured to use the displayName in the className', () => {
+  const original = glamorous.config.useDisplayNameInClassName
+  glamorous.config.useDisplayNameInClassName = true
+  const MyComp = glamorous(props => <div {...props} />, {
+    displayName: 'Hi There',
+  })()
+  expect(render(<MyComp />)).toMatchSnapshotWithGlamor()
+  glamorous.config.useDisplayNameInClassName = original
 })
 
 test('will not forward `color` to a div', () => {
@@ -234,6 +337,7 @@ test('renders a component with theme properties', () => {
 
 test('in development mode the theme is frozen and cannot be changed', () => {
   expect.assertions(1)
+  process.env.NODE_ENV = 'development'
   const Comp = glamorous.div(
     {
       color: 'red',
@@ -280,22 +384,15 @@ test('passes an updated theme when theme prop changes', () => {
   expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
 })
 
-test('cleans up theme subscription when unmounts', () => {
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
+test('passes `theme` to the css prop if it is a function', () => {
   const Comp = glamorous.div()
-  const wrapper = mount(<Comp />, {context})
-  wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalled()
-})
-
-test('ignores context if a theme props is passed', () => {
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
-  const Comp = glamorous.div()
-  const wrapper = mount(<Comp theme={{}} />, {context})
-  wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalledTimes(0)
+  const css = jest.fn()
+  const props = {css}
+  const theme = {color: 'blue'}
+  mount(<ThemeProvider theme={theme}><Comp {...props} /></ThemeProvider>)
+  expect(css).toHaveBeenCalledTimes(1)
+  const context = expect.objectContaining({[CHANNEL]: expect.any(Object)})
+  expect(css).toHaveBeenCalledWith({...props, theme}, theme, context)
 })
 
 test('allows you to pass custom props that are allowed', () => {
@@ -325,7 +422,7 @@ test('allows you to pass custom props that are allowed', () => {
   )
 })
 
-test('should recieve inner ref if specified', () => {
+test('should receive inner ref if specified', () => {
   const getRef = jest.fn()
   const Comp = glamorous.div({
     marginLeft: '24px',
@@ -334,4 +431,41 @@ test('should recieve inner ref if specified', () => {
   mount(<Comp innerRef={getRef} />)
 
   expect(getRef).toHaveBeenCalled()
+})
+
+test('can accept classNames instead of style objects', () => {
+  // this is to support a babel plugin to pre-compile static styles
+  const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
+  const styles2 = {paddingRight: 2, paddingBottom: 2}
+  const className3 = glamor.css({paddingBottom: 3, paddingLeft: 3}).toString()
+  const styles4 = {paddingLeft: 4}
+  const Comp = glamorous.div(
+    className1,
+    styles2,
+    className3,
+    styles4,
+    'extra-thing',
+  )
+  expect(render(<Comp />)).toMatchSnapshotWithGlamor()
+})
+
+test('can accept functions which return string class names', () => {
+  const styles1 = {paddingRight: 2, paddingBottom: 2}
+  const styles2 = props => (props.active ? 'is-active' : '')
+  const Comp = glamorous.div(styles1, styles2, 'extra-thing')
+  expect(render(<Comp active />)).toMatchSnapshotWithGlamor()
+})
+
+test('should accept user defined contextTypes', () => {
+  const dynamicStyles = jest.fn()
+  const Child = glamorous.div(dynamicStyles)
+  Child.contextTypes = {fontSize: PropTypes.number}
+
+  const context = {fontSize: 24}
+
+  render(<Child />, {context})
+  expect(dynamicStyles).toHaveBeenCalledTimes(1)
+  const theme = {}
+  const props = {theme}
+  expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
 })

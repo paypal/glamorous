@@ -10,8 +10,9 @@ node_js:
 script:
   - yarn start validate
 after_success:
-  - yarn start report-coverage
-  - yarn start release
+  - yarn global add codecov semantic-release
+  - codecov
+  - semantic-release pre && npm publish && semantic-release post
   - yarn start validate.examples
 branches:
   only:

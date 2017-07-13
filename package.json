@@ -8,9 +8,9 @@
   "typings": "typings/glamorous.d.ts",
   "scripts": {
     "start": "nps",
+    "doctoc": "doctoc --maxlevel 3 --title \"**Table of Contents**\"",
     "test": "nps test",
-    "test:ts": "tsc -p ./tsconfig.json",
-    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
+    "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
     "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
   "files": [
@@ -21,6 +21,7 @@
     "react",
     "css",
     "css-in-js",
+    "cssinjs",
     "styled-components",
     "glamor",
     "jsxstyle"
@@ -31,57 +32,55 @@
     "brcast": "^2.0.0",
     "fast-memoize": "^2.2.7",
     "html-tag-names": "^1.1.1",
-    "react-html-attributes": "^1.2.2",
+    "react-html-attributes": "^1.3.0",
     "svg-tag-names": "^1.1.0"
   },
   "peerDependencies": {
     "glamor": ">=2",
-    "react": ">=14"
+    "react": ">=0.14"
   },
   "devDependencies": {
-    "@types/react": "^15.0.21",
+    "@types/react": "^15.0.27",
     "all-contributors-cli": "^4.3.0",
     "babel-cli": "^6.24.1",
-    "babel-jest": "^19.0.0",
+    "babel-jest": "^20.0.3",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.4.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
-    "codecov": "^2.1.0",
-    "commitizen": "^2",
+    "bundlesize": "^0.5.7",
     "common-tags": "^1.4.0",
-    "cz-conventional-changelog": "^2.0.0",
+    "doctoc": "^1.3.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
     "eslint": "^3.17.0",
-    "eslint-config-kentcdodds": "^12.0.0",
-    "glamor": "^2.20.24",
-    "husky": "^0.13.2",
-    "jest-cli": "^19.0.2",
-    "jest-glamor-react": "^1.2.0",
-    "lint-staged": "^3.3.1",
-    "nps": "^5.0.6",
+    "eslint-config-kentcdodds": "^12.4.1",
+    "glamor": "^2.20.25",
+    "husky": "^0.13.4",
+    "jest-cli": "^20.0.4",
+    "jest-glamor-react": "^1.4.0",
+    "lint-staged": "^3.6.0",
+    "nps": "^5.3.1",
     "nps-utils": "^1.1.2",
     "opt-cli": "^1.5.1",
-    "prettier-eslint-cli": "^3.3.0",
-    "prop-types": "^15.5.8",
+    "prettier-eslint-cli": "^4.1.0",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
-    "rollup": "^0.41.6",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.42.0",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-json": "^2.1.1",
+    "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
-    "rollup-plugin-uglify": "^1.0.1",
-    "semantic-release": "^6.3.6",
-    "tslint": "^5.1.0",
-    "tslint-microsoft-contrib": "^4.0.1",
-    "typescript": "^2.2.2",
-    "validate-commit-msg": "^2.12.1"
+    "rollup-plugin-uglify": "^2.0.1",
+    "tslint": "^5.4.3",
+    "tslint-microsoft-contrib": "^5.0.0",
+    "typescript": "^2.3.4"
   },
   "eslintConfig": {
     "extends": [
@@ -91,12 +90,18 @@
       "kentcdodds/prettier"
     ],
     "rules": {
-      "import/prefer-default-export": 0
+      "import/prefer-default-export": 0,
+      "react/no-unused-prop-types": 0,
+      "valid-jsdoc": 0
     }
   },
   "lint-staged": {
     "*.js": [
       "prettier-eslint --write",
+      "git add"
+    ],
+    "README.md": [
+      "npm run doctoc",
       "git add"
     ]
   },
@@ -117,11 +122,6 @@
       "src"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/paypal/glamorous.git"
@@ -129,5 +129,19 @@
   "bugs": {
     "url": "https://github.com/paypal/glamorous/issues"
   },
-  "homepage": "https://github.com/paypal/glamorous#readme"
+  "homepage": "https://github.com/paypal/glamorous#readme",
+  "bundlesize": [
+    {
+      "path": "dist/glamorous.umd.tiny.min.js",
+      "threshold": "3kB"
+    },
+    {
+      "path": "dist/glamorous.es.tiny.js",
+      "threshold": "5kB"
+    },
+    {
+      "path": "dist/glamorous.cjs.tiny.js",
+      "threshold": "5kB"
+    }
+  ]
 }

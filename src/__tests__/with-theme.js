@@ -96,7 +96,7 @@ test('pass through when no theme provider found up tree', () => {
   expect(console.warn).toHaveBeenCalledTimes(1)
   expect(console.warn).toHaveBeenCalledWith(
     // eslint-disable-next-line max-len
-    `glamorous warning: Expected component called "Stateless Function" which uses withTheme to be within a ThemeProvider but none was found.`,
+    `glamorous warning: Expected component called "FunctionComponent" which uses withTheme to be within a ThemeProvider but none was found.`,
   )
   console.warn = originalWarn
 })
@@ -128,4 +128,13 @@ test('unsubscribes from theme updates on unmount', () => {
   })
   wrapper.unmount()
   expect(unsubscribe).toHaveBeenCalled()
+})
+
+test('ignores context if a theme props is passed', () => {
+  const unsubscribe = jest.fn()
+  const context = getMockedContext(unsubscribe)
+  const Comp = withTheme(() => <div />)
+  const wrapper = mount(<Comp theme={{}} />, {context})
+  wrapper.unmount()
+  expect(unsubscribe).toHaveBeenCalledTimes(0)
 })

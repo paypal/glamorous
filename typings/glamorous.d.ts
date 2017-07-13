@@ -2,21 +2,26 @@
 // Project: https://github.com/paypal/glamorous
 // Definitions by: Kok Sam <https://github.com/sammkj>
 
-import * as React from 'react';
+import * as React from 'react'
 import {
   HTMLGlamorousInterface,
   SVGGlamorousInterface,
-} from "./element-interfaces.d";
+} from './element-interfaces'
+import {
+  StyledFunction,
+  GlamorousComponent,
+  ExtraGlamorousProps,
+} from './styled-function'
+import { CSSProperties } from './css-properties'
 
-import { StyledFunction } from './styled-function'
-
-export { StyledFunction }
-
-export type GlamorousComponent<P> = React.ComponentClass<P> | React.StatelessComponent<P>;
-
-export type HtmlStyledFunction<Element, Properties> = StyledFunction<React.HTMLProps<Element>, Properties>;
-
-export type SvgStyledFunction<Element extends SVGElement, Properties> = StyledFunction<React.SVGAttributes<Element>, Properties>;
+export {
+  CSSProperties,
+  ExtraGlamorousProps,
+  GlamorousComponent,
+  HTMLGlamorousInterface,
+  StyledFunction,
+  SVGGlamorousInterface,
+}
 
 export interface GlamorousOptions {
   displayName: string
@@ -24,22 +29,38 @@ export interface GlamorousOptions {
   forwardProps: String[]
 }
 
+export type Component<T> = React.ComponentClass<T> | React.StatelessComponent<T>
+
+export interface Config {
+  useDisplayNameInClassName: boolean
+}
+
 export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
   <P>(
-    component: GlamorousComponent<P>,
-    options?: GlamorousOptions
-  ): StyledFunction<P, React.CSSProperties | React.SVGAttributes<any>>;
+    component:Component<P>,
+    options?: GlamorousOptions,
+  ): StyledFunction<P, CSSProperties | React.SVGAttributes<any>>
 
-  Div: React.StatelessComponent<React.CSSProperties>
-  Svg: React.StatelessComponent<React.SVGAttributes<any>>
+  Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
+  Svg: React.StatelessComponent<React.SVGAttributes<any> & ExtraGlamorousProps>
+
+  config: Config
 }
 
 interface ThemeProps {
-  theme: object;
+  theme: object
 }
 
 export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
-declare const glamorous: GlamorousInterface;
+export function withTheme<ExternalProps, Theme>(
+  component: React.ComponentClass<ExternalProps & { theme: Theme }>
+): React.ComponentClass<ExternalProps>
 
-export default glamorous;
+export function withTheme<ExternalProps, Theme>(
+  component: React.StatelessComponent<ExternalProps & { theme: Theme }>
+): React.StatelessComponent<ExternalProps>
+
+declare const glamorous: GlamorousInterface
+
+export default glamorous
