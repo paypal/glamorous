@@ -8,7 +8,7 @@ import glamorous, { withTheme, ThemeProvider } from "../";
 
 const BuiltInStrictSVGStyleObjectInvalidKey = glamorous.svg(
   {
-    flying: 'cat',
+    fillRule: 'cat',
   },
 )
 
@@ -16,13 +16,6 @@ const BuiltInStrictSVGStyleObjectInvalidProperty = glamorous.svg(
   {
     fillRule: 'cat',
   },
-)
-
-// Known to fail currently due to typescripts partial handling
-const BuiltInStrictSVGStyleFunctionInvalidKey = glamorous.svg(
-  () => ({
-    flying: 'cat'
-  })
 )
 
 const BuiltInStrictSVGStyleFunctionInvalidProperty = glamorous.svg(
@@ -35,7 +28,7 @@ const BuiltInStrictSVGStyleFunctionInvalidProperty = glamorous.svg(
 
 const BuiltInStrictDIVtyleObjectInvlalidKey = glamorous.div(
   {
-    flying: "cat",
+    float: "cat",
   },
 )
 
@@ -47,7 +40,7 @@ const BuiltInStrictDIVtyleObjectInvlalidProperty = glamorous.div(
 
 const BuiltInStrictDIVStyleFunctionInvlalidKey = glamorous.div(
   () => ({
-    flying: "cat",
+    float: "cat",
   })
 )
 

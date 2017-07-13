@@ -4,157 +4,38 @@ import { GlamorousComponent } from './glamorous-component'
  *
  * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
  */
-export type StyleObject<Styles> = Partial<Styles>
 
-/**
- * StyleFunction generates styles based on props
- * and themes.
- *
- * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
- */
-export type StyleFunction<Styles, Props, Theme> = (
-  props: Props,
-  theme?: Theme
-) => Partial<Styles>
+export interface StyleFunction<Properties, Props, Theme> {
+  (
+    props: Props,
+    theme: Theme,
+  ):
+    | Partial<Properties>
+    | string
+    | Array<
+      | Partial<Properties>
+      | string
+      | StyleFunction<Properties, Props, Theme>
+    >
+}
 
-export type StyleArguments<Styles, Props, Theme> = Array<
-  | StyleFunction<Styles, Props, Theme>
-  | StyleObject<Styles>
+export type StyleArray<Properties, Props, Theme> = Array<
+  | Partial<Properties>
+  | string
+  | StyleFunction<Properties, Props, Theme>
 >
 
-// TODO: Using a union for a parameter kills autocomplete so we
-// use overloading to give autocomplete on the first two styles
-// and retain typesafety on additional styles
-// o = StyleObject, f = StyleFunction
-// o
-// o,o
-// o,f
-// o,f,o
-// o,f,f
-// o,o,f
-// o,o,o
-// f
-// f,o
-// f,f
-// f,o,f
-// f,o,o
-// f,f,o
-// f,f,f
+export type StyleArgument<Properties, Props, Theme> =
+  | Partial<Properties>
+  | string
+  | StyleFunction<Properties, Props, Theme>
+  | StyleArray<Properties, Props, Theme>
 
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>;
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    style2: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    style2: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    style2: StyleFunction<Styles, Props, Theme>,
-    style3: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    style2: StyleFunction<Styles, Props, Theme>,
-    style3: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    style2: StyleObject<Styles>,
-    style3: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleObject<Styles>,
-    style2: StyleObject<Styles>,
-    style3: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
+export interface GlamorousComponentFactory<Element, Properties> {
   <Props, Theme = object>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    style2: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    style2: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    style2: StyleObject<Styles>,
-    style3: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    style2: StyleObject<Styles>,
-    style3: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    style2: StyleFunction<Styles, Props, Theme>,
-    style3: StyleObject<Styles>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
-}
-
-export interface GlamorousComponentFactory<Element, Styles> {
-  <Props, Theme = {}>(
-    style1: StyleFunction<Styles, Props, Theme>,
-    style2: StyleFunction<Styles, Props, Theme>,
-    style3: StyleFunction<Styles, Props, Theme>,
-    ...styles: StyleArguments<Styles, Props, Theme>
-  ): GlamorousComponent<Element & Props>
+    ...styles: StyleArgument<Properties, Props, Theme>[]
+  ): GlamorousComponent<
+    Element,
+    Props
+  >;
 }

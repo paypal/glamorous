@@ -1,4 +1,4 @@
-import { SVGAttributes } from 'react'
+import { SVGProperties } from './svg-properties'
 import { CSSProperties } from './css-properties'
 import {
   GlamorousComponentFactory,
@@ -132,23 +132,23 @@ export interface HTMLComponentFactory {
 
 
 export interface SVGComponentFactory {
-  circle: SVGGlamorousComponentFactory<SVGCircleElement, SVGAttributes<any>>
-  clipPath: SVGGlamorousComponentFactory<SVGClipPathElement, SVGAttributes<any>>
-  defs: SVGGlamorousComponentFactory<SVGDefsElement, SVGAttributes<any>>
-  ellipse: SVGGlamorousComponentFactory<SVGEllipseElement, SVGAttributes<any>>
-  g: SVGGlamorousComponentFactory<SVGGElement, SVGAttributes<any>>
-  image: SVGGlamorousComponentFactory<SVGImageElement, SVGAttributes<any>>
-  line: SVGGlamorousComponentFactory<SVGLineElement, SVGAttributes<any>>
-  linearGradient: SVGGlamorousComponentFactory<SVGLinearGradientElement, SVGAttributes<any>>
-  mask: SVGGlamorousComponentFactory<SVGMaskElement, SVGAttributes<any>>
-  path: SVGGlamorousComponentFactory<SVGPathElement, SVGAttributes<any>>
-  pattern: SVGGlamorousComponentFactory<SVGPatternElement, SVGAttributes<any>>
-  polygon: SVGGlamorousComponentFactory<SVGPolygonElement, SVGAttributes<any>>
-  polyline: SVGGlamorousComponentFactory<SVGPolylineElement, SVGAttributes<any>>
-  radialGradient: SVGGlamorousComponentFactory<SVGRadialGradientElement, SVGAttributes<any>>
-  rect: SVGGlamorousComponentFactory<SVGRectElement, SVGAttributes<any>>
-  stop: SVGGlamorousComponentFactory<SVGStopElement, SVGAttributes<any>>
-  svg: SVGGlamorousComponentFactory<SVGSVGElement, SVGAttributes<any>>
-  text: SVGGlamorousComponentFactory<SVGTextElement, SVGAttributes<any>>
-  tspan: SVGGlamorousComponentFactory<SVGTSpanElement, SVGAttributes<any>>
+  circle: SVGGlamorousComponentFactory<SVGCircleElement, SVGProperties>
+  clipPath: SVGGlamorousComponentFactory<SVGClipPathElement, SVGProperties>
+  defs: SVGGlamorousComponentFactory<SVGDefsElement, SVGProperties>
+  ellipse: SVGGlamorousComponentFactory<SVGEllipseElement, SVGProperties>
+  g: SVGGlamorousComponentFactory<SVGGElement, SVGProperties>
+  image: SVGGlamorousComponentFactory<SVGImageElement, SVGProperties>
+  line: SVGGlamorousComponentFactory<SVGLineElement, SVGProperties>
+  linearGradient: SVGGlamorousComponentFactory<SVGLinearGradientElement, SVGProperties>
+  mask: SVGGlamorousComponentFactory<SVGMaskElement, SVGProperties>
+  path: SVGGlamorousComponentFactory<SVGPathElement, SVGProperties>
+  pattern: SVGGlamorousComponentFactory<SVGPatternElement, SVGProperties>
+  polygon: SVGGlamorousComponentFactory<SVGPolygonElement, SVGProperties>
+  polyline: SVGGlamorousComponentFactory<SVGPolylineElement, SVGProperties>
+  radialGradient: SVGGlamorousComponentFactory<SVGRadialGradientElement, SVGProperties>
+  rect: SVGGlamorousComponentFactory<SVGRectElement, SVGProperties>
+  stop: SVGGlamorousComponentFactory<SVGStopElement, SVGProperties>
+  svg: SVGGlamorousComponentFactory<SVGSVGElement, SVGProperties>
+  text: SVGGlamorousComponentFactory<SVGTextElement, SVGProperties>
+  tspan: SVGGlamorousComponentFactory<SVGTSpanElement, SVGProperties>
 }

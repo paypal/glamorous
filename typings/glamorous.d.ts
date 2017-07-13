@@ -10,9 +10,13 @@ import {
 import {
   GlamorousComponent,
   ExtraGlamorousProps,
+  WithComponent,
 } from './glamorous-component'
 import {
-  GlamorousComponentFactory
+  StyleFunction,
+  StyleArray,
+  StyleArgument,
+  GlamorousComponentFactory,
 } from './component-factory'
 import { CSSProperties } from './css-properties'
 import { SVGProperties } from './svg-properties'
@@ -20,8 +24,15 @@ import { SVGProperties } from './svg-properties'
 export {
   CSSProperties,
   SVGProperties,
-  ExtraGlamorousProps,
+
   GlamorousComponent,
+  ExtraGlamorousProps,
+  WithComponent,
+
+  StyleFunction,
+  StyleArray,
+  StyleArgument,
+
   GlamorousComponentFactory,
   HTMLComponentFactory,
   SVGComponentFactory,
@@ -42,15 +53,15 @@ export interface Config {
 export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
   <Props>(
     component:Component<Props>,
-    options?: GlamorousOptions,
+    options?: Partial<GlamorousOptions>,
   ): GlamorousComponentFactory<Props, CSSProperties>
   <Props>(
     component:Component<Props>,
-    options?: GlamorousOptions,
+    options?: Partial<GlamorousOptions>,
   ): GlamorousComponentFactory<Props, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
-  Svg: React.StatelessComponent<React.SVGAttributes<any> & ExtraGlamorousProps>
+  Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>
 
   config: Config
 }
@@ -65,7 +76,7 @@ export function withTheme<ExternalProps, Theme>(
   component: React.ComponentClass<ExternalProps & { theme: Theme }>
 ): React.ComponentClass<ExternalProps>
 
-export function withTheme<ExternalProps, Theme>(
+  export function withTheme<ExternalProps, Theme>(
   component: React.StatelessComponent<ExternalProps & { theme: Theme }>
 ): React.StatelessComponent<ExternalProps>
 

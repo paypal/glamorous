@@ -1,8 +1,15 @@
 import {
   CSSProperties,
-  ExtraGlamorousProps,
+  SVGProperties,
+
   GlamorousComponent,
-  HTMLComponentFactory,
+  ExtraGlamorousProps,
+
+  StyleFunction,
+  StyleArray,
+  StyleArgument,
   GlamorousComponentFactory,
+
+  HTMLComponentFactory,
   SVGComponentFactory,
 } from '../'

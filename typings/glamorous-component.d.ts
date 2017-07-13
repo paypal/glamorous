@@ -1,5 +1,7 @@
 import { CSSProperties } from './css-properties'
 
+import { Component } from './glamorous'
+
 /**
 * `glamorousComponentFactory` returns a ComponentClass
 *
@@ -8,9 +10,26 @@ import { CSSProperties } from './css-properties'
 
 export interface ExtraGlamorousProps {
   innerRef?: (instance: any) => void;
+
+  className?: string;
   css?: CSSProperties;
+  theme?: object;
 }
 
-export type GlamorousComponent<ElementProps> = React.ComponentClass<
-  ElementProps & ExtraGlamorousProps
->
+export interface WithComponent<Element, Props> {
+  (
+    component: string | Component<Props>
+  ): GlamorousComponent<
+    Element,
+    Props
+  >
+}
+
+export type GlamorousComponent<Element, Props> = React.ComponentClass<
+  Element & Props & ExtraGlamorousProps
+> & {
+  withComponent: WithComponent<
+    Element,
+    Props
+  >
+}

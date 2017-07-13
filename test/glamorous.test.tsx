@@ -5,29 +5,79 @@ import glamorous, { withTheme, ThemeProvider } from "../";
 // https://github.com/Microsoft/TypeScript/issues/5938
 import { ExtraGlamorousProps } from "../";
 
+import { WithComponent } from "../"
+
 // Glamorous config
 glamorous.config.useDisplayNameInClassName = true
 
-// static styles
+// Partial<Properties>
 const Static = glamorous.div({
   "fontSize": 20,
   "textAlign": "center",
 });
 
-// dynamic styles
-const Title = glamorous.h1<{ color: string }>(
+// classname string style
+const Classname = glamorous.div(
+  {
+    "fontSize": 20,
+    "textAlign": "center",
+  },
+  'example',
+);
+
+// StyleFunction
+const StyleFunction = glamorous.h1<{ color: string }>(
   {
     "fontSize": "10px",
     "zIndex": "auto",
   },
+  'example',
   (props) => ({
     "color": props.color,
   }),
 );
 
-const UseTitle = () => (
-  <Title color="red" />
+// withComponent
+const ExampleWithComponent = Classname
+  .withComponent('p')
+
+const OtherExampleWithComponent = StyleFunction
+  .withComponent('p')
+
+const UseWithComponent = () => (
+  <Classname>
+    <OtherExampleWithComponent color="red">
+    </OtherExampleWithComponent>
+  </Classname>
 )
+
+
+const StyleFunctionUseColor = () => (
+  <StyleFunction color="red" />
+)
+
+// StyleFunction Array return
+const StyleFunctionArray = glamorous.h1<{ color: string }>(
+  (props) => [
+    'example',
+    {
+      "color": props.color,
+    }
+  ],
+);
+
+// Style Array
+const StyleArray = glamorous.h1<{ color: string }>(
+  [
+    'example',
+    (props) => [
+      'example',
+      {
+        "color": props.color,
+      }
+    ],
+  ]
+);
 
 // theme styles
 const Divider = glamorous.span<{}, { main: { color: string; } }>(
@@ -85,7 +135,9 @@ export const Balloon = () => (
     <Divider color="blue">
       <DividerInsideDivider color="blue">
         <Static>Static</Static>
-        <Title color="blue">Hello</Title>
+        <StyleFunction color="blue">
+          Hello
+        </StyleFunction>
       </DividerInsideDivider>
     </Divider>
   </ThemeProvider>
@@ -96,9 +148,11 @@ export class AirBalloon extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <Divider innerRef={(
-        c: HTMLSpanElement
-      ) => { this.spanElem = c; }}>
+      <Divider
+        innerRef={(
+          c: HTMLSpanElement
+        ) => { this.spanElem = c; }}
+      >
         Hello
         <SpanDivider>
           Span Divider
