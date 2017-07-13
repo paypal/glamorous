@@ -1,11 +1,8 @@
 import React from 'react'
-import {render, mount, shallow} from 'enzyme'
+import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {StyleSheet} from 'react-primitives'
-import glamorousComponent, {
-  ThemeProvider,
-  withTheme,
-} from '../primitives/index'
+import glamorousComponent from '../primitives/index'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)

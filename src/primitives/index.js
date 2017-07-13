@@ -11,13 +11,16 @@ function createComponent(componentConstructor, tag) {
 }
 
 // Render the primitive React interfaces with glamorousComponent()
-const glamorousComponent = tag => createComponent(glamorous, tag)
+function glamorousComponent(tag) {
+  return createComponent(glamorous, tag)
+}
 
 // Native UI components
 const aliases = 'Image Text Touchable View'
 
-/* Lowercase the aliases according to the built-in React Native component factories,
-* define the getter for each alias and then pass it to glamorousComponent */
+/* Lowercase the aliases according to the built-in React Native component
+factories, define the getter for each alias and then pass it to
+glamorousComponent */
 
 aliases.split(/\s+/m).forEach(alias =>
   Object.defineProperty(glamorousComponent, alias.toLowerCase(), {
