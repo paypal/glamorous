@@ -31,9 +31,7 @@ module.exports = {
       },
       size: {
         description: 'check the size of the bundle',
-        // TODO: when we get PayPal admins to authorize bundlesize,
-        // then set `script` to "bundlesize"
-        script: 'echo "bundlesize disabled for now"',
+        script: 'bundlesize',
       },
     },
     build: {
