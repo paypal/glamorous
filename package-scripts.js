@@ -31,7 +31,7 @@ module.exports = {
       },
       size: {
         description: 'check the size of the bundle',
-        script: 'bundlesize --debug',
+        script: 'bundlesize',
       },
     },
     build: {
