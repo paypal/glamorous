@@ -7,8 +7,9 @@ import { GlamorousComponent } from './glamorous-component'
 
 export interface StyleFunction<Properties, Props, Theme> {
   (
-    props: Props,
-    theme: Theme,
+    props: Props & {
+      theme: Theme
+    }
   ):
     | Partial<Properties>
     | string

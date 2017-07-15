@@ -85,8 +85,8 @@ const Divider = glamorous.span<{}, { main: { color: string; } }>(
     "fontSize": "10px",
     "zIndex": "auto"
   },
-  (props, theme) => ({
-    "color": theme && theme.main.color,
+  ({theme}) => ({
+    "color": theme.main && theme.main.color,
   }),
 );
 
@@ -95,8 +95,8 @@ const SpanDivider = glamorous.span<{}, { awesome: string, main: string }>(
   {
     "fontSize": "10px",
   },
-  (props, theme) => ({
-    "color": theme && theme.awesome,
+  ({theme}) => ({
+    "color": theme.awesome,
   }),
   {
     "fontWeight": 500,
@@ -105,8 +105,8 @@ const SpanDivider = glamorous.span<{}, { awesome: string, main: string }>(
     "fontFamily": "Roboto",
     "fontWeight": 500,
   },
-  (props, theme) => ({
-    "color": theme && theme.main,
+  ({theme}) => ({
+    "color": theme.main,
   }),
 );
 
@@ -115,11 +115,14 @@ interface DividerInsideDividerProps {
 };
 
 // component styles
-const DividerInsideDivider = glamorous(Divider)(
+const DividerInsideDivider = glamorous(Divider)<
+  object,
+  { main: { color: string; } }
+>(
   {
     "fontSize": "10px",
   },
-  (props, theme: { main: { color: string; } }) => ({
+  ({theme}) => ({
     "color": theme.main.color,
   }),
 );
@@ -205,7 +208,7 @@ const ThemedComponent = glamorous.h1<
   ExampleTheme
 >({
   fontSize: '10px'
-}, (props, theme) => ({
+}, ({theme}) => ({
   color: theme ? theme.color : 'blue'
 }))
 
