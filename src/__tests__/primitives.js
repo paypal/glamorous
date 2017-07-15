@@ -18,7 +18,11 @@ describe('Primitive interfaces', () => {
   })
 
   test('should combine with StyleSheet.create() (inline styles)', () => {
-    const Component = glamorousComponent.view({margin: '10px'})
+    const Component = glamorousComponent.view({
+      margin: '10px',
+      justifyContent: 'center',
+      alignItems: 'center',
+    })
 
     const styles = StyleSheet.create({
       foo: {
