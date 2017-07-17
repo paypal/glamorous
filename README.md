@@ -1009,6 +1009,7 @@ const MyResponsiveDiv = glamorous.div({
 ## Related projects
 
 - [babel-plugin-glamorous-displayname][babel-displayname]: Automatically adds a `displayName` to your glamorous components for a better debugging experience.
+- [glam-props](https://www.npmjs.com/package/glam-props): Map declarative props into specific css rules
 
 ## Users
 
