@@ -50,17 +50,34 @@ function glamorousThemeCodemod(babel) {
           // now that we've traversed everything, we can go through each of them
           // and convert the ones that need to be converted
           identifiers.forEach(identifier => {
+            if (identifier.isJSXIdentifier()) {
+              const openingElement = identifier.findParent(
+                t.isJSXOpeningElement,
+              )
+              openingElement
+                .get('attributes')
+                .reduce((expressions, attrPath) => {
+                  const isCssAttrWithExpression =
+                    attrPath.node.name.name === 'css' &&
+                    attrPath.get('value.expression')
+                  if (isCssAttrWithExpression) {
+                    expressions.push(attrPath.get('value.expression'))
+                  }
+                  return expressions
+                }, [])
+                .reduce(dynamicFnReducer, [])
+                .forEach(handleDynamicFunction)
+
+              return
+            }
             const isBuiltInCall = t.isMemberExpression(identifier.parent)
             let callExpression = identifier.findParent(t.isCallExpression)
-            if (!isBuiltInCall) {
+            if (!isBuiltInCall && callExpression) {
               callExpression = callExpression.findParent(t.isCallExpression)
             }
             callExpression
               .get('arguments')
-              .filter(
-                dynamicFn =>
-                  dynamicFn.node.params && dynamicFn.node.params.length > 1,
-              )
+              .reduce(dynamicFnReducer, [])
               .forEach(handleDynamicFunction)
           })
         },
@@ -129,6 +146,34 @@ function glamorousThemeCodemod(babel) {
     prop.shorthand = true
     return prop
   }
+}
+
+// eslint-disable-next-line complexity
+function dynamicFnReducer(dynamicFns, argPath) {
+  if (isDynamicFunctionWithTheme(argPath)) {
+    dynamicFns.push(argPath)
+  } else if (argPath.isArrayExpression()) {
+    argPath.get('elements').forEach(element => {
+      dynamicFnReducer(dynamicFns, element)
+    })
+  } else if (argPath.isIdentifier()) {
+    // try to track the initialization of this identifier and update that
+    // if it's a function
+    let initPath = argPath.scope.getBinding(argPath.node.name).path
+    if (!initPath) {
+      return dynamicFns
+    }
+    if (initPath.isVariableDeclarator()) {
+      // could be an assignment to an object, array, or function
+      initPath = initPath.get('init')
+    }
+    dynamicFnReducer(dynamicFns, initPath)
+  }
+  return dynamicFns
+}
+
+function isDynamicFunctionWithTheme(path) {
+  return path.node.params && path.node.params.length > 1
 }
 
 function looksLike(a, b) {

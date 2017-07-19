@@ -40,13 +40,15 @@ pluginTester({
   },
 })
 
+const dynamicFn = `(props, theme) => ({fontSize: theme.fontSize})`
+
 // changes
 pluginTester({
   plugin,
   snapshot: true,
   formatResult,
   tests: withGlamorousImport([
-    `glamorous.div((props, theme) => ({ fontSize: theme.main.fontSize }))`,
+    `glamorous.div(${dynamicFn})`,
     `glamorous.div((props, theme, context) => ({ fontSize: theme.main.fontSize }))`,
     `
       glamorous.div((props, theme) => {
@@ -80,11 +82,24 @@ pluginTester({
         }
       })
     `,
+    `glamorous('div')(${dynamicFn})`,
+    `glamorous.div([${dynamicFn}])`,
     `
-      glamorous('div')((props, theme) => ({
-        fontSize: theme.main.fontSize,
-      }))
+      const dynamicFn = ${dynamicFn}
+      glamorous.div(dynamicFn)
     `,
+    `const ui = <glamorous.Div css={${dynamicFn}} />`,
+    `
+      const dynamicFn = ${dynamicFn}
+      const ui = <glamorous.Div css={[dynamicFn]} />
+    `,
+    {
+      code: `
+      import {Span} from 'glamorous'
+      const ui = <Span css={${dynamicFn}} />
+      `,
+      skip: true,
+    },
   ]),
 })
 
@@ -99,7 +114,6 @@ function withGlamorousImport(tests) {
     test.babelOptions.parserOpts = test.babelOptions.parserOpts || {}
     test.code = `import glamorous from 'glamorous'\n${stripIndent(test.code)}`
     Object.assign(test.babelOptions.parserOpts, {
-      // add the jsx plugin to all tests because why not?
       plugins: ['jsx'],
     })
     return test
