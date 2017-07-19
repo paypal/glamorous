@@ -34,5 +34,15 @@ test/should-fail.test.tsx(76,3): error TS2345: Argument of type '{ float: \\"cat
 test/should-fail.test.tsx(82,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
   Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
     Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
+test/should-fail.test.tsx(100,24): error TS2551: Property 'colors' does not exist on type 'ExampleTheme'. Did you mean 'color'?
+test/should-fail.test.tsx(111,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
+test/should-fail.test.tsx(112,3): error TS2344: Type 'ThemeProps' does not satisfy the constraint '{ theme: NotExampleTheme; }'.
+  Types of property 'theme' are incompatible.
+    Type 'ExampleTheme' is not assignable to type 'NotExampleTheme'.
+      Types of property 'color' are incompatible.
+        Type 'string' is not assignable to type 'number'.
+test/should-fail.test.tsx(121,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
+test/should-fail.test.tsx(122,3): error TS2344: Type 'PropsWithoutTheme' does not satisfy the constraint '{ theme: any; }'.
+  Property 'theme' is missing in type 'PropsWithoutTheme'.
 "
 `;

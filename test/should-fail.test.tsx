@@ -83,3 +83,42 @@ const BuiltInStrictDivStyleFunction = glamorous(TestComponent)(
     float: "cat",
   })
 )
+
+// Theme
+
+interface ExampleTheme {
+  color: string
+}
+
+interface ThemeProps {
+  title: string
+  theme: ExampleTheme
+}
+
+const ComponentWithTheme: React.SFC<ThemeProps> = (props) => (
+  <h3 style={{
+    color: props.theme.colors
+  }}>
+    {props.title}
+  </h3>
+)
+
+interface NotExampleTheme {
+  color: number
+}
+
+
+const NonGlamorousThemedComponent = withTheme<
+  ThemeProps,
+  NotExampleTheme
+>(ComponentWithTheme)
+
+
+interface PropsWithoutTheme {
+  title: string
+}
+
+const NonGlamorousThemedComponent = withTheme<
+  PropsWithoutTheme
+>(ComponentWithTheme)
+

@@ -2,6 +2,8 @@ import { CSSProperties } from './css-properties'
 
 import { Component } from './glamorous'
 
+import { Omit } from './helpers.d'
+
 /**
 * `glamorousComponentFactory` returns a ComponentClass
 *
@@ -25,11 +27,18 @@ export interface WithComponent<Element, Props> {
   >
 }
 
+type OmitTheme<
+  Props extends { theme?: any },
+> = Omit<Props, "theme">
+
+
 export type GlamorousComponent<Element, Props> = React.ComponentClass<
-  Element & Props & ExtraGlamorousProps
+  & Element
+  & OmitTheme<Props>
+  & ExtraGlamorousProps
 > & {
   withComponent: WithComponent<
     Element,
-    Props
+    OmitTheme<Props>
   >
 }

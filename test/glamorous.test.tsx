@@ -80,7 +80,9 @@ const StyleArray = glamorous.h1<{ color: string }>(
 );
 
 // theme styles
-const Divider = glamorous.span<{}, { main: { color: string; } }>(
+const Divider = glamorous.span<{
+  theme: { main: { color: string; } }
+}>(
   {
     "fontSize": "10px",
     "zIndex": "auto"
@@ -91,7 +93,9 @@ const Divider = glamorous.span<{}, { main: { color: string; } }>(
 );
 
 // n-number of styles
-const SpanDivider = glamorous.span<{}, { awesome: string, main: string }>(
+const SpanDivider = glamorous.span<{
+  theme: { awesome: string, main: string }
+}>(
   {
     "fontSize": "10px",
   },
@@ -174,13 +178,22 @@ class Test extends React.Component<object, object> {
 
 // React Class Wrapped Component
 
-class ClassToWrap extends React.Component<object, object> {
+interface ClassToWrapProps {
+  className: string
+  test: number
+}
+
+class ClassToWrap extends React.Component<ClassToWrapProps, object> {
   render() {
-    return <div />
+    return <div className={this.props.className} />
   }
 }
 
 const WrappedClass = glamorous(ClassToWrap)({})
+
+const useWrappedClass = (
+  <WrappedClass test={10} />
+)
 
 // React Stateless Wrapped Component
 
@@ -204,8 +217,7 @@ const exampleTheme: ExampleTheme = {
 }
 
 const ThemedComponent = glamorous.h1<
-  {},
-  ExampleTheme
+  { theme: ExampleTheme }
 >({
   fontSize: '10px'
 }, ({theme}) => ({
@@ -224,11 +236,8 @@ interface ExampleTheme {
   color: string
 }
 
-interface ExternalProps {
+interface Props {
   title: string
-}
-
-interface Props extends ExternalProps {
   theme: ExampleTheme
 }
 
@@ -241,12 +250,22 @@ const ComponentWithTheme: React.SFC<Props> = (props) => (
 )
 
 const NonGlamorousThemedComponent = withTheme<
-  ExternalProps,
+  Props,
   ExampleTheme
 >(ComponentWithTheme)
 
+
+const NonGlamorousAlsoThemedComponent = withTheme<
+  Props
+>(ComponentWithTheme)
+
 const UseNonGlamorousThemedComponent = (
-  <NonGlamorousThemedComponent
-    title='test'
-  />
+  <div>
+    <NonGlamorousThemedComponent
+      title='test'
+    />
+    <NonGlamorousAlsoThemedComponent
+      title='test'
+    />
+  </div>
 )

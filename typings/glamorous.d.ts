@@ -21,6 +21,8 @@ import {
 import { CSSProperties } from './css-properties'
 import { SVGProperties } from './svg-properties'
 
+import { Omit } from './helpers'
+
 export {
   CSSProperties,
   SVGProperties,
@@ -50,15 +52,16 @@ export interface Config {
   useDisplayNameInClassName: boolean
 }
 
+
+type OmitInternals<
+  Props extends { className?: string, theme?: object }
+> = Omit<Props, "className" | "theme">
+
 export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
-  <Props>(
-    component:Component<Props>,
+  <Props extends { className?: string, theme?: object }>(
+    component: Component<Props>,
     options?: Partial<GlamorousOptions>,
-  ): GlamorousComponentFactory<Props, CSSProperties>
-  <Props>(
-    component:Component<Props>,
-    options?: Partial<GlamorousOptions>,
-  ): GlamorousComponentFactory<Props, SVGProperties>
+  ): GlamorousComponentFactory<OmitInternals<Props>, CSSProperties | SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>
@@ -72,13 +75,22 @@ interface ThemeProps {
 
 export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
-export function withTheme<ExternalProps, Theme>(
-  component: React.ComponentClass<ExternalProps & { theme: Theme }>
-): React.ComponentClass<ExternalProps>
+type OmitTheme<
+  Props extends { theme: Theme },
+  Theme
+> = Omit<Props, "theme">
 
-  export function withTheme<ExternalProps, Theme>(
-  component: React.StatelessComponent<ExternalProps & { theme: Theme }>
-): React.StatelessComponent<ExternalProps>
+export function withTheme<Props extends { theme: Theme }, Theme = {}>(
+  component: React.ComponentClass<Props>
+): React.ComponentClass<
+  OmitTheme<Props, Theme>
+>
+
+export function withTheme<Props extends { theme: Theme }, Theme = {}>(
+  component: React.StatelessComponent<Props>
+): React.StatelessComponent<
+  OmitTheme<Props, Theme>
+>
 
 declare const glamorous: GlamorousInterface
 

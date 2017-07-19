@@ -19,10 +19,10 @@ are complete.
 
 ```
 // Creating your own
-glamorous(Component)<Props, Theme>(/* styleArgument */)
+glamorous(Component)<Props>(/* styleArgument */)
 
 // Using built-in
-glamorous.div<Props, Theme>(/* styleArgument */)
+glamorous.div<Props>(/* styleArgument */)
 ```
 
 #### glamorousComponentFactory arguments
@@ -30,10 +30,12 @@ glamorous.div<Props, Theme>(/* styleArgument */)
 By providing the typings for Props and Theme to Glamorous when setting up your component factory they will be typed on the props argument for function arguments automatically.
 
 ```ts
-interface Props { noPadding?: boolean }
-interface Theme { color: string }
+interface Props {
+  noPadding?: boolean,
+  theme: { color: string }
+}
 
-const MyStyledDiv = glamorous.div<Props, Theme>(
+const MyStyledDiv = glamorous.div<Props>(
   {
     margin: 1,
   },
