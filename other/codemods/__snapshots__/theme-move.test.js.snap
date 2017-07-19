@@ -221,3 +221,19 @@ const dynamicFn = props => ({fontSize: props.theme.fontSize})
 const ui = <glamorous.Div css={[dynamicFn]} />
 
 `;
+
+exports[`13. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+import {Span} from 'glamorous'
+const ui = <Span css={(props, theme) => ({fontSize: theme.fontSize})} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+import {Span} from 'glamorous'
+const ui = <Span css={props => ({fontSize: props.theme.fontSize})} />
+
+`;

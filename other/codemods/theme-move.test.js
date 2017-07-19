@@ -20,6 +20,12 @@ expect.addSnapshotSerializer({
 // special cases
 pluginTester({
   plugin,
+  babelOptions: {
+    filename: __filename,
+    parserOpts: {
+      plugins: ['jsx'],
+    },
+  },
   formatResult,
   tests: {
     'no glamorous import': `
@@ -37,6 +43,17 @@ pluginTester({
       `,
       snapshot: true,
     },
+    'no dynamic fn': {
+      filename: path.join(__dirname, `/test-dynamic-fn.js`),
+      code: `
+        import {Div} from 'glamorous'
+        const ui = <Div css={styles} />
+      `,
+    },
+    'css prop set to a className': `
+      import {Div} from 'glamorous'
+      const ui = <Div css="class-name" />
+    `,
   },
 })
 
@@ -47,6 +64,11 @@ pluginTester({
   plugin,
   snapshot: true,
   formatResult,
+  babelOptions: {
+    parserOpts: {
+      plugins: ['jsx'],
+    },
+  },
   tests: withGlamorousImport([
     `glamorous.div(${dynamicFn})`,
     `glamorous.div((props, theme, context) => ({ fontSize: theme.main.fontSize }))`,
@@ -99,29 +121,23 @@ pluginTester({
       const dynamicFn = ${dynamicFn}
       const ui = <glamorous.Div css={[dynamicFn]} />
     `,
-    {
-      code: `
-        import {Span} from 'glamorous'
-        const ui = <Span css={${dynamicFn}} />
-      `,
-      skip: true,
-    },
+    `
+      import {Span} from 'glamorous'
+      const ui = <Span css={${dynamicFn}} />
+    `,
   ]),
 })
 
 function withGlamorousImport(tests) {
-  return tests.map(t => {
+  return tests.map((t, index) => {
     const test = {babelOptions: {}}
     if (typeof t === 'string') {
       test.code = t
     } else {
       Object.assign(test, t)
     }
-    test.babelOptions.parserOpts = test.babelOptions.parserOpts || {}
     test.code = `import glamorous from 'glamorous'\n${stripIndent(test.code)}`
-    Object.assign(test.babelOptions.parserOpts, {
-      plugins: ['jsx'],
-    })
+    test.babelOptions.filename = path.join(__dirname, `/test-${index}.js`)
     return test
   })
 }

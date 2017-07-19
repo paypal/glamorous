@@ -6,25 +6,25 @@ module.exports = glamorousThemeCodemod
 
 function glamorousThemeCodemod(babel) {
   const {types: t} = babel
-  const identifiers = []
+  const identifiers = {}
 
   return {
     name: 'glamorous-theme-move-codemod',
     visitor: {
-      ImportDeclaration(path) {
+      ImportDeclaration(path, {file: {opts: {filename}}}) {
         // find imports of glamorous and add the references
-        const defaultSpecifierPath = path.get('specifiers')[0]
-        if (
-          path.node.source.value !== 'glamorous' ||
-          !t.isImportDefaultSpecifier(defaultSpecifierPath)
-        ) {
+        if (path.node.source.value !== 'glamorous') {
           return
         }
-        const {node: {local: {name}}} = defaultSpecifierPath
-        const {referencePaths = []} = path.scope.getBinding(name) || {}
-        identifiers.push(...referencePaths)
+        const specifiers = path.get('specifiers')
+        specifiers.forEach(specifier => {
+          const {node: {local: {name}}} = specifier
+          const {referencePaths = []} = path.scope.getBinding(name) || {}
+          identifiers[filename] = identifiers[filename] || []
+          identifiers[filename].push(...referencePaths)
+        })
       },
-      VariableDeclarator(path) {
+      VariableDeclarator(path, {file: {opts: {filename}}}) {
         // find requires of glamorous and add the references
         const isRequireCall = looksLike(path, {
           node: {
@@ -43,13 +43,14 @@ function glamorousThemeCodemod(babel) {
         }
         const {node: {id: {name}}} = path
         const {referencePaths = []} = path.scope.getBinding(name) || {}
-        identifiers.push(...referencePaths)
+        identifiers[filename] = identifiers[filename] || []
+        identifiers[filename].push(...referencePaths)
       },
       Program: {
-        exit() {
+        exit(path, {file: {opts: {filename}}}) {
           // now that we've traversed everything, we can go through each of them
           // and convert the ones that need to be converted
-          identifiers.forEach(identifier => {
+          (identifiers[filename] || []).forEach(identifier => {
             if (identifier.isJSXIdentifier()) {
               const openingElement = identifier.findParent(
                 t.isJSXOpeningElement,
@@ -57,10 +58,7 @@ function glamorousThemeCodemod(babel) {
               openingElement
                 .get('attributes')
                 .reduce((expressions, attrPath) => {
-                  const isCssAttrWithExpression =
-                    attrPath.node.name.name === 'css' &&
-                    attrPath.get('value.expression')
-                  if (isCssAttrWithExpression) {
+                  if (attrPath.node.name.name === 'css') {
                     expressions.push(attrPath.get('value.expression'))
                   }
                   return expressions
@@ -150,6 +148,9 @@ function glamorousThemeCodemod(babel) {
 
 // eslint-disable-next-line complexity
 function dynamicFnReducer(dynamicFns, argPath) {
+  if (!argPath || !argPath.node) {
+    return dynamicFns
+  }
   if (isDynamicFunctionWithTheme(argPath)) {
     dynamicFns.push(argPath)
   } else if (argPath.isArrayExpression()) {
@@ -159,10 +160,12 @@ function dynamicFnReducer(dynamicFns, argPath) {
   } else if (argPath.isIdentifier()) {
     // try to track the initialization of this identifier and update that
     // if it's a function
-    let initPath = argPath.scope.getBinding(argPath.node.name).path
-    if (!initPath) {
+    const binding = argPath.scope.getBinding(argPath.node.name)
+    if (!binding || !binding.path) {
+      // global variable referenced
       return dynamicFns
     }
+    let initPath = binding.path
     if (initPath.isVariableDeclarator()) {
       // could be an assignment to an object, array, or function
       initPath = initPath.get('init')
@@ -173,7 +176,7 @@ function dynamicFnReducer(dynamicFns, argPath) {
 }
 
 function isDynamicFunctionWithTheme(path) {
-  return path.node.params && path.node.params.length > 1
+  return path.node && path.node.params && path.node.params.length > 1
 }
 
 function looksLike(a, b) {
