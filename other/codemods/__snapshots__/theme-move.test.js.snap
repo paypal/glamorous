@@ -175,6 +175,26 @@ glamorous.div(dynamicFn)
 exports[`10. glamorous-theme-move-codemod 1`] = `
 
 import glamorous from 'glamorous'
+
+function dynamicFn(props, theme) {
+  return {fontSize: theme.fontSize}
+}
+glamorous.div([{}, dynamicFn])
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+function dynamicFn(props) {
+  return {fontSize: props.theme.fontSize}
+}
+glamorous.div([{}, dynamicFn])
+
+`;
+
+exports[`11. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
 const ui = <glamorous.Div css={(props, theme) => ({fontSize: theme.fontSize})} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -186,7 +206,7 @@ const ui = (
 
 `;
 
-exports[`11. glamorous-theme-move-codemod 1`] = `
+exports[`12. glamorous-theme-move-codemod 1`] = `
 
 import glamorous from 'glamorous'
 
