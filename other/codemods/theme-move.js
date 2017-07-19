@@ -83,27 +83,37 @@ function glamorousThemeCodemod(babel) {
     },
   }
 
+  // eslint-disable-next-line complexity
   function handleDynamicFunction(dynamicFn) {
-    const [propsArg, themeArg, ...restArgs] = dynamicFn.node.params
+    // eslint-disable-next-line prefer-const
+    let [propsArg, themeArg, ...restArgs] = dynamicFn.node.params
     const propsIsDestructured = t.isObjectPattern(propsArg)
     const themeIsDestructured = t.isObjectPattern(themeArg)
 
     if (propsIsDestructured) {
       if (themeIsDestructured) {
-        const themeArgProperties = t.objectProperty(
-          t.identifier('theme'),
-          t.objectExpression(themeArg.properties),
-        )
+        const key = t.identifier('theme')
+        const value = t.objectExpression(themeArg.properties)
+        const themeArgProperties = t.objectProperty(key, value)
         propsArg.properties = [...propsArg.properties, themeArgProperties]
-        dynamicFn.node.params = [propsArg, ...restArgs]
       } else {
+        const id = t.identifier(themeArg.name)
+        const key = id
+        const value = id
+        const computed = false
+        const shorthand = true
         propsArg.properties = [
           ...propsArg.properties,
-          propertyFactory(themeArg.name),
+          t.objectProperty(key, value, computed, shorthand),
         ]
-        dynamicFn.node.params = [propsArg, ...restArgs]
       }
     } else if (themeIsDestructured) {
+      const themeIsDestructuredDeeply = themeArg.properties.some(themeProp => {
+        return t.isObjectPattern(themeProp.value)
+      })
+      if (themeIsDestructuredDeeply) {
+        handleDeeplyDestructuredTheme()
+      }
       themeArg.properties.forEach(themeProp => {
         const {referencePaths = []} = dynamicFn.scope.getBinding(
           themeProp.value.name,
@@ -136,13 +146,14 @@ function glamorousThemeCodemod(babel) {
 
     // remove the theme arg
     dynamicFn.node.params = [propsArg, ...restArgs]
-  }
 
-  function propertyFactory(name) {
-    const key = t.identifier(name)
-    const prop = t.objectProperty(key, key)
-    prop.shorthand = true
-    return prop
+    // utils
+    function handleDeeplyDestructuredTheme() {
+      propsArg = t.objectPattern([
+        t.objectProperty(t.identifier('theme'), themeArg),
+        t.restProperty(t.identifier('props')),
+      ])
+    }
   }
 }
 

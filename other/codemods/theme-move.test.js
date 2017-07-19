@@ -125,6 +125,18 @@ pluginTester({
       import {Span} from 'glamorous'
       const ui = <Span css={${dynamicFn}} />
     `,
+    `
+      glamorous.div((props, {primary: {headings: {font: {size: fontSize}}}}) => ({
+        color: props.color,
+        fontSize,
+      }))
+    `,
+    `
+      glamorous.div(({color}, {primary: {headings: {font: {size: fontSize}}}}) => ({
+        color,
+        fontSize,
+      }))
+    `,
   ]),
 })
 

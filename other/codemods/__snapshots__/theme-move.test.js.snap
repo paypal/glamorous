@@ -237,3 +237,53 @@ import {Span} from 'glamorous'
 const ui = <Span css={props => ({fontSize: props.theme.fontSize})} />
 
 `;
+
+exports[`14. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div((props, {primary: {headings: {font: {size: fontSize}}}}) => ({
+  color: props.color,
+  fontSize,
+}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(
+  ({
+    theme: {primary: {headings: {font: {size: fontSize}}}},
+    ...props
+  }) => ({
+    color: props.color,
+    fontSize,
+  }),
+)
+
+`;
+
+exports[`15. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div(({color}, {primary: {headings: {font: {size: fontSize}}}}) => ({
+  color,
+  fontSize,
+}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(
+  ({
+    color,
+    theme: {primary: {headings: {font: {size: fontSize}}}},
+  }) => ({
+    color,
+    fontSize,
+  }),
+)
+
+`;
