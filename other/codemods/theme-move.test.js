@@ -2,7 +2,10 @@
 import path from 'path'
 import prettierEslint from 'prettier-eslint'
 import stripIndent from 'strip-indent'
-import pluginTester from 'babel-plugin-tester'
+// not sure why, but travis seems to error out
+// due to this import 🙃
+// eslint-disable-next-line
+import pluginTester from 'babel-plugin-tester';
 import plugin from './theme-move'
 
 const projectRoot = path.join(__dirname, '../../')
