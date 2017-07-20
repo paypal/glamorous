@@ -118,6 +118,11 @@ export interface CSSProperties {
   baselineShift?: CSSWideKeyword | string | number
 
   /**
+   * Specifies the size of the background images.
+   */
+  backgroundSize?: CSSWideKeyword | string
+
+  /**
    * Non standard. Sets or retrieves the location of the Dynamic HTML (DHTML) behavior.
    */
   behavior?: CSSWideKeyword | string
