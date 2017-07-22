@@ -249,7 +249,10 @@ const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 })
 
 <MyStyledComp>content</MyStyledComp>
 // rendered output: <div class="<glamor-generated-class> other-class">content</div>
-// styles applied: {margin: 1}
+// styles applied: 
+// <glamor-generated-class> {
+//  margin: 1px;
+// }
 ```
 
 ##### ...styles
@@ -269,8 +272,8 @@ const MyStyledDiv = glamorous.div(
   })
 )
 
-<MyStyledDiv /> // styles applied: {margin: 1, padding: 4}
-<MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0}
+<MyStyledDiv /> // styles applied: { margin: 1px; padding: 4px; }
+<MyStyledDiv noPadding /> // styles applied: { margin: 1px; padding: 0; }
 ```
 
 > Tip: glamorous simply takes these style objects and forwards them to `glamor`.
@@ -298,7 +301,7 @@ const MyStyledDiv = glamorous.div(
   styles5,
   'extra-thing',
 )
-<MyStyledDiv /> // styles applied: {padding-top: 1, padding-right: 2, padding-bottom: 3, padding-left: 4}, 'not-active' and anything coming from `extra-thing`.
+<MyStyledDiv /> // styles applied: { padding-top: 1px; padding-right: 2px; padding-bottom: 3px; padding-left: 4px } + 'not-active' and anything coming from `extra-thing`.
 ```
 
 #### GlamorousComponent
@@ -480,7 +483,7 @@ const myCustomGlamorStyles = glamor.css({fontSize: 2, padding: 2})
   css={{padding: 3}}
 />
 // styles applied:
-// {margin: 1, fontSize: 2, padding: 3}
+// { margin: 1px; fontSize: 2px; padding: 3px }
 // as well as any styles custom-class applies
 ```
 
@@ -493,7 +496,7 @@ by using the `glamorous()` function.
 const MyComposedStyledDiv = glamorous(MyStyledDiv)({fontSize: 4, padding: 4})
 <MyComposedStyledDiv />
 // styles applied:
-// {margin: 1, fontSize: 4, padding: 4}
+// { margin: 1px; fontSize: 4px; padding: 4px; }
 ```
 
 In fact, the built-in DOM component factories provided are just an abstraction
