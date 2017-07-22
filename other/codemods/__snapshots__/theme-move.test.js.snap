@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`1. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+glamorous.div((props, theme) => ({fontSize: theme.fontSize}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+glamorous.div(props => ({fontSize: props.theme.fontSize}))
+
+`;
+
+exports[`2. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+glamorous.div((props, theme, context) => ({ fontSize: theme.main.fontSize }))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+glamorous.div((props, context) => ({fontSize: props.theme.main.fontSize}))
+
+`;
+
+exports[`3. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div((props, theme) => {
+  return {
+    fontSize: theme.main.fontSize,
+    color: props.important ? 'red' : 'black',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(props => {
+  return {
+    fontSize: props.theme.main.fontSize,
+    color: props.important ? 'red' : 'black',
+  }
+})
+
+`;
+
+exports[`3. with require 1`] = `
+
+const glamorous = require('glamorous')
+glamorous.div((props, theme) => ({fontSize: theme.main.fontSize}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const glamorous = require('glamorous')
+glamorous.div(props => ({fontSize: props.theme.main.fontSize}))
+
+`;
+
+exports[`4. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div(({important}, theme) => {
+  return {
+    fontSize: theme.main.fontSize,
+    color: important ? 'red' : 'black',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(({important, theme}) => {
+  return {
+    fontSize: theme.main.fontSize,
+    color: important ? 'red' : 'black',
+  }
+})
+
+`;
+
+exports[`5. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div((props, {main}) => {
+  return {
+    fontSize: main.fontSize,
+    color: props.important ? 'red' : 'black',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(props => {
+  return {
+    fontSize: props.theme.main.fontSize,
+    color: props.important ? 'red' : 'black',
+  }
+})
+
+`;
+
+exports[`6. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div(({important}, {main}) => {
+  return {
+    fontSize: main.fontSize,
+    color: important ? 'red' : 'black',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(({important, theme: {main}}) => {
+  return {
+    fontSize: main.fontSize,
+    color: important ? 'red' : 'black',
+  }
+})
+
+`;
+
+exports[`7. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+glamorous('div')((props, theme) => ({fontSize: theme.fontSize}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+glamorous('div')(props => ({fontSize: props.theme.fontSize}))
+
+`;
+
+exports[`8. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+glamorous.div([(props, theme) => ({fontSize: theme.fontSize})])
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+glamorous.div([props => ({fontSize: props.theme.fontSize})])
+
+`;
+
+exports[`9. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+const dynamicFn = (props, theme) => ({fontSize: theme.fontSize})
+glamorous.div(dynamicFn)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+const dynamicFn = props => ({fontSize: props.theme.fontSize})
+glamorous.div(dynamicFn)
+
+`;
+
+exports[`10. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+function dynamicFn(props, theme) {
+  return {fontSize: theme.fontSize}
+}
+glamorous.div([{}, dynamicFn])
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+function dynamicFn(props) {
+  return {fontSize: props.theme.fontSize}
+}
+glamorous.div([{}, dynamicFn])
+
+`;
+
+exports[`11. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+const ui = <glamorous.Div css={(props, theme) => ({fontSize: theme.fontSize})} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+const ui = (
+  <glamorous.Div css={props => ({fontSize: props.theme.fontSize})} />
+)
+
+`;
+
+exports[`12. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+const dynamicFn = (props, theme) => ({fontSize: theme.fontSize})
+const ui = <glamorous.Div css={[dynamicFn]} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+const dynamicFn = props => ({fontSize: props.theme.fontSize})
+const ui = <glamorous.Div css={[dynamicFn]} />
+
+`;
+
+exports[`13. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+import {Span} from 'glamorous'
+const ui = <Span css={(props, theme) => ({fontSize: theme.fontSize})} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+import {Span} from 'glamorous'
+const ui = <Span css={props => ({fontSize: props.theme.fontSize})} />
+
+`;
+
+exports[`14. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div((props, {primary: {headings: {font: {size: fontSize}}}}) => ({
+  color: props.color,
+  fontSize,
+}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(
+  ({
+    theme: {primary: {headings: {font: {size: fontSize}}}},
+    ...props
+  }) => ({
+    color: props.color,
+    fontSize,
+  }),
+)
+
+`;
+
+exports[`15. glamorous-theme-move-codemod 1`] = `
+
+import glamorous from 'glamorous'
+
+glamorous.div(({color}, {primary: {headings: {font: {size: fontSize}}}}) => ({
+  color,
+  fontSize,
+}))
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import glamorous from 'glamorous'
+
+glamorous.div(
+  ({
+    color,
+    theme: {primary: {headings: {font: {size: fontSize}}}},
+  }) => ({
+    color,
+    fontSize,
+  }),
+)
+
+`;
