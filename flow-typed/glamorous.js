@@ -2038,7 +2038,10 @@ declare module 'glamorous' {
     theme?: Object
   };
 
-  declare type GlamorousComponent<Props> = Component<Props & ExtraGlamorousProps>;
+  declare type WithComponent<Props> = (tagName: string) => GlamorousComponent<Props>;
+  declare type GlamorousComponent<Props> = Component<Props & ExtraGlamorousProps> & {
+    withComponent: WithComponent<Props>
+  };
 
   declare type GlamorousOptions = {
     displayName?: string,
