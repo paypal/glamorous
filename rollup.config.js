@@ -53,8 +53,8 @@ export default {
     umd ?
       replace({
         'process.env.NODE_ENV': JSON.stringify(
-            minify ? 'production' : 'development'
-          ),
+          minify ? 'production' : 'development'
+        ),
       }) :
       null,
     nodeResolve({jsnext: true, main: true}),
