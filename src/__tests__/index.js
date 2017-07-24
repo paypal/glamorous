@@ -25,10 +25,9 @@ test('sanity test', () => {
 test('can use pre-built glamorous components with css attributes', () => {
   expect(
     render(
-      <glamorous.A
+      <glamorous.Span
         display="flex"
         flexDirection="column"
-        href="/is-forwarded"
         id="is-forwarded"
         className="is added to classes"
       />,
@@ -40,10 +39,9 @@ test('can use pre-built glamorous components with css prop', () => {
   const computed = 'background'
   expect(
     render(
-      <glamorous.A
+      <glamorous.Span
         display="flex"
         flexDirection="column"
-        href="/is-forwarded"
         id="is-forwarded"
         className="is added to classes"
         css={{
@@ -177,24 +175,24 @@ test('style objects can be arrays and glamor will merge those', () => {
     ],
     ({big, square}) => {
       const bigStyles = big ?
-      {
-        [phoneMediaQuery]: {
-          fontSize: 20,
-        },
-      } :
+        {
+          [phoneMediaQuery]: {
+            fontSize: 20,
+          },
+        } :
         {}
 
       const squareStyles = square ?
-      {
-        [phoneMediaQuery]: {
-          borderRadius: 0,
-        },
-      } :
-      {
-        [phoneMediaQuery]: {
-          borderRadius: '50%',
-        },
-      }
+        {
+          [phoneMediaQuery]: {
+            borderRadius: 0,
+          },
+        } :
+        {
+          [phoneMediaQuery]: {
+            borderRadius: '50%',
+          },
+        }
       return [bigStyles, squareStyles]
     },
   )

@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`merges nested themes 1`] = `
-.css-mhpxxj,
-[data-css-mhpxxj] {
+.glamor-0,
+[data-glamor-0] {
   padding: 1px;
   margin: 1px;
 }
 
-.css-19cobm9,
-[data-css-19cobm9] {
+.glamor-1,
+[data-glamor-1] {
   padding: 1px;
   margin: 2px;
 }
@@ -25,7 +25,7 @@ exports[`merges nested themes 1`] = `
     <div>
       <glamorous(div)>
         <div
-          className="css-mhpxxj"
+          className="glamor-0"
         />
       </glamorous(div)>
       <ThemeProvider
@@ -37,7 +37,7 @@ exports[`merges nested themes 1`] = `
       >
         <glamorous(div)>
           <div
-            className="css-19cobm9"
+            className="glamor-1"
           />
         </glamorous(div)>
       </ThemeProvider>
@@ -47,14 +47,14 @@ exports[`merges nested themes 1`] = `
 `;
 
 exports[`renders a component with theme 1`] = `
-.css-1fyph4i,
-[data-css-1fyph4i] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   padding: 10px;
 }
 
 <div
-  class="css-1fyph4i"
+  class="glamor-0"
 />
 `;
 
@@ -89,8 +89,8 @@ exports[`with theme prop of margin 2px 2`] = `
 `;
 
 exports[`with theme prop of padding 10px 1`] = `
-.css-1p841yy,
-[data-css-1p841yy] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   padding: 10px;
 }
@@ -105,7 +105,7 @@ exports[`with theme prop of padding 10px 1`] = `
   >
     <glamorous(div)>
       <div
-        className="css-1p841yy"
+        className="glamor-0"
       />
     </glamorous(div)>
   </ThemeProvider>
@@ -113,8 +113,8 @@ exports[`with theme prop of padding 10px 1`] = `
 `;
 
 exports[`with theme prop of padding 20px 1`] = `
-.css-1e41o48,
-[data-css-1e41o48] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   padding: 20px;
 }
@@ -129,7 +129,7 @@ exports[`with theme prop of padding 20px 1`] = `
   >
     <glamorous(div)>
       <div
-        className="css-1e41o48"
+        className="glamor-0"
       />
     </glamorous(div)>
   </ThemeProvider>

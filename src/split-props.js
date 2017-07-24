@@ -34,3 +34,5 @@ export default function splitProps(
     return split
   }, returnValue)
 }
+
+/* eslint no-unused-vars:0 */

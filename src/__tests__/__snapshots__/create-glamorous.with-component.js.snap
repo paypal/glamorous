@@ -1,49 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`overriding styles via className 1`] = `
-.css-13vote6,
-[data-css-13vote6] {
+.glamor-0,
+[data-glamor-0] {
   color: green;
   font-size: 20px;
 }
 
 <div
-  class="css-13vote6"
+  class="glamor-0"
 />
 `;
 
 exports[`overriding styles via css prop 1`] = `
-.css-s7n3hr,
-[data-css-s7n3hr] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   font-size: 25px;
 }
 
 <div
-  class="css-s7n3hr"
+  class="glamor-0"
 />
 `;
 
 exports[`overriding styles via wrapping with glamorous 1`] = `
-.css-1evjunj,
-[data-css-1evjunj] {
+.glamor-0,
+[data-glamor-0] {
   color: blue;
   font-size: 20px;
 }
 
 <div
-  class="css-1evjunj"
+  class="glamor-0"
 />
 `;
 
 exports[`withComponent composes the component with provided styles 1`] = `
-.css-5qt57y,
-[data-css-5qt57y] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   font-size: 20px;
 }
 
 <div
-  class="css-5qt57y"
+  class="glamor-0"
 />
 `;
