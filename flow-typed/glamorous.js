@@ -6,7 +6,7 @@
 type CSSWideKeyword = 'initial' | 'inherit' | 'unset';
 
 // Ported from typings/css-properties.d.ts
-type CSSProperties = {|
+type CSSProperties = {
   /**
    * Aligns a flex container's lines within the flex container when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
@@ -1748,10 +1748,10 @@ type CSSProperties = {|
   ':first-line'?: CSSProperties,
   '::first-line'?: CSSProperties,
   '::selection'?: CSSProperties
-|};
+};
 
 // Taken from React.SVGAttributes
-type SVGProperties = {|
+type SVGProperties = {
   color?: string,
   height?: number | string,
   id?: string,
@@ -2024,7 +2024,7 @@ type SVGProperties = {|
   yChannelSelector?: string,
   z?: number | string,
   zoomAndPan?: string
-|};
+};
 
 declare module 'glamorous' {
   declare type Component<Props> =
