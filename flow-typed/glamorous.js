@@ -2050,11 +2050,11 @@ declare module 'glamorous' {
 
   declare type CSSStyles<Props> =
     | CSSProperties
-    | ((props: Props, theme: Object) => CSSProperties)
+    | ((props: Props, theme?: Object) => CSSProperties)
     | Array<CSSProperties>;
   declare type SVGStyles<Props> =
     | SVGProperties
-    | ((props: Props, theme: Object) => SVGProperties)
+    | ((props: Props, theme?: Object) => SVGProperties)
     | Array<SVGProperties>;
 
   declare type GlamorousFactoryHTMLComponent<Props, ExtraProps> = (
