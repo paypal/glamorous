@@ -83,6 +83,6 @@ Possible support via [glamors typings](https://github.com/threepointone/glamor/b
 When using glamorous in a library that you are generating definition files for you will need to include the following import and export to get around a typescript issue [Microsoft/TypeScript/issues/5938](https://github.com/Microsoft/TypeScript/issues/5938).
 
 ```ts
-import glamorous, { ExtraGlamorousProps as Unused } from "glamorous"
-export { Unused }
+import glamorous, { ExtraGlamorousProps, WithComponent  } from "glamorous"
+export { ExtraGlamorousProps, WithComponent }
 ```
