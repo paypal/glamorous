@@ -1,25 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Typescript expected failures 1`] = `
-"test/should-fail.test.tsx(16,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<SVGProperties>'.
-  Types of property 'fillRule' are incompatible.
-    Type '\\"cat\\"' is not assignable to type '\\"nonzero\\" | \\"evenodd\\" | \\"inherit\\" | undefined'.
-test/should-fail.test.tsx(29,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<SVGProperties>'.
-  Index signature is missing in type '() => { fillRule: \\"cat\\"; }'.
-test/should-fail.test.tsx(43,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
-  Types of property 'float' are incompatible.
-    Type '\\"cat\\"' is not assignable to type '\\"left\\" | \\"right\\" | \\"none\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"inline-start\\" | \\"inline-end\\" | und...'.
-test/should-fail.test.tsx(55,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
-  Index signature is missing in type '() => { float: \\"cat\\"; }'.
-test/should-fail.test.tsx(71,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
-  Types of property 'fillRule' are incompatible.
-    Type '\\"cat\\"' is not assignable to type '\\"nonzero\\" | \\"evenodd\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | undefined'.
-test/should-fail.test.tsx(77,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
-  Index signature is missing in type '() => { fillRule: \\"cat\\"; }'.
-test/should-fail.test.tsx(83,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
-  Types of property 'float' are incompatible.
-    Type '\\"cat\\"' is not assignable to type '\\"left\\" | \\"right\\" | \\"none\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"inline-start\\" | \\"inline-end\\" | und...'.
-test/should-fail.test.tsx(89,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'Partial<CSSProperties>'.
-  Index signature is missing in type '() => { float: \\"cat\\"; }'.
+"test/should-fail.test.tsx(10,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}, object>)[]'.
+    Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(16,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}, object>)[]'.
+    Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(22,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
+  Type '() => { fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}, object>)[]'.
+    Property 'push' is missing in type '() => { fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(30,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'length' is missing in type '{ float: \\"cat\\"; }'.
+test/should-fail.test.tsx(36,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'length' is missing in type '{ float: \\"cat\\"; }'.
+test/should-fail.test.tsx(42,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
+test/should-fail.test.tsx(48,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
+test/should-fail.test.tsx(64,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(70,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '() => { fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'push' is missing in type '() => { fillRule: \\"cat\\"; }'.
+test/should-fail.test.tsx(76,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'length' is missing in type '{ float: \\"cat\\"; }'.
+test/should-fail.test.tsx(82,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
+  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+    Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
+test/should-fail.test.tsx(100,24): error TS2551: Property 'colors' does not exist on type 'ExampleTheme'. Did you mean 'color'?
+test/should-fail.test.tsx(111,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
+test/should-fail.test.tsx(112,3): error TS2344: Type 'ThemeProps' does not satisfy the constraint '{ theme: NotExampleTheme; }'.
+  Types of property 'theme' are incompatible.
+    Type 'ExampleTheme' is not assignable to type 'NotExampleTheme'.
+      Types of property 'color' are incompatible.
+        Type 'string' is not assignable to type 'number'.
+test/should-fail.test.tsx(121,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
+test/should-fail.test.tsx(122,3): error TS2344: Type 'PropsWithoutTheme' does not satisfy the constraint '{ theme: any; }'.
+  Property 'theme' is missing in type 'PropsWithoutTheme'.
 "
 `;
