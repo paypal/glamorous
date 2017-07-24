@@ -4,7 +4,7 @@ import { CSSProperties } from './css-properties.d'
 // accept arbitrary functions
 // [propertyName: string]: string | number | SVGProperties | undefined
 
-export interface SVGProperties {
+export interface SVGPropertiesComplete {
   // Attributes which also defined in HTMLAttributes
   // See comment in SVGDOMPropertyConfig.js
   className?: string;
@@ -267,6 +267,12 @@ export interface SVGProperties {
   yChannelSelector?: string;
   z?: number | string;
   zoomAndPan?: string;
+}
 
+export interface SVGPropertiesLossy {
   [propertyName: string]: string | number | SVGProperties | undefined
 }
+
+type SVGProperties =
+  & SVGPropertiesComplete
+  & SVGPropertiesLossy

@@ -4,24 +4,40 @@
 
 import * as React from 'react'
 import {
-  HTMLGlamorousInterface,
-  SVGGlamorousInterface,
-} from './element-interfaces'
+  HTMLComponentFactory,
+  SVGComponentFactory,
+} from './built-in-component-factories'
 import {
-  StyledFunction,
   GlamorousComponent,
   ExtraGlamorousProps,
-} from './styled-function'
+  WithComponent,
+} from './glamorous-component'
+import {
+  StyleFunction,
+  StyleArray,
+  StyleArgument,
+  GlamorousComponentFactory,
+} from './component-factory'
 import { CSSProperties } from './css-properties'
 import { SVGProperties } from './svg-properties'
 
+import { Omit } from './helpers'
+
 export {
   CSSProperties,
-  ExtraGlamorousProps,
+  SVGProperties,
+
   GlamorousComponent,
-  HTMLGlamorousInterface,
-  StyledFunction,
-  SVGGlamorousInterface,
+  ExtraGlamorousProps,
+  WithComponent,
+
+  StyleFunction,
+  StyleArray,
+  StyleArgument,
+
+  GlamorousComponentFactory,
+  HTMLComponentFactory,
+  SVGComponentFactory,
 }
 
 export interface GlamorousOptions {
@@ -36,18 +52,25 @@ export interface Config {
   useDisplayNameInClassName: boolean
 }
 
-export interface GlamorousInterface extends HTMLGlamorousInterface, SVGGlamorousInterface {
-  <Props>(
-    component:Component<Props>,
-    options?: GlamorousOptions,
-  ): StyledFunction<Props, CSSProperties>
-  <Props>(
-    component:Component<Props>,
-    options?: GlamorousOptions,
-  ): StyledFunction<Props, SVGProperties>
+
+type OmitInternals<
+  Props extends { className?: string, theme?: object }
+> = Omit<Props, "className" | "theme">
+
+export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
+  // This overload is needed due to a union return of CSSProperties | SVGProperties
+  // resulting in a loss of typesafety on function arguments
+  <Props extends { className?: string, theme?: object }>(
+    component: Component<Props>,
+    options?: Partial<GlamorousOptions>,
+  ): GlamorousComponentFactory<OmitInternals<Props>, CSSProperties>
+  <Props extends { className?: string, theme?: object }>(
+    component: Component<Props>,
+    options?: Partial<GlamorousOptions>,
+  ): GlamorousComponentFactory<OmitInternals<Props>, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
-  Svg: React.StatelessComponent<React.SVGAttributes<any> & ExtraGlamorousProps>
+  Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>
 
   config: Config
 }
@@ -58,13 +81,22 @@ interface ThemeProps {
 
 export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
-export function withTheme<ExternalProps, Theme>(
-  component: React.ComponentClass<ExternalProps & { theme: Theme }>
-): React.ComponentClass<ExternalProps>
+type OmitTheme<
+  Props extends { theme: Theme },
+  Theme
+> = Omit<Props, "theme">
 
-export function withTheme<ExternalProps, Theme>(
-  component: React.StatelessComponent<ExternalProps & { theme: Theme }>
-): React.StatelessComponent<ExternalProps>
+export function withTheme<Props extends { theme: Theme }, Theme = {}>(
+  component: React.ComponentClass<Props>
+): React.ComponentClass<
+  OmitTheme<Props, Theme>
+>
+
+export function withTheme<Props extends { theme: Theme }, Theme = {}>(
+  component: React.StatelessComponent<Props>
+): React.StatelessComponent<
+  OmitTheme<Props, Theme>
+>
 
 declare const glamorous: GlamorousInterface
 
