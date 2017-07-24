@@ -5,7 +5,7 @@
 // "all CSS properties can accept these values"
 type CSSWideKeyword = 'initial' | 'inherit' | 'unset';
 
-// This file is almost exactly the same as typings/css-properties.d.ts, but flow's syntax is slightly different.
+// Ported from typings/css-properties.d.ts
 type CSSProperties = {|
   /**
    * Aligns a flex container's lines within the flex container when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
@@ -2034,8 +2034,7 @@ declare module 'glamorous' {
   declare type ExtraGlamorousProps = {
     innerRef?: (instance: any) => void,
     css?: CSSProperties,
-    className?: string,
-    theme?: Object
+    className?: string
   };
 
   declare type WithComponent<Props> = (tagName: string) => GlamorousComponent<Props>;
@@ -2051,12 +2050,12 @@ declare module 'glamorous' {
 
   declare type CSSStyles<Props> =
     | CSSProperties
-    | ((props: Props) => CSSProperties)
-    | Array<CSSProperties | ((props: Props) => CSSProperties)>;
+    | ((props: Props, theme: Object) => CSSProperties)
+    | Array<CSSProperties>;
   declare type SVGStyles<Props> =
     | SVGProperties
-    | ((props: Props) => SVGProperties)
-    | Array<SVGProperties | ((props: Props) => SVGProperties)>;
+    | ((props: Props, theme: Object) => SVGProperties)
+    | Array<SVGProperties>;
 
   declare type GlamorousFactoryHTMLComponent<Props, ExtraProps> = (
     ...styles: Array<CSSStyles<ExtraProps>>
@@ -2075,6 +2074,9 @@ declare module 'glamorous' {
       component: GlamorousComponent<Props>,
       options?: GlamorousOptions
     ): GlamorousFactoryComponent<Props, ExtraProps>,
+
+    ThemeProvider: Component<{ theme: Object }>,
+    withTheme<Props>(component: Component<Props>): GlamorousComponent<Props>,
 
     // HTML tags
     div<Props>(...styles: Array<CSSStyles<Props>>): GlamorousComponent<Props>,
