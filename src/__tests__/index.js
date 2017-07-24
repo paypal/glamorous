@@ -166,37 +166,15 @@ test('style objects can be arrays and glamor will merge those', () => {
   const phoneMediaQuery = '@media (max-width: 640px)'
   const MyDiv = glamorous.div(
     [
-      {
-        [phoneMediaQuery]: {
-          lineHeight: 1.2,
-        },
-      },
-      {
-        [phoneMediaQuery]: {
-          lineHeight: 1.3, // this should win
-        },
-      },
+      {[phoneMediaQuery]: {lineHeight: 1.2}},
+      // this 👇 should win
+      {[phoneMediaQuery]: {lineHeight: 1.3}},
     ],
     ({big, square}) => {
-      const bigStyles = big ?
-      {
-        [phoneMediaQuery]: {
-          fontSize: 20,
-        },
-      } :
-        {}
-
+      const bigStyles = big ? {[phoneMediaQuery]: {fontSize: 20}} : {}
       const squareStyles = square ?
-      {
-        [phoneMediaQuery]: {
-          borderRadius: 0,
-        },
-      } :
-      {
-        [phoneMediaQuery]: {
-          borderRadius: '50%',
-        },
-      }
+        {[phoneMediaQuery]: {borderRadius: 0}} :
+        {[phoneMediaQuery]: {borderRadius: '50%'}}
       return [bigStyles, squareStyles]
     },
   )
