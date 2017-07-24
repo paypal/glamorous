@@ -60,16 +60,15 @@ exports[`can be configured to use the displayName in the className 1`] = `
 exports[`can use pre-built glamorous components with css attributes 1`] = `
 .css-1t62idy,
 [data-css-1t62idy] {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
 }
 
 <a
@@ -82,10 +81,6 @@ exports[`can use pre-built glamorous components with css attributes 1`] = `
 exports[`can use pre-built glamorous components with css prop 1`] = `
 .css-1d3tm0b,
 [data-css-1d3tm0b] {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -93,6 +88,9 @@ exports[`can use pre-built glamorous components with css prop 1`] = `
   display: flex;
   flex-direction: column;
   background: blue;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
 }
 
 <a
