@@ -7,9 +7,6 @@ import { ExtraGlamorousProps } from "../";
 
 import { WithComponent } from "../"
 
-// Glamorous config
-glamorous.config.useDisplayNameInClassName = true
-
 // Partial<Properties>
 const Static = glamorous.div({
   "fontSize": 20,
@@ -172,7 +169,7 @@ export class AirBalloon extends React.Component<{}, {}> {
 class Test extends React.Component<object, object> {
   private div: HTMLDivElement
   render() {
-    return <div ref={(c) => { this.div = c }} />
+    return <div ref={(c: HTMLDivElement) => { this.div = c }} />
   }
 }
 
@@ -268,4 +265,15 @@ const UseNonGlamorousThemedComponent = (
       title='test'
     />
   </div>
+)
+
+// displayName
+
+const TestDisplayName: React.SFC<object> = () => <div />
+
+glamorous(
+  TestDisplayName,
+  {
+    displayName: 'example'
+  },
 )

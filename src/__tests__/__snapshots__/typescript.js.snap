@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Typescript expected failures 1`] = `
-"test/glamorous.test.tsx(175,31): error TS2322: Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
-  Type 'null' is not assignable to type 'HTMLDivElement'.
-test/should-fail.test.tsx(10,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
+"test/should-fail.test.tsx(10,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
   Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}, object>)[]'.
     Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
 test/should-fail.test.tsx(16,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
@@ -46,5 +44,9 @@ test/should-fail.test.tsx(112,3): error TS2344: Type 'ThemeProps' does not satis
 test/should-fail.test.tsx(121,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
 test/should-fail.test.tsx(122,3): error TS2344: Type 'PropsWithoutTheme' does not satisfy the constraint '{ theme: any; }'.
   Property 'theme' is missing in type 'PropsWithoutTheme'.
+test/should-fail.test.tsx(131,3): error TS2345: Argument of type '{ displayName: number; }' is not assignable to parameter of type 'Partial<GlamorousOptions> | undefined'.
+  Type '{ displayName: number; }' is not assignable to type 'Partial<GlamorousOptions>'.
+    Types of property 'displayName' are incompatible.
+      Type 'number' is not assignable to type 'string | undefined'.
 "
 `;

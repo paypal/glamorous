@@ -6,10 +6,6 @@ Pull requests to improve them are welcome and appreciated. If you've never contr
 
 ## Complete support
 
-### Config
-
-- [x] useDisplayNameInClassName
-
 ### glamorousComponentFactory
 
 The typings for

@@ -48,10 +48,6 @@ export interface GlamorousOptions {
 
 export type Component<T> = React.ComponentClass<T> | React.StatelessComponent<T>
 
-export interface Config {
-  useDisplayNameInClassName: boolean
-}
-
 
 type OmitInternals<
   Props extends { className?: string, theme?: object }
@@ -71,8 +67,6 @@ export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFa
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>
-
-  config: Config
 }
 
 interface ThemeProps {
