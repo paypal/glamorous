@@ -5,7 +5,7 @@ import stripIndent from 'strip-indent'
 // not sure why, but travis seems to error out
 // due to this import 🙃
 // eslint-disable-next-line
-import pluginTester from 'babel-plugin-tester';
+import pluginTester from 'babel-plugin-tester'
 import plugin from './theme-move'
 
 const projectRoot = path.join(__dirname, '../../')
@@ -33,10 +33,12 @@ pluginTester({
   tests: {
     'no glamorous import': `
       import glamorous from 'not-glamorous'
+
       glamorous.div((props, theme) => theme.main)
     `,
     'no theme prop': `
       import glamorous from 'glamorous'
+
       glamorous.div(({theme}) => ({fontSize: theme.main.fontSize}))
     `,
     'with require': {
@@ -50,12 +52,19 @@ pluginTester({
       filename: path.join(__dirname, `/test-dynamic-fn.js`),
       code: `
         import {Div} from 'glamorous'
+
         const ui = <Div css={styles} />
       `,
     },
     'css prop set to a className': `
       import {Div} from 'glamorous'
+
       const ui = <Div css="class-name" />
+    `,
+    'not called': `
+      import glamorous from 'glamorous'
+
+      glamorous
     `,
   },
 })
@@ -126,7 +135,7 @@ pluginTester({
     `,
     `
       import {Span} from 'glamorous'
-      const ui = <Span css={${dynamicFn}} />
+      const ui = <Span css={${dynamicFn}}>content</Span>
     `,
     `
       glamorous.div((props, {primary: {headings: {font: {size: fontSize}}}}) => ({

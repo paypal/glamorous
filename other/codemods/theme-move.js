@@ -55,6 +55,9 @@ function glamorousThemeCodemod(babel) {
               const openingElement = identifier.findParent(
                 t.isJSXOpeningElement,
               )
+              if (!openingElement) {
+                return
+              }
               openingElement
                 .get('attributes')
                 .reduce((expressions, attrPath) => {
@@ -72,6 +75,9 @@ function glamorousThemeCodemod(babel) {
             let callExpression = identifier.findParent(t.isCallExpression)
             if (!isBuiltInCall && callExpression) {
               callExpression = callExpression.findParent(t.isCallExpression)
+            }
+            if (!callExpression) {
+              return
             }
             callExpression
               .get('arguments')
@@ -115,9 +121,8 @@ function glamorousThemeCodemod(babel) {
         handleDeeplyDestructuredTheme()
       }
       themeArg.properties.forEach(themeProp => {
-        const {referencePaths = []} = dynamicFn.scope.getBinding(
-          themeProp.value.name,
-        ) || {}
+        const {referencePaths = []} =
+          dynamicFn.scope.getBinding(themeProp.value.name) || {}
         referencePaths.forEach(ref => {
           ref.replaceWith(
             t.memberExpression(
@@ -131,9 +136,8 @@ function glamorousThemeCodemod(babel) {
         })
       })
     } else {
-      const {referencePaths = []} = dynamicFn.scope.getBinding(
-        themeArg.name,
-      ) || {}
+      const {referencePaths = []} =
+        dynamicFn.scope.getBinding(themeArg.name) || {}
       referencePaths.forEach(ref => {
         ref.replaceWith(
           t.memberExpression(
@@ -207,5 +211,5 @@ function looksLike(a, b) {
 
 function isPrimitive(val) {
   // eslint-disable-next-line
-  return val == null || /^[sbn]/.test(typeof val);
+  return val == null || /^[sbn]/.test(typeof val)
 }

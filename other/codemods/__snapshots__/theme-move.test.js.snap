@@ -8,6 +8,7 @@ glamorous.div((props, theme) => ({fontSize: theme.fontSize}))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
+
 glamorous.div(props => ({fontSize: props.theme.fontSize}))
 
 `;
@@ -20,6 +21,7 @@ glamorous.div((props, theme, context) => ({ fontSize: theme.main.fontSize }))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
+
 glamorous.div((props, context) => ({fontSize: props.theme.main.fontSize}))
 
 `;
@@ -56,6 +58,7 @@ glamorous.div((props, theme) => ({fontSize: theme.main.fontSize}))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const glamorous = require('glamorous')
+
 glamorous.div(props => ({fontSize: props.theme.main.fontSize}))
 
 `;
@@ -140,6 +143,7 @@ glamorous('div')((props, theme) => ({fontSize: theme.fontSize}))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
+
 glamorous('div')(props => ({fontSize: props.theme.fontSize}))
 
 `;
@@ -152,6 +156,7 @@ glamorous.div([(props, theme) => ({fontSize: theme.fontSize})])
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
+
 glamorous.div([props => ({fontSize: props.theme.fontSize})])
 
 `;
@@ -200,6 +205,7 @@ const ui = <glamorous.Div css={(props, theme) => ({fontSize: theme.fontSize})} /
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
+
 const ui = (
   <glamorous.Div css={props => ({fontSize: props.theme.fontSize})} />
 )
@@ -227,14 +233,17 @@ exports[`13. glamorous-theme-move-codemod 1`] = `
 import glamorous from 'glamorous'
 
 import {Span} from 'glamorous'
-const ui = <Span css={(props, theme) => ({fontSize: theme.fontSize})} />
+const ui = <Span css={(props, theme) => ({fontSize: theme.fontSize})}>content</Span>
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
 
 import {Span} from 'glamorous'
-const ui = <Span css={props => ({fontSize: props.theme.fontSize})} />
+
+const ui = (
+  <Span css={props => ({fontSize: props.theme.fontSize})}>content</Span>
+)
 
 `;
 

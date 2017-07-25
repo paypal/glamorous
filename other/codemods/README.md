@@ -16,12 +16,20 @@ wont have to do it all that much 😄
 
 ## Running Codemods
 
+First, you'll need to clone the glamorous repo somewhere:
+
+```bash
+git clone https://github.com/paypal/glamorous.git
+```
+
+The codemods will then be available to you in `glamorous/other/codemods`
+
 To run the codemods, you'll need to run `babel-codemod`. You can install that
 package globally, or you can use `npx` (which comes pre-installed with npm@5.2.0
 or greater). Here's how you use it with `npx`:
 
 ```bash
-npx babel-codemod --plugin ./node_modules/glamorous/other/codemods/{CODEMOD_NAME}.js "src/**/*.js"
+npx babel-codemod --plugin ./glamorous/other/codemods/{CODEMOD_NAME}.js "src/**/*.js"
 ```
 
 Where `CODEMOD_NAME` is the filename of the codemod and `src/**/*.js` is a glob
