@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`allows you to pass custom props that are allowed 1`] = `
-.css-1r7lsit,
-[data-css-1r7lsit] {
+.glamor-0,
+[data-glamor-0] {
   padding: 1px;
 }
 
 <div
-  class="css-1r7lsit"
+  class="glamor-0"
   id="hello"
 />
 `;
 
 exports[`allows you to specify the tag rendered by a component 1`] = `
-.css-110n7f9,
-[data-css-110n7f9] {
+.glamor-0,
+[data-glamor-0] {
   height: 1px;
   width: 2px;
 }
 
 <svg
-  class="css-110n7f9"
+  class="glamor-0"
   height="2"
 />
 `;
 
 exports[`can accept classNames instead of style objects 1`] = `
-.css-164yopx,
-[data-css-164yopx] {
+.glamor-0,
+[data-glamor-0] {
   padding-top: 1px;
   padding-right: 2px;
   padding-bottom: 3px;
@@ -35,19 +35,19 @@ exports[`can accept classNames instead of style objects 1`] = `
 }
 
 <div
-  class="css-164yopx extra-thing"
+  class="glamor-0 extra-thing"
 />
 `;
 
 exports[`can accept functions which return string class names 1`] = `
-.css-14wicqh,
-[data-css-14wicqh] {
+.glamor-0,
+[data-glamor-0] {
   padding-right: 2px;
   padding-bottom: 2px;
 }
 
 <div
-  class="css-14wicqh is-active extra-thing"
+  class="glamor-0 is-active extra-thing"
 />
 `;
 
@@ -58,34 +58,29 @@ exports[`can be configured to use the displayName in the className 1`] = `
 `;
 
 exports[`can use pre-built glamorous components with css attributes 1`] = `
-.css-1t62idy,
-[data-css-1t62idy] {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
+.glamor-0,
+[data-glamor-0] {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
 }
 
 <a
-  class="css-1t62idy is added to classes"
+  class="glamor-0 is added to classes"
   href="/is-forwarded"
   id="is-forwarded"
 />
 `;
 
 exports[`can use pre-built glamorous components with css prop 1`] = `
-.css-1d3tm0b,
-[data-css-1d3tm0b] {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
+.glamor-0,
+[data-glamor-0] {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -93,72 +88,75 @@ exports[`can use pre-built glamorous components with css prop 1`] = `
   display: flex;
   flex-direction: column;
   background: blue;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
 }
 
 <a
-  class="css-1d3tm0b is added to classes"
+  class="glamor-0 is added to classes"
   href="/is-forwarded"
   id="is-forwarded"
 />
 `;
 
 exports[`css prop with a className 1`] = `
-.css-1ezp9xe,
-[data-css-1ezp9xe] {
+.glamor-1,
+[data-glamor-1] {
   color: red;
 }
 
 <section
-  class="css-nil css-1ezp9xe abc-123"
+  class="glamor-0 glamor-1 abc-123"
 />
 `;
 
 exports[`css prop with a function 1`] = `
-.css-1ps4aij,
-[data-css-1ps4aij] {
+.glamor-0,
+[data-glamor-0] {
   font-size: 10px;
   padding: 20px;
   margin: 30px;
 }
 
 <section
-  class="css-1ps4aij"
+  class="glamor-0"
 />
 `;
 
 exports[`css prop with an array 1`] = `
-.css-10ql5rd,
-[data-css-10ql5rd] {
+.glamor-0,
+[data-glamor-0] {
   margin-top: 1px;
   margin-right: 2px;
   margin-bottom: 2px;
 }
 
 <section
-  class="css-10ql5rd"
+  class="glamor-0"
 />
 `;
 
 exports[`css prop with an object 1`] = `
-.css-1dmiui7,
-[data-css-1dmiui7] {
+.glamor-0,
+[data-glamor-0] {
   font-size: 12px;
 }
 
 <section
-  class="css-1dmiui7"
+  class="glamor-0"
 />
 `;
 
 exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
-.css-mhpxxj,
-[data-css-mhpxxj] {
+.glamor-0,
+[data-glamor-0] {
   padding: 1px;
   margin: 1px;
 }
 
 <div
-  class="css-mhpxxj"
+  class="glamor-0"
 >
   He likes it! Hey Mikey!
 </div>
@@ -171,8 +169,8 @@ exports[`merges composed component forwardProps 1`] = `
 `;
 
 exports[`merges composed component styles for reasonable overrides 1`] = `
-.css-1k8eh41,
-[data-css-1k8eh41] {
+.glamor-0,
+[data-glamor-0] {
   margin-top: 1px;
   margin-right: 2px;
   padding-top: 5px;
@@ -182,37 +180,37 @@ exports[`merges composed component styles for reasonable overrides 1`] = `
 }
 
 <div
-  class="css-1k8eh41 other classes are not removed"
+  class="glamor-0 other classes are not removed"
 />
 `;
 
 exports[`renders a component with theme properties 1`] = `
-.css-1fyph4i,
-[data-css-1fyph4i] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   padding: 10px;
 }
 
 <div
-  class="css-1fyph4i"
+  class="glamor-0"
 />
 `;
 
 exports[`sanity test 1`] = `
-.css-1b98bkc,
-[data-css-1b98bkc] {
+.glamor-0,
+[data-glamor-0] {
   margin-left: 24px;
 }
 
 <div
-  class="css-1b98bkc"
+  class="glamor-0"
 />
 `;
 
 exports[`style objects can be arrays and glamor will merge those 1`] = `
 @media (max-width: 640px) {
-  .css-1bzhvkr,
-  [data-css-1bzhvkr] {
+  .glamor-0,
+  [data-glamor-0] {
     line-height: 1.3;
     font-size: 20px;
     border-radius: 50%;
@@ -220,18 +218,18 @@ exports[`style objects can be arrays and glamor will merge those 1`] = `
 }
 
 <div
-  class="css-1bzhvkr"
+  class="glamor-0"
 />
 `;
 
 exports[`styles can be functions that accept props 1`] = `
-.css-ig7b2c,
-[data-css-ig7b2c] {
+.glamor-0,
+[data-glamor-0] {
   margin-top: 2px;
 }
 
 <div
-  class="css-ig7b2c"
+  class="glamor-0"
 />
 `;
 
@@ -243,19 +241,19 @@ exports[`will forward \`color\` to an svg 1`] = `
 `;
 
 exports[`will not forward \`color\` to a div 1`] = `
-.css-1ezp9xe,
-[data-css-1ezp9xe] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
 }
 
 <div
-  class="css-1ezp9xe"
+  class="glamor-0"
 />
 `;
 
 exports[`with theme prop of padding 10px 1`] = `
-.css-1p841yy,
-[data-css-1p841yy] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   padding: 10px;
 }
@@ -268,14 +266,14 @@ exports[`with theme prop of padding 10px 1`] = `
   }
 >
   <div
-    className="css-1p841yy"
+    className="glamor-0"
   />
 </glamorous(div)>
 `;
 
 exports[`with theme prop of padding 20px 1`] = `
-.css-1e41o48,
-[data-css-1e41o48] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
   padding: 20px;
 }
@@ -288,7 +286,7 @@ exports[`with theme prop of padding 20px 1`] = `
   }
 >
   <div
-    className="css-1e41o48"
+    className="glamor-0"
   />
 </glamorous(div)>
 `;

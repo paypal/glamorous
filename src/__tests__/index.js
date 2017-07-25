@@ -166,37 +166,15 @@ test('style objects can be arrays and glamor will merge those', () => {
   const phoneMediaQuery = '@media (max-width: 640px)'
   const MyDiv = glamorous.div(
     [
-      {
-        [phoneMediaQuery]: {
-          lineHeight: 1.2,
-        },
-      },
-      {
-        [phoneMediaQuery]: {
-          lineHeight: 1.3, // this should win
-        },
-      },
+      {[phoneMediaQuery]: {lineHeight: 1.2}},
+      // this 👇 should win
+      {[phoneMediaQuery]: {lineHeight: 1.3}},
     ],
     ({big, square}) => {
-      const bigStyles = big ?
-      {
-        [phoneMediaQuery]: {
-          fontSize: 20,
-        },
-      } :
-        {}
-
+      const bigStyles = big ? {[phoneMediaQuery]: {fontSize: 20}} : {}
       const squareStyles = square ?
-      {
-        [phoneMediaQuery]: {
-          borderRadius: 0,
-        },
-      } :
-      {
-        [phoneMediaQuery]: {
-          borderRadius: '50%',
-        },
-      }
+        {[phoneMediaQuery]: {borderRadius: 0}} :
+        {[phoneMediaQuery]: {borderRadius: '50%'}}
       return [bigStyles, squareStyles]
     },
   )
@@ -274,15 +252,15 @@ test('forwards props when the GlamorousComponent.rootEl is known', () => {
   })()
   // no need to pass anything. This will just create be a no-op class,
   // no problem
-  const MyWrappedVersionMock = jest.fn(props => (
-    <MyWrappedVersion {...props} />
-  ))
+  const MyWrappedVersionMock = jest.fn(props =>
+    <MyWrappedVersion {...props} />,
+  )
 
   // from there we can use our wrapped version and it will function the
   // same as the original
-  const MyMyWrappedVersion = jest.fn(props => (
-    <MyWrappedVersionMock {...props} />
-  ))
+  const MyMyWrappedVersion = jest.fn(props =>
+    <MyWrappedVersionMock {...props} />,
+  )
 
   // then if we make a parent glamorous, it will forward props down until
   // it hits our wrapper at which time it will check whether the prop is
@@ -389,7 +367,11 @@ test('passes `theme` to the css prop if it is a function', () => {
   const css = jest.fn()
   const props = {css}
   const theme = {color: 'blue'}
-  mount(<ThemeProvider theme={theme}><Comp {...props} /></ThemeProvider>)
+  mount(
+    <ThemeProvider theme={theme}>
+      <Comp {...props} />
+    </ThemeProvider>,
+  )
   expect(css).toHaveBeenCalledTimes(1)
   const context = expect.objectContaining({[CHANNEL]: expect.any(Object)})
   expect(css).toHaveBeenCalledWith({...props, theme}, theme, context)
@@ -437,7 +419,9 @@ test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
   const styles2 = {paddingRight: 2, paddingBottom: 2}
-  const className3 = glamor.css({paddingBottom: 3, paddingLeft: 3}).toString()
+  const className3 = glamor
+    .css({paddingBottom: 3, paddingLeft: 3})
+    .toString()
   const styles4 = {paddingLeft: 4}
   const Comp = glamorous.div(
     className1,
