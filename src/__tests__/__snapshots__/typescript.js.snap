@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Typescript expected failures 1`] = `
-"test/glamorous.test.tsx(175,31): error TS2322: Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
-  Type 'null' is not assignable to type 'HTMLDivElement'.
-test/should-fail.test.tsx(10,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
+"test/should-fail.test.tsx(10,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
   Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}, object>)[]'.
     Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
 test/should-fail.test.tsx(16,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
