@@ -2,23 +2,23 @@ import React from 'react'
 import {render, mount} from 'enzyme'
 import * as jestGlamorReact from 'jest-glamor-react'
 import {StyleSheet} from 'react-primitives'
-import glamorousComponent from '../primitives/index'
+import glamorous from '../primitives/index'
 
 expect.extend(jestGlamorReact.matcher)
 expect.addSnapshotSerializer(jestGlamorReact.serializer)
 
 describe('Primitive interfaces', () => {
   test('sanity test', () => {
-    const Component = glamorousComponent.view({margin: '10px'})
+    const Component = glamorous.view({margin: '10px'})
     expect(<Component />).toMatchSnapshotWithGlamor()
   })
 
   test('should not throw any error when called', () => {
-    glamorousComponent.view({})
+    glamorous.view({})
   })
 
   test('should combine with StyleSheet.create() (inline styles)', () => {
-    const Component = glamorousComponent.view({
+    const Component = glamorous.view({
       margin: '10px',
       justifyContent: 'center',
       alignItems: 'center',
@@ -35,22 +35,22 @@ describe('Primitive interfaces', () => {
   })
 
   test('should attach a displayName', () => {
-    const Component = glamorousComponent.view({})
+    const Component = glamorous.view({})
     expect(Component.displayName).toBe('glamorous(View)')
   })
 
   test('should pass the ref to the component', () => {
-    const Component = glamorousComponent.view({})
+    const Component = glamorous.view({})
     const ref = jest.fn()
 
     const wrapper = mount(<Component innerRef={ref} />)
-    const view = wrapper.find('View').first()
+    const View = wrapper.find('View').first()
 
-    expect(ref).toHaveBeenCalledWith(view.node)
+    expect(ref).toHaveBeenCalledWith(View.node)
   })
 
   test('should render a component with theme properties', () => {
-    const Component = glamorousComponent.text(
+    const Component = glamorous.text(
       {
         color: 'red',
       },
@@ -62,7 +62,7 @@ describe('Primitive interfaces', () => {
   })
 
   test('should pass an updated theme when theme prop changes', () => {
-    const Component = glamorousComponent.text(
+    const Component = glamorous.text(
       {
         color: 'red',
       },
@@ -79,7 +79,7 @@ describe('Primitive interfaces', () => {
   })
 
   test('should render the Native <Image /> component', () => {
-    const ReactImage = glamorousComponent.image({padding: '10px'})
+    const ReactImage = glamorous.image({padding: '10px'})
     expect(
       <ReactImage source="https://facebook.github.io/react/img/logo_og.png" />,
     ).toMatchSnapshotWithGlamor()
@@ -92,7 +92,7 @@ describe('Primitive interfaces', () => {
         alignItems: 'center',
       },
     })
-    const ReactImage = glamorousComponent.image({padding: '10px'})
+    const ReactImage = glamorous.image({padding: '10px'})
     expect(
       <ReactImage
         style={styles.image}
@@ -100,4 +100,14 @@ describe('Primitive interfaces', () => {
       />,
     ).toMatchSnapshotWithGlamor()
   })
+
+  // test('should support jsx-styled api', () => {
+  //   const Comp = glamorous(reactPrimitives['View'])()
+
+  //   expect(
+  //     render(
+  //       <Comp color="red">Hello !!</Comp>
+  //     )
+  //   ).toMatchSnapshotWithGlamor()
+  // })
 })
