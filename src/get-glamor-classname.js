@@ -42,7 +42,10 @@ function getGlamorClassName({
     props,
     context,
   )
-  const glamorClassName = css({label: displayName}, ...mappedArgs).toString()
+  // eslint-disable-next-line max-len
+  const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+  const devRules = isDev ? {label: displayName} : null
+  const glamorClassName = css(devRules, ...mappedArgs).toString()
   const extras = [...nonGlamorClassNames, glamorlessClassName].join(' ').trim()
   return `${glamorClassName} ${extras}`.trim()
 }
