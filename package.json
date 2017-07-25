@@ -53,10 +53,10 @@
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.3.0",
     "eslint-config-kentcdodds": "^12.4.2",
-    "glamor": "^2.20.31",
+    "glamor": "^2.20.37",
     "husky": "^0.14.3",
     "jest-cli": "^20.0.4",
-    "jest-glamor-react": "^2.0.0",
+    "jest-glamor-react": "^3.0.0",
     "lint-staged": "^4.0.2",
     "nps": "^5.3.1",
     "nps-utils": "^1.1.2",
@@ -107,7 +107,7 @@
         "statements": 100
       }
     },
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": ["enzyme-to-json/serializer", "jest-glamor-react"],
     "roots": ["src"]
   },
   "repository": {

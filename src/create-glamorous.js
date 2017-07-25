@@ -10,9 +10,6 @@ import getGlamorClassName from './get-glamor-classname'
 export default createGlamorous
 
 function createGlamorous(splitProps) {
-  glamorous.config = {
-    useDisplayNameInClassName: process.env.NODE_ENV !== 'test',
-  }
   return glamorous
 
   /**
@@ -52,17 +49,14 @@ function createGlamorous(splitProps) {
           )
 
           // create className to apply
-          const fullClassName = getGlamorClassName({
+          const className = getGlamorClassName({
             styles: GlamorousComponent.styles,
             props,
             cssOverrides,
             cssProp,
             context,
+            displayName: GlamorousComponent.displayName,
           })
-          const debugClassName = glamorous.config.useDisplayNameInClassName ?
-            cleanClassname(GlamorousComponent.displayName) :
-            ''
-          const className = `${fullClassName} ${debugClassName}`.trim()
 
           return React.createElement(GlamorousComponent.comp, {
             ref: props.innerRef,
@@ -136,8 +130,4 @@ function createGlamorous(splitProps) {
       comp :
       comp.displayName || comp.name || 'unknown'
   }
-}
-
-function cleanClassname(className) {
-  return className.replace(/ /g, '-').replace(/[^A-Za-z0-9\-_]/g, '_')
 }
