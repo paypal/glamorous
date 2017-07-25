@@ -51,12 +51,6 @@ exports[`can accept functions which return string class names 1`] = `
 />
 `;
 
-exports[`can be configured to use the displayName in the className 1`] = `
-<div
-  class="css-nil Hi-There"
-/>
-`;
-
 exports[`can use pre-built glamorous components with css attributes 1`] = `
 .glamor-0,
 [data-glamor-0] {
@@ -164,7 +158,7 @@ exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 
 exports[`merges composed component forwardProps 1`] = `
 <div
-  class="css-nil"
+  class="css-1268me8"
 />
 `;
 
@@ -235,7 +229,7 @@ exports[`styles can be functions that accept props 1`] = `
 
 exports[`will forward \`color\` to an svg 1`] = `
 <svg
-  class="css-nil"
+  class="css-1268me8"
   color="red"
 />
 `;

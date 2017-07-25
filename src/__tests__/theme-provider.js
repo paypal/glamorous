@@ -1,13 +1,9 @@
 /* eslint func-style:0 */
 import React, {Component} from 'react'
 import {render, mount} from 'enzyme'
-import * as jestGlamorReact from 'jest-glamor-react'
 import glamorous from '../'
 import ThemeProvider from '../theme-provider'
 import {CHANNEL} from '../constants'
-
-expect.extend(jestGlamorReact.matcher)
-expect.addSnapshotSerializer(jestGlamorReact.serializer)
 
 const getMockedContext = unsubscribe => ({
   [CHANNEL]: {
@@ -30,7 +26,7 @@ test('renders a component with theme', () => {
         <Comp />
       </ThemeProvider>,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
 })
 
 test('theme properties updates get propagated down the tree', () => {
@@ -54,9 +50,9 @@ test('theme properties updates get propagated down the tree', () => {
     ({theme}) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Parent />)
-  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
+  expect(wrapper).toMatchSnapshot(`with theme prop of padding 10px`)
   wrapper.setState({padding: 20})
-  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
+  expect(wrapper).toMatchSnapshot(`with theme prop of padding 20px`)
 })
 
 test('merges nested themes', () => {
@@ -81,7 +77,7 @@ test('merges nested themes', () => {
         </ThemeProvider>
       </div>,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
 })
 
 test('renders if children are null', () => {
@@ -91,7 +87,7 @@ test('renders if children are null', () => {
         {false && <div />}
       </ThemeProvider>,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
 })
 
 test('cleans up outer theme subscription when unmounts', () => {
@@ -105,7 +101,7 @@ test('cleans up outer theme subscription when unmounts', () => {
 test('does nothing when receive same theme via props', () => {
   const theme = {margin: 2}
   const wrapper = mount(<ThemeProvider theme={theme} />)
-  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
+  expect(wrapper).toMatchSnapshot(`with theme prop of margin 2px`)
   wrapper.setProps({theme})
-  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of margin 2px`)
+  expect(wrapper).toMatchSnapshot(`with theme prop of margin 2px`)
 })

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can be configured to use the displayName in the className 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  color: red;
+}
+
+<div
+  class="glamor-0"
+/>
+`;

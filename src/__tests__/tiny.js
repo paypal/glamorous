@@ -1,12 +1,8 @@
 /* eslint func-style:0, react/prop-types:0 */
 import React from 'react'
 import {render} from 'enzyme'
-import * as jestGlamorReact from 'jest-glamor-react'
 
 import glamorousTiny from '../tiny'
-
-expect.extend(jestGlamorReact.matcher)
-expect.addSnapshotSerializer(jestGlamorReact.serializer)
 
 test('should pass glam object prop', () => {
   const dynamicStyles = jest.fn(({glam: {big}}) => ({
@@ -23,7 +19,7 @@ test('should pass glam object prop', () => {
   const theme = {color: 'blue'}
   expect(
     render(<Comp id="hey-there" glam={glam} theme={theme} />),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
   expect(dynamicStyles).toHaveBeenCalledTimes(1)
   const props = {
     glam,

@@ -2,14 +2,10 @@
 import React from 'react'
 import * as glamor from 'glamor'
 import {render, mount} from 'enzyme'
-import * as jestGlamorReact from 'jest-glamor-react'
 import {oneLine} from 'common-tags'
 import glamorous, {ThemeProvider} from '../'
 import {PropTypes} from '../react-compat'
 import {CHANNEL} from '../constants'
-
-expect.extend(jestGlamorReact.matcher)
-expect.addSnapshotSerializer(jestGlamorReact.serializer)
 
 const nodeEnv = process.env.NODE_ENV
 
@@ -19,7 +15,7 @@ afterEach(() => {
 
 test('sanity test', () => {
   const Div = glamorous.div({marginLeft: 24})
-  expect(render(<Div />)).toMatchSnapshotWithGlamor()
+  expect(render(<Div />)).toMatchSnapshot()
 })
 
 test('can use pre-built glamorous components with css attributes', () => {
@@ -33,7 +29,7 @@ test('can use pre-built glamorous components with css attributes', () => {
         className="is added to classes"
       />,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
 })
 
 test('can use pre-built glamorous components with css prop', () => {
@@ -51,12 +47,12 @@ test('can use pre-built glamorous components with css prop', () => {
         }}
       />,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
 })
 
 test('the css prop accepts "GlamorousStyles"', () => {
   const object = {fontSize: 12}
-  expect(render(<glamorous.Section css={object} />)).toMatchSnapshotWithGlamor(
+  expect(render(<glamorous.Section css={object} />)).toMatchSnapshot(
     'css prop with an object',
   )
 
@@ -64,21 +60,21 @@ test('the css prop accepts "GlamorousStyles"', () => {
     {marginTop: 1, marginRight: 1},
     {marginRight: 2, marginBottom: 2},
   ]
-  expect(render(<glamorous.Section css={array} />)).toMatchSnapshotWithGlamor(
+  expect(render(<glamorous.Section css={array} />)).toMatchSnapshot(
     'css prop with an array',
   )
 
   // this one's weird, but could enable some Ahead of Time
   // compilation in the future
   const className = `${glamor.css({color: 'red'})} abc-123`
-  expect(
-    render(<glamorous.Section css={className} />),
-  ).toMatchSnapshotWithGlamor('css prop with a className')
+  expect(render(<glamorous.Section css={className} />)).toMatchSnapshot(
+    'css prop with a className',
+  )
 
   const fn1 = jest.fn(() => ({padding: 20}))
   const fn2 = jest.fn(() => ({margin: 30}))
   const props = {css: [fn1, fn2], fontSize: 10, theme: {color: 'red'}}
-  expect(render(<glamorous.Section {...props} />)).toMatchSnapshotWithGlamor(
+  expect(render(<glamorous.Section {...props} />)).toMatchSnapshot(
     'css prop with a function',
   )
   expect(fn1).toHaveBeenCalledTimes(1)
@@ -140,7 +136,7 @@ test('merges composed component styles for reasonable overrides', () => {
     expect(el.attribs.class).toContain(className)
   })
   // still using a snapshot though for good measure
-  expect(wrapper).toMatchSnapshotWithGlamor()
+  expect(wrapper).toMatchSnapshot()
 })
 
 test('merges composed component forwardProps', () => {
@@ -150,14 +146,14 @@ test('merges composed component forwardProps', () => {
   const Child = glamorous(parent, {forwardProps: ['shouldRender']})()
   const Grandchild = glamorous(Child)()
   const wrapper = render(<Grandchild shouldRender={true} />)
-  expect(wrapper).toMatchSnapshotWithGlamor()
+  expect(wrapper).toMatchSnapshot()
 })
 
 test('styles can be functions that accept props', () => {
   const MyDiv = glamorous.div({marginTop: 1}, ({margin}) => ({
     marginTop: margin,
   }))
-  expect(render(<MyDiv margin={2} />)).toMatchSnapshotWithGlamor()
+  expect(render(<MyDiv margin={2} />)).toMatchSnapshot()
 })
 
 test('style objects can be arrays and glamor will merge those', () => {
@@ -176,9 +172,7 @@ test('style objects can be arrays and glamor will merge those', () => {
       return [bigStyles, squareStyles]
     },
   )
-  expect(
-    render(<MyDiv big={true} square={false} />),
-  ).toMatchSnapshotWithGlamor()
+  expect(render(<MyDiv big={true} square={false} />)).toMatchSnapshot()
 })
 
 test('falls back to `name` if displayName cannot be inferred', () => {
@@ -199,22 +193,12 @@ test('allows you to specify a displayName', () => {
   expect(MyComp.displayName).toBe('Hi There')
 })
 
-test('can be configured to use the displayName in the className', () => {
-  const original = glamorous.config.useDisplayNameInClassName
-  glamorous.config.useDisplayNameInClassName = true
-  const MyComp = glamorous(props => <div {...props} />, {
-    displayName: 'Hi There',
-  })()
-  expect(render(<MyComp />)).toMatchSnapshotWithGlamor()
-  glamorous.config.useDisplayNameInClassName = original
-})
-
 test('will not forward `color` to a div', () => {
-  expect(render(<glamorous.Div color="red" />)).toMatchSnapshotWithGlamor()
+  expect(render(<glamorous.Div color="red" />)).toMatchSnapshot()
 })
 
 test('will forward `color` to an svg', () => {
-  expect(render(<glamorous.Svg color="red" />)).toMatchSnapshotWithGlamor()
+  expect(render(<glamorous.Svg color="red" />)).toMatchSnapshot()
 })
 
 test('allows you to specify the tag rendered by a component', () => {
@@ -227,7 +211,7 @@ test('allows you to specify the tag rendered by a component', () => {
     render(
       <MyStyledSvgComponent height={2} noForward={true} css={{width: 2}} />,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
 })
 
 test('forwards props when the GlamorousComponent.rootEl is known', () => {
@@ -296,7 +280,7 @@ test('forwards props when the GlamorousComponent.rootEl is known', () => {
     expect.anything(),
     expect.anything(),
   )
-  expect(ui).toMatchSnapshotWithGlamor()
+  expect(ui).toMatchSnapshot()
 })
 
 test('renders a component with theme properties', () => {
@@ -306,9 +290,7 @@ test('renders a component with theme properties', () => {
     },
     ({theme}) => ({padding: theme.padding}),
   )
-  expect(
-    render(<Comp theme={{padding: '10px'}} />),
-  ).toMatchSnapshotWithGlamor()
+  expect(render(<Comp theme={{padding: '10px'}} />)).toMatchSnapshot()
 })
 
 test('passes an updated theme when theme prop changes', () => {
@@ -319,9 +301,9 @@ test('passes an updated theme when theme prop changes', () => {
     ({theme}) => ({padding: theme.padding}),
   )
   const wrapper = mount(<Comp theme={{padding: 10}} />)
-  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 10px`)
+  expect(wrapper).toMatchSnapshot(`with theme prop of padding 10px`)
   wrapper.setProps({theme: {padding: 20}})
-  expect(wrapper).toMatchSnapshotWithGlamor(`with theme prop of padding 20px`)
+  expect(wrapper).toMatchSnapshot(`with theme prop of padding 20px`)
 })
 
 test('passes `theme` to the css prop if it is a function', () => {
@@ -353,7 +335,7 @@ test('allows you to pass custom props that are allowed', () => {
     render(
       <MyStyledComponent shouldRender={true} otherThing={false} id="hello" />,
     ),
-  ).toMatchSnapshotWithGlamor()
+  ).toMatchSnapshot()
   expect(MyComponent).toHaveBeenCalledTimes(1)
   expect(MyComponent).toHaveBeenCalledWith(
     {
@@ -392,14 +374,14 @@ test('can accept classNames instead of style objects', () => {
     styles4,
     'extra-thing',
   )
-  expect(render(<Comp />)).toMatchSnapshotWithGlamor()
+  expect(render(<Comp />)).toMatchSnapshot()
 })
 
 test('can accept functions which return string class names', () => {
   const styles1 = {paddingRight: 2, paddingBottom: 2}
   const styles2 = props => (props.active ? 'is-active' : '')
   const Comp = glamorous.div(styles1, styles2, 'extra-thing')
-  expect(render(<Comp active />)).toMatchSnapshotWithGlamor()
+  expect(render(<Comp active />)).toMatchSnapshot()
 })
 
 test('should accept user defined contextTypes', () => {
