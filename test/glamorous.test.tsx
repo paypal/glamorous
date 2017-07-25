@@ -169,7 +169,7 @@ export class AirBalloon extends React.Component<{}, {}> {
 class Test extends React.Component<object, object> {
   private div: HTMLDivElement
   render() {
-    return <div ref={(c) => { this.div = c }} />
+    return <div ref={(c: HTMLDivElement) => { this.div = c }} />
   }
 }
 
