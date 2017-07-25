@@ -7,9 +7,6 @@ import { ExtraGlamorousProps } from "../";
 
 import { WithComponent } from "../"
 
-// Glamorous config
-glamorous.config.useDisplayNameInClassName = true
-
 // Partial<Properties>
 const Static = glamorous.div({
   "fontSize": 20,
@@ -268,4 +265,15 @@ const UseNonGlamorousThemedComponent = (
       title='test'
     />
   </div>
+)
+
+// displayName
+
+const TestDisplayName: React.SFC<object> = () => <div />
+
+glamorous(
+  TestDisplayName,
+  {
+    displayName: 'example'
+  },
 )

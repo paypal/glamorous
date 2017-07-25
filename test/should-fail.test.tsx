@@ -122,3 +122,13 @@ const NonGlamorousThemedComponent = withTheme<
   PropsWithoutTheme
 >(ComponentWithTheme)
 
+// displayName
+
+const TestDisplayName: React.SFC<object> = () => <div />
+
+glamorous(
+  TestDisplayName,
+  {
+    displayName: 0
+  },
+)
