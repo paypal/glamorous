@@ -857,40 +857,6 @@ class SubTitle extends Component {
 ```
 > `withTheme` expects a `ThemeProvider` further up the render tree and will warn in `development` if one is not found!
 
-### Config
-
-You can configure glamorous globally with the `config` object which you can
-access via `glamorous.config`.
-
-#### useDisplayNameInClassName
-
-Defaults to process.env.NODE_ENV !== 'test'
-This should _only_ be used for debugging purposes. It is strongly discouraged
-from referencing this className in your CSS due to the level of indirection that
-will add (making it easier for you to break something when refactoring in the
-future).
-
-Example:
-
-```jsx
-import glamorous from 'glamorous'
-glamorous.config.useDisplayNameInClassName = true
-
-const MyComponent = props => <div {...props} />
-const myGlamorousComponentFactory = glamorous(
-  MyComponent,
-  {displayName: 'MyGlamorousComponent'}
-)
-
-const MyGlamorousComponent = myGlamorousComponentFactory()
-<MyGlamorousComponent />
-// renders <div class="css-nil MyGlamorousComponent" />
-```
-
-If you don't want to provide the `displayName` for all of your components, then
-you can use [this babel-plugin][babel-displayname]. Otherwise, the className
-will be simply: `glamorous(MyComponent)`
-
 ### Context
 
 [context](https://facebook.github.io/react/docs/context.html) is an unstable

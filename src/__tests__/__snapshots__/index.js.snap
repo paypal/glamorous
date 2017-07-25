@@ -182,7 +182,7 @@ exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 
 exports[`merges composed component forwardProps 1`] = `
 <div
-  class="css-nil"
+  class="css-1268me8"
 />
 `;
 
@@ -253,7 +253,7 @@ exports[`styles can be functions that accept props 1`] = `
 
 exports[`will forward \`color\` to an svg 1`] = `
 <svg
-  class="css-nil"
+  class="css-1268me8"
   color="red"
 />
 `;
