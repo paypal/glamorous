@@ -12,6 +12,7 @@ import reactProps from './react-props'
 
 const globalReactHtmlProps = reactHTMLAttributes['*']
 const supportedSVGTagNames = reactHTMLAttributes.elements.svg
+const supportedHtmlTagNames = reactHTMLAttributes.elements.html
 
 // these are valid attributes that have the
 // same name as CSS properties, and is used
@@ -28,7 +29,15 @@ const isCustomAttribute = RegExp.prototype.test.bind(
   new RegExp(`^(data|aria)-[${ATTRIBUTE_NAME_CHAR}]*$`),
 )
 
-const isSvgTag = tagName => supportedSVGTagNames.indexOf(tagName) !== -1
+const isSvgTag = tagName =>
+  // in our context, we only say that SVG tags are SVG
+  // if they are not also HTML.
+  // See https://github.com/paypal/glamorous/issues/245
+  // the svg tag will always be treated as svg for
+  // er... obvious reasons
+  tagName === 'svg' ||
+  (supportedHtmlTagNames.indexOf(tagName) === -1 &&
+    supportedSVGTagNames.indexOf(tagName) !== -1)
 const isHtmlProp = (name, tagName) => {
   let elementAttributes
 

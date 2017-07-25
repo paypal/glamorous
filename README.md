@@ -14,7 +14,7 @@
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-43-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-44-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Chat][chat-badge]][chat]
 [![Code of Conduct][coc-badge]][coc]
@@ -249,7 +249,10 @@ const MyStyledComp = glamorous(UnstyledComp)({ margin: 1 })
 
 <MyStyledComp>content</MyStyledComp>
 // rendered output: <div class="<glamor-generated-class> other-class">content</div>
-// styles applied: {margin: 1}
+// styles applied: 
+// <glamor-generated-class> {
+//  margin: 1px;
+// }
 ```
 
 ##### ...styles
@@ -269,8 +272,8 @@ const MyStyledDiv = glamorous.div(
   })
 )
 
-<MyStyledDiv /> // styles applied: {margin: 1, padding: 4}
-<MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0}
+<MyStyledDiv /> // styles applied: { margin: 1px; padding: 4px; }
+<MyStyledDiv noPadding /> // styles applied: { margin: 1px; padding: 0; }
 ```
 
 > Tip: glamorous simply takes these style objects and forwards them to `glamor`.
@@ -298,7 +301,7 @@ const MyStyledDiv = glamorous.div(
   styles5,
   'extra-thing',
 )
-<MyStyledDiv /> // styles applied: {padding-top: 1, padding-right: 2, padding-bottom: 3, padding-left: 4}, 'not-active' and anything coming from `extra-thing`.
+<MyStyledDiv /> // styles applied: { padding-top: 1px; padding-right: 2px; padding-bottom: 3px; padding-left: 4px } + 'not-active' and anything coming from `extra-thing`.
 ```
 
 #### GlamorousComponent
@@ -480,7 +483,7 @@ const myCustomGlamorStyles = glamor.css({fontSize: 2, padding: 2})
   css={{padding: 3}}
 />
 // styles applied:
-// {margin: 1, fontSize: 2, padding: 3}
+// { margin: 1px; fontSize: 2px; padding: 3px }
 // as well as any styles custom-class applies
 ```
 
@@ -493,7 +496,7 @@ by using the `glamorous()` function.
 const MyComposedStyledDiv = glamorous(MyStyledDiv)({fontSize: 4, padding: 4})
 <MyComposedStyledDiv />
 // styles applied:
-// {margin: 1, fontSize: 4, padding: 4}
+// { margin: 1px; fontSize: 4px; padding: 4px; }
 ```
 
 In fact, the built-in DOM component factories provided are just an abstraction
@@ -1078,7 +1081,7 @@ Thanks goes to these people ([emoji key][emojis]):
 | [<img src="https://avatars3.githubusercontent.com/u/16327281?v=3" width="100px;"/><br /><sub>Bernard Lin</sub>](https://github.com/bernard-lin)<br />[📖](https://github.com/paypal/glamorous/commits?author=bernard-lin "Documentation") [🔌](#plugin-bernard-lin "Plugin/utility libraries") | [<img src="https://avatars2.githubusercontent.com/u/11799597?v=3" width="100px;"/><br /><sub>Miguel Correa</sub>](http://miguelc1221.github.io/)<br />[💻](https://github.com/paypal/glamorous/commits?author=miguelc1221 "Code") | [<img src="https://avatars2.githubusercontent.com/u/769339?v=3" width="100px;"/><br /><sub>Brian Hough</sub>](http://rallypoint.gg)<br />[💡](#example-bhough "Examples") | [<img src="https://avatars3.githubusercontent.com/u/4950425?v=3" width="100px;"/><br /><sub>Erik Cupal</sub>](https://github.com/ErikCupal)<br />[💻](https://github.com/paypal/glamorous/commits?author=ErikCupal "Code") | [<img src="https://avatars1.githubusercontent.com/u/9153498?v=3" width="100px;"/><br /><sub>Kok J Sam</sub>](https://github.com/sammkj)<br />[💻](https://github.com/paypal/glamorous/commits?author=sammkj "Code") | [<img src="https://avatars2.githubusercontent.com/u/14885189?v=3" width="100px;"/><br /><sub>Oleg Proskurin</sub>](http://twitter.com/#!/usulpro)<br />[📖](https://github.com/paypal/glamorous/commits?author=UsulPro "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/848525?v=3" width="100px;"/><br /><sub>Luke John</sub>](https://github.com/luke-john)<br />[💻](https://github.com/paypal/glamorous/commits?author=luke-john "Code") |
 | [<img src="https://avatars2.githubusercontent.com/u/4118089?v=3" width="100px;"/><br /><sub>FredericH</sub>](http://fr.linkedin.com/in/fredericheem)<br />[💡](#example-FredericHeem "Examples") | [<img src="https://avatars3.githubusercontent.com/u/656630?v=3" width="100px;"/><br /><sub>Atticus White</sub>](https://atticuswhite.com)<br />[📖](https://github.com/paypal/glamorous/commits?author=ajwhite "Documentation") [🔌](#plugin-ajwhite "Plugin/utility libraries") | [<img src="https://avatars0.githubusercontent.com/u/13483453?v=3" width="100px;"/><br /><sub>marzelin</sub>](https://github.com/marzelin)<br />[💻](https://github.com/paypal/glamorous/commits?author=marzelin "Code") | [<img src="https://avatars2.githubusercontent.com/u/4074973?v=3" width="100px;"/><br /><sub>iwantmyname</sub>](https://iwantmyname.com/)<br />[🚇](#infra-iwantmyname "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/11809142?v=3" width="100px;"/><br /><sub>Ethan Godt</sub>](http://ethangodt.com)<br /> | [<img src="https://avatars3.githubusercontent.com/u/2175447?v=3" width="100px;"/><br /><sub>Zill Ding</sub>](https://github.com/zillding)<br />[💻](https://github.com/paypal/glamorous/commits?author=zillding "Code") | [<img src="https://avatars3.githubusercontent.com/u/411643?v=3" width="100px;"/><br /><sub>Dan Bradley</sub>](https://github.com/debradley)<br />[💻](https://github.com/paypal/glamorous/commits?author=debradley "Code") |
 | [<img src="https://avatars3.githubusercontent.com/u/22868432?v=3" width="100px;"/><br /><sub>Lufty Wiranda</sub>](http://instagram.com/luftywiranda13)<br />[💻](https://github.com/paypal/glamorous/commits?author=luftywiranda13 "Code") | [<img src="https://avatars3.githubusercontent.com/u/3208863?v=3" width="100px;"/><br /><sub>Ansuman Shah</sub>](https://github.com/ansumanshah)<br />[💻](https://github.com/paypal/glamorous/commits?author=ansumanshah "Code") [📖](https://github.com/paypal/glamorous/commits?author=ansumanshah "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/11598?v=3" width="100px;"/><br /><sub>Travis LaDuke</sub>](http://-)<br />[💡](#example-laduke "Examples") | [<img src="https://avatars2.githubusercontent.com/u/11290953?v=3" width="100px;"/><br /><sub>Aydın Çağrı Dumlu</sub>](https://github.com/acgrdumlu)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Aacgrdumlu "Bug reports") [💻](https://github.com/paypal/glamorous/commits?author=acgrdumlu "Code") | [<img src="https://avatars2.githubusercontent.com/u/1383861?v=3" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amajapw "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/6845263?v=3" width="100px;"/><br /><sub>Tom Liu</sub>](https://github.com/gt3240)<br />[📖](https://github.com/paypal/glamorous/commits?author=gt3240 "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/1863771?v=3" width="100px;"/><br /><sub>Siddharth Kshetrapal</sub>](https://github.com/siddharthkp)<br />[⚠️](https://github.com/paypal/glamorous/commits?author=siddharthkp "Tests") [🔧](#tool-siddharthkp "Tools") |
-| [<img src="https://avatars2.githubusercontent.com/u/5257243?v=3" width="100px;"/><br /><sub>WillowHQ</sub>](https://github.com/WillowHQ)<br />[📖](https://github.com/paypal/glamorous/commits?author=WillowHQ "Documentation") |
+| [<img src="https://avatars2.githubusercontent.com/u/5257243?v=3" width="100px;"/><br /><sub>WillowHQ</sub>](https://github.com/WillowHQ)<br />[📖](https://github.com/paypal/glamorous/commits?author=WillowHQ "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/12202757?v=4" width="100px;"/><br /><sub>Mohammad Rajabifard</sub>](https://tarino.ir)<br />[🐛](https://github.com/paypal/glamorous/issues?q=author%3Amorajabi "Bug reports") [📖](https://github.com/paypal/glamorous/commits?author=morajabi "Documentation") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification.
