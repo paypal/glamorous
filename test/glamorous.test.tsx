@@ -307,6 +307,7 @@ const usingStyledExampleComponent = (
     />
   </div>
 )
+
 // shouldClassNameUpdate
 
 interface ShouldClassNameUpdateProps {
@@ -338,6 +339,5 @@ const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpd
     return true
   },
 })
-
 
 const Div = pureDivFactory({marginLeft: 1})
