@@ -307,7 +307,6 @@ const usingStyledExampleComponent = (
     />
   </div>
 )
-
 // shouldClassNameUpdate
 
 interface ShouldClassNameUpdateProps {
