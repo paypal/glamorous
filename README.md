@@ -611,6 +611,32 @@ const MyStyledComponent = glamorous(MyComponent, {
 // be forwarded to `MyComponent` because it is a valid prop for a `div`.
 ```
 
+#### shouldClassNameUpdate
+
+Most of the time, glamor is super fast, but in some scenarios it may be nice to
+prevent glamor from computing your styles when you know the class name should
+not change. In these cases, you can implement `shouldClassNameUpdate`. For
+example:
+
+```jsx
+const pureDivFactory = glamorous('div', {
+  shouldClassNameUpdate(props, previousProps, context, previousContext) {
+    // return `true` to update the classname and
+    // `false` to skip updating the class name
+    return true
+  },
+})
+const Div = pureDivFactory({marginLeft: 1})
+render(<Div css={{marginLeft: 2}} />)
+// this will render:
+// <div />
+// with {marginLeft: 2}
+```
+
+Note that this is _not_ the same as `shouldComponentUpdate`. Your component will
+still be rerendered. `shouldClassNameUpdate` is only for allowing you to opt-out
+of generating the `className` unnecessarily.
+
 #### withComponent
 
 In some cases you might want to just copy the styles of an already created
