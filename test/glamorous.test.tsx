@@ -295,6 +295,24 @@ const StyledExampleComponent = glamorous(ExampleComponent)(
   })
 )
 
+const StyledExampleComponentHTMLKey = glamorous<{ visible: boolean }>('div')(
+  (props) => ({
+    display: props.visible ? 'none' : 'hidden'
+  })
+)
+
+const StyledExampleComponentSVGKey = glamorous<{ visible: boolean }>('circle')(
+  {
+    fill: 'black',
+  },
+  (props) => ({
+    display: props.visible ? 'none' : 'hidden'
+  })
+)
+
+glamorous('circle')({ allowReorder: 'yes' })
+glamorous('div')({ color: 'red' })
+
 const usingStyledExampleComponent = (
   <div>
     <StyledExampleComponent
@@ -305,6 +323,8 @@ const usingStyledExampleComponent = (
       className=""
       theme={{}}
     />
+    <StyledExampleComponentHTMLKey visible={false} />
+    <StyledExampleComponentSVGKey visible={false} />
   </div>
 )
 

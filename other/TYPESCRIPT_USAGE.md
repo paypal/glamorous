@@ -17,6 +17,7 @@ are complete.
 ```
 // Creating your own
 glamorous(Component)(/* styleArgument */)
+glamorous('div')(/* styleArgument */)
 
 // Using built-in
 glamorous.div<Props>(/* styleArgument */)

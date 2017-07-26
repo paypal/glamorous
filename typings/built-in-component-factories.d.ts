@@ -130,6 +130,7 @@ export interface HTMLComponentFactory {
   wbr: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
 }
 
+export type HTMLKey = keyof HTMLComponentFactory
 
 export interface SVGComponentFactory {
   circle: SVGGlamorousComponentFactory<SVGCircleElement, SVGProperties>
@@ -152,3 +153,5 @@ export interface SVGComponentFactory {
   text: SVGGlamorousComponentFactory<SVGTextElement, SVGProperties>
   tspan: SVGGlamorousComponentFactory<SVGTSpanElement, SVGProperties>
 }
+
+export type SVGKey = keyof SVGComponentFactory

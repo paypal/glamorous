@@ -5,7 +5,9 @@
 import * as React from 'react'
 import {
   HTMLComponentFactory,
+  HTMLKey,
   SVGComponentFactory,
+  SVGKey,
 } from './built-in-component-factories'
 import {
   GlamorousComponent,
@@ -18,6 +20,7 @@ import {
   StyleArgument,
 
   BuiltInGlamorousComponentFactory,
+  KeyGlamorousComponentFactory,
   GlamorousComponentFactory,
 } from './component-factory'
 import { CSSProperties } from './css-properties'
@@ -38,10 +41,13 @@ export {
   StyleArgument,
 
   BuiltInGlamorousComponentFactory,
+  KeyGlamorousComponentFactory,
   GlamorousComponentFactory,
 
   HTMLComponentFactory,
+  HTMLKey,
   SVGComponentFactory,
+  SVGKey,
 }
 
 export interface GlamorousOptions<Props, Context> {
@@ -73,6 +79,16 @@ export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFa
     component: Component<ExternalProps & GlamorousProps>,
     options?: Partial<GlamorousOptions<ExternalProps, Context>>,
   ): GlamorousComponentFactory<ExternalProps, SVGProperties>
+
+  <ExternalProps, Context = object>(
+    component: HTMLKey,
+    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
+  ): KeyGlamorousComponentFactory<HTMLComponentFactory[HTMLKey], CSSProperties, ExternalProps>
+
+  <ExternalProps, Context = object>(
+    component: SVGKey,
+    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
+  ): KeyGlamorousComponentFactory<SVGComponentFactory[SVGKey], SVGProperties, ExternalProps>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>

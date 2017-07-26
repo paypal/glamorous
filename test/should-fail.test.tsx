@@ -147,18 +147,35 @@ const StyledExampleComponent = glamorous(ExampleComponent)(
   })
 )
 
+const StyledExampleComponentKey = glamorous<{ visible: boolean }>('div')(
+  (props) => ({
+    display: props.visible ? 'none' : 'hidden'
+  })
+)
+
 const usingStyledExampleComponent = (
   <div>
     <StyledExampleComponent visible="string" />
     <StyledExampleComponent/>
+    <StyledExampleComponentKey visible="string" />
+    <StyledExampleComponentKey/>
   </div>
 )
 
-const StyledExampleComponent2 = glamorous<{
+glamorous('circle')({ allowReorder: false })
+glamorous('div')({ color: false })
+
+glamorous<{
   visible: string
 }>(ExampleComponent)(
   (props) => ({
     display: props.visible ? 'none' : 'hidden'
+  })
+)
+
+glamorous<{ visible: boolean }>('div')(
+  (props) => ({
+    display: props.visible === '' ? 'none' : 'hidden'
   })
 )
 

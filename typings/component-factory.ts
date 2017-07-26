@@ -41,6 +41,15 @@ export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
   >;
 }
 
+export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps> {
+  <Props, Theme = object>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps, object>[]
+  ): GlamorousComponent<
+    ElementProps & ExternalProps,
+    ExternalProps
+  >;
+}
+
 export interface GlamorousComponentFactory<ExternalProps, Properties> {
   <Props, Theme = object>(
     ...styles: StyleArgument<Properties, Props & ExternalProps, Theme>[]
