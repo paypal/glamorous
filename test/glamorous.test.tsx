@@ -307,3 +307,38 @@ const usingStyledExampleComponent = (
     />
   </div>
 )
+
+// shouldClassNameUpdate
+
+interface ShouldClassNameUpdateProps {
+  color: string
+}
+
+const TestShouldClassNameUpdate: React.SFC<ShouldClassNameUpdateProps> = () => <div />
+
+const pureDivFactory = glamorous(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (props.color !== props.color) {
+      return false
+    }
+    return true
+  },
+})
+
+
+interface ShouldClassNameUpdateContext {
+  color: string
+}
+
+const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpdateContext>(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (context.color !== previousContext.color) {
+      return false
+    }
+
+    return true
+  },
+})
+
+
+const Div = pureDivFactory({marginLeft: 1})

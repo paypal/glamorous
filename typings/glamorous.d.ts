@@ -16,6 +16,8 @@ import {
   StyleFunction,
   StyleArray,
   StyleArgument,
+
+  BuiltInGlamorousComponentFactory,
   GlamorousComponentFactory,
 } from './component-factory'
 import { CSSProperties } from './css-properties'
@@ -35,15 +37,19 @@ export {
   StyleArray,
   StyleArgument,
 
+  BuiltInGlamorousComponentFactory,
   GlamorousComponentFactory,
+
   HTMLComponentFactory,
   SVGComponentFactory,
 }
 
-export interface GlamorousOptions {
+export interface GlamorousOptions<Props, Context> {
   displayName: string
   rootEl: string | Element
   forwardProps: String[]
+  shouldClassNameUpdate:
+    (props: Props, prevProps: Props, context: Context, prevContext: Context) => boolean
 }
 
 export type Component<T> = React.ComponentClass<T> | React.StatelessComponent<T>
@@ -60,12 +66,12 @@ export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFa
   // resulting in a loss of typesafety on function arguments
   <ExternalProps, Context = object>(
     component: Component<ExternalProps & GlamorousProps>,
-    options?: Partial<GlamorousOptions>,
+    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
   ): GlamorousComponentFactory<ExternalProps, CSSProperties>
 
   <ExternalProps, Context = object>(
     component: Component<ExternalProps & GlamorousProps>,
-    options?: Partial<GlamorousOptions>,
+    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
   ): GlamorousComponentFactory<ExternalProps, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
