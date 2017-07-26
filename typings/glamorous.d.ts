@@ -53,17 +53,20 @@ type OmitInternals<
   Props extends { className?: string, theme?: object }
 > = Omit<Props, "className" | "theme">
 
+type GlamorousProps = { className?: string, theme?: object }
+
 export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
   // This overload is needed due to a union return of CSSProperties | SVGProperties
   // resulting in a loss of typesafety on function arguments
-  <Props extends { className?: string, theme?: object }>(
-    component: Component<Props>,
+  <ExternalProps, Context = object>(
+    component: Component<ExternalProps & GlamorousProps>,
     options?: Partial<GlamorousOptions>,
-  ): GlamorousComponentFactory<OmitInternals<Props>, CSSProperties>
-  <Props extends { className?: string, theme?: object }>(
-    component: Component<Props>,
+  ): GlamorousComponentFactory<ExternalProps, CSSProperties>
+
+  <ExternalProps, Context = object>(
+    component: Component<ExternalProps & GlamorousProps>,
     options?: Partial<GlamorousOptions>,
-  ): GlamorousComponentFactory<OmitInternals<Props>, SVGProperties>
+  ): GlamorousComponentFactory<ExternalProps, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>

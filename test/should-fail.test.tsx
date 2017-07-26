@@ -132,3 +132,32 @@ glamorous(
     displayName: 0
   },
 )
+
+// custom glamorous component factory
+
+interface ExampleComponentProps {
+  visible: boolean
+}
+
+const ExampleComponent: React.SFC<ExampleComponentProps> = () => <div />
+
+const StyledExampleComponent = glamorous(ExampleComponent)(
+  (props) => ({
+    display: props.visibles ? 'none' : 'hidden'
+  })
+)
+
+const usingStyledExampleComponent = (
+  <div>
+    <StyledExampleComponent visible="string" />
+    <StyledExampleComponent/>
+  </div>
+)
+
+const StyledExampleComponent2 = glamorous<{
+  visible: string
+}>(ExampleComponent)(
+  (props) => ({
+    display: props.visible ? 'none' : 'hidden'
+  })
+)
