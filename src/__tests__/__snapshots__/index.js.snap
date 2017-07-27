@@ -101,13 +101,13 @@ exports[`can use pre-built glamorous components with css prop 1`] = `
 `;
 
 exports[`css prop with a className 1`] = `
-.glamor-1,
-[data-glamor-1] {
+.glamor-0,
+[data-glamor-0] {
   color: red;
 }
 
 <section
-  class="glamor-0 glamor-1 abc-123"
+  class="glamor-0 abc-123"
 />
 `;
 
