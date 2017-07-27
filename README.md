@@ -684,6 +684,59 @@ const Link = Button.withComponent('a')
 > Note: to override styles, you can do the same thing you do with a regular
 > component (`css` prop, wrap it in `glamorous()`, or regular `className` prop).
 
+#### withProps
+
+Sometimes it can be useful to apply props by default for a component. The
+simplest way to do this is by simply setting the `defaultProps` value on the
+glamorousComponent. But if you want a little more power and composition, then
+the `withProps` APIs can help.
+
+> These APIs are highly composable, it would be hard to show you all the
+> examples of how this composes together. Just know that it behaves as you might
+> expect.
+
+```javascript
+// when creating a glamorousComponentFactory
+const bigDivFactory = glamorous('div', {withProps: {big: true}})
+const BigDiv = bigDivFactory(({big}) => ({fontSize: big ? 20 : 10}))
+render(<BigDiv />) // renders with fontSize: 20
+render(<BigDiv big={false} />) // renders with fontSize: 10
+
+// applying props to an existing component
+const MyDiv = glamorous.div(({small}) => ({fontSize: small ? 10 : 20}))
+const SmallDiv = MyDiv.withProps({small: true})
+render(<SmallDiv />) // renders with fontSize: 20
+```
+
+Based on those examples, there are three places you can apply props to a
+glamorous component. How these props are composed together applies in this order
+(where later has more precedence):
+
+1. Creating a `glamorousComponentFactory`
+2. Directly on a `glamorousComponent` with the `.withProps` function
+3. When rendering a component (just like applying props to a regular components)
+
+In addition to this, you can also have dynamic props. And these props don't have
+to be used for glamorous styling, any valid props will be forwarded to the
+element:
+
+```javascript
+const BoldDiv = glamorous
+  .div(({bold}) => ({fontWeight: bold ? 'bold' : 'normal'}))
+  .withProps(({bold}) => ({className: bold ? 'bold-element' : 'normal-element'}))
+
+render(<BoldDiv />) // renders <div class="bold-element" /> with fontWeight: bold
+render(<BoldDiv bold={false} />) // renders <div class="normal-element" /> with fontWeight: normal
+```
+
+The `.withProps` API can also accept any number of arguments. They are called
+with `(accumulatedProps, context)`. `accumulatedProps` refers to the props that
+are known so far in the accumulation of the props which makes this API highly
+composable. Finally, the `withProps` APIs can also accept arrays of
+objects/functions. You can pretty much do anything you want with this API.
+
+> NOTE: This is a shallow merge (uses `Object.assign`)
+
 ### Theming
 
 `glamorous` fully supports theming using a special `<ThemeProvider>` component.
