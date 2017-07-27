@@ -50,6 +50,19 @@ test('can use pre-built glamorous components with css prop', () => {
   ).toMatchSnapshot()
 })
 
+test('can compose built-in glamorous components', () => {
+  const MyDiv = glamorous(glamorous.Div)({margin: 1, fontSize: 1})
+  expect(render(<MyDiv margin={2} />)).toMatchSnapshot()
+})
+
+test('can create custom built-in glamorous components', () => {
+  const MyDiv = glamorous('div', {propsAreCssOverrides: true})({
+    margin: 1,
+    fontSize: 1,
+  })
+  expect(render(<MyDiv margin={2} />)).toMatchSnapshot()
+})
+
 test('the css prop accepts "GlamorousStyles"', () => {
   const object = {fontSize: 12}
   expect(render(<glamorous.Section css={object} />)).toMatchSnapshot(

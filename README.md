@@ -637,6 +637,22 @@ Note that this is _not_ the same as `shouldComponentUpdate`. Your component will
 still be rerendered. `shouldClassNameUpdate` is only for allowing you to opt-out
 of generating the `className` unnecessarily.
 
+#### propsAreCssOverrides
+
+This allows you to use props as CSS. You always have the `css` prop, but
+sometimes it's really nice to use just the props as CSS.
+
+```javascript
+const MyDiv = glamorous('div', {propsAreCssOverrides: true})({
+  margin: 1,
+  fontSize: 1,
+})
+render(<MyDiv margin={2} css={{':hover': {fontWeight: 'bold'}}} />)
+// renders <div /> with margin: 2, fontSize: 1, and fontWeight: bold on hover
+```
+
+> You can also compose the built-in components: `glamorous(glamorous.Div)(/* styles */)`
+
 #### withComponent
 
 In some cases you might want to just copy the styles of an already created
