@@ -137,7 +137,7 @@ const theme = {
 export const Balloon = () => (
   <ThemeProvider theme={theme}>
     <Divider color="blue">
-      <DividerInsideDivider color="blue">
+      <DividerInsideDivider>
         <Static>Static</Static>
         <StyleFunction color="blue">
           Hello
@@ -189,7 +189,10 @@ class ClassToWrap extends React.Component<ClassToWrapProps, object> {
 const WrappedClass = glamorous(ClassToWrap)({})
 
 const useWrappedClass = (
-  <WrappedClass test={10} />
+  <WrappedClass
+    test={10}
+    className=''
+  />
 )
 
 // React Stateless Wrapped Component
@@ -277,3 +280,65 @@ glamorous(
     displayName: 'example'
   },
 )
+
+// custom glamorous component factory
+
+interface ExampleComponentProps {
+  visible: boolean
+}
+
+const ExampleComponent: React.SFC<ExampleComponentProps> = () => <div />
+
+const StyledExampleComponent = glamorous(ExampleComponent)(
+  (props) => ({
+    display: props.visible ? 'none' : 'hidden'
+  })
+)
+
+const usingStyledExampleComponent = (
+  <div>
+    <StyledExampleComponent
+      visible={false}
+    />
+    <StyledExampleComponent
+      visible={false}
+      className=""
+      theme={{}}
+    />
+  </div>
+)
+
+// shouldClassNameUpdate
+
+interface ShouldClassNameUpdateProps {
+  color: string
+}
+
+const TestShouldClassNameUpdate: React.SFC<ShouldClassNameUpdateProps> = () => <div />
+
+const pureDivFactory = glamorous(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (props.color !== props.color) {
+      return false
+    }
+    return true
+  },
+})
+
+
+interface ShouldClassNameUpdateContext {
+  color: string
+}
+
+const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpdateContext>(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (context.color !== previousContext.color) {
+      return false
+    }
+
+    return true
+  },
+})
+
+
+const Div = pureDivFactory({marginLeft: 1})

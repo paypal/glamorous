@@ -22,17 +22,17 @@ test/should-fail.test.tsx(42,3): error TS2345: Argument of type '() => { float: 
 test/should-fail.test.tsx(48,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
   Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
     Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
-test/should-fail.test.tsx(64,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
-  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+test/should-fail.test.tsx(64,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
     Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
-test/should-fail.test.tsx(70,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
-  Type '() => { fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+test/should-fail.test.tsx(70,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
+  Type '() => { fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
     Property 'push' is missing in type '() => { fillRule: \\"cat\\"; }'.
-test/should-fail.test.tsx(76,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
-  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+test/should-fail.test.tsx(76,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
     Property 'length' is missing in type '{ float: \\"cat\\"; }'.
-test/should-fail.test.tsx(82,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
-  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+test/should-fail.test.tsx(82,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
+  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
     Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
 test/should-fail.test.tsx(100,24): error TS2551: Property 'colors' does not exist on type 'ExampleTheme'. Did you mean 'color'?
 test/should-fail.test.tsx(111,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
@@ -44,9 +44,33 @@ test/should-fail.test.tsx(112,3): error TS2344: Type 'ThemeProps' does not satis
 test/should-fail.test.tsx(121,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
 test/should-fail.test.tsx(122,3): error TS2344: Type 'PropsWithoutTheme' does not satisfy the constraint '{ theme: any; }'.
   Property 'theme' is missing in type 'PropsWithoutTheme'.
-test/should-fail.test.tsx(131,3): error TS2345: Argument of type '{ displayName: number; }' is not assignable to parameter of type 'Partial<GlamorousOptions> | undefined'.
-  Type '{ displayName: number; }' is not assignable to type 'Partial<GlamorousOptions>'.
+test/should-fail.test.tsx(131,3): error TS2345: Argument of type '{ displayName: number; }' is not assignable to parameter of type 'Partial<GlamorousOptions<object, object>> | undefined'.
+  Type '{ displayName: number; }' is not assignable to type 'Partial<GlamorousOptions<object, object>>'.
     Types of property 'displayName' are incompatible.
       Type 'number' is not assignable to type 'string | undefined'.
+test/should-fail.test.tsx(146,20): error TS2339: Property 'visibles' does not exist on type 'ExampleComponentProps & { theme: object; }'.
+test/should-fail.test.tsx(152,29): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & ExampleComponentPr...'.
+  Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps>'.
+    Types of property 'visible' are incompatible.
+      Type '\\"string\\"' is not assignable to type 'boolean'.
+test/should-fail.test.tsx(153,5): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & ExampleComponentPr...'.
+  Type '{}' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps>'.
+    Property 'visible' is missing in type '{}'.
+test/should-fail.test.tsx(159,4): error TS2345: Argument of type 'StatelessComponent<ExampleComponentProps>' is not assignable to parameter of type 'Component<{ visible: string; } & GlamorousProps>'.
+  Type 'StatelessComponent<ExampleComponentProps>' is not assignable to type 'StatelessComponent<{ visible: string; } & GlamorousProps>'.
+    Type 'ExampleComponentProps' is not assignable to type '{ visible: string; } & GlamorousProps'.
+      Type 'ExampleComponentProps' is not assignable to type '{ visible: string; }'.
+        Types of property 'visible' are incompatible.
+          Type 'boolean' is not assignable to type 'string'.
+test/should-fail.test.tsx(160,4): error TS7006: Parameter 'props' implicitly has an 'any' type.
+test/should-fail.test.tsx(175,15): error TS2551: Property 'colors' does not exist on type 'ShouldClassNameUpdateProps'. Did you mean 'color'?
+test/should-fail.test.tsx(182,62): error TS2345: Argument of type '{ shouldClassNameUpdate: (props: ShouldClassNameUpdateProps, previousProps: ShouldClassNameUpdate...' is not assignable to parameter of type 'Partial<GlamorousOptions<ShouldClassNameUpdateProps, object>> | undefined'.
+  Type '{ shouldClassNameUpdate: (props: ShouldClassNameUpdateProps, previousProps: ShouldClassNameUpdate...' is not assignable to type 'Partial<GlamorousOptions<ShouldClassNameUpdateProps, object>>'.
+    Types of property 'shouldClassNameUpdate' are incompatible.
+      Type '(props: ShouldClassNameUpdateProps, previousProps: ShouldClassNameUpdateProps, context: object, p...' is not assignable to type '((props: ShouldClassNameUpdateProps, prevProps: ShouldClassNameUpdateProps, context: object, prev...'.
+        Type '(props: ShouldClassNameUpdateProps, previousProps: ShouldClassNameUpdateProps, context: object, p...' is not assignable to type '(props: ShouldClassNameUpdateProps, prevProps: ShouldClassNameUpdateProps, context: object, prevC...'.
+          Type 'false | 1' is not assignable to type 'boolean'.
+            Type '1' is not assignable to type 'boolean'.
+test/should-fail.test.tsx(198,17): error TS2551: Property 'colors' does not exist on type 'ShouldClassNameUpdateContext'. Did you mean 'color'?
 "
 `;

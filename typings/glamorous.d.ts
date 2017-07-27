@@ -16,6 +16,8 @@ import {
   StyleFunction,
   StyleArray,
   StyleArgument,
+
+  BuiltInGlamorousComponentFactory,
   GlamorousComponentFactory,
 } from './component-factory'
 import { CSSProperties } from './css-properties'
@@ -35,15 +37,19 @@ export {
   StyleArray,
   StyleArgument,
 
+  BuiltInGlamorousComponentFactory,
   GlamorousComponentFactory,
+
   HTMLComponentFactory,
   SVGComponentFactory,
 }
 
-export interface GlamorousOptions {
+export interface GlamorousOptions<Props, Context> {
   displayName: string
   rootEl: string | Element
   forwardProps: String[]
+  shouldClassNameUpdate:
+    (props: Props, prevProps: Props, context: Context, prevContext: Context) => boolean
 }
 
 export type Component<T> = React.ComponentClass<T> | React.StatelessComponent<T>
@@ -53,17 +59,20 @@ type OmitInternals<
   Props extends { className?: string, theme?: object }
 > = Omit<Props, "className" | "theme">
 
+type GlamorousProps = { className?: string, theme?: object }
+
 export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
   // This overload is needed due to a union return of CSSProperties | SVGProperties
   // resulting in a loss of typesafety on function arguments
-  <Props extends { className?: string, theme?: object }>(
-    component: Component<Props>,
-    options?: Partial<GlamorousOptions>,
-  ): GlamorousComponentFactory<OmitInternals<Props>, CSSProperties>
-  <Props extends { className?: string, theme?: object }>(
-    component: Component<Props>,
-    options?: Partial<GlamorousOptions>,
-  ): GlamorousComponentFactory<OmitInternals<Props>, SVGProperties>
+  <ExternalProps, Context = object>(
+    component: Component<ExternalProps & GlamorousProps>,
+    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
+  ): GlamorousComponentFactory<ExternalProps, CSSProperties>
+
+  <ExternalProps, Context = object>(
+    component: Component<ExternalProps & GlamorousProps>,
+    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
+  ): GlamorousComponentFactory<ExternalProps, SVGProperties>
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>

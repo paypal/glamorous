@@ -132,3 +132,73 @@ glamorous(
     displayName: 0
   },
 )
+
+// custom glamorous component factory
+
+interface ExampleComponentProps {
+  visible: boolean
+}
+
+const ExampleComponent: React.SFC<ExampleComponentProps> = () => <div />
+
+const StyledExampleComponent = glamorous(ExampleComponent)(
+  (props) => ({
+    display: props.visibles ? 'none' : 'hidden'
+  })
+)
+
+const usingStyledExampleComponent = (
+  <div>
+    <StyledExampleComponent visible="string" />
+    <StyledExampleComponent/>
+  </div>
+)
+
+const StyledExampleComponent2 = glamorous<{
+  visible: string
+}>(ExampleComponent)(
+  (props) => ({
+    display: props.visible ? 'none' : 'hidden'
+  })
+)
+
+// shouldClassNameUpdate
+
+interface ShouldClassNameUpdateProps {
+  color: string
+}
+
+const TestShouldClassNameUpdate: React.SFC<ShouldClassNameUpdateProps> = () => <div />
+
+const pureDivFactory0 = glamorous(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (props.colors !== props.color) {
+      return false
+    }
+    return true
+  },
+})
+
+const pureDivFactory1 = glamorous(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (props.color !== props.color) {
+      return false
+    }
+    return 1
+  },
+})
+
+
+interface ShouldClassNameUpdateContext {
+  color: string
+}
+
+const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpdateContext>(TestShouldClassNameUpdate, {
+  shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
+    if (context.colors !== previousContext.color) {
+      return false
+    }
+
+    return true
+  },
+})

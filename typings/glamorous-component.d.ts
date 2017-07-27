@@ -27,18 +27,13 @@ export interface WithComponent<Element, Props> {
   >
 }
 
-type OmitTheme<
-  Props extends { theme?: any },
-> = Omit<Props, "theme">
-
-
-export type GlamorousComponent<Element, Props> = React.ComponentClass<
-  & Element
-  & OmitTheme<Props>
+export type GlamorousComponent<ExternalProps, Props> = React.ComponentClass<
   & ExtraGlamorousProps
+  & ExternalProps
+  // & Props
 > & {
   withComponent: WithComponent<
-    Element,
-    OmitTheme<Props>
+    ExternalProps,
+    Props
   >
 }

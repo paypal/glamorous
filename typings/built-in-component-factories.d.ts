@@ -1,18 +1,18 @@
 import { SVGProperties } from './svg-properties'
 import { CSSProperties } from './css-properties'
 import {
-  GlamorousComponentFactory,
+  BuiltInGlamorousComponentFactory,
 } from './component-factory'
 
 export type HTMLGlamorousComponentFactory<
   HTMLElement,
   Properties
-> = GlamorousComponentFactory<React.HTMLProps<HTMLElement>, Properties>
+> = BuiltInGlamorousComponentFactory<React.HTMLProps<HTMLElement>, Properties>
 
 export type SVGGlamorousComponentFactory<
   SVGElement,
   Attributes
-> = GlamorousComponentFactory<React.SVGAttributes<SVGElement>, Attributes>
+> = BuiltInGlamorousComponentFactory<React.SVGAttributes<SVGElement>, Attributes>
 
 export interface HTMLComponentFactory {
   a: HTMLGlamorousComponentFactory<HTMLAnchorElement, CSSProperties>

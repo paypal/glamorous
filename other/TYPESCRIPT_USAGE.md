@@ -12,13 +12,24 @@ The typings for
 * creating your own glamorous component factories
 * using built-in glamorous component factories
 are complete.
+* using `shouldClassNameUpdate`
 
 ```
 // Creating your own
-glamorous(Component)<Props>(/* styleArgument */)
+glamorous(Component)(/* styleArgument */)
 
 // Using built-in
 glamorous.div<Props>(/* styleArgument */)
+
+// Using shouldClassNameUpdate
+glamorous(Component, {
+  shouldClassNameUpdate: (props, prevProps, context, prevContext) => props !== prevProps
+})(/* styleArgument */)
+
+// Using shouldClassNameUpdate with Context
+glamorous<Props, Context>(Component, {
+  shouldClassNameUpdate: (props, prevProps, context, prevContext) => context !== prevContext
+})(/* styleArgument */)
 ```
 
 #### glamorousComponentFactory arguments

@@ -32,11 +32,20 @@ export type StyleArgument<Properties, Props, Theme> =
   | StyleFunction<Properties, Props, Theme>
   | StyleArray<Properties, Props, Theme>
 
-export interface GlamorousComponentFactory<Element, Properties> {
+export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
   <Props, Theme = object>(
     ...styles: StyleArgument<Properties, Props, Theme>[]
   ): GlamorousComponent<
-    Element,
+    ElementProps,
+    Props
+  >;
+}
+
+export interface GlamorousComponentFactory<ExternalProps, Properties> {
+  <Props, Theme = object>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps, Theme>[]
+  ): GlamorousComponent<
+    ExternalProps,
     Props
   >;
 }
