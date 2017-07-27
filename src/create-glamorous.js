@@ -25,7 +25,13 @@ function createGlamorous(splitProps) {
   */
   function glamorous(
     comp,
-    {rootEl, displayName, shouldClassNameUpdate, forwardProps = []} = {},
+    {
+      rootEl,
+      displayName,
+      shouldClassNameUpdate,
+      forwardProps = [],
+      propsAreCssOverrides = comp.propsAreCssOverrides,
+    } = {},
   ) {
     return glamorousComponentFactory
 
@@ -120,7 +126,12 @@ function createGlamorous(splitProps) {
           forwardProps,
           displayName,
         }),
-        {withComponent, isGlamorousComponent: true, previous: null},
+        {
+          withComponent,
+          isGlamorousComponent: true,
+          previous: null,
+          propsAreCssOverrides,
+        },
       )
       return GlamorousComponent
     }
