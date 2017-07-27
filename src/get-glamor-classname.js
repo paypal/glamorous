@@ -25,6 +25,18 @@ function extractGlamorStyles(className) {
   return {glamorlessClassName, glamorStyles}
 }
 
+/** Glamor's css function returns an object with the shape
+ *
+ * {
+ *   [`data-css-${hash}`]: '',
+ *   toString() { return `css-${hash}` }
+ * }
+ *
+ * Whenever glamor's build function encounters an object with
+ * this shape it just pulls the resulting styles from the cache.
+ *
+ * note: the toString method is not needed to qualify the shape
+**/
 function buildGlamorSrcFromClassName(className) {
   return {[`data-${className}`]: ''}
 }
