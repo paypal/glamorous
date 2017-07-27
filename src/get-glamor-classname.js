@@ -1,4 +1,4 @@
-import {css, styleSheet} from 'glamor'
+import {css} from 'glamor'
 /**
  * This function takes a className string and gets all the
  * associated glamor styles. It's used to merge glamor styles
@@ -10,17 +10,35 @@ import {css, styleSheet} from 'glamor'
  *   - glamorlessClassName is the rest of the className string
  *     without the glamor classNames
  */
-function extractGlamorStyles(className = '') {
-  return className.toString().split(' ').reduce((groups, name) => {
+function extractGlamorStyles(className) {
+  const glamorlessClassName = []
+  const glamorStyles = []
+  className.toString().split(' ').forEach(name => {
     if (name.indexOf('css-') === 0) {
-      const style = getGlamorStylesFromClassName(name)
-      groups.glamorStyles.push(style)
+      const style = buildGlamorSrcFromClassName(name)
+      glamorStyles.push(style)
     } else {
-      // eslint-disable-next-line max-len
-      groups.glamorlessClassName = `${groups.glamorlessClassName} ${name}`.trim()
+      glamorlessClassName.push(name)
     }
-    return groups
-  }, {glamorlessClassName: '', glamorStyles: []})
+  })
+
+  return {glamorlessClassName, glamorStyles}
+}
+
+/** Glamor's css function returns an object with the shape
+ *
+ * {
+ *   [`data-css-${hash}`]: '',
+ *   toString() { return `css-${hash}` }
+ * }
+ *
+ * Whenever glamor's build function encounters an object with
+ * this shape it just pulls the resulting styles from the cache.
+ *
+ * note: the toString method is not needed to qualify the shape
+**/
+function buildGlamorSrcFromClassName(className) {
+  return {[`data-${className}`]: ''}
 }
 
 export default getGlamorClassName
@@ -33,18 +51,14 @@ function getGlamorClassName({
   theme,
   context,
 }) {
-  const {
-    glamorStyles: parentGlamorStyles,
-    glamorlessClassName,
-  } = extractGlamorStyles(props.className)
   const {mappedArgs, nonGlamorClassNames} = handleStyles(
-    [...styles, parentGlamorStyles, cssOverrides, cssProp],
+    [...styles, props.className, cssOverrides, cssProp],
     props,
     theme,
     context,
   )
   const glamorClassName = css(...mappedArgs).toString()
-  const extras = [...nonGlamorClassNames, glamorlessClassName].join(' ').trim()
+  const extras = nonGlamorClassNames.join(' ').trim()
   return `${glamorClassName} ${extras}`.trim()
 }
 
@@ -60,12 +74,20 @@ function handleStyles(styles, props, theme, context) {
     if (typeof current === 'function') {
       const result = current(props, theme, context)
       if (typeof result === 'string') {
-        processStringClass(result, mappedArgs, nonGlamorClassNames)
+        const {glamorStyles, glamorlessClassName} = extractGlamorStyles(
+          result,
+        )
+        mappedArgs.push(...glamorStyles)
+        nonGlamorClassNames.push(...glamorlessClassName)
       } else {
         mappedArgs.push(result)
       }
     } else if (typeof current === 'string') {
-      processStringClass(current, mappedArgs, nonGlamorClassNames)
+      const {glamorStyles, glamorlessClassName} = extractGlamorStyles(
+        current,
+      )
+      mappedArgs.push(...glamorStyles)
+      nonGlamorClassNames.push(...glamorlessClassName)
     } else if (Array.isArray(current)) {
       const recursed = handleStyles(current, props, theme, context)
       mappedArgs.push(...recursed.mappedArgs)
@@ -75,22 +97,4 @@ function handleStyles(styles, props, theme, context) {
     }
   }
   return {mappedArgs, nonGlamorClassNames}
-}
-
-function processStringClass(str, mappedArgs, nonGlamorClassNames) {
-  const className = getGlamorStylesFromClassName(str)
-  if (className) {
-    mappedArgs.push(className)
-  } else {
-    nonGlamorClassNames.push(str)
-  }
-}
-
-function getGlamorStylesFromClassName(className) {
-  const id = className.slice('css-'.length)
-  if (styleSheet.registered[id]) {
-    return styleSheet.registered[id].style
-  } else {
-    return null
-  }
 }
