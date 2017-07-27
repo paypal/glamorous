@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`composes well with other glamorous components 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  margin-top: 1px;
+  font-size: 1px;
+  font-weight: 300;
+}
+
+<div
+  class="glamor-0"
+/>
+`;
