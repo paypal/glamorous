@@ -14,7 +14,7 @@ The typings for
 are complete.
 * using `shouldClassNameUpdate`
 
-```
+```tsx
 // Creating your own
 glamorous(Component)(/* styleArgument */)
 glamorous('div')(/* styleArgument */)
@@ -31,13 +31,22 @@ glamorous(Component, {
 glamorous<Props, Context>(Component, {
   shouldClassNameUpdate: (props, prevProps, context, prevContext) => context !== prevContext
 })(/* styleArgument */)
+
+// Using withProps
+glamorous(Component, {
+  withProps: {primaryColor: 'red'}
+})((props) => ({/* props = { primaryColor: string } */})
+
+const WithPropsComponent = glamorous(Component)(/* styleArgument */).withProps(withProps: {primaryColor: 'red'})
+...
+<WithPropsComponent primaryColor='' /> // primaryColor is an optional prop of string type based on the above
 ```
 
 #### glamorousComponentFactory arguments
 
 By providing the typings for Props and Theme to Glamorous when setting up your component factory they will be typed on the props argument for function arguments automatically.
 
-```ts
+```tsx
 interface Props {
   noPadding?: boolean,
   theme: { color: string }
@@ -90,7 +99,7 @@ Possible support via [glamors typings](https://github.com/threepointone/glamor/b
 
 When using glamorous in a library that you are generating definition files for you will need to include the following import and export to get around a typescript issue [Microsoft/TypeScript/issues/5938](https://github.com/Microsoft/TypeScript/issues/5938).
 
-```ts
+```tsx
 import glamorous, { ExtraGlamorousProps, WithComponent  } from "glamorous"
 export { ExtraGlamorousProps, WithComponent }
 ```
