@@ -31,6 +31,7 @@ function createGlamorous(splitProps) {
       shouldClassNameUpdate,
       forwardProps = [],
       propsAreCssOverrides = comp.propsAreCssOverrides,
+      withProps: basePropsToApply,
     } = {},
   ) {
     return glamorousComponentFactory
@@ -51,6 +52,12 @@ function createGlamorous(splitProps) {
        */
       const GlamorousComponent = withTheme(
         (props, context) => {
+          props = getPropsToApply(
+            GlamorousComponent.propsToApply,
+            {},
+            props,
+            context,
+          )
           const updateClassName = shouldUpdate(props, context)
 
           const {toForward, cssOverrides, cssProp} = splitProps(
@@ -93,6 +100,10 @@ function createGlamorous(splitProps) {
         })(GlamorousComponent.styles)
       }
 
+      function withProps(...propsToApply) {
+        return glamorous(GlamorousComponent, {withProps: propsToApply})()
+      }
+
       function shouldUpdate(props, context) {
         // exiting early so components which do not use this
         // optimization are not penalized by hanging onto
@@ -125,12 +136,14 @@ function createGlamorous(splitProps) {
           rootEl,
           forwardProps,
           displayName,
+          propsToApply: basePropsToApply,
         }),
         {
           withComponent,
           isGlamorousComponent: true,
           previous: null,
           propsAreCssOverrides,
+          withProps,
         },
       )
       return GlamorousComponent
@@ -143,8 +156,12 @@ function createGlamorous(splitProps) {
     rootEl,
     forwardProps,
     displayName,
+    propsToApply: basePropsToApply,
   }) {
     const componentsComp = comp.comp ? comp.comp : comp
+    const propsToApply = comp.propsToApply ?
+      [...comp.propsToApply, ...arrayify(basePropsToApply)] :
+      arrayify(basePropsToApply)
     return {
       // join styles together (for anyone doing: glamorous(glamorous.a({}), {}))
       styles: when(comp.styles, styles),
@@ -159,16 +176,54 @@ function createGlamorous(splitProps) {
       // set the displayName to something that's slightly more
       // helpful than `GlamorousComponent` :)
       displayName: displayName || `glamorous(${getDisplayName(comp)})`,
+      // these are props that should be applied to the component at render time
+      propsToApply,
     }
   }
+}
 
-  function when(comp, prop) {
-    return comp ? comp.concat(prop) : prop
-  }
+/**
+ * reduces the propsToApply given to a single props object
+ * @param {Array} propsToApply an array of propsToApply objects:
+ *   - object
+ *   - array of propsToApply items
+ *   - function that accepts the accumulated props and the context
+ * @param {Object} accumulator an object to apply props onto
+ * @param {Object} props the props that should ultimately take precedence
+ * @param {*} context the context object
+ * @return {Object} the reduced props
+ */
+function getPropsToApply(propsToApply, accumulator, props, context) {
+  // using forEach rather than reduce here because the reduce solution
+  // effectively did the same thing because we manipulate the `accumulator`
+  propsToApply.forEach(propsToApplyItem => {
+    if (typeof propsToApplyItem === 'function') {
+      return Object.assign(
+        accumulator,
+        propsToApplyItem(Object.assign({}, accumulator, props), context),
+      )
+    } else if (Array.isArray(propsToApplyItem)) {
+      return Object.assign(
+        accumulator,
+        getPropsToApply(propsToApplyItem, accumulator, props, context),
+      )
+    }
+    return Object.assign(accumulator, propsToApplyItem)
+  })
+  // props wins
+  return Object.assign(accumulator, props)
+}
 
-  function getDisplayName(comp) {
-    return typeof comp === 'string' ?
-      comp :
-      comp.displayName || comp.name || 'unknown'
-  }
+function arrayify(x = []) {
+  return Array.isArray(x) ? x : [x]
+}
+
+function when(comp, prop) {
+  return comp ? comp.concat(prop) : prop
+}
+
+function getDisplayName(comp) {
+  return typeof comp === 'string' ?
+    comp :
+    comp.displayName || comp.name || 'unknown'
 }
