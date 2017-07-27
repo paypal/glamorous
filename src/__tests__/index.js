@@ -453,3 +453,39 @@ test('should accept user defined contextTypes', () => {
   const props = {theme}
   expect(dynamicStyles).toHaveBeenCalledWith(props, theme, context)
 })
+
+test('withProps composes the component with the provided props', () => {
+  const Input = glamorous.input.withProps({type: 'text'})({color: 'red'})
+  expect(render(<Input />)).toMatchSnapshotWithGlamor()
+})
+
+test('withProps should accept a function producing props', () => {
+  const propsFn = ({validationType}) => {
+    const extraProps = {type: validationType}
+
+    if (validationType === 'credit-card') {
+      extraProps.pattern = /[0-9]/
+    }
+
+    return extraProps
+  }
+  const Input = glamorous.input.withProps(propsFn)({color: 'red'})
+  expect(
+    render(<Input validationType="credit-card" />),
+  ).toMatchSnapshotWithGlamor()
+})
+
+test('withProps is variadic', () => {
+  const propsFn = jest.fn()
+  const propsFn2 = jest.fn()
+
+  const Input = glamorous.input.withProps(propsFn, propsFn2)()
+
+  const wrapper = mount(<Input type="text" pattern="foo" />)
+  expect(propsFn).toHaveBeenCalledWith(wrapper.props())
+})
+
+test('withProps should have a lower priority than component props', () => {
+  const Input = glamorous.input.withProps({type: 'text'})({color: 'red'})
+  expect(render(<Input type="number" />)).toMatchSnapshotWithGlamor()
+})
