@@ -219,3 +219,55 @@ const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpd
     return true
   },
 })
+
+// withProps
+
+glamorous('div', {
+  withProps: ''
+})
+
+glamorous('div', {
+  withProps: { visible: false }
+})(
+  (props) => ({
+    primaryColor: props.visible
+  })
+)
+
+glamorous('div')().withProps()
+glamorous('div')().withProps('')
+glamorous('div')().withProps(false)
+
+const WithPropsDiv = glamorous('div', {
+  withProps: {primaryColor: 'red'}
+})(
+  (props) => ({
+    primaryColor: props.primaryColor
+  })
+)
+
+const SimpleComponent = () => <div />
+
+const MethodWithPropsComponent = glamorous(SimpleComponent)({}).withProps({
+  primaryColor: 'red'
+})
+
+const WithPropsSimpleComponent = glamorous(SimpleComponent, {
+  withProps: {primaryColor: 'red'}
+})(
+  (props) => ({
+    primaryColor: props.primaryColor
+  })
+)
+
+const useWithProps = (
+  <div>
+    <WithPropsDiv d="" />
+    <WithPropsDiv primaryColor={1} />
+    <WithPropsSimpleComponent d="" />
+    <WithPropsSimpleComponent primaryColor={1} />
+    <MethodWithPropsComponent d="" />
+    <MethodWithPropsComponent primaryColor={1} />
+
+  </div>
+)

@@ -5,7 +5,7 @@ import glamorous, { withTheme, ThemeProvider } from "../";
 // https://github.com/Microsoft/TypeScript/issues/5938
 import { ExtraGlamorousProps } from "../";
 
-import { WithComponent } from "../"
+import { WithComponent, WithProps } from "../"
 
 // Partial<Properties>
 const Static = glamorous.div({
@@ -361,3 +361,40 @@ const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpd
 })
 
 const Div = pureDivFactory({marginLeft: 1})
+
+// withProps
+
+const WithPropsDiv = glamorous('div', {
+  withProps: {primaryColor: 'red'}
+})(
+  (props) => ({
+    color: props.primaryColor
+  })
+)
+
+const SimpleComponent = () => <div />
+
+const WithPropsSimpleComponent = glamorous(SimpleComponent, {
+  withProps: {primaryColor: 'red'}
+})(
+  (props) => ({
+    color: props.primaryColor
+  })
+)
+
+const MethodWithPropsComponent = glamorous(SimpleComponent)({}).withProps({
+  primaryColor: 'red'
+})
+
+const useWithProps = (
+  <div>
+    <WithPropsDiv />
+    <WithPropsDiv primaryColor="red" />
+    <WithPropsSimpleComponent />
+    <WithPropsSimpleComponent primaryColor="red" />
+    <MethodWithPropsComponent />
+    <MethodWithPropsComponent primaryColor="1" />
+  </div>
+)
+
+// withProps method

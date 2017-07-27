@@ -22,17 +22,17 @@ test/should-fail.test.tsx(42,3): error TS2345: Argument of type '() => { float: 
 test/should-fail.test.tsx(48,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
   Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
     Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
-test/should-fail.test.tsx(64,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
-  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
+test/should-fail.test.tsx(64,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object, object>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps & object, obje...'.
     Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
-test/should-fail.test.tsx(70,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
-  Type '() => { fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
+test/should-fail.test.tsx(70,3): error TS2345: Argument of type '() => { fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object, object>'.
+  Type '() => { fillRule: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps & object, obje...'.
     Property 'push' is missing in type '() => { fillRule: \\"cat\\"; }'.
-test/should-fail.test.tsx(76,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
-  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
+test/should-fail.test.tsx(76,3): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object, object>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps & object, obje...'.
     Property 'length' is missing in type '{ float: \\"cat\\"; }'.
-test/should-fail.test.tsx(82,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps, object>'.
-  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps, object>)[]'.
+test/should-fail.test.tsx(82,3): error TS2345: Argument of type '() => { float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object, object>'.
+  Type '() => { float: \\"cat\\"; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, TestComponentProps & object, obje...'.
     Property 'push' is missing in type '() => { float: \\"cat\\"; }'.
 test/should-fail.test.tsx(100,24): error TS2551: Property 'colors' does not exist on type 'ExampleTheme'. Did you mean 'color'?
 test/should-fail.test.tsx(111,7): error TS2451: Cannot redeclare block-scoped variable 'NonGlamorousThemedComponent'.
@@ -46,13 +46,13 @@ test/should-fail.test.tsx(122,3): error TS2344: Type 'PropsWithoutTheme' does no
   Property 'theme' is missing in type 'PropsWithoutTheme'.
 test/should-fail.test.tsx(130,3): error TS2345: Argument of type 'StatelessComponent<object>' is not assignable to parameter of type '\\"circle\\" | \\"clipPath\\" | \\"defs\\" | \\"ellipse\\" | \\"g\\" | \\"image\\" | \\"line\\" | \\"linearGradient\\" | \\"mask\\" |...'.
   Type 'StatelessComponent<object>' is not assignable to type '\\"text\\"'.
-test/should-fail.test.tsx(146,20): error TS2339: Property 'visibles' does not exist on type 'ExampleComponentProps & { theme: object; }'.
+test/should-fail.test.tsx(146,20): error TS2339: Property 'visibles' does not exist on type 'ExampleComponentProps & object & { theme: object; }'.
 test/should-fail.test.tsx(158,29): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & ExampleComponentPr...'.
-  Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps>'.
+  Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps & object>'.
     Types of property 'visible' are incompatible.
       Type '\\"string\\"' is not assignable to type 'boolean'.
 test/should-fail.test.tsx(159,5): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & ExampleComponentPr...'.
-  Type '{}' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps>'.
+  Type '{}' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps & object>'.
     Property 'visible' is missing in type '{}'.
 test/should-fail.test.tsx(160,32): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
   Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
@@ -63,11 +63,11 @@ test/should-fail.test.tsx(161,5): error TS2322: Type '{}' is not assignable to t
   Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
     Type '{}' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
       Property 'visible' is missing in type '{}'.
-test/should-fail.test.tsx(165,21): error TS2345: Argument of type '{ allowReorder: false; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}, object>'.
-  Type '{ allowReorder: false; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}, object>)[]'.
+test/should-fail.test.tsx(165,21): error TS2345: Argument of type '{ allowReorder: false; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, object & {}, object>'.
+  Type '{ allowReorder: false; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, object & {}, object>)[]'.
     Property 'length' is missing in type '{ allowReorder: false; }'.
-test/should-fail.test.tsx(166,18): error TS2345: Argument of type '{ color: boolean; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}, object>'.
-  Type '{ color: boolean; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, {}, object>)[]'.
+test/should-fail.test.tsx(166,18): error TS2345: Argument of type '{ color: boolean; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, object & {}, object>'.
+  Type '{ color: boolean; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, object & {}, object>)[]'.
     Property 'length' is missing in type '{ color: boolean; }'.
 test/should-fail.test.tsx(170,4): error TS2345: Argument of type 'StatelessComponent<ExampleComponentProps>' is not assignable to parameter of type '\\"circle\\" | \\"clipPath\\" | \\"defs\\" | \\"ellipse\\" | \\"g\\" | \\"image\\" | \\"line\\" | \\"linearGradient\\" | \\"mask\\" |...'.
   Type 'StatelessComponent<ExampleComponentProps>' is not assignable to type '\\"text\\"'.
@@ -77,5 +77,29 @@ test/should-fail.test.tsx(192,15): error TS2551: Property 'colors' does not exis
 test/should-fail.test.tsx(199,35): error TS2345: Argument of type 'StatelessComponent<ShouldClassNameUpdateProps>' is not assignable to parameter of type '\\"circle\\" | \\"clipPath\\" | \\"defs\\" | \\"ellipse\\" | \\"g\\" | \\"image\\" | \\"line\\" | \\"linearGradient\\" | \\"mask\\" |...'.
   Type 'StatelessComponent<ShouldClassNameUpdateProps>' is not assignable to type '\\"text\\"'.
 test/should-fail.test.tsx(215,17): error TS2551: Property 'colors' does not exist on type 'ShouldClassNameUpdateContext'. Did you mean 'color'?
+test/should-fail.test.tsx(225,11): error TS2345: Argument of type '\\"div\\"' is not assignable to parameter of type '\\"circle\\" | \\"clipPath\\" | \\"defs\\" | \\"ellipse\\" | \\"g\\" | \\"image\\" | \\"line\\" | \\"linearGradient\\" | \\"mask\\" |...'.
+test/should-fail.test.tsx(232,3): error TS2345: Argument of type '(props: { visible: boolean; } & { theme: object; }) => { primaryColor: boolean; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { visible: boolean; }, object>'.
+  Type '(props: { visible: boolean; } & { theme: object; }) => { primaryColor: boolean; }' is not assignable to type '(string | Partial<CSSProperties> | StyleFunction<CSSProperties, { visible: boolean; }, object>)[]'.
+    Property 'push' is missing in type '(props: { visible: boolean; } & { theme: object; }) => { primaryColor: boolean; }'.
+test/should-fail.test.tsx(237,1): error TS2554: Expected 1 arguments, but got 0.
+test/should-fail.test.tsx(238,30): error TS2345: Argument of type '\\"\\"' is not assignable to parameter of type 'object'.
+test/should-fail.test.tsx(239,30): error TS2345: Argument of type 'false' is not assignable to parameter of type 'object'.
+test/should-fail.test.tsx(265,19): error TS2322: Type '{ d: \\"\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
+  Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
+test/should-fail.test.tsx(266,19): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
+  Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
+    Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
+      Types of property 'primaryColor' are incompatible.
+        Type '1' is not assignable to type 'string | undefined'.
+test/should-fail.test.tsx(267,31): error TS2559: Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & Partial<{ primaryC...'.
+test/should-fail.test.tsx(268,31): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & Partial<{ primaryC...'.
+  Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<ExtraGlamorousProps & Partial<{ primaryColor: string; }>>'.
+    Types of property 'primaryColor' are incompatible.
+      Type '1' is not assignable to type 'string | undefined'.
+test/should-fail.test.tsx(269,31): error TS2559: Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & Partial<{...'.
+test/should-fail.test.tsx(270,31): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & Partial<{...'.
+  Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<ExtraGlamorousProps & object & Partial<{ primaryColor: string; }>>'.
+    Types of property 'primaryColor' are incompatible.
+      Type '1' is not assignable to type 'string | undefined'.
 "
 `;

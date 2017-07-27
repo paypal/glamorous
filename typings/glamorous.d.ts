@@ -13,6 +13,7 @@ import {
   GlamorousComponent,
   ExtraGlamorousProps,
   WithComponent,
+  WithProps,
 } from './glamorous-component'
 import {
   StyleFunction,
@@ -35,6 +36,7 @@ export {
   GlamorousComponent,
   ExtraGlamorousProps,
   WithComponent,
+  WithProps,
 
   StyleFunction,
   StyleArray,
@@ -50,12 +52,13 @@ export {
   SVGKey,
 }
 
-export interface GlamorousOptions<Props, Context> {
+export interface GlamorousOptions<Props, Context, DefaultProps> {
   displayName: string
   rootEl: string | Element
   forwardProps: String[]
   shouldClassNameUpdate:
     (props: Props, prevProps: Props, context: Context, prevContext: Context) => boolean
+  withProps: DefaultProps
 }
 
 export type Component<T> = React.ComponentClass<T> | React.StatelessComponent<T>
@@ -70,25 +73,29 @@ type GlamorousProps = { className?: string, theme?: object }
 export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
   // This overload is needed due to a union return of CSSProperties | SVGProperties
   // resulting in a loss of typesafety on function arguments
-  <ExternalProps, Context = object>(
+  <ExternalProps, Context = object, DefaultProps extends object = object>(
     component: Component<ExternalProps & GlamorousProps>,
-    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
-  ): GlamorousComponentFactory<ExternalProps, CSSProperties>
+    options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
+  ): GlamorousComponentFactory<ExternalProps, CSSProperties, DefaultProps>
 
-  <ExternalProps, Context = object>(
+  <ExternalProps, Context = object, DefaultProps extends object = object>(
     component: Component<ExternalProps & GlamorousProps>,
-    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
-  ): GlamorousComponentFactory<ExternalProps, SVGProperties>
+    options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
+  ): GlamorousComponentFactory<ExternalProps, SVGProperties, DefaultProps>
 
-  <ExternalProps, Context = object>(
+  <ExternalProps, Context = object, DefaultProps extends object = object>(
     component: HTMLKey,
-    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
-  ): KeyGlamorousComponentFactory<HTMLComponentFactory[HTMLKey], CSSProperties, ExternalProps>
+    options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
+  ): KeyGlamorousComponentFactory<
+    HTMLComponentFactory[HTMLKey], CSSProperties, ExternalProps, DefaultProps
+  >
 
-  <ExternalProps, Context = object>(
+  <ExternalProps, Context = object, DefaultProps extends object = object>(
     component: SVGKey,
-    options?: Partial<GlamorousOptions<ExternalProps, Context>>,
-  ): KeyGlamorousComponentFactory<SVGComponentFactory[SVGKey], SVGProperties, ExternalProps>
+    options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
+  ): KeyGlamorousComponentFactory<
+    SVGComponentFactory[SVGKey], SVGProperties, ExternalProps, DefaultProps
+  >
 
   Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
   Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>
