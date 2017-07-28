@@ -7,10 +7,32 @@ import { ExtraGlamorousProps } from "../";
 
 import { WithComponent, WithProps } from "../"
 
-// Partial<Properties>
+// Properties
 const Static = glamorous.div({
   "fontSize": 20,
   "textAlign": "center",
+});
+
+// Properties Array
+glamorous.div({
+  overflowWrap: "break-word",
+  display: ["flex", "block"],
+});
+
+glamorous.circle({
+  textAlign: "center",
+  display: ["marker", "block"],
+});
+
+// pseudo and complex Properties
+glamorous.div({
+  ':active': {
+    "fontSize": 10,
+  },
+  '&:active': {
+    "fontSize": 20,
+    "textAlign": "center",
+  },
 });
 
 // classname string style
@@ -291,13 +313,13 @@ const ExampleComponent: React.SFC<ExampleComponentProps> = () => <div />
 
 const StyledExampleComponent = glamorous(ExampleComponent)(
   (props) => ({
-    display: props.visible ? 'none' : 'hidden'
+    display: props.visible ? 'none' : 'block'
   })
 )
 
 const StyledExampleComponentHTMLKey = glamorous<{ visible: boolean }>('div')(
   (props) => ({
-    display: props.visible ? 'none' : 'hidden'
+    display: props.visible ? 'none' : 'block'
   })
 )
 
@@ -306,7 +328,7 @@ const StyledExampleComponentSVGKey = glamorous<{ visible: boolean }>('circle')(
     fill: 'black',
   },
   (props) => ({
-    display: props.visible ? 'none' : 'hidden'
+    display: props.visible ? 'none' : 'block'
   })
 )
 
