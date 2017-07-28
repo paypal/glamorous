@@ -1,11 +1,12 @@
+import { SingleOrArray } from './helpers'
+
 // See CSS 3 CSS-wide keywords https://www.w3.org/TR/css3-values/#common-keywords
 // See CSS 3 Explicit Defaulting https://www.w3.org/TR/css-cascade-3/#defaulting-keywords
 // "all CSS properties can accept these values"
 type CSSWideKeyword = 'initial' | 'inherit' | 'unset'
 
 // Based on [CSSProperties from React types](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts)
-export interface CSSPropertiesComplete {
-
+export interface CSSPropertiesCompleteSingle {
   /**
    * Aligns a flex container's lines within the flex container when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
@@ -451,7 +452,25 @@ export interface CSSPropertiesComplete {
   /**
    * This property specifies the type of rendering box used for an element. It is a shorthand property for many other display properties.
    */
-  display?: CSSWideKeyword | string
+  display?:
+    /** turn off the display of an element and its descendants */
+    | 'none'
+    /** <display-outside> values. */
+    | 'block' | 'inline' | 'run-in'
+    /** <display-inside> values. */
+    | 'flow' | 'flow-root' | 'table' | 'flex' | 'grid' | 'ruby' | 'subgrid'
+    /** <display-outside> plus <display-inside> values */
+    | 'block flow' | 'inline table' | 'flex run-in'
+    /** <display-listitem> values */
+    | 'list-item' | 'list-item block' | 'list-item inline' | 'list-item flow' | 'list-item flow-root' | 'list-item block flow' | 'list-item block flow-root' | 'flow list-item block'
+    /** <display-internal> values. */
+    | 'table-row-group' | 'table-header-group' | 'table-footer-group' | 'table-row' | 'table-cell' | 'table-column-group' | 'table-column' | 'table-caption' | 'ruby-base' | 'ruby-text' | 'ruby-base-container' | 'ruby-text-container'
+    /** <display-box> values. */
+    | 'contents' | 'none'
+    /** <display-legacy> values. */
+    | 'inline-block' | 'inline-list-item' | 'inline-table' | 'inline-flex' | 'inline-grid'
+    /** global values. */
+    | CSSWideKeyword
 
   /**
    * The ‘fill’ property paints the interior of the given graphical element. The area to be painted consists of any areas inside the outline of the shape. To determine the inside of the shape, all subpaths are considered, and the interior is determined according to the rules associated with the current value of the ‘fill-rule’ property. The zero-width geometric outline of a shape is included in the area to be painted.
@@ -1466,7 +1485,9 @@ export interface CSSPropertiesComplete {
    * See CSS zoom descriptor https://drafts.csswg.org/css-device-adapt/#zoom-desc
    */
   zoom?: CSSWideKeyword | string | number
+}
 
+interface CSSPropertiesPseudo {
   ':active'?: CSSProperties
   ':any-link'?: CSSProperties
   ':checked'?: CSSProperties
@@ -1526,10 +1547,18 @@ export interface CSSPropertiesComplete {
   '::selection'?: CSSProperties
 }
 
+type CSSPropertiesComplete = SingleOrArray<
+  CSSPropertiesCompleteSingle,
+  keyof CSSPropertiesCompleteSingle
+>
+
 export interface CSSPropertiesLossy {
-  [propertyName: string]: string | number | CSSProperties | undefined
+  [propertyName: string]:
+    | string | number | CSSPropertiesComplete | undefined
+    | Array<CSSPropertiesComplete[keyof CSSPropertiesComplete]>
 }
 
 type CSSProperties =
   & CSSPropertiesComplete
+  & CSSPropertiesPseudo
   & CSSPropertiesLossy

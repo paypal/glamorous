@@ -1,10 +1,11 @@
-import { CSSProperties } from './css-properties.d'
+import { SingleOrArray } from './helpers'
+import { CSSProperties, CSSPropertiesCompleteSingle } from './css-properties.d'
 
 // Taken from React.SVGAttributes with the following added to work around issue where Partials
 // accept arbitrary functions
 // [propertyName: string]: string | number | SVGProperties | undefined
 
-export interface SVGPropertiesComplete {
+export interface SVGPropertiesCompleteSingle {
   // Attributes which also defined in HTMLAttributes
   // See comment in SVGDOMPropertyConfig.js
   className?: string;
@@ -68,7 +69,14 @@ export interface SVGPropertiesComplete {
   descent?: number | string;
   diffuseConstant?: number | string;
   direction?: number | string;
-  display?: number | string;
+  // taken from https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
+  /** The display attribute lets you control the rendering of graphical or container elements */
+  display?:
+    | 'inline' | 'block' | 'list-item' | 'run-in' | 'compact' | 'marker'
+    | 'table' | 'inline-table' | 'table-row-group' | 'table-header-group'
+    | 'table-footer-group' | 'table-row' | 'table-column-group' | 'table-column'
+    | 'table-cell' | 'table-caption' | 'none' | 'inherit'
+    | CSSPropertiesCompleteSingle['display']
   divisor?: number | string;
   dominantBaseline?: number | string;
   dur?: number | string;
@@ -269,8 +277,15 @@ export interface SVGPropertiesComplete {
   zoomAndPan?: string;
 }
 
+type SVGPropertiesComplete = SingleOrArray<
+  SVGPropertiesCompleteSingle,
+  keyof SVGPropertiesCompleteSingle
+>
+
 export interface SVGPropertiesLossy {
-  [propertyName: string]: string | number | SVGProperties | undefined
+  [propertyName: string]:
+    | string | number | SVGProperties | undefined
+    | Array<SVGPropertiesCompleteSingle[keyof SVGPropertiesCompleteSingle]>
 }
 
 type SVGProperties =
