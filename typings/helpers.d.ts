@@ -14,3 +14,7 @@ export type Omit<
   T,
   Diff<keyof T, K>
 >
+
+export type SingleOrArray<Properties, T extends keyof Properties> = {
+  [P in T]: Properties[P] | Array<Properties[P]>
+}

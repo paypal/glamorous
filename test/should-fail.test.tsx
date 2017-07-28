@@ -141,17 +141,20 @@ interface ExampleComponentProps {
 
 const ExampleComponent: React.SFC<ExampleComponentProps> = () => <div />
 
-const StyledExampleComponent = glamorous(ExampleComponent)(
+glamorous(ExampleComponent)(
   (props) => ({
     display: props.visibles ? 'none' : 'hidden'
   })
 )
 
-const StyledExampleComponentKey = glamorous<{ visible: boolean }>('div')(
+glamorous<{ visible: boolean }>('div')(
   (props) => ({
     display: props.visible ? 'none' : 'hidden'
   })
 )
+
+const StyledExampleComponent = glamorous(ExampleComponent)()
+const StyledExampleComponentKey = glamorous<{ visible: boolean }>('div')()
 
 const usingStyledExampleComponent = (
   <div>
@@ -268,6 +271,16 @@ const useWithProps = (
     <WithPropsSimpleComponent primaryColor={1} />
     <MethodWithPropsComponent d="" />
     <MethodWithPropsComponent primaryColor={1} />
-
   </div>
 )
+
+// Properties Array
+glamorous.div({
+  textAlign: "center",
+  display: ["block", "flexs"],
+})
+
+glamorous.circle({
+  textAlign: "center",
+  display: ["flexs", "block"],
+})
