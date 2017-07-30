@@ -3,3 +3,4 @@ coverage
 dist
 examples
 flow-typed
+src/*.js.flow
