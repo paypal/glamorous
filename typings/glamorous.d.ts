@@ -24,14 +24,17 @@ import {
   KeyGlamorousComponentFactory,
   GlamorousComponentFactory,
 } from './component-factory'
-import { CSSProperties } from './css-properties'
-import { SVGProperties } from './svg-properties'
+import { CSSProperties, CSSPropertiesPseudo, CSSPropertiesLossy } from './css-properties'
+import { SVGProperties, SVGPropertiesLossy } from './svg-properties'
 
 import { Omit } from './helpers'
 
 export {
   CSSProperties,
+  CSSPropertiesPseudo,
+  CSSPropertiesLossy,
   SVGProperties,
+  SVGPropertiesLossy,
 
   GlamorousComponent,
   ExtraGlamorousProps,
@@ -107,21 +110,16 @@ interface ThemeProps {
 
 export class ThemeProvider extends React.Component<ThemeProps, any> { }
 
-type OmitTheme<
-  Props extends { theme: Theme },
-  Theme
-> = Omit<Props, "theme">
-
-export function withTheme<Props extends { theme: Theme }, Theme = {}>(
+export function withTheme<Props extends { theme: any }>(
   component: React.ComponentClass<Props>
 ): React.ComponentClass<
-  OmitTheme<Props, Theme>
+  Omit<Props, "theme">
 >
 
-export function withTheme<Props extends { theme: Theme }, Theme = {}>(
+export function withTheme<Props extends { theme: any }>(
   component: React.StatelessComponent<Props>
 ): React.StatelessComponent<
-  OmitTheme<Props, Theme>
+  Omit<Props, "theme">
 >
 
 declare const glamorous: GlamorousInterface

@@ -1,60 +1,91 @@
 import { GlamorousComponent } from './glamorous-component'
+import { Omit } from './helpers'
 /**
  * StyleObject is an objects of Style Properties.
  *
  * @see {@link https://github.com/paypal/glamorous/blob/master/src/create-glamorous.js#L28-L131}
  */
 
-export interface StyleFunction<Properties, Props, Theme> {
-  (
-    props: Props & {
-      theme: Theme
-    }
-  ):
+export interface StyleFunction<Properties, Props> {
+  (props: Props):
     | Partial<Properties>
     | string
     | Array<
       | Partial<Properties>
       | string
-      | StyleFunction<Properties, Props, Theme>
+      | StyleFunction<Properties, Props>
     >
 }
 
-export type StyleArray<Properties, Props, Theme> = Array<
+export type StyleArray<Properties, Props> = Array<
   | Partial<Properties>
   | string
-  | StyleFunction<Properties, Props, Theme>
+  | StyleFunction<Properties, Props>
 >
 
-export type StyleArgument<Properties, Props, Theme> =
+export type StyleArgument<Properties, Props> =
   | Partial<Properties>
   | string
-  | StyleFunction<Properties, Props, Theme>
-  | StyleArray<Properties, Props, Theme>
+  | StyleFunction<Properties, Props>
+  | StyleArray<Properties, Props>
 
+// glamorous.div: without Theme
 export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
-  <Props, Theme = object>(
-    ...styles: StyleArgument<Properties, Props, Theme>[]
+  <Props>(
+    ...styles: StyleArgument<Properties, Props>[]
   ): GlamorousComponent<
-    ElementProps,
+    ElementProps & Props,
     Props
   >;
 }
 
-export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps, DefaultProps> {
-  <Props, Theme = object>(
-    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps, object>[]
+// glamorous.div: with Theme
+export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
+  <Props extends { theme: any }>(
+    ...styles: StyleArgument<Properties, Props>[]
   ): GlamorousComponent<
-    ElementProps & ExternalProps & Partial<DefaultProps>,
+    ElementProps & Omit<Props, 'theme'>,
+    Props
+  >;
+}
+
+// glamorous('div'): without Theme
+export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps, DefaultProps> {
+  <Props>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ElementProps & ExternalProps & Partial<DefaultProps> & Props,
     ExternalProps
   >;
 }
 
+
+// glamorous('div'): with Theme
+export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps, DefaultProps> {
+  <Props extends { theme?: any }>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ElementProps & ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'>,
+    ExternalProps
+  >;
+}
+
+// glamorous(Component): without Theme
 export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultProps> {
-  <Props, Theme = object>(
-    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps, Theme>[]
+  <Props>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
     ExternalProps & Partial<DefaultProps>,
+    Props
+  >;
+}
+
+// glamorous(Component): with Theme
+export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultProps> {
+  <Props extends { theme: any }>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'>,
     Props
   >;
 }
