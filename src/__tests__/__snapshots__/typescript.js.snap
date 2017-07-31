@@ -109,5 +109,20 @@ test/should-fail.test.tsx(267,15): error TS2345: Argument of type '{ textAlign: 
 test/should-fail.test.tsx(272,18): error TS2345: Argument of type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
   Type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to type '(string | Partial<SVGProperties> | StyleFunction<SVGProperties, {}>)[]'.
     Property 'length' is missing in type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }'.
+test/should-fail.test.tsx(289,35): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & SingleOrA...'.
+  Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & object & SingleOrArray<CSSPropertiesCompleteSingle, \\"left\\" | \\"righ...'.
+    Types of property 'display' are incompatible.
+      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"table\\" | \\"ruby\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"block\\" | \\"inline\\" | \\"run-in\\" | \\"fl...'.
+test/should-fail.test.tsx(290,38): error TS2559: Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & Pick<{ th...'.
+test/should-fail.test.tsx(291,42): error TS2559: Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & Pick<{ th...'.
+test/should-fail.test.tsx(293,29): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
+  Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
+    Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
+      Types of property 'display' are incompatible.
+        Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"table\\" | \\"ruby\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"block\\" | \\"inline\\" | \\"run-in\\" | \\"fl...'.
+test/should-fail.test.tsx(294,32): error TS2322: Type '{ display: \\"block\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
+  Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
+test/should-fail.test.tsx(295,36): error TS2322: Type '{ display: \\"block\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
+  Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
 "
 `;
