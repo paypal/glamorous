@@ -103,17 +103,6 @@ const ComponentWithTheme: React.SFC<ThemeProps> = (props) => (
   </h3>
 )
 
-interface NotExampleTheme {
-  color: number
-}
-
-
-const NonGlamorousThemedComponent = withTheme<
-  ThemeProps,
-  NotExampleTheme
->(ComponentWithTheme)
-
-
 interface PropsWithoutTheme {
   title: string
 }
