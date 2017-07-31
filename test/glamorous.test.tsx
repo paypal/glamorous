@@ -1,17 +1,33 @@
 import * as React from "react";
-import glamorous, { withTheme, ThemeProvider } from "../";
+import glamorous, {
+  withTheme, ThemeProvider
+} from "../";
 
 // Needed if generating definition files
 // https://github.com/Microsoft/TypeScript/issues/5938
 import { ExtraGlamorousProps } from "../";
 
-import { WithComponent, WithProps } from "../"
+import { WithComponent, WithProps, CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
 
 // Properties
 const Static = glamorous.div({
   "fontSize": 20,
   "textAlign": "center",
 });
+
+export interface StaticProps {
+  visible: boolean
+}
+
+const StaticWithProps = glamorous.div<StaticProps>(
+  (props) => ({
+    display: props.visible ? 'block' : 'none'
+  })
+)
+
+const useStatic = (
+  <StaticWithProps visible />
+)
 
 // Properties Array
 glamorous.div({
@@ -138,10 +154,9 @@ interface DividerInsideDividerProps {
 };
 
 // component styles
-const DividerInsideDivider = glamorous(Divider)<
-  object,
-  { main: { color: string; } }
->(
+const DividerInsideDivider = glamorous(Divider)<{
+  theme: { main: { color: string } }
+}>(
   {
     "fontSize": "10px",
   },
@@ -158,8 +173,12 @@ const theme = {
 
 export const Balloon = () => (
   <ThemeProvider theme={theme}>
-    <Divider color="blue">
-      <DividerInsideDivider>
+    <Divider theme={{
+      main: { color: "blue" }
+    }}>
+      <DividerInsideDivider theme={{
+        main: { color: "blue" }
+      }}>
         <Static>Static</Static>
         <StyleFunction color="blue">
           Hello
@@ -219,14 +238,26 @@ const useWrappedClass = (
 
 // React Stateless Wrapped Component
 
+export interface WrappedStatelessProps {
+  theme: {
+    visible: boolean
+  }
+}
+
 const StatelessToWrap: React.StatelessComponent<object> = () => (
   <div />
 )
 
-const WrappedStateless = glamorous(StatelessToWrap)({})
+const WrappedStateless = glamorous(StatelessToWrap)<WrappedStatelessProps>(
+  (props) => ({
+    display: props.theme.visible ? 'block' : 'none'
+  })
+)
 
 // Exported Component (for testing declaration generation)
-export const ExportTest = glamorous.div({})
+export const ExportTest = glamorous.div(
+  {}
+)
 
 // Theme Provider
 
@@ -272,8 +303,7 @@ const ComponentWithTheme: React.SFC<Props> = (props) => (
 )
 
 const NonGlamorousThemedComponent = withTheme<
-  Props,
-  ExampleTheme
+  Props
 >(ComponentWithTheme)
 
 
