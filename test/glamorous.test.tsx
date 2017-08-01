@@ -15,6 +15,24 @@ const Static = glamorous.div({
   "textAlign": "center",
 });
 
+// multi level nested properties
+
+glamorous.div({
+  ':hover': {
+    '& .vendor-class': {
+      height: '10px',
+    }
+  }
+})
+
+glamorous.svg({
+  ':hover': {
+    '& .vendor-class': {
+      height: '10px',
+    }
+  }
+})
+
 export interface StaticProps {
   visible: boolean
 }
@@ -449,4 +467,26 @@ const useWithProps = (
   </div>
 )
 
-// withProps method
+// propsAreCssOverrides
+
+const ComponentPropsAreCssOverides = glamorous(SimpleComponent, {propsAreCssOverrides: true})({
+  margin: 1,
+  fontSize: 1,
+})
+
+const DivPropsAreCssOverides = glamorous('div', {propsAreCssOverrides: true})({
+  margin: 1,
+  fontSize: 1,
+})
+
+
+const usePropsAreCssOverrides = (
+  <div>
+    <ComponentPropsAreCssOverides
+      display={'block'}
+    />
+    <DivPropsAreCssOverides
+      display={'block'}
+    />
+  </div>
+)
