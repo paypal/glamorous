@@ -22,8 +22,19 @@ import {
   GlamorousComponentFactory,
   GlamorousComponentFactoryCssOverides,
 } from './component-factory'
-import { CSSProperties, CSSPropertiesPseudo, CSSPropertiesLossy } from './css-properties'
-import { SVGProperties, SVGPropertiesLossy } from './svg-properties'
+import {
+  CSSProperties,
+  CSSPropertiesCompleteSingle,
+  CSSPropertiesComplete,
+  CSSPropertiesPseudo,
+  CSSPropertiesLossy,
+} from './css-properties'
+import {
+  SVGProperties,
+  SVGPropertiesCompleteSingle,
+  SVGPropertiesComplete,
+  SVGPropertiesLossy,
+} from './svg-properties'
 import {
   StyleFunction,
   StyleArray,
@@ -34,10 +45,9 @@ import { Omit } from './helpers'
 
 export {
   CSSProperties,
-  CSSPropertiesPseudo,
-  CSSPropertiesLossy,
+  CSSPropertiesCompleteSingle, CSSPropertiesComplete, CSSPropertiesPseudo, CSSPropertiesLossy,
   SVGProperties,
-  SVGPropertiesLossy,
+  SVGPropertiesCompleteSingle, SVGPropertiesComplete, SVGPropertiesLossy,
 
   GlamorousComponent,
   ExtraGlamorousProps,
