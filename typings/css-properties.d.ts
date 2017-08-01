@@ -1556,6 +1556,7 @@ export interface CSSPropertiesLossy {
   [propertyName: string]:
     | string | number | CSSPropertiesComplete | undefined
     | Array<CSSPropertiesComplete[keyof CSSPropertiesComplete]>
+    | CSSPropertiesLossy
 }
 
 type CSSProperties =
