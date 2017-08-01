@@ -273,3 +273,25 @@ glamorous.circle({
   textAlign: "center",
   display: ["flexs", "block"],
 })
+
+// propsAreCssOverrides
+
+const ComponentPropsAreCssOverides = glamorous(SimpleComponent, {propsAreCssOverrides: true})({})
+const ComponentPropsAreNotCssOverides = glamorous(SimpleComponent, {propsAreCssOverrides: false})({})
+const ComponentPropsAreAlsoNotCssOverides = glamorous(SimpleComponent)({})
+
+const DivPropsAreCssOverides = glamorous('div', {propsAreCssOverrides: true})({})
+const DivPropsAreNotCssOverides = glamorous('div', {propsAreCssOverrides: false})({})
+const DivPropsAreAlsoNotCssOverides = glamorous('div')({})
+
+const usePropsAreCssOverrides = (
+  <div>
+    <ComponentPropsAreCssOverides display={'blocks'} />
+    <ComponentPropsAreNotCssOverides display={'block'} />
+    <ComponentPropsAreAlsoNotCssOverides display={'block'} />
+
+    <DivPropsAreCssOverides display={'blocks'} />
+    <DivPropsAreNotCssOverides display={'block'} />
+    <DivPropsAreAlsoNotCssOverides display={'block'} />
+  </div>
+)

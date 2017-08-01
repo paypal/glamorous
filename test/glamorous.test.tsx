@@ -449,4 +449,26 @@ const useWithProps = (
   </div>
 )
 
-// withProps method
+// propsAreCssOverrides
+
+const ComponentPropsAreCssOverides = glamorous(SimpleComponent, {propsAreCssOverrides: true})({
+  margin: 1,
+  fontSize: 1,
+})
+
+const DivPropsAreCssOverides = glamorous('div', {propsAreCssOverrides: true})({
+  margin: 1,
+  fontSize: 1,
+})
+
+
+const usePropsAreCssOverrides = (
+  <div>
+    <ComponentPropsAreCssOverides
+      display={'block'}
+    />
+    <DivPropsAreCssOverides
+      display={'block'}
+    />
+  </div>
+)
