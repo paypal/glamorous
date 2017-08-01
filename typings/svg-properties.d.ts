@@ -286,6 +286,7 @@ export interface SVGPropertiesLossy {
   [propertyName: string]:
     | string | number | SVGProperties | undefined
     | Array<SVGPropertiesCompleteSingle[keyof SVGPropertiesCompleteSingle]>
+    | SVGPropertiesLossy
 }
 
 type SVGProperties =

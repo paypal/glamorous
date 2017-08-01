@@ -15,6 +15,24 @@ const Static = glamorous.div({
   "textAlign": "center",
 });
 
+// multi level nested properties
+
+glamorous.div({
+  ':hover': {
+    '& .vendor-class': {
+      height: '10px',
+    }
+  }
+})
+
+glamorous.svg({
+  ':hover': {
+    '& .vendor-class': {
+      height: '10px',
+    }
+  }
+})
+
 export interface StaticProps {
   visible: boolean
 }
