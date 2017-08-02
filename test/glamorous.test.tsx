@@ -173,12 +173,22 @@ interface DividerInsideDividerProps {
 
 // component styles
 const DividerInsideDivider = glamorous(Divider)<{
+  visible: boolean
+}>(
+  ({visible}) => ({
+    display: visible ? 'block' : 'none',
+  })
+);
+
+const DividerInsideDividerWithTheme = glamorous(Divider)<{
+  visible: boolean
   theme: { main: { color: string } }
 }>(
   {
     "fontSize": "10px",
   },
-  ({theme}) => ({
+  ({visible, theme}) => ({
+    display: visible ? 'block' : 'none',
     "color": theme.main.color,
   }),
 );
@@ -194,14 +204,19 @@ export const Balloon = () => (
     <Divider theme={{
       main: { color: "blue" }
     }}>
-      <DividerInsideDivider theme={{
-        main: { color: "blue" }
-      }}>
+      <DividerInsideDivider visible />
+      <DividerInsideDividerWithTheme visible />
+      <DividerInsideDividerWithTheme
+        visible
+        theme={{
+          main: { color: "blue" }
+        }}
+      >
         <Static>Static</Static>
         <StyleFunction color="blue">
           Hello
         </StyleFunction>
-      </DividerInsideDivider>
+      </DividerInsideDividerWithTheme>
     </Divider>
   </ThemeProvider>
 );
