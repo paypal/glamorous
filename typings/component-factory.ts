@@ -81,7 +81,7 @@ export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultPro
   <Props>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
-    ExternalProps & Partial<DefaultProps>,
+    ExternalProps & Partial<DefaultProps> & Props,
     Props
   >;
 }
@@ -103,7 +103,7 @@ export interface GlamorousComponentFactoryCssOverides<ExternalProps, Properties,
   <Props>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
-    ExternalProps & Partial<DefaultProps> & Properties,
+    ExternalProps & Partial<DefaultProps> & Properties & Props,
     Props
   >
 }
@@ -113,7 +113,7 @@ export interface GlamorousComponentFactoryCssOverides<ExternalProps, Properties,
   <Props extends { theme: any }>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
-    ExternalProps & Partial<DefaultProps> & Properties,
+    ExternalProps & Partial<DefaultProps> & Properties & Omit<Props, 'theme'>,
     Props
   >
 }
