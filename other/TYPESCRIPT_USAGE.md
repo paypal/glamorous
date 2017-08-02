@@ -6,26 +6,66 @@ Pull requests to improve them are welcome and appreciated. If you've never contr
 
 ## Complete support
 
-### Config
+### glamorousComponentFactory
 
-- [x] useDisplayNameInClassName
+The typings for
+* creating your own glamorous component factories
+* using built-in glamorous component factories
+are complete.
+* using `shouldClassNameUpdate`
 
-### Dynamic styles
+```tsx
+// Creating your own
+glamorous(Component)(/* styleArgument */)
+glamorous('div')(/* styleArgument */)
 
-To use dynamic styles with custom props use generics. Example:
+// Using built-in
+glamorous.div<Props>(/* styleArgument */)
 
-```ts
-const MyStyledDiv = glamorous.div<{noPadding?: boolean}>(
+// Using shouldClassNameUpdate
+glamorous(Component, {
+  shouldClassNameUpdate: (props, prevProps, context, prevContext) => props !== prevProps
+})(/* styleArgument */)
+
+// Using shouldClassNameUpdate with Context
+glamorous<Props, Context>(Component, {
+  shouldClassNameUpdate: (props, prevProps, context, prevContext) => context !== prevContext
+})(/* styleArgument */)
+
+// Using withProps
+glamorous(Component, {
+  withProps: {primaryColor: 'red'}
+})((props) => ({/* props = { primaryColor: string } */})
+
+const WithPropsComponent = glamorous(Component)(/* styleArgument */).withProps(withProps: {primaryColor: 'red'})
+...
+<WithPropsComponent primaryColor='' /> // primaryColor is an optional prop of string type based on the above
+```
+
+#### glamorousComponentFactory arguments
+
+By providing the typings for Props and Theme to Glamorous when setting up your component factory they will be typed on the props argument for function arguments automatically.
+
+```tsx
+interface Props {
+  noPadding?: boolean,
+  theme: { color: string }
+}
+
+const MyStyledDiv = glamorous.div<Props>(
   {
     margin: 1,
   },
-  props => ({
-    padding: props.noPadding ? 0 : 4,
+  ({noPadding, theme}) => ({
+    padding: noPadding ? 0 : 4,
+    color: theme.color,
   })
 )
 
 <MyStyledDiv /> // styles applied: {margin: 1, padding: 4}
-<MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0}
+<ThemeProvider theme={{color: 'red'}}>
+  <MyStyledDiv noPadding /> // styles applied: {margin: 1, padding: 0, color: red}
+</ThemeProvider>
 ```
 
 ## Incomplete support
@@ -43,9 +83,9 @@ In the future this may become possible with [Microsoft/TypeScript#6579](https://
 
 Alternatively support for full typesafety would be possible using patterns along the lines of http://typestyle.io/.
 
-### Built-in DOM component factories
+### Built-in Glamorous Components
 
-Currently support is limited to `div` and `svg`.
+Currently support is limited to `Div` and `Svg`.
 
 ## Unknown Support
 
@@ -53,17 +93,13 @@ Currently support is limited to `div` and `svg`.
 
 Possible support via [glamors typings](https://github.com/threepointone/glamor/blob/master/index.d.ts)
 
-## No Support
-
-* built-in GlamorousComponents
-
 ## Known Issues
 
 ### Generating Definition files
 
 When using glamorous in a library that you are generating definition files for you will need to include the following import and export to get around a typescript issue [Microsoft/TypeScript/issues/5938](https://github.com/Microsoft/TypeScript/issues/5938).
 
-```ts
-import glamorous, { ExtraGlamorousProps as Unused } from "glamorous"
-export { Unused }
+```tsx
+import glamorous, { ExtraGlamorousProps, WithComponent  } from "glamorous"
+export { ExtraGlamorousProps, WithComponent }
 ```

@@ -51,9 +51,27 @@ exports[`can accept functions which return string class names 1`] = `
 />
 `;
 
-exports[`can be configured to use the displayName in the className 1`] = `
+exports[`can compose built-in glamorous components 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  margin: 2px;
+  font-size: 1px;
+}
+
 <div
-  class="css-nil Hi-There"
+  class="glamor-0"
+/>
+`;
+
+exports[`can create custom built-in glamorous components 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  margin: 2px;
+  font-size: 1px;
+}
+
+<div
+  class="glamor-0"
 />
 `;
 
