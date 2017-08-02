@@ -32,7 +32,7 @@ class ThemeProvider extends Component {
   componentDidMount() {
     // create a new subscription for keeping track of outer theme, if present
     if (this.context[CHANNEL]) {
-      this.unsubscribe = this.context[CHANNEL].subscribe(this.setOuterTheme)
+      this.subscriptionId = this.context[CHANNEL].subscribe(this.setOuterTheme)
     }
   }
 
@@ -51,7 +51,8 @@ class ThemeProvider extends Component {
   }
 
   componentWillUnmount() {
-    this.unsubscribe && this.unsubscribe()
+    this.subscriptionId &&
+      this.context[CHANNEL].unsubscribe(this.subscriptionId)
   }
 
   render() {

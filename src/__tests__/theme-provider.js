@@ -5,11 +5,12 @@ import glamorous from '../'
 import ThemeProvider from '../theme-provider'
 import {CHANNEL} from '../constants'
 
-const getMockedContext = unsubscribe => ({
+const getMockedContext = () => ({
   [CHANNEL]: {
     getState: () => {},
     setState: () => {},
-    subscribe: () => unsubscribe,
+    subscribe: () => 1,
+    unsubscribe: jest.fn(),
   },
 })
 
@@ -91,11 +92,10 @@ test('renders if children are null', () => {
 })
 
 test('cleans up outer theme subscription when unmounts', () => {
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
+  const context = getMockedContext()
   const wrapper = mount(<ThemeProvider theme={{}} />, {context})
   wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalled()
+  expect(context[CHANNEL].unsubscribe).toHaveBeenCalled()
 })
 
 test('does nothing when receive same theme via props', () => {

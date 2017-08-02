@@ -7,18 +7,19 @@ import ThemeProvider from '../theme-provider'
 import {CHANNEL} from '../constants'
 import {PropTypes} from '../react-compat'
 
-const getMockedContext = unsubscribe => ({
+const getMockedContext = () => ({
   [CHANNEL]: {
     getState: () => {},
     setState: () => {},
-    subscribe: () => unsubscribe,
+    subscribe: () => 1,
+    unsubscribe: jest.fn(),
   },
 })
 
 test('renders a non-glamorous component with theme', () => {
-  const CompWithTheme = withTheme(({theme: {padding}}) => (
-    <div style={{padding}} />
-  ))
+  const CompWithTheme = withTheme(({theme: {padding}}) =>
+    <div style={{padding}} />,
+  )
   expect(
     render(
       <ThemeProvider theme={{padding: '10px'}}>
@@ -43,7 +44,9 @@ test('theme properties updates get propagated down the tree', () => {
     }
   }
 
-  const Child = withTheme(({theme: {padding}}) => <div style={{padding}} />)
+  const Child = withTheme(({theme: {padding}}) =>
+    <div style={{padding}} />,
+  )
   const wrapper = mount(<Parent />)
   expect(wrapper).toMatchSnapshot(`with theme prop of padding 10px`)
   wrapper.setState({padding: 20})
@@ -121,20 +124,23 @@ test('does not warn when NODE_ENV is set to `production`', () => {
 
 test('unsubscribes from theme updates on unmount', () => {
   const Child = withTheme(() => <div />)
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
-  const wrapper = mount(<ThemeProvider theme={{}}><Child /></ThemeProvider>, {
-    context,
-  })
+  const context = getMockedContext()
+  const wrapper = mount(
+    <ThemeProvider theme={{}}>
+      <Child />
+    </ThemeProvider>,
+    {
+      context,
+    },
+  )
   wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalled()
+  expect(context[CHANNEL].unsubscribe).toHaveBeenCalled()
 })
 
 test('ignores context if a theme props is passed', () => {
-  const unsubscribe = jest.fn()
-  const context = getMockedContext(unsubscribe)
+  const context = getMockedContext()
   const Comp = withTheme(() => <div />)
   const wrapper = mount(<Comp theme={{}} />, {context})
   wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalledTimes(0)
+  expect(context[CHANNEL].unsubscribe).toHaveBeenCalledTimes(0)
 })

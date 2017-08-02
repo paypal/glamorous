@@ -49,13 +49,14 @@ export default function withTheme(
     componentDidMount() {
       if (this.context[CHANNEL] && !this.props.theme) {
         // subscribe to future theme changes
-        this.unsubscribe = this.context[CHANNEL].subscribe(this.setTheme)
+        this.subscriptionId = this.context[CHANNEL].subscribe(this.setTheme)
       }
     }
 
     componentWillUnmount() {
       // cleanup subscription
-      this.unsubscribe && this.unsubscribe()
+      this.subscriptionId &&
+        this.context[CHANNEL].unsubscribe(this.subscriptionId)
     }
 
     render() {
