@@ -40,9 +40,9 @@ website:
 ## Related projects
 
 - [`jest-glamor-react`](https://github.com/kentcdodds/jest-glamor-react): Jest utilities for Glamor and React
-- [`glamorous-native`][glamorous-native]: React Native component styling solved 💄
-- [`glamorous-primitives`][glamorous-primitives]: style primitive interfaces with glamorous 💄
-- [`babel-plugin-glamorous-displayname`][babel-displayname]: Automatically adds a `displayName` to your glamorous components for a better debugging experience.
+- [`glamorous-native`](https://github.com/robinpowered/glamorous-native): React Native component styling solved 💄
+- [`glamorous-primitives`](https://github.com/nitin42/glamorous-primitives): style primitive interfaces with glamorous 💄
+- [`babel-plugin-glamorous-displayname`](https://github.com/bernard-lin/babel-plugin-glamorous-displayname): Automatically adds a `displayName` to your glamorous components for a better debugging experience.
 - [`styled-system`](https://github.com/jxnblk/styled-system): Design system utilities for styled-components, glamorous, and other css-in-js libraries
 - [`glamorous-pseudo`](https://github.com/tkh44/glamorous-pseudo): Pseudo component to extend built-in GlamorousComponents
 - [`preact-glam`](https://github.com/vesparny/preact-glam): A tiny glamorous version for preact
@@ -145,4 +145,3 @@ MIT
 [module-formats-badge]: https://img.shields.io/badge/module%20formats-umd%2C%20cjs%2C%20es-green.svg?style=flat-square
 [intro-blogpost]: https://medium.com/p/fb3c9f4ed20e
 [help-sandbox]: http://kcd.im/glamorous-help
-[glamorous-primitives]: https://github.com/nitin42/glamorous-primitives
