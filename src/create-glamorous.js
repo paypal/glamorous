@@ -51,14 +51,18 @@ function createGlamorous(splitProps) {
        * props to the underlying component.
        */
       const GlamorousComponent = withTheme(
-        (props, context) => {
+        function GlamorousInnerComponent(props, context) {
           props = getPropsToApply(
             GlamorousComponent.propsToApply,
             {},
             props,
             context,
           )
-          const updateClassName = shouldUpdate(props, context)
+          const updateClassName = shouldUpdate(props, context, this.previous)
+
+          if (shouldClassNameUpdate) {
+            this.previous = {props, context}
+          }
 
           const {toForward, cssOverrides, cssProp} = splitProps(
             props,
@@ -66,7 +70,7 @@ function createGlamorous(splitProps) {
           )
 
           // create className to apply
-          GlamorousComponent.className = updateClassName ?
+          this.className = updateClassName ?
             getGlamorClassName({
               styles: GlamorousComponent.styles,
               props,
@@ -75,12 +79,12 @@ function createGlamorous(splitProps) {
               context,
               displayName: GlamorousComponent.displayName,
             }) :
-            GlamorousComponent.className
+            this.className
 
           return React.createElement(GlamorousComponent.comp, {
             ref: props.innerRef,
             ...toForward,
-            className: GlamorousComponent.className,
+            className: this.className,
           })
         },
         {noWarn: true, createElement: false},
@@ -104,7 +108,7 @@ function createGlamorous(splitProps) {
         return glamorous(GlamorousComponent, {withProps: propsToApply})()
       }
 
-      function shouldUpdate(props, context) {
+      function shouldUpdate(props, context, previous) {
         // exiting early so components which do not use this
         // optimization are not penalized by hanging onto
         // references to previous props and context
@@ -112,19 +116,19 @@ function createGlamorous(splitProps) {
           return true
         }
         let update = true
-        if (GlamorousComponent.previous) {
+        if (previous) {
           if (
             !shouldClassNameUpdate(
+              previous.props,
               props,
-              GlamorousComponent.previous.props,
+              previous.context,
               context,
-              GlamorousComponent.previous.context,
             )
           ) {
             update = false
           }
         }
-        GlamorousComponent.previous = {props, context}
+
         return update
       }
 
@@ -141,7 +145,6 @@ function createGlamorous(splitProps) {
         {
           withComponent,
           isGlamorousComponent: true,
-          previous: null,
           propsAreCssOverrides,
           withProps,
         },
