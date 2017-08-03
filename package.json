@@ -8,7 +8,6 @@
   "typings": "typings/glamorous.d.ts",
   "scripts": {
     "start": "nps",
-    "doctoc": "doctoc --maxlevel 3 --title \"**Table of Contents**\"",
     "test": "nps test",
     "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
     "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
@@ -48,7 +47,6 @@
     "babel-register": "^6.24.1",
     "bundlesize": "^0.12.2",
     "common-tags": "^1.4.0",
-    "doctoc": "^1.3.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.3.0",
@@ -94,8 +92,7 @@
     }
   },
   "lint-staged": {
-    "*.+(js|json)": ["prettier-eslint --write", "git add"],
-    "README.md": ["npm run doctoc", "git add"]
+    "*.+(js|json)": ["prettier-eslint --write", "git add"]
   },
   "jest": {
     "testEnvironment": "jsdom",
