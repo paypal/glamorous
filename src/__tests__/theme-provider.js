@@ -30,6 +30,57 @@ test('renders a component with theme', () => {
   ).toMatchSnapshot()
 })
 
+test('renders inverted theme', () => {
+  const Comp = glamorous.div(({theme: {fg, bg}}) => ({
+    backgroundColor: bg,
+    color: fg,
+  }))
+  const theme = {
+    fg: 'palevioletred',
+    bg: 'white',
+  }
+  const invertTheme = ({fg, bg}) => ({
+    fg: bg,
+    bg: fg,
+  })
+  expect(
+    render(
+      <ThemeProvider theme={theme}>
+        <div>
+          <Comp />
+          <ThemeProvider theme={invertTheme}>
+            <Comp />
+          </ThemeProvider>
+        </div>
+      </ThemeProvider>,
+    ),
+  ).toMatchSnapshot()
+})
+
+test('throws if inverted theme is not object', () => {
+  const Comp = glamorous.div(({theme: {fg, bg}}) => ({
+    backgroundColor: bg,
+    color: fg,
+  }))
+  const theme = {
+    fg: 'palevioletred',
+    bg: 'white',
+  }
+  const invertTheme = () => 1
+  expect(() =>
+    render(
+      <ThemeProvider theme={theme}>
+        <div>
+          <Comp />
+          <ThemeProvider theme={invertTheme}>
+            <Comp />
+          </ThemeProvider>
+        </div>
+      </ThemeProvider>,
+    ),
+  ).toThrowErrorMatchingSnapshot()
+})
+
 test('theme properties updates get propagated down the tree', () => {
   class Parent extends Component {
     state = {

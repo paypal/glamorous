@@ -68,6 +68,31 @@ exports[`renders if children are null 1`] = `
 />
 `;
 
+exports[`renders inverted theme 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  background-color: white;
+  color: palevioletred;
+}
+
+.glamor-1,
+[data-glamor-1] {
+  background-color: palevioletred;
+  color: white;
+}
+
+<div>
+  <div
+    class="glamor-0"
+  />
+  <div
+    class="glamor-1"
+  />
+</div>
+`;
+
+exports[`throws if inverted theme is not object 1`] = `"[ThemeProvider] Please return an object from your theme function, i.e. theme={() => ({})}!"`;
+
 exports[`with theme prop of margin 2px 1`] = `
 <ThemeProvider
   theme={
