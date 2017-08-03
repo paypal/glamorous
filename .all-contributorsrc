@@ -432,6 +432,16 @@
       ]
     },
     {
+      "login": "Oalbacha",
+      "name": "Omar Albacha",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17005317?v=3",
+      "profile": "https://github.com/Oalbacha",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
       "login": "tdeschryver",
       "name": "tdeschryver",
       "avatar_url": "https://avatars2.githubusercontent.com/u/28659384?v=3",
@@ -439,6 +449,17 @@
       "contributions": [
         "code",
         "test"
+      ]
+    },
+    {
+      "login": "abs-zero",
+      "name": "Pratik Chaudhary",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/16974688?v=4",
+      "profile": "https://github.com/abs-zero",
+      "contributions": [
+        "code",
+        "test",
+        "tool"
       ]
     }
   ]

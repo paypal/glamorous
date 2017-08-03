@@ -2,3 +2,5 @@ node_modules
 coverage
 dist
 examples
+flow-typed
+src/*.js.flow

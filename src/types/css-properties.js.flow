@@ -1,0 +1,900 @@
+// @flow
+
+// Ported from typings/css-properties.d.ts
+
+// See CSS 3 CSS-wide keywords
+// https://www.w3.org/TR/css3-values/#common-keywords
+// See CSS 3 Explicit Defaulting
+// https://www.w3.org/TR/css-cascade-3/#defaulting-keywords
+// "all CSS properties can accept these values"
+type CSSWideKeyword = 'initial' | 'inherit' | 'unset';
+
+export type CSSProperties = {
+  alignContent?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'stretch',
+
+  alignItems?: CSSWideKeyword | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch',
+
+  alignSelf?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch',
+
+  alignmentAdjust?: CSSWideKeyword | string | number,
+
+  alignmentBaseline?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'baseline'
+    | 'before-edge'
+    | 'text-before-edge'
+    | 'middle'
+    | 'central'
+    | 'after-edge'
+    | 'text-after-edge'
+    | 'ideographic'
+    | 'alphabetic'
+    | 'hanging'
+    | 'mathematical'
+    | 'use-script',
+
+  animationDelay?: CSSWideKeyword | string | number,
+
+  animationDirection?: CSSWideKeyword | 'normal' | 'reverse' | 'alternate' | ' alternate-reverse',
+
+  animationIterationCount?: CSSWideKeyword | 'infinite' | number,
+
+  animationName?: CSSWideKeyword | string,
+
+  animationPlayState?: CSSWideKeyword | 'running' | 'paused',
+
+  appearance?: CSSWideKeyword | 'auto' | 'none',
+
+  backfaceVisibility?: CSSWideKeyword | 'visible' | 'hidden',
+
+  background?: CSSWideKeyword | string,
+
+  backgroundAttachment?: CSSWideKeyword | 'scroll' | 'fixed' | 'local',
+
+  backgroundBlendMode?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'multiply'
+    | 'screen'
+    | 'overlay'
+    | 'darken'
+    | 'lighten'
+    | 'color-dodge'
+    | 'color-burn'
+    | 'hard-light'
+    | 'soft-light'
+    | 'difference'
+    | 'exclusion'
+    | 'hue'
+    | 'saturation'
+    | 'color'
+    | 'luminosity',
+
+  backgroundColor?: CSSWideKeyword | string,
+
+  backgroundComposite?: CSSWideKeyword | string,
+
+  backgroundImage?: CSSWideKeyword | string,
+
+  backgroundOrigin?: CSSWideKeyword | 'border-box' | 'padding-box' | 'content-box',
+
+  backgroundPosition?: CSSWideKeyword | string | number,
+
+  backgroundRepeat?: CSSWideKeyword | string,
+
+  baselineShift?: CSSWideKeyword | string | number,
+
+  behavior?: CSSWideKeyword | string,
+
+  border?: CSSWideKeyword | string | number,
+
+  borderBottom?: CSSWideKeyword | string | number,
+
+  borderBottomColor?: CSSWideKeyword | string,
+
+  borderRadius?: CSSWideKeyword | string | number,
+
+  borderBottomLeftRadius?: CSSWideKeyword | string | number,
+
+  borderBottomRightRadius?: CSSWideKeyword | string | number,
+
+  borderBottomStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset',
+
+  borderBottomWidth?: CSSWideKeyword | string | number,
+
+  borderCollapse?: CSSWideKeyword | 'collapse' | 'separate',
+
+  borderColor?: CSSWideKeyword | string,
+
+  borderCornerShape?: CSSWideKeyword | string,
+
+  borderImageSource?: CSSWideKeyword | string | number,
+
+  borderImageWidth?: CSSWideKeyword | string | number,
+
+  borderLeft?: CSSWideKeyword | string | number,
+
+  borderLeftColor?: CSSWideKeyword | string,
+
+  borderLeftStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset',
+
+  borderLeftWidth?: CSSWideKeyword | string | number,
+
+  borderRight?: CSSWideKeyword | string | number,
+
+  borderRightColor?: CSSWideKeyword | string,
+
+  borderRightStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset',
+
+  borderRightWidth?: CSSWideKeyword | string | number,
+
+  borderSpacing?: CSSWideKeyword | string | number,
+
+  borderStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset',
+
+  borderTop?: CSSWideKeyword | string | number,
+
+  borderTopColor?: CSSWideKeyword | string,
+
+  borderTopLeftRadius?: CSSWideKeyword | string | number,
+
+  borderTopRightRadius?: CSSWideKeyword | string | number,
+
+  borderTopStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset',
+
+  borderTopWidth?: CSSWideKeyword | string | number,
+
+  borderWidth?: CSSWideKeyword | string | number,
+
+  bottom?: CSSWideKeyword | string | number,
+
+  boxAlign?: CSSWideKeyword | 'start' | 'center' | 'end' | 'baseline' | 'stretch',
+
+  boxDecorationBreak?: CSSWideKeyword | 'slice' | 'clone',
+
+  boxDirection?: CSSWideKeyword | 'normal' | 'reverse',
+
+  boxLineProgression?: CSSWideKeyword | string,
+
+  boxLines?: CSSWideKeyword | 'single' | 'multiple',
+
+  boxOrdinalGroup?: CSSWideKeyword | string | number,
+
+  /**
+   * Deprecated.
+   */
+  boxFlex?: CSSWideKeyword | number,
+
+  boxFlexGroup?: CSSWideKeyword | number,
+
+  boxShadow?: CSSWideKeyword | string | number,
+
+  boxSizing?: CSSWideKeyword | 'content-box' | 'border-box',
+
+  breakAfter?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'avoid'
+    | 'avoid-page'
+    | 'page'
+    | 'left'
+    | 'right'
+    | 'recto'
+    | 'verso'
+    | 'avoid-column'
+    | 'column'
+    | 'avoid-region'
+    | 'region',
+
+  breakBefore?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'avoid'
+    | 'avoid-page'
+    | 'page'
+    | 'left'
+    | 'right'
+    | 'recto'
+    | 'verso'
+    | 'avoid-column'
+    | 'column'
+    | 'avoid-region'
+    | 'region',
+
+  /**
+   * Control page/column/region breaks that fall within a block of content
+   */
+  breakInside?: CSSWideKeyword | 'auto' | 'avoid' | 'avoid-page' | 'avoid-column' | 'avoid-region',
+
+  clear?: CSSWideKeyword | 'none' | 'left' | 'right' | 'both' | 'inline-start' | 'inline-end',
+
+  clip?: CSSWideKeyword | string,
+
+  clipRule?: CSSWideKeyword | 'nonzero' | 'evenodd',
+
+  color?: CSSWideKeyword | string | number,
+
+  columnCount?: CSSWideKeyword | number | 'auto',
+
+  columnFill?: CSSWideKeyword | 'auto' | 'balance',
+
+  columnGap?: CSSWideKeyword | string,
+
+  columnRule?: CSSWideKeyword | string | number,
+
+  columnRuleColor?: CSSWideKeyword | string,
+
+  columnRuleWidth?: CSSWideKeyword | string | number,
+
+  columnSpan?: CSSWideKeyword | 'none' | 'all',
+
+  columnWidth?: CSSWideKeyword | string | number,
+
+  columns?: CSSWideKeyword | string | number,
+
+  counterIncrement?: CSSWideKeyword | string | number,
+
+  counterReset?: CSSWideKeyword | string | number,
+
+  cue?: CSSWideKeyword | string,
+
+  cueAfter?: CSSWideKeyword | string,
+
+  cursor?: CSSWideKeyword | string | number,
+
+  direction?: CSSWideKeyword | 'ltr' | 'rtl',
+
+  display?: CSSWideKeyword | string,
+
+  fill?: CSSWideKeyword | string,
+
+  fillOpacity?: CSSWideKeyword | number,
+
+  fillRule?: CSSWideKeyword | 'nonzero' | 'evenodd',
+
+  filter?: CSSWideKeyword | string | number,
+
+  flex?: CSSWideKeyword | number | string,
+
+  flexAlign?: CSSWideKeyword | {},
+
+  flexBasis?: CSSWideKeyword | string | number,
+
+  flexDirection?: CSSWideKeyword | 'row' | 'row-reverse' | 'column' | 'column-reverse',
+
+  flexFlow?:
+    | CSSWideKeyword
+    // flex direction
+    | 'row'
+    | 'row-reverse'
+    | 'column'
+    | 'column-reverse'
+    // flex wrap
+    | 'nowrap'
+    | 'wrap'
+    | 'wrap-reverse'
+    // flex direction + flex wrap
+    | 'row nowrap'
+    | 'row wrap'
+    | 'row wrap-reverse'
+    | 'row-reverse nowrap'
+    | 'row-reverse wrap'
+    | 'row-reverse wrap-reverse'
+    | 'column nowrap'
+    | 'column wrap'
+    | 'column wrap-reverse'
+    | 'column-reverse nowrap'
+    | 'column-reverse wrap'
+    | 'column-reverse wrap-reverse'
+    // flex direction + flex wrap (reverse order)
+    | 'nowrap row'
+    | 'wrap row'
+    | 'wrap-reverse row'
+    | 'nowrap row-reverse'
+    | 'wrap row-reverse'
+    | 'wrap-reverse row-reverse'
+    | 'nowrap column'
+    | 'wrap column'
+    | 'wrap-reverse column'
+    | 'nowrap column-reverse'
+    | 'wrap column-reverse'
+    | 'wrap-reverse column-reverse',
+
+  flexGrow?: CSSWideKeyword | number,
+
+  flexItemAlign?: CSSWideKeyword | {},
+
+  flexLinePack?: CSSWideKeyword | {},
+
+  flexOrder?: CSSWideKeyword | {},
+
+  flexShrink?: CSSWideKeyword | number,
+
+  flexWrap?: CSSWideKeyword | 'nowrap' | 'wrap' | 'wrap-reverse',
+
+  float?: CSSWideKeyword | 'left' | 'right' | 'none' | 'inline-start' | 'inline-end',
+
+  flowFrom?: CSSWideKeyword | {},
+
+  font?: CSSWideKeyword | string,
+
+  fontFamily?: CSSWideKeyword | string,
+
+  fontKerning?: CSSWideKeyword | 'auto' | 'normal' | 'none',
+
+  fontSize?: CSSWideKeyword | string | number,
+
+  fontSizeAdjust?: CSSWideKeyword | 'none' | number,
+
+  fontStretch?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'ultra-condensed'
+    | 'extra-condensed'
+    | 'condensed'
+    | 'semi-condensed'
+    | 'semi-expanded'
+    | 'expanded'
+    | 'extra-expanded'
+    | 'ultra-expanded',
+
+  fontStyle?: CSSWideKeyword | 'normal' | 'italic' | 'oblique',
+
+  fontSynthesis?: CSSWideKeyword | string,
+
+  fontVariant?: CSSWideKeyword | string | number,
+
+  fontVariantAlternates?: CSSWideKeyword | string | number,
+
+  fontWeight?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'bold'
+    | 'bolder'
+    | 'lighter'
+    | 100
+    | 200
+    | 300
+    | 400
+    | 500
+    | 600
+    | 700
+    | 800
+    | 900,
+
+  gridArea?: CSSWideKeyword | string | number,
+
+  gridColumn?: CSSWideKeyword | string | number,
+
+  gridColumnEnd?: CSSWideKeyword | string | number,
+
+  gridColumnStart?: CSSWideKeyword | string | number,
+
+  gridRow?: CSSWideKeyword | string | number,
+
+  gridRowEnd?: CSSWideKeyword | string | number,
+
+  gridRowPosition?: CSSWideKeyword | string | number,
+
+  gridRowSpan?: CSSWideKeyword | number,
+
+  gridTemplateAreas?: CSSWideKeyword | string,
+
+  gridTemplateColumns?: CSSWideKeyword | string | number,
+
+  gridTemplateRows?: CSSWideKeyword | string | number,
+
+  height?: CSSWideKeyword | string | number,
+
+  hyphenateLimitChars?: CSSWideKeyword | 'auto' | number,
+
+  hyphenateLimitLines?: CSSWideKeyword | 'no-limit' | number,
+
+  hyphenateLimitZone?: CSSWideKeyword | string | number,
+
+  hyphens?: CSSWideKeyword | 'none' | 'manual' | 'auto',
+
+  imeMode?: CSSWideKeyword | 'auto' | 'normal' | 'active' | 'inactive' | 'disabled',
+
+  justifyContent?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly',
+
+  layoutGrid?: CSSWideKeyword | string | number,
+
+  layoutGridChar?: CSSWideKeyword | string | number,
+
+  layoutGridLine?: CSSWideKeyword | string | number,
+
+  layoutGridMode?: CSSWideKeyword | string | number,
+
+  layoutGridType?: CSSWideKeyword | 'loose' | 'strict' | 'fixed',
+
+  left?: CSSWideKeyword | string | number,
+
+  letterSpacing?: CSSWideKeyword | string | number,
+
+  lineBreak?: CSSWideKeyword | 'auto' | 'loose' | 'normal' | 'strict',
+
+  lineClamp?: CSSWideKeyword | number,
+
+  lineHeight?: CSSWideKeyword | string | number,
+
+  listStyle?: CSSWideKeyword | string | number,
+
+  listStyleImage?: CSSWideKeyword | string,
+
+  listStylePosition?: CSSWideKeyword | 'inside' | 'outside',
+
+  listStyleType?: CSSWideKeyword | string | number,
+
+  margin?: CSSWideKeyword | string | number,
+
+  marginBottom?: CSSWideKeyword | string | number,
+
+  marginLeft?: CSSWideKeyword | string | number,
+
+  marginRight?: CSSWideKeyword | string | number,
+
+  marginTop?: CSSWideKeyword | string | number,
+
+  marqueeDirection?: CSSWideKeyword | string,
+
+  marqueeStyle?: CSSWideKeyword | string,
+
+  mask?: CSSWideKeyword | string | number,
+
+  maskBorder?: CSSWideKeyword | string | number,
+
+  maskBorderRepeat?: CSSWideKeyword | string | number,
+
+  maskBorderSlice?: CSSWideKeyword | string | number,
+
+  maskBorderSource?: CSSWideKeyword | string | number,
+
+  maskBorderWidth?: CSSWideKeyword | string | number,
+
+  maskClip?: CSSWideKeyword | string | number,
+
+  maskOrigin?: CSSWideKeyword | string | number,
+
+  maxFontSize?: CSSWideKeyword | string | number,
+
+  maxHeight?: CSSWideKeyword | string | number,
+
+  maxWidth?: CSSWideKeyword | string | number,
+
+  minHeight?: CSSWideKeyword | string | number,
+
+  minWidth?: CSSWideKeyword | string | number,
+
+  opacity?: CSSWideKeyword | number,
+
+  order?: CSSWideKeyword | number,
+
+  orphans?: CSSWideKeyword | number,
+
+  outline?: CSSWideKeyword | string | number,
+
+  outlineColor?: CSSWideKeyword | string | number,
+
+  outlineOffset?: CSSWideKeyword | string | number,
+
+  overflow?: CSSWideKeyword | 'auto' | 'hidden' | 'scroll' | 'visible',
+
+  overflowStyle?: CSSWideKeyword | 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar',
+
+  overflowX?: CSSWideKeyword | 'auto' | 'hidden' | 'scroll' | 'visible',
+
+  overflowY?: CSSWideKeyword | 'auto' | 'hidden' | 'scroll' | 'visible',
+
+  padding?: CSSWideKeyword | string | number,
+
+  paddingBottom?: CSSWideKeyword | string | number,
+
+  paddingLeft?: CSSWideKeyword | string | number,
+
+  paddingRight?: CSSWideKeyword | string | number,
+
+  paddingTop?: CSSWideKeyword | string | number,
+
+  pageBreakAfter?: CSSWideKeyword | 'auto' | 'always' | 'avoid' | 'left' | 'right',
+
+  pageBreakBefore?: CSSWideKeyword | 'auto' | 'always' | 'avoid' | 'left' | 'right',
+
+  pageBreakInside?: CSSWideKeyword | 'auto' | 'avoid',
+
+  pause?: CSSWideKeyword | string | number,
+
+  pauseAfter?: CSSWideKeyword | string | number,
+
+  pauseBefore?: CSSWideKeyword | string | number,
+
+  perspective?: CSSWideKeyword | string | number,
+
+  perspectiveOrigin?: CSSWideKeyword | string | number,
+
+  pointerEvents?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'none'
+    | 'visiblePainted'
+    | 'visibleFill'
+    | 'visibleStroke'
+    | 'visible'
+    | 'painted'
+    | 'fill'
+    | 'stroke'
+    | 'all',
+
+  position?: CSSWideKeyword | 'static' | 'relative' | 'absolute' | 'sticky' | 'fixed',
+
+  punctuationTrim?: CSSWideKeyword | 'none' | 'start' | 'end' | 'allow-end' | 'adjacent',
+
+  quotes?: CSSWideKeyword | string,
+
+  regionFragment?: CSSWideKeyword | 'auto' | 'break',
+
+  restAfter?: CSSWideKeyword | string | number,
+
+  restBefore?: CSSWideKeyword | string | number,
+
+  right?: CSSWideKeyword | string | number,
+
+  rubyAlign?: CSSWideKeyword | 'start' | 'center' | 'space-between' | 'space-around',
+
+  rubyPosition?: CSSWideKeyword | 'over' | 'under' | 'inter-character',
+
+  shapeImageThreshold?: CSSWideKeyword | number,
+
+  shapeInside?: CSSWideKeyword | string | number,
+
+  shapeMargin?: CSSWideKeyword | string | number,
+
+  shapeOutside?: CSSWideKeyword | string | number,
+
+  speak?: CSSWideKeyword | string | number,
+
+  speakAs?: CSSWideKeyword | string | number,
+
+  strokeOpacity?: CSSWideKeyword | number,
+
+  strokeWidth?: CSSWideKeyword | string | number,
+
+  tabSize?: CSSWideKeyword | string | number,
+
+  tableLayout?: CSSWideKeyword | 'auto' | 'fixed',
+
+  textAlign?:
+    | CSSWideKeyword
+    | 'start'
+    | 'end'
+    | 'left'
+    | 'right'
+    | 'center'
+    | 'justify'
+    | 'match-parent',
+
+  textAlignLast?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'start'
+    | 'end'
+    | 'left'
+    | 'right'
+    | 'center'
+    | 'justify',
+
+  textDecoration?: CSSWideKeyword | string | number,
+
+  textDecorationColor?: CSSWideKeyword | string,
+
+  textDecorationLine?: CSSWideKeyword | string,
+
+  textDecorationLineThrough?: CSSWideKeyword | string,
+
+  textDecorationNone?: CSSWideKeyword | string,
+
+  textDecorationOverline?: CSSWideKeyword | string,
+
+  textDecorationSkip?: CSSWideKeyword | string,
+
+  textDecorationStyle?: CSSWideKeyword | string,
+
+  textDecorationUnderline?: CSSWideKeyword | string,
+
+  textEmphasis?: CSSWideKeyword | string | number,
+
+  textEmphasisColor?: CSSWideKeyword | string | number,
+
+  textEmphasisStyle?: CSSWideKeyword | string,
+
+  textHeight?: CSSWideKeyword | string | number,
+
+  textIndent?: CSSWideKeyword | string | number,
+
+  textJustifyTrim?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'inter-word'
+    | 'inter-ideograph'
+    | 'inter-cluster'
+    | 'distribute'
+    | 'kashida'
+    | 'trim',
+
+  textKashidaSpace?: CSSWideKeyword | string | number,
+
+  textLineThrough?: CSSWideKeyword | string,
+
+  textLineThroughColor?: CSSWideKeyword | string | number,
+
+  textLineThroughMode?: CSSWideKeyword | string | number,
+
+  textLineThroughStyle?: CSSWideKeyword | string | number,
+
+  textLineThroughWidth?: CSSWideKeyword | string | number,
+
+  textOverflow?: CSSWideKeyword | string | number,
+
+  textOverline?: CSSWideKeyword | string | number,
+
+  textOverlineColor?: CSSWideKeyword | string | number,
+
+  textOverlineMode?: CSSWideKeyword | string | number,
+
+  textOverlineStyle?: CSSWideKeyword | string | number,
+
+  textOverlineWidth?: CSSWideKeyword | string | number,
+
+  textRendering?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'optimizeSpeed'
+    | 'optimizeLegibility'
+    | 'geometricPrecision',
+
+  textScript?: CSSWideKeyword | {},
+
+  textShadow?: CSSWideKeyword | string | number,
+
+  textTransform?: CSSWideKeyword | 'none' | 'capitalize' | 'uppercase' | 'lowercase' | 'full-width',
+
+  textUnderlinePosition?: CSSWideKeyword | string,
+
+  textUnderlineStyle?: CSSWideKeyword | string,
+
+  top?: CSSWideKeyword | string | number,
+
+  touchAction?: CSSWideKeyword | string,
+
+  transform?: CSSWideKeyword | string | number,
+
+  transformOrigin?: CSSWideKeyword | string | number,
+
+  transformOriginZ?: CSSWideKeyword | string | number,
+
+  transformStyle?: CSSWideKeyword | 'flat' | 'preserve-3d',
+
+  transition?: CSSWideKeyword | string | number,
+
+  transitionDelay?: CSSWideKeyword | string | number,
+
+  transitionDuration?: CSSWideKeyword | string | number,
+
+  transitionProperty?: CSSWideKeyword | string | number,
+
+  transitionTimingFunction?: CSSWideKeyword | string | number,
+
+  unicodeBidi?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'embed'
+    | 'isolate'
+    | 'bidi-override'
+    | 'isolate-override'
+    | 'plaintext',
+
+  unicodeRange?: CSSWideKeyword | string | number,
+
+  userFocus?:
+    | CSSWideKeyword
+    | 'ignore'
+    | 'normal'
+    | 'select-after'
+    | 'select-before'
+    | 'select-menu'
+    | 'select-same'
+    | 'select-all'
+    | 'none',
+
+  userInput?: CSSWideKeyword | 'none' | 'enabled' | 'disabled',
+
+  verticalAlign?: CSSWideKeyword | string | number,
+
+  visibility?: CSSWideKeyword | 'visible' | 'hidden' | 'collapse',
+
+  voiceBalance?: CSSWideKeyword | number | 'left' | 'center' | 'right' | 'leftwards' | 'rightwards',
+
+  voiceDuration?: CSSWideKeyword | string | number,
+
+  voiceFamily?: CSSWideKeyword | string | number,
+
+  voicePitch?: CSSWideKeyword | string | number,
+
+  voiceRange?: CSSWideKeyword | string | number,
+
+  voiceRate?: CSSWideKeyword | string | number,
+
+  voiceStress?: CSSWideKeyword | string | number,
+
+  voiceVolume?: CSSWideKeyword | string | number,
+
+  whiteSpace?: CSSWideKeyword | 'normal' | 'pre' | 'nowrap' | 'pre-wrap' | 'pre-line',
+
+  whiteSpaceTreatment?: CSSWideKeyword | string | number,
+
+  widows?: CSSWideKeyword | number,
+
+  width?: CSSWideKeyword | string | number,
+
+  wordBreak?: CSSWideKeyword | 'normal' | 'break-all' | 'keep-all',
+
+  wordSpacing?: CSSWideKeyword | string | number,
+
+  wordWrap?: CSSWideKeyword | 'normal' | 'break-word',
+
+  wrapFlow?: CSSWideKeyword | 'auto' | 'both' | 'start' | 'end' | 'maximum' | 'clear',
+
+  wrapMargin?: CSSWideKeyword | string | number,
+
+  wrapOption?: CSSWideKeyword | {},
+
+  writingMode?:
+    | CSSWideKeyword
+    | 'horizontal-tb'
+    | 'vertical-rl'
+    | 'vertical-lr'
+    | 'sideways-rl'
+    | 'sideways-lr',
+
+  zIndex?: CSSWideKeyword | 'auto' | number,
+
+  zoom?: CSSWideKeyword | string | number,
+
+  ':active'?: CSSProperties,
+  ':any-link'?: CSSProperties,
+  ':checked'?: CSSProperties,
+  ':default'?: CSSProperties,
+  ':dir(rtl)'?: CSSProperties,
+  ':dir(ltr)'?: CSSProperties,
+  ':disabled'?: CSSProperties,
+  ':empty'?: CSSProperties,
+  ':enabled'?: CSSProperties,
+  ':first'?: CSSProperties,
+  ':first-child'?: CSSProperties,
+  ':first-of-type'?: CSSProperties,
+  ':fullscreen'?: CSSProperties,
+  ':focus'?: CSSProperties,
+  ':focus-within'?: CSSProperties,
+  ':hover'?: CSSProperties,
+  ':indeterminate'?: CSSProperties,
+  ':in-range'?: CSSProperties,
+  ':invalid'?: CSSProperties,
+  ':lang(en)'?: CSSProperties,
+  ':lang(fr)'?: CSSProperties,
+  ':lang(de)'?: CSSProperties,
+  ':lang(es)'?: CSSProperties,
+  ':lang(ru)'?: CSSProperties,
+  ':lang(zh)'?: CSSProperties,
+  ':last-child'?: CSSProperties,
+  ':last-of-type'?: CSSProperties,
+  ':left'?: CSSProperties,
+  ':link'?: CSSProperties,
+  ':nth-child(even)'?: CSSProperties,
+  ':nth-child(odd)'?: CSSProperties,
+  ':nth-last-child(even)'?: CSSProperties,
+  ':nth-last-child(odd)'?: CSSProperties,
+  ':only-child'?: CSSProperties,
+  ':only-of-type'?: CSSProperties,
+  ':optional'?: CSSProperties,
+  ':out-of-range'?: CSSProperties,
+  ':placeholder-shown'?: CSSProperties,
+  ':read-only'?: CSSProperties,
+  ':read-write'?: CSSProperties,
+  ':required'?: CSSProperties,
+  ':right'?: CSSProperties,
+  ':root'?: CSSProperties,
+  ':scope'?: CSSProperties,
+  ':target'?: CSSProperties,
+  ':valid'?: CSSProperties,
+  ':visited'?: CSSProperties,
+  ':after'?: CSSProperties,
+  '::after'?: CSSProperties,
+  ':before'?: CSSProperties,
+  '::before'?: CSSProperties,
+  '::backdrop'?: CSSProperties,
+  ':first-letter'?: CSSProperties,
+  '::first-letter'?: CSSProperties,
+  ':first-line'?: CSSProperties,
+  '::first-line'?: CSSProperties,
+  '::selection'?: CSSProperties,
+
+  // To not allow a function to typecheck with CSSProperties
+  $call?: empty
+};
