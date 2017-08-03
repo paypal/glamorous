@@ -449,6 +449,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "goodmind",
+      "name": "andretshurotshka",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3275424?v=4",
+      "profile": "https://github.com/goodmind",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }

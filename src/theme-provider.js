@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
+import isFunction from 'is-function'
+import isPlainObject from 'is-plain-object'
 import brcast from 'brcast'
 import {PropTypes} from './react-compat'
 import {CHANNEL} from './constants'
+
 /**
  * This is a component which will provide a theme to the entire tree
  * via context and event listener
@@ -16,6 +19,16 @@ class ThemeProvider extends Component {
   // create theme, by merging with outer theme, if present
   getTheme(passedTheme) {
     const theme = passedTheme || this.props.theme
+    if (isFunction(theme)) {
+      const mergedTheme = theme(this.outerTheme)
+      if (!isPlainObject(mergedTheme)) {
+        throw new Error(
+          '[ThemeProvider] Please return an object from your theme function, ' +
+            'i.e. theme={() => ({})}!',
+        )
+      }
+      return mergedTheme
+    }
     return {...this.outerTheme, ...theme}
   }
 
@@ -71,7 +84,7 @@ ThemeProvider.contextTypes = {
 }
 
 ThemeProvider.propTypes = {
-  theme: PropTypes.object.isRequired,
+  theme: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
   children: PropTypes.node,
 }
 
