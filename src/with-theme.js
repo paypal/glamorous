@@ -68,7 +68,11 @@ export default function withTheme(
         // Also allows us to forward the context in the scenario where
         // a user wants to add more context.
         // eslint-disable-next-line babel/new-cap
-        return ComponentToTheme({...this.props, ...this.state}, this.context)
+        return ComponentToTheme.call(
+          this,
+          {...this.props, ...this.state},
+          this.context,
+        )
       }
     }
   }
