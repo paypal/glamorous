@@ -84,7 +84,7 @@ ThemeProvider.contextTypes = {
 }
 
 ThemeProvider.propTypes = {
-  theme: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.func]).isRequired,
+  theme: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
   children: PropTypes.node,
 }
 
