@@ -1,8 +1,8 @@
-import {spawnSync} from 'child_process'
+import spawn from 'cross-spawn'
 import rimraf from 'rimraf'
 
 test('Typescript', () => {
-  const typescriptCompilation = spawnSync('./node_modules/.bin/tsc', [
+  const typescriptCompilation = spawn.sync('./node_modules/.bin/tsc', [
     '-p',
     './tsconfig.json',
   ])
