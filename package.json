@@ -49,6 +49,7 @@
     "babel-register": "^6.24.1",
     "bundlesize": "^0.12.2",
     "common-tags": "^1.4.0",
+    "cross-spawn": "^5.1.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.3.0",
