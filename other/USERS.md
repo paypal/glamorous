@@ -15,3 +15,6 @@ we may have a website to showcase these (wanna build it!?)
   * and uses it on our internal component library to support theming for unreleased products.
 - [EDITED](https://edited.com/) uses it in most of the marketing site as well as a few open source projects like [`react-responsive-picture`](https://github.com/EDITD/react-responsive-picture)
 - [Songlink](https://songlink.io): A cross-platform music sharing service.
+- [Robin](https://robinpowered.com) users [`glamorous-native`](https://github.com/robinpowered/glamorous-native) in their
+  [mobile](https://robinpowered.com/features/mobile) and [tablet](https://robinpowered.com/features/room-display)
+  applications
