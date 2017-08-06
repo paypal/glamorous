@@ -47,6 +47,7 @@ website:
 - [`glamorous-pseudo`](https://github.com/tkh44/glamorous-pseudo): Pseudo component to extend built-in GlamorousComponents
 - [`preact-glam`](https://github.com/vesparny/preact-glam): A tiny glamorous version for preact
 - [`glamorous-jsxstyle`](https://github.com/paulmolluzzo/glamorous-jsxstyle): jsxstyle components generated with glamorous
+- [`vscode-glamorous`](https://github.com/nitin42/vscode-glamorous): code snippets for `glamorous`, `glamorous-native` and `glamorous-primitives`.
 
 ## Users
 
