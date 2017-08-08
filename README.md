@@ -50,7 +50,6 @@ website:
 - [`vscode-glamorous`](https://github.com/nitin42/vscode-glamorous): A vscode extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
 - [`glam-atom`](https://github.com/nitin42/glam-atom): Atom editor extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
 
-
 ## Users
 
 Who uses `glamorous`? See [other/USERS.md](https://github.com/paypal/glamorous/blob/master/other/USERS.md) and add yourself if you use `glamorous`!
