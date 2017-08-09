@@ -79,18 +79,29 @@ Check out the [FAQ](other/FAQ.md).
 
 ## Swag 👕
 
-A community member created this awesome t-shirt, and they're now available on
-Amazon! For every shirt purchased, GSM Studio will donate $1 to
+You can pick up [glamorous stickers][stickers] from
+[unixstickers.com](https://www.unixstickers.com):
+
+<a href="https://www.unixstickers.com/stickers/coding_stickers/glamorous-hexagon-sticker" title="link to glamorous sticker listing on unixstickers">
+  <img src="https://github.com/paypal/glamorous/raw/master/other/swag/sticker-hex.png" alt="glamorous Hex Sticker" title="glamorous Hex Sticker" width="200" />
+</a>
+
+<a href="https://www.unixstickers.com/stickers/coding_stickers/glamorous-square-sticker" title="link to glamorous sticker listing on unixstickers">
+  <img src="https://github.com/paypal/glamorous/raw/master/other/swag/sticker-square.png" alt="glamorous Square Sticker" title="glamorous Square Sticker" width="200" />
+</a>
+
+In addition, a community member created this awesome t-shirt, and they're now
+available on Amazon! For every shirt purchased, GSM Studio will donate $1 to
 [Girls Who Code][gwc] to support the next generation of programmers. The shirts
 come in various colors and sizes. In addition you can check out other clever
 t-shirts by [GSM Studio](http://amzn.to/2rxvB1T).
 
-<a href="https://www.amazon.com/dp/B0714JQW67" title="glamorous swag">
-  <img src="https://images-na.ssl-images-amazon.com/images/I/71DiEnq5YgL._UX679_.jpg" alt="Glamorous Logo T-Shirt" title="Glamorous Logo T-Shirt" width="200" />
+<a href="https://www.amazon.com/dp/B0714JQW67" title="link to glamorous shirt listing on amazon">
+  <img src="https://github.com/paypal/glamorous/raw/master/other/swag/shirt-light.png" alt="glamorous Logo T-Shirt (light)" title="glamorous Logo T-Shirt (light)" width="200" />
 </a>
 
-<a href="https://www.amazon.com/dp/B072LV68S2" title="glamorous swag">
-  <img src="https://images-na.ssl-images-amazon.com/images/I/71EL4mHhCtL._UX679_.jpg" alt="Glamorous T-Shirt" title="Glamorous T-Shirt" width="200" />
+<a href="https://www.amazon.com/dp/B072LV68S2" title="link to glamorous shirt listing on amazon">
+  <img src="https://github.com/paypal/glamorous/raw/master/other/swag/shirt-dark.png" alt="glamorous Logo T-Shirt (dark)" title="glamorous Logo T-Shirt (dark)" width="200" />
 </a>
 
 ## Contributors
@@ -147,3 +158,5 @@ MIT
 [module-formats-badge]: https://img.shields.io/badge/module%20formats-umd%2C%20cjs%2C%20es-green.svg?style=flat-square
 [intro-blogpost]: https://medium.com/p/fb3c9f4ed20e
 [help-sandbox]: http://kcd.im/glamorous-help
+[gwc]: https://girlswhocode.com/
+[stickers]: https://www.unixstickers.com/tag/glamorous
