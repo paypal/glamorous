@@ -80,7 +80,8 @@ Check out the [FAQ](other/FAQ.md).
 ## Swag 👕
 
 You can pick up [glamorous stickers][stickers] from
-[unixstickers.com](https://www.unixstickers.com):
+[unixstickers.com](https://www.unixstickers.com)! A portion of all purchases
+will be donated to [Girls Who Code][gwc]! 🎉
 
 <a href="https://www.unixstickers.com/stickers/coding_stickers/glamorous-hexagon-sticker" title="link to glamorous sticker listing on unixstickers">
   <img src="https://github.com/paypal/glamorous/raw/master/other/swag/sticker-hex.png" alt="glamorous Hex Sticker" title="glamorous Hex Sticker" width="200" />
