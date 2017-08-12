@@ -16,3 +16,11 @@ release (as you should not be relying on the generated classNames anyway).
 If you're concerned about your Jest snapshots breaking due to changes in
 the className, you should use [`jest-glamor-react`](https://github.com/kentcdodds/jest-glamor-react) which
 will not be impacted by changes to the className.
+
+### What does glamorous do that CSS-modules can't do?
+
+The biggest difference between Glamorous and CSSModules is having semantic and declarative render methods. Without Glamorous you often rely on
+class names or inline styles to style your components. Glamorous gives you syntatical sugar around creating presentation or view only components.
+The sytantical sugar helps avoid boilerplate and assists in breaking down components into smaller and more declarative components. There are a lot of
+additional features that help differentiate Glamorous to CSSModules check out the [getting started page](https://glamorous.rocks/getting-started/) or
+the [examples](https://glamorous.rocks/examples/)
