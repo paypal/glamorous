@@ -98,10 +98,18 @@ function createGlamorous(splitProps) {
       }
 
       function withComponent(newComp, options = {}) {
-        return glamorous(newComp, {
-          forwardProps: GlamorousComponent.forwardProps,
-          ...options,
-        })(GlamorousComponent.styles)
+        const {forwardProps: fp, ...componentProperties} = GlamorousComponent
+        return glamorous(
+          {
+            ...componentProperties,
+            comp: newComp,
+          },
+          {
+            // allows the forwardProps to be overridden
+            forwardProps: fp,
+            ...options,
+          },
+        )(GlamorousComponent.styles)
       }
 
       function withProps(...propsToApply) {
