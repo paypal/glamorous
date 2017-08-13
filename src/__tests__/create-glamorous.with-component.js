@@ -38,9 +38,13 @@ test('forwardProps can be overridden for the new component', () => {
 })
 
 test('forwards options', () => {
-  const Text = glamorous.span({color: 'red', fontSize: 20})
+  const propsToApply = {id: 'my-span', faded: true}
+  const Text = glamorous
+    .span({color: 'red', fontSize: 20})
+    .withProps(propsToApply)
   const View = Text.withComponent('div', {displayName: 'View'})
   expect(View.displayName).toBe('View')
+  expect(View.propsToApply).toEqual([propsToApply])
 })
 
 test('resulting component can have its styles extended further', () => {
