@@ -64,7 +64,7 @@ export default {
       exclude: 'node_modules/**',
       babelrc: false,
       presets: [['env', {modules: false}], 'stage-2', 'react'],
-      plugins: ['external-helpers'],
+      plugins: ['external-helpers', 'babel-macros'],
     }),
     minify ? uglify() : null,
   ].filter(Boolean),

@@ -1,3 +1,4 @@
+import codegen from 'codegen.macro'
 import domElements from './dom-elements'
 import withTheme from './with-theme'
 import ThemeProvider from './theme-provider'
@@ -59,3 +60,11 @@ glamorous.default = glamorous
 
 export default glamorous
 export {ThemeProvider, withTheme}
+
+codegen`
+if (process.env.FORMAT === 'es') {
+  module.exports = require('../other/get-exports-code')
+} else {
+  module.exports = ''
+}
+`

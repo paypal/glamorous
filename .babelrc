@@ -1,11 +1,15 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "node": "4.5"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "4.5"
+        }
       }
-    }],
+    ],
     "stage-2",
     "react"
-  ]
+  ],
+  "plugins": ["babel-macros"]
 }
