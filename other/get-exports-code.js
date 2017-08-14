@@ -1,5 +1,3 @@
-const appendToFile = require('fs').appendFileSync
-const resolve = require('path').resolve
 const htmlTagNames = require('html-tag-names')
 const svgTagNames = require('svg-tag-names')
 
@@ -29,10 +27,9 @@ const componentExports = htmlTagNames
     return `export var ${tagName} = glamorous['${capitalName}'];`
   }).join`\n`
 
-const introText =
-  '\n// these exports below are generated' +
-  "\n// and will be tree-shaken if you're using Webpack 2 or Rollup\n"
+const introText = `
+// these exports below are generated
+// and will be tree-shaken if you're using Webpack 2 or Rollup
+`
 
-const glamorousEsFile = resolve(__dirname, '..', 'dist', 'glamorous.es.js')
-
-appendToFile(glamorousEsFile, introText + componentExports)
+module.exports = introText + componentExports
