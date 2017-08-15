@@ -49,6 +49,8 @@ website:
 - [`glamorous-jsxstyle`](https://github.com/paulmolluzzo/glamorous-jsxstyle): jsxstyle components generated with glamorous
 - [`vscode-glamorous`](https://github.com/nitin42/vscode-glamorous): A vscode extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
 - [`glam-atom`](https://github.com/nitin42/glam-atom): Atom editor extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
+- [`css-in-js`](https://atom.io/packages/css-in-js): Atom editor extension making it easy to convert normal CSS format to CSS in JS format.
+- [Convert CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js): VSCode extension making it easy to convert normal CSS format to CSS in JS format.
 
 ## Users
 
