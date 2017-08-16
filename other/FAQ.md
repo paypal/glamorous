@@ -19,8 +19,9 @@ will not be impacted by changes to the className.
 
 ### What does glamorous do that CSS-modules can't do?
 
-The biggest difference between Glamorous and CSSModules is having semantic and declarative render methods. Without Glamorous you often rely on
-class names or inline styles to style your components. Glamorous gives you syntatical sugar around creating presentation or view only components.
-The sytantical sugar helps avoid boilerplate and assists in breaking down components into smaller and more declarative components. There are a lot of
-additional features that help differentiate Glamorous to CSSModules check out the [getting started page](https://glamorous.rocks/getting-started/) or
-the [examples](https://glamorous.rocks/examples/)
+The biggest difference between glamorous and CSSModules is having semantic and declarative render methods. Without glamorous you often rely on
+class names or inline styles to style your components. Glamorous gives you a small abstraction around creating components that carry their styles with them.
+This small abstraction helps avoid boilerplate and assists in breaking down components into smaller and more declarative components. There are a lot of
+additional features that help differentiate glamorous to CSSModules check out the [getting started page](https://glamorous.rocks/getting-started/) or
+the [examples](https://glamorous.rocks/examples/).
+And for more information, you can see [Kent](https://twitter.com/kentcdodds) (author of glamorous) [talk more about glamorous vs CSSModules](https://youtu.be/biewJRnEiwU?list=PLV5CVI1eNcJh5CTgArGVwANebCrAh2OUE).
