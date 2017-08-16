@@ -93,7 +93,8 @@
     "rules": {
       "import/prefer-default-export": 0,
       "react/no-unused-prop-types": 0,
-      "valid-jsdoc": 0
+      "valid-jsdoc": 0,
+      "func-style": 0
     }
   },
   "lint-staged": {
