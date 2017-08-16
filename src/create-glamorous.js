@@ -23,18 +23,21 @@ function createGlamorous(splitProps) {
   * @param {Object} options helpful info for the GlamorousComponents
   * @return {Function} the glamorousComponentFactory
   */
-  function glamorous(
-    comp,
-    {
+  function glamorous(comp, config = {}) {
+    const {
       rootEl,
       displayName,
       shouldClassNameUpdate,
       forwardProps = [],
       propsAreCssOverrides = comp.propsAreCssOverrides,
       withProps: basePropsToApply,
-    } = {},
-  ) {
+    } = config
+    Object.assign(glamorousComponentFactory, {withConfig})
     return glamorousComponentFactory
+
+    function withConfig(newConfig) {
+      return glamorous(comp, {...config, ...newConfig})
+    }
 
     /**
      * This returns a React Component that renders the comp (closure)
@@ -109,7 +112,7 @@ function createGlamorous(splitProps) {
             forwardProps: fp,
             ...options,
           },
-        )(GlamorousComponent.styles)
+        )()
       }
 
       function withProps(...propsToApply) {
@@ -151,10 +154,11 @@ function createGlamorous(splitProps) {
           propsToApply: basePropsToApply,
         }),
         {
-          withComponent,
           isGlamorousComponent: true,
           propsAreCssOverrides,
+          withComponent,
           withProps,
+          withConfig,
         },
       )
       return GlamorousComponent
