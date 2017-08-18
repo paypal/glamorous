@@ -1,26 +1,30 @@
 import { GlamorousComponent } from './glamorous-component'
 import { Omit } from './helpers'
 
-import { StyleArgument } from './style-arguments'
+import { StyleArgument, StaticStyleArgument } from './style-arguments'
 
 // # built-in DOM - component factories glamorous.div
 
 // * without Theme
 export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
-  <Props>(
-    ...styles: StyleArgument<Properties, Props>[]
+  (
+    ...styles: StaticStyleArgument<Properties>[]
   ): GlamorousComponent<
-    ElementProps & Props,
-    Props
+    ElementProps,
+    object
   >;
-}
 
-// * with Theme
-export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
   <Props extends { theme: any }>(
     ...styles: StyleArgument<Properties, Props>[]
   ): GlamorousComponent<
     ElementProps & Omit<Props, 'theme'>,
+    Props
+  >;
+
+  <Props>(
+    ...styles: StyleArgument<Properties, Props>[]
+  ): GlamorousComponent<
+    ElementProps & Props,
     Props
   >;
 }
@@ -31,6 +35,20 @@ export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
 
 // * without Theme
 export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps, DefaultProps> {
+  (
+    ...styles: StaticStyleArgument<Properties>[]
+  ): GlamorousComponent<
+    ElementProps & ExternalProps & Partial<DefaultProps>,
+    ExternalProps
+  >;
+
+  <Props extends { theme?: any }>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ElementProps & ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'> & Props,
+    ExternalProps
+  >;
+
   <Props>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
@@ -39,35 +57,28 @@ export interface KeyGlamorousComponentFactory<ElementProps, Properties, External
   >;
 }
 
-
-// * with Theme
-export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps, DefaultProps> {
-  <Props extends { theme?: any }>(
-    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
-  ): GlamorousComponent<
-    ElementProps & ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'> & Props,
-    ExternalProps
-  >;
-}
-
 // ## with propsAreCssOverides
 
 // * without Theme
 export interface KeyGlamorousComponentFactoryCssOverides<ElementProps, Properties, ExternalProps, DefaultProps> {
-  <Props>(
-    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  (
+    ...styles: StaticStyleArgument<Properties>[]
   ): GlamorousComponent<
-    ElementProps & ExternalProps & Partial<DefaultProps> & Props & Properties,
+    ElementProps & ExternalProps & Partial<DefaultProps> & Properties,
     ExternalProps
   >;
-}
 
-// * with Theme
-export interface KeyGlamorousComponentFactoryCssOverides<ElementProps, Properties, ExternalProps, DefaultProps> {
   <Props extends { theme?: any }>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
     ElementProps & ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'> & Properties,
+    ExternalProps
+  >;
+
+  <Props>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ElementProps & ExternalProps & Partial<DefaultProps> & Props & Properties,
     ExternalProps
   >;
 }
@@ -78,6 +89,20 @@ export interface KeyGlamorousComponentFactoryCssOverides<ElementProps, Propertie
 
 // * without Theme
 export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultProps> {
+  (
+    ...styles: StaticStyleArgument<Properties>[]
+  ): GlamorousComponent<
+    ExternalProps & Partial<DefaultProps>,
+    object
+  >;
+
+  <Props extends { theme: any }>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'>,
+    Props
+  >;
+ 
   <Props>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
@@ -86,34 +111,28 @@ export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultPro
   >;
 }
 
-// * with Theme
-export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultProps> {
-  <Props extends { theme: any }>(
-    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
-  ): GlamorousComponent<
-    ExternalProps & Partial<DefaultProps> & Omit<Props, 'theme'>,
-    Props
-  >;
-}
-
 // ## with propsAreCssOverides
 
 // * without Theme
 export interface GlamorousComponentFactoryCssOverides<ExternalProps, Properties, DefaultProps> {
-  <Props>(
-    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  (
+    ...styles: StaticStyleArgument<Properties>[]
   ): GlamorousComponent<
-    ExternalProps & Partial<DefaultProps> & Properties & Props,
-    Props
+    ExternalProps & Partial<DefaultProps> & Properties,
+    object
   >
-}
 
-// * with Theme
-export interface GlamorousComponentFactoryCssOverides<ExternalProps, Properties, DefaultProps> {
   <Props extends { theme: any }>(
     ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
   ): GlamorousComponent<
     ExternalProps & Partial<DefaultProps> & Properties & Omit<Props, 'theme'>,
+    Props
+  >
+
+  <Props>(
+    ...styles: StyleArgument<Properties, Props & ExternalProps & DefaultProps>[]
+  ): GlamorousComponent<
+    ExternalProps & Partial<DefaultProps> & Properties & Props,
     Props
   >
 }
