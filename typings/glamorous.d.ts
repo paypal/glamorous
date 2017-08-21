@@ -4,6 +4,10 @@
 
 import * as React from 'react'
 import {
+  HTMLComponent,
+  SVGComponent,
+} from './built-in-glamorous-components'
+import {
   HTMLComponentFactory,
   HTMLKey,
   SVGComponentFactory,
@@ -64,6 +68,9 @@ export {
   GlamorousComponentFactory,
   GlamorousComponentFactoryCssOverides,
 
+  HTMLComponent,
+  SVGComponent,
+
   HTMLComponentFactory,
   HTMLKey,
   SVGComponentFactory,
@@ -99,7 +106,7 @@ type OmitInternals<
 
 type GlamorousProps = { className?: string, theme?: object }
 
-export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory {
+export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory, HTMLComponent, SVGComponent {
   // # Glamarous Component factories
   
   // Two overloads are needed per shape due to a union return of CSSProperties | SVGProperties
@@ -152,9 +159,6 @@ export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFa
   ): KeyGlamorousComponentFactoryCssOverides<
     SVGComponentFactory[SVGKey], SVGProperties, ExternalProps, DefaultProps
   >
-
-  Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps>
-  Svg: React.StatelessComponent<SVGProperties & ExtraGlamorousProps>
 }
 
 interface ThemeProps {
