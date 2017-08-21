@@ -1,5 +1,5 @@
 import { SingleOrArray } from './helpers'
-import { CSSProperties, CSSPropertiesCompleteSingle } from './css-properties.d'
+import { CSSProperties, CSSPropertiesCompleteSingle } from './css-properties'
 
 // Taken from React.SVGAttributes with the following added to work around issue where Partials
 // accept arbitrary functions
