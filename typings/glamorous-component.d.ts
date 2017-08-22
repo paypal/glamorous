@@ -2,7 +2,7 @@ import { CSSProperties } from './css-properties'
 
 import { Component } from './glamorous'
 
-import { Omit } from './helpers.d'
+import { Omit } from './helpers'
 
 /**
 * `glamorousComponentFactory` returns a ComponentClass
