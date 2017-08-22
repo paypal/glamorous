@@ -51,6 +51,7 @@ website:
 - [`glam-atom`](https://github.com/nitin42/glam-atom): Atom editor extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
 - [`css-in-js`](https://atom.io/packages/css-in-js): Atom editor extension making it easy to convert normal CSS format to CSS in JS format.
 - [Convert CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js): VSCode extension making it easy to convert normal CSS format to CSS in JS format.
+- [`glamorous-redocx`](https://github.com/nitin42/glamorous-redocx): style [redocx](https://github.com/nitin42/redocx) components with glamorous 💄
 
 ## Users
 
