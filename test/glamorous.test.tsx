@@ -5,7 +5,7 @@ import glamorous, {
 
 // Needed if generating definition files
 // https://github.com/Microsoft/TypeScript/issues/5938
-import { ExtraGlamorousProps } from "../";
+import { ExtraGlamorousProps, GlamorousComponentProps } from "../";
 
 import { WithComponent, WithProps, CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
 
@@ -315,6 +315,21 @@ export const ThemeProviderAndThemedComponent = () => (
     <ThemedComponent />
   </ThemeProvider>
 );
+
+// Glamorous component using general prop
+
+const props: GlamorousComponentProps<React.HTMLProps<HTMLButtonElement>> = {
+  name: 'button',
+  onClick: () => {}
+}
+
+const GlamorousButton = glamorous.button({
+  fontSize: '10px'
+})
+
+const UseGlamorousButtonWithGlamorousComponentProps = (
+  <GlamorousButton {...props} />
+)
 
 // Extended component with theme prop
 

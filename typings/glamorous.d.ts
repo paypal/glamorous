@@ -15,6 +15,7 @@ import {
 } from './built-in-component-factories'
 import {
   GlamorousComponent,
+  GlamorousComponentProps,
   ExtraGlamorousProps,
   WithComponent,
   WithProps,
@@ -54,6 +55,7 @@ export {
   SVGPropertiesCompleteSingle, SVGPropertiesComplete, SVGPropertiesLossy,
 
   GlamorousComponent,
+  GlamorousComponentProps,
   ExtraGlamorousProps,
   WithComponent,
   WithProps,

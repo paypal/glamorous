@@ -5,6 +5,7 @@ import {
   SVGPropertiesCompleteSingle, SVGPropertiesComplete, SVGPropertiesLossy,
 
   GlamorousComponent,
+  GlamorousComponentProps,
   ExtraGlamorousProps,
   WithComponent,
   WithProps,

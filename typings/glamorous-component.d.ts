@@ -40,3 +40,14 @@ export type GlamorousComponent<ExternalProps, Props> =
   & React.ComponentClass<ExtraGlamorousProps & ExternalProps>
   & WithComponent<ExternalProps, Props>
   & WithProps<ExternalProps, Props>
+
+export type GlamorousComponentProps<ExternalProps> =
+  & JSX.IntrinsicAttributes
+  & JSX.IntrinsicClassAttributes<
+    React.Component<
+      ExtraGlamorousProps & ExternalProps,
+      React.ComponentState
+    >
+  >
+  & ExternalProps
+  & { children?: React.ReactNode }
