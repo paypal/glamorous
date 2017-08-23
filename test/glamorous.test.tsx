@@ -5,7 +5,7 @@ import glamorous, {
 
 // Needed if generating definition files
 // https://github.com/Microsoft/TypeScript/issues/5938
-import { ExtraGlamorousProps, GlamorousComponentProps } from "../";
+import { GlamorousComponent, GlamorousComponentProps } from "../";
 
 import { WithComponent, WithProps, CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
 

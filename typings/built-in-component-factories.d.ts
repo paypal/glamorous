@@ -4,154 +4,150 @@ import {
   BuiltInGlamorousComponentFactory,
 } from './component-factory'
 
-export type HTMLGlamorousComponentFactory<
-  HTMLElement,
-  Properties
-> = BuiltInGlamorousComponentFactory<React.HTMLProps<HTMLElement>, Properties>
+export type HTMLGlamorousComponentFactory<HTMLElement> =
+  BuiltInGlamorousComponentFactory<React.HTMLProps<HTMLElement>, CSSProperties>
 
-export type SVGGlamorousComponentFactory<
-  SVGElement,
-  Attributes
-> = BuiltInGlamorousComponentFactory<React.SVGAttributes<SVGElement>, Attributes>
+export type SVGGlamorousComponentFactory<SVGElement> =
+  BuiltInGlamorousComponentFactory<React.SVGAttributes<SVGElement>, SVGProperties>
 
 export interface HTMLComponentFactory {
-  a: HTMLGlamorousComponentFactory<HTMLAnchorElement, CSSProperties>
-  abbr: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  address: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  area: HTMLGlamorousComponentFactory<HTMLAreaElement, CSSProperties>
-  article: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  aside: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  audio: HTMLGlamorousComponentFactory<HTMLAudioElement, CSSProperties>
-  b: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  base: HTMLGlamorousComponentFactory<HTMLBaseElement, CSSProperties>
-  bdi: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  bdo: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  big: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  blockquote: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  body: HTMLGlamorousComponentFactory<HTMLBodyElement, CSSProperties>
-  br: HTMLGlamorousComponentFactory<HTMLBRElement, CSSProperties>
-  button: HTMLGlamorousComponentFactory<HTMLButtonElement, CSSProperties>
-  canvas: HTMLGlamorousComponentFactory<HTMLCanvasElement, CSSProperties>
-  caption: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  cite: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  code: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  col: HTMLGlamorousComponentFactory<HTMLTableColElement, CSSProperties>
-  colgroup: HTMLGlamorousComponentFactory<HTMLTableColElement, CSSProperties>
-  data: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  datalist: HTMLGlamorousComponentFactory<HTMLDataListElement, CSSProperties>
-  dd: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  del: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  details: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  dfn: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  dialog: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  div: HTMLGlamorousComponentFactory<HTMLDivElement, CSSProperties>
-  dl: HTMLGlamorousComponentFactory<HTMLDListElement, CSSProperties>
-  dt: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  em: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  embed: HTMLGlamorousComponentFactory<HTMLEmbedElement, CSSProperties>
-  fieldset: HTMLGlamorousComponentFactory<HTMLFieldSetElement, CSSProperties>
-  figcaption: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  figure: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  footer: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  form: HTMLGlamorousComponentFactory<HTMLFormElement, CSSProperties>
-  h1: HTMLGlamorousComponentFactory<HTMLHeadingElement, CSSProperties>
-  h2: HTMLGlamorousComponentFactory<HTMLHeadingElement, CSSProperties>
-  h3: HTMLGlamorousComponentFactory<HTMLHeadingElement, CSSProperties>
-  h4: HTMLGlamorousComponentFactory<HTMLHeadingElement, CSSProperties>
-  h5: HTMLGlamorousComponentFactory<HTMLHeadingElement, CSSProperties>
-  h6: HTMLGlamorousComponentFactory<HTMLHeadingElement, CSSProperties>
-  head: HTMLGlamorousComponentFactory<HTMLHeadElement, CSSProperties>
-  header: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  hgroup: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  hr: HTMLGlamorousComponentFactory<HTMLHRElement, CSSProperties>
-  html: HTMLGlamorousComponentFactory<HTMLHtmlElement, CSSProperties>
-  i: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  iframe: HTMLGlamorousComponentFactory<HTMLIFrameElement, CSSProperties>
-  img: HTMLGlamorousComponentFactory<HTMLImageElement, CSSProperties>
-  input: HTMLGlamorousComponentFactory<HTMLInputElement, CSSProperties>
-  ins: HTMLGlamorousComponentFactory<HTMLModElement, CSSProperties>
-  kbd: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  keygen: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  label: HTMLGlamorousComponentFactory<HTMLLabelElement, CSSProperties>
-  legend: HTMLGlamorousComponentFactory<HTMLLegendElement, CSSProperties>
-  li: HTMLGlamorousComponentFactory<HTMLLIElement, CSSProperties>
-  link: HTMLGlamorousComponentFactory<HTMLLinkElement, CSSProperties>
-  main: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  map: HTMLGlamorousComponentFactory<HTMLMapElement, CSSProperties>
-  mark: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  menu: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  menuitem: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  meta: HTMLGlamorousComponentFactory<HTMLMetaElement, CSSProperties>
-  meter: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  nav: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  noscript: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  object: HTMLGlamorousComponentFactory<HTMLObjectElement, CSSProperties>
-  ol: HTMLGlamorousComponentFactory<HTMLOListElement, CSSProperties>
-  optgroup: HTMLGlamorousComponentFactory<HTMLOptGroupElement, CSSProperties>
-  option: HTMLGlamorousComponentFactory<HTMLOptionElement, CSSProperties>
-  output: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  p: HTMLGlamorousComponentFactory<HTMLParagraphElement, CSSProperties>
-  param: HTMLGlamorousComponentFactory<HTMLParamElement, CSSProperties>
-  picture: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  pre: HTMLGlamorousComponentFactory<HTMLPreElement, CSSProperties>
-  progress: HTMLGlamorousComponentFactory<HTMLProgressElement, CSSProperties>
-  q: HTMLGlamorousComponentFactory<HTMLQuoteElement, CSSProperties>
-  rp: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  rt: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  ruby: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  s: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  samp: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  script: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  section: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  select: HTMLGlamorousComponentFactory<HTMLSelectElement, CSSProperties>
-  small: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  source: HTMLGlamorousComponentFactory<HTMLSourceElement, CSSProperties>
-  span: HTMLGlamorousComponentFactory<HTMLSpanElement, CSSProperties>
-  strong: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  style: HTMLGlamorousComponentFactory<HTMLStyleElement, CSSProperties>
-  sub: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  summary: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  sup: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  table: HTMLGlamorousComponentFactory<HTMLTableElement, CSSProperties>
-  tbody: HTMLGlamorousComponentFactory<HTMLTableSectionElement, CSSProperties>
-  td: HTMLGlamorousComponentFactory<HTMLTableDataCellElement, CSSProperties>
-  textarea: HTMLGlamorousComponentFactory<HTMLTextAreaElement, CSSProperties>
-  tfoot: HTMLGlamorousComponentFactory<HTMLTableSectionElement, CSSProperties>
-  th: HTMLGlamorousComponentFactory<HTMLTableHeaderCellElement, CSSProperties>
-  thead: HTMLGlamorousComponentFactory<HTMLTableSectionElement, CSSProperties>
-  time: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  title: HTMLGlamorousComponentFactory<HTMLTitleElement, CSSProperties>
-  tr: HTMLGlamorousComponentFactory<HTMLTableRowElement, CSSProperties>
-  track: HTMLGlamorousComponentFactory<HTMLTrackElement, CSSProperties>
-  u: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  ul: HTMLGlamorousComponentFactory<HTMLUListElement, CSSProperties>
-  "var": HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
-  video: HTMLGlamorousComponentFactory<HTMLVideoElement, CSSProperties>
-  wbr: HTMLGlamorousComponentFactory<HTMLElement, CSSProperties>
+  a: HTMLGlamorousComponentFactory<HTMLAnchorElement>
+  abbr: HTMLGlamorousComponentFactory<HTMLElement>
+  address: HTMLGlamorousComponentFactory<HTMLElement>
+  area: HTMLGlamorousComponentFactory<HTMLAreaElement>
+  article: HTMLGlamorousComponentFactory<HTMLElement>
+  aside: HTMLGlamorousComponentFactory<HTMLElement>
+  audio: HTMLGlamorousComponentFactory<HTMLAudioElement>
+  b: HTMLGlamorousComponentFactory<HTMLElement>
+  base: HTMLGlamorousComponentFactory<HTMLBaseElement>
+  bdi: HTMLGlamorousComponentFactory<HTMLElement>
+  bdo: HTMLGlamorousComponentFactory<HTMLElement>
+  big: HTMLGlamorousComponentFactory<HTMLElement>
+  blockquote: HTMLGlamorousComponentFactory<HTMLElement>
+  body: HTMLGlamorousComponentFactory<HTMLBodyElement>
+  br: HTMLGlamorousComponentFactory<HTMLBRElement>
+  button: HTMLGlamorousComponentFactory<HTMLButtonElement>
+  canvas: HTMLGlamorousComponentFactory<HTMLCanvasElement>
+  caption: HTMLGlamorousComponentFactory<HTMLElement>
+  cite: HTMLGlamorousComponentFactory<HTMLElement>
+  code: HTMLGlamorousComponentFactory<HTMLElement>
+  col: HTMLGlamorousComponentFactory<HTMLTableColElement>
+  colgroup: HTMLGlamorousComponentFactory<HTMLTableColElement>
+  data: HTMLGlamorousComponentFactory<HTMLElement>
+  datalist: HTMLGlamorousComponentFactory<HTMLDataListElement>
+  dd: HTMLGlamorousComponentFactory<HTMLElement>
+  del: HTMLGlamorousComponentFactory<HTMLElement>
+  details: HTMLGlamorousComponentFactory<HTMLElement>
+  dfn: HTMLGlamorousComponentFactory<HTMLElement>
+  dialog: HTMLGlamorousComponentFactory<HTMLElement>
+  div: HTMLGlamorousComponentFactory<HTMLDivElement>
+  dl: HTMLGlamorousComponentFactory<HTMLDListElement>
+  dt: HTMLGlamorousComponentFactory<HTMLElement>
+  em: HTMLGlamorousComponentFactory<HTMLElement>
+  embed: HTMLGlamorousComponentFactory<HTMLEmbedElement>
+  fieldset: HTMLGlamorousComponentFactory<HTMLFieldSetElement>
+  figcaption: HTMLGlamorousComponentFactory<HTMLElement>
+  figure: HTMLGlamorousComponentFactory<HTMLElement>
+  footer: HTMLGlamorousComponentFactory<HTMLElement>
+  form: HTMLGlamorousComponentFactory<HTMLFormElement>
+  h1: HTMLGlamorousComponentFactory<HTMLHeadingElement>
+  h2: HTMLGlamorousComponentFactory<HTMLHeadingElement>
+  h3: HTMLGlamorousComponentFactory<HTMLHeadingElement>
+  h4: HTMLGlamorousComponentFactory<HTMLHeadingElement>
+  h5: HTMLGlamorousComponentFactory<HTMLHeadingElement>
+  h6: HTMLGlamorousComponentFactory<HTMLHeadingElement>
+  head: HTMLGlamorousComponentFactory<HTMLHeadElement>
+  header: HTMLGlamorousComponentFactory<HTMLElement>
+  hgroup: HTMLGlamorousComponentFactory<HTMLElement>
+  hr: HTMLGlamorousComponentFactory<HTMLHRElement>
+  html: HTMLGlamorousComponentFactory<HTMLHtmlElement>
+  i: HTMLGlamorousComponentFactory<HTMLElement>
+  iframe: HTMLGlamorousComponentFactory<HTMLIFrameElement>
+  img: HTMLGlamorousComponentFactory<HTMLImageElement>
+  input: HTMLGlamorousComponentFactory<HTMLInputElement>
+  ins: HTMLGlamorousComponentFactory<HTMLModElement>
+  kbd: HTMLGlamorousComponentFactory<HTMLElement>
+  keygen: HTMLGlamorousComponentFactory<HTMLElement>
+  label: HTMLGlamorousComponentFactory<HTMLLabelElement>
+  legend: HTMLGlamorousComponentFactory<HTMLLegendElement>
+  li: HTMLGlamorousComponentFactory<HTMLLIElement>
+  link: HTMLGlamorousComponentFactory<HTMLLinkElement>
+  main: HTMLGlamorousComponentFactory<HTMLElement>
+  map: HTMLGlamorousComponentFactory<HTMLMapElement>
+  mark: HTMLGlamorousComponentFactory<HTMLElement>
+  menu: HTMLGlamorousComponentFactory<HTMLElement>
+  menuitem: HTMLGlamorousComponentFactory<HTMLElement>
+  meta: HTMLGlamorousComponentFactory<HTMLMetaElement>
+  meter: HTMLGlamorousComponentFactory<HTMLElement>
+  nav: HTMLGlamorousComponentFactory<HTMLElement>
+  noscript: HTMLGlamorousComponentFactory<HTMLElement>
+  object: HTMLGlamorousComponentFactory<HTMLObjectElement>
+  ol: HTMLGlamorousComponentFactory<HTMLOListElement>
+  optgroup: HTMLGlamorousComponentFactory<HTMLOptGroupElement>
+  option: HTMLGlamorousComponentFactory<HTMLOptionElement>
+  output: HTMLGlamorousComponentFactory<HTMLElement>
+  p: HTMLGlamorousComponentFactory<HTMLParagraphElement>
+  param: HTMLGlamorousComponentFactory<HTMLParamElement>
+  picture: HTMLGlamorousComponentFactory<HTMLElement>
+  pre: HTMLGlamorousComponentFactory<HTMLPreElement>
+  progress: HTMLGlamorousComponentFactory<HTMLProgressElement>
+  q: HTMLGlamorousComponentFactory<HTMLQuoteElement>
+  rp: HTMLGlamorousComponentFactory<HTMLElement>
+  rt: HTMLGlamorousComponentFactory<HTMLElement>
+  ruby: HTMLGlamorousComponentFactory<HTMLElement>
+  s: HTMLGlamorousComponentFactory<HTMLElement>
+  samp: HTMLGlamorousComponentFactory<HTMLElement>
+  script: HTMLGlamorousComponentFactory<HTMLElement>
+  section: HTMLGlamorousComponentFactory<HTMLElement>
+  select: HTMLGlamorousComponentFactory<HTMLSelectElement>
+  small: HTMLGlamorousComponentFactory<HTMLElement>
+  source: HTMLGlamorousComponentFactory<HTMLSourceElement>
+  span: HTMLGlamorousComponentFactory<HTMLSpanElement>
+  strong: HTMLGlamorousComponentFactory<HTMLElement>
+  style: HTMLGlamorousComponentFactory<HTMLStyleElement>
+  sub: HTMLGlamorousComponentFactory<HTMLElement>
+  summary: HTMLGlamorousComponentFactory<HTMLElement>
+  sup: HTMLGlamorousComponentFactory<HTMLElement>
+  table: HTMLGlamorousComponentFactory<HTMLTableElement>
+  tbody: HTMLGlamorousComponentFactory<HTMLTableSectionElement>
+  td: HTMLGlamorousComponentFactory<HTMLTableDataCellElement>
+  textarea: HTMLGlamorousComponentFactory<HTMLTextAreaElement>
+  tfoot: HTMLGlamorousComponentFactory<HTMLTableSectionElement>
+  th: HTMLGlamorousComponentFactory<HTMLTableHeaderCellElement>
+  thead: HTMLGlamorousComponentFactory<HTMLTableSectionElement>
+  time: HTMLGlamorousComponentFactory<HTMLElement>
+  title: HTMLGlamorousComponentFactory<HTMLTitleElement>
+  tr: HTMLGlamorousComponentFactory<HTMLTableRowElement>
+  track: HTMLGlamorousComponentFactory<HTMLTrackElement>
+  u: HTMLGlamorousComponentFactory<HTMLElement>
+  ul: HTMLGlamorousComponentFactory<HTMLUListElement>
+  "var": HTMLGlamorousComponentFactory<HTMLElement>
+  video: HTMLGlamorousComponentFactory<HTMLVideoElement>
+  wbr: HTMLGlamorousComponentFactory<HTMLElement>
 }
 
 export type HTMLKey = keyof HTMLComponentFactory
 
 export interface SVGComponentFactory {
-  circle: SVGGlamorousComponentFactory<SVGCircleElement, SVGProperties>
-  clipPath: SVGGlamorousComponentFactory<SVGClipPathElement, SVGProperties>
-  defs: SVGGlamorousComponentFactory<SVGDefsElement, SVGProperties>
-  ellipse: SVGGlamorousComponentFactory<SVGEllipseElement, SVGProperties>
-  g: SVGGlamorousComponentFactory<SVGGElement, SVGProperties>
-  image: SVGGlamorousComponentFactory<SVGImageElement, SVGProperties>
-  line: SVGGlamorousComponentFactory<SVGLineElement, SVGProperties>
-  linearGradient: SVGGlamorousComponentFactory<SVGLinearGradientElement, SVGProperties>
-  mask: SVGGlamorousComponentFactory<SVGMaskElement, SVGProperties>
-  path: SVGGlamorousComponentFactory<SVGPathElement, SVGProperties>
-  pattern: SVGGlamorousComponentFactory<SVGPatternElement, SVGProperties>
-  polygon: SVGGlamorousComponentFactory<SVGPolygonElement, SVGProperties>
-  polyline: SVGGlamorousComponentFactory<SVGPolylineElement, SVGProperties>
-  radialGradient: SVGGlamorousComponentFactory<SVGRadialGradientElement, SVGProperties>
-  rect: SVGGlamorousComponentFactory<SVGRectElement, SVGProperties>
-  stop: SVGGlamorousComponentFactory<SVGStopElement, SVGProperties>
-  svg: SVGGlamorousComponentFactory<SVGSVGElement, SVGProperties>
-  text: SVGGlamorousComponentFactory<SVGTextElement, SVGProperties>
-  tspan: SVGGlamorousComponentFactory<SVGTSpanElement, SVGProperties>
+  circle: SVGGlamorousComponentFactory<SVGCircleElement>
+  clipPath: SVGGlamorousComponentFactory<SVGClipPathElement>
+  defs: SVGGlamorousComponentFactory<SVGDefsElement>
+  ellipse: SVGGlamorousComponentFactory<SVGEllipseElement>
+  g: SVGGlamorousComponentFactory<SVGGElement>
+  image: SVGGlamorousComponentFactory<SVGImageElement>
+  line: SVGGlamorousComponentFactory<SVGLineElement>
+  linearGradient: SVGGlamorousComponentFactory<SVGLinearGradientElement>
+  mask: SVGGlamorousComponentFactory<SVGMaskElement>
+  path: SVGGlamorousComponentFactory<SVGPathElement>
+  pattern: SVGGlamorousComponentFactory<SVGPatternElement>
+  polygon: SVGGlamorousComponentFactory<SVGPolygonElement>
+  polyline: SVGGlamorousComponentFactory<SVGPolylineElement>
+  radialGradient: SVGGlamorousComponentFactory<SVGRadialGradientElement>
+  rect: SVGGlamorousComponentFactory<SVGRectElement>
+  stop: SVGGlamorousComponentFactory<SVGStopElement>
+  svg: SVGGlamorousComponentFactory<SVGSVGElement>
+  text: SVGGlamorousComponentFactory<SVGTextElement>
+  tspan: SVGGlamorousComponentFactory<SVGTSpanElement>
 }
 
 export type SVGKey = keyof SVGComponentFactory

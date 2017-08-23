@@ -36,10 +36,15 @@ export interface WithProps<ExternalProps, Props> {
   >
 }
 
-export type GlamorousComponent<ExternalProps, Props> =
-  & React.ComponentClass<ExtraGlamorousProps & ExternalProps>
-  & WithComponent<ExternalProps, Props>
-  & WithProps<ExternalProps, Props>
+export interface GlamorousComponentFunctions<ExternalProps, Props> extends 
+  WithComponent<ExternalProps, Props>,
+  WithProps<ExternalProps, Props>
+    {}
+
+export interface GlamorousComponent<ExternalProps, Props> extends
+  React.ComponentClass<ExternalProps & ExtraGlamorousProps>,
+  GlamorousComponentFunctions<ExternalProps, Props>
+    {}
 
 export type GlamorousComponentProps<ExternalProps> =
   & JSX.IntrinsicAttributes
@@ -51,3 +56,4 @@ export type GlamorousComponentProps<ExternalProps> =
   >
   & ExternalProps
   & { children?: React.ReactNode }
+
