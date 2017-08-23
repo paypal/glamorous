@@ -1559,7 +1559,8 @@ export interface CSSPropertiesLossy {
     | CSSPropertiesLossy
 }
 
-type CSSProperties =
-  & CSSPropertiesComplete
-  & CSSPropertiesPseudo
-  & CSSPropertiesLossy
+export interface CSSProperties extends
+  CSSPropertiesComplete,
+  CSSPropertiesPseudo,
+  CSSPropertiesLossy
+    {}

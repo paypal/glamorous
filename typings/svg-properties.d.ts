@@ -289,6 +289,7 @@ export interface SVGPropertiesLossy {
     | SVGPropertiesLossy
 }
 
-type SVGProperties =
-  & SVGPropertiesComplete
-  & SVGPropertiesLossy
+export interface SVGProperties extends
+  SVGPropertiesComplete,
+  SVGPropertiesLossy
+    {}

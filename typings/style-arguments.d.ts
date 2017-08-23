@@ -1,32 +1,32 @@
 export interface StyleFunction<Properties, Props> {
   (props: Props):
-    | Partial<Properties>
+    | Properties
     | string
     | Array<
-      | Partial<Properties>
+      | Properties
       | string
       | StyleFunction<Properties, Props>
     >
 }
 
 export type StyleArray<Properties, Props> = Array<
-  | Partial<Properties>
+  | Properties
   | string
   | StyleFunction<Properties, Props>
 >
 
 export type StaticStyleArray<Properties> = Array<
-| Partial<Properties>
-| string
+  | Properties
+  | string
 >
 
 export type StyleArgument<Properties, Props> =
-  | Partial<Properties>
+  | Properties
   | string
   | StyleFunction<Properties, Props>
   | StyleArray<Properties, Props>
 
 export type StaticStyleArgument<Properties> =
-  | Partial<Properties>
+  | Properties
   | string
   | StaticStyleArray<Properties>
