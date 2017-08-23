@@ -42,25 +42,25 @@ test/should-fail.test.tsx(119,3): error TS2345: Argument of type 'StatelessCompo
 test/should-fail.test.tsx(134,3): error TS2345: Argument of type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { theme: any; } & ExampleComponentProps & object>'.
   Type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { theme: any; } & ExampleComponentProps & ...'.
     Property 'push' is missing in type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }'.
-test/should-fail.test.tsx(135,20): error TS2551: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'. Did you mean 'visible'?
+test/should-fail.test.tsx(135,20): error TS2339: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'.
 test/should-fail.test.tsx(140,3): error TS2345: Argument of type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { visible: boolean; } & object>'.
   Type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { visible: boolean; } & object>)[]'.
     Property 'push' is missing in type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }'.
-test/should-fail.test.tsx(150,29): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & ExampleComponentPr...'.
-  Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps & object>'.
+test/should-fail.test.tsx(150,29): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExampleComponentProps & object & ExtraGl...'.
+  Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps>'.
     Types of property 'visible' are incompatible.
       Type '\\"string\\"' is not assignable to type 'boolean'.
-test/should-fail.test.tsx(151,5): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & ExampleComponentPr...'.
-  Type '{}' is not assignable to type 'Readonly<ExtraGlamorousProps & ExampleComponentProps & object>'.
+test/should-fail.test.tsx(151,5): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExampleComponentProps & object & ExtraGl...'.
+  Type '{}' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps>'.
     Property 'visible' is missing in type '{}'.
-test/should-fail.test.tsx(152,32): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
-    Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
+test/should-fail.test.tsx(152,32): error TS2322: Type '{ visible: \\"string\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{ visible: \\"string\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
+    Type '{ visible: \\"string\\"; }' is not assignable to type 'Readonly<BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSProperties> & { visible...'.
       Types of property 'visible' are incompatible.
         Type '\\"string\\"' is not assignable to type 'boolean'.
-test/should-fail.test.tsx(153,5): error TS2322: Type '{}' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
-    Type '{}' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
+test/should-fail.test.tsx(153,5): error TS2322: Type '{}' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
+    Type '{}' is not assignable to type 'Readonly<BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSProperties> & { visible...'.
       Property 'visible' is missing in type '{}'.
 test/should-fail.test.tsx(157,21): error TS2345: Argument of type '{ allowReorder: false; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, object & {}>'.
   Type '{ allowReorder: false; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, object & {}>)[]'.
@@ -86,21 +86,21 @@ test/should-fail.test.tsx(224,3): error TS2345: Argument of type '(props: { visi
 test/should-fail.test.tsx(229,1): error TS2554: Expected 1 arguments, but got 0.
 test/should-fail.test.tsx(230,30): error TS2345: Argument of type '\\"\\"' is not assignable to parameter of type 'object'.
 test/should-fail.test.tsx(231,30): error TS2345: Argument of type 'false' is not assignable to parameter of type 'object'.
-test/should-fail.test.tsx(257,19): error TS2322: Type '{ d: \\"\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
-test/should-fail.test.tsx(258,19): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
-    Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
+test/should-fail.test.tsx(257,19): error TS2322: Type '{ d: \\"\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
+test/should-fail.test.tsx(258,19): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
+    Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSProperties> & Partial<{...'.
       Types of property 'primaryColor' are incompatible.
         Type '1' is not assignable to type 'string | undefined'.
-test/should-fail.test.tsx(259,31): error TS2559: Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & Partial<{ primaryC...'.
-test/should-fail.test.tsx(260,31): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & Partial<{ primaryC...'.
-  Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<ExtraGlamorousProps & Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never>>'.
+test/should-fail.test.tsx(259,31): error TS2559: Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<Partial<{ primaryColor: string; }> & Pic...'.
+test/should-fail.test.tsx(260,31): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<Partial<{ primaryColor: string; }> & Pic...'.
+  Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps>'.
     Types of property 'primaryColor' are incompatible.
       Type '1' is not assignable to type 'string | undefined'.
-test/should-fail.test.tsx(261,31): error TS2559: Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & Partial<{...'.
-test/should-fail.test.tsx(262,31): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & Partial<{...'.
-  Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<ExtraGlamorousProps & object & Partial<{ primaryColor: string; }>>'.
+test/should-fail.test.tsx(261,31): error TS2559: Type '{ d: \\"\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & Partial<{ primaryColor: string;...'.
+test/should-fail.test.tsx(262,31): error TS2322: Type '{ primaryColor: 1; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & Partial<{ primaryColor: string;...'.
+  Type '{ primaryColor: 1; }' is not assignable to type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps>'.
     Types of property 'primaryColor' are incompatible.
       Type '1' is not assignable to type 'string | undefined'.
 test/should-fail.test.tsx(267,15): error TS2345: Argument of type '{ textAlign: \\"center\\"; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}>'.
@@ -109,20 +109,20 @@ test/should-fail.test.tsx(267,15): error TS2345: Argument of type '{ textAlign: 
 test/should-fail.test.tsx(272,18): error TS2345: Argument of type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
   Type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, {}>)[]'.
     Property 'length' is missing in type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }'.
-test/should-fail.test.tsx(289,35): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object & CSSProper...'.
-  Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & object & CSSProperties>'.
+test/should-fail.test.tsx(289,35): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & CSSProperties & ExtraGlamorousP...'.
+  Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<object & CSSProperties & ExtraGlamorousProps>'.
     Types of property 'display' are incompatible.
       Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"table\\" | \\"ruby\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"block\\" | \\"inline\\" | \\"run-in\\" | \\"fl...'.
-test/should-fail.test.tsx(290,38): error TS2559: Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object, ComponentS...'.
-test/should-fail.test.tsx(291,42): error TS2559: Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExtraGlamorousProps & object, ComponentS...'.
-test/should-fail.test.tsx(293,29): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
-    Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<ExtraGlamorousProps & BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSP...'.
+test/should-fail.test.tsx(290,38): error TS2559: Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
+test/should-fail.test.tsx(291,42): error TS2559: Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
+test/should-fail.test.tsx(293,29): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
+    Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<BuiltInGlamorousComponentFactory<HTMLProps<HTMLVideoElement>, CSSProperties> & object & ...'.
       Types of property 'display' are incompatible.
         Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"table\\" | \\"ruby\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"block\\" | \\"inline\\" | \\"run-in\\" | \\"fl...'.
-test/should-fail.test.tsx(294,32): error TS2322: Type '{ display: \\"block\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
-test/should-fail.test.tsx(295,36): error TS2322: Type '{ display: \\"block\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorous...'.
-  Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(ExtraGlamorousProps & BuiltInGlamorousC...'.
+test/should-fail.test.tsx(294,32): error TS2322: Type '{ display: \\"block\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
+test/should-fail.test.tsx(295,36): error TS2322: Type '{ display: \\"block\\"; }' is not assignable to type '(IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLP...'.
+  Type '{ display: \\"block\\"; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<(BuiltInGlamorousComponentFactory<HTMLPr...'.
 "
 `;
