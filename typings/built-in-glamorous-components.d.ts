@@ -1,5 +1,11 @@
 import { ExtraGlamorousProps } from './glamorous-component';
 import { CSSProperties } from './css-properties';
+import { Overwrite } from './helpers';
+
+type HTMLComponentProp<T extends HTMLElement> = Overwrite<
+  CSSProperties & ExtraGlamorousProps & React.HTMLProps<T>,
+  { children: React.ReactChild }
+>;
 
 /*
  * FIXME:
@@ -11,143 +17,148 @@ import { CSSProperties } from './css-properties';
  * Reference: https://github.com/Microsoft/TypeScript/issues/17828
  */
 export interface HTMLComponent {
-  A: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLAnchorElement>>
-  Abbr: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Address: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Area: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLAreaElement>>
-  Article: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Aside: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Audio: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLAudioElement>>
-  B: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Base: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLBaseElement>>
-  Bdi: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Bdo: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Big: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Blockquote: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLQuoteElement>>
-  Body: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLBodyElement>>
-  Br: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLBRElement>>
-  Button: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLButtonElement>>
-  Canvas: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLCanvasElement>>
-  Caption: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableCaptionElement>>
-  Cite: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Code: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Col: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableColElement>>
-  Colgroup: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableColElement>>
-  Data: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLDataElement>>
-  Datalist: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLDataListElement>>
-  Dd: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Del: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLModElement>>
+  A: React.StatelessComponent<HTMLComponentProp<HTMLAnchorElement>>
+  Abbr: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Address: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Area: React.StatelessComponent<HTMLComponentProp<HTMLAreaElement>>
+  Article: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Aside: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Audio: React.StatelessComponent<HTMLComponentProp<HTMLAudioElement>>
+  B: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Base: React.StatelessComponent<HTMLComponentProp<HTMLBaseElement>>
+  Bdi: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Bdo: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Big: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Blockquote: React.StatelessComponent<HTMLComponentProp<HTMLQuoteElement>>
+  Body: React.StatelessComponent<HTMLComponentProp<HTMLBodyElement>>
+  Br: React.StatelessComponent<HTMLComponentProp<HTMLBRElement>>
+  Button: React.StatelessComponent<HTMLComponentProp<HTMLButtonElement>>
+  Canvas: React.StatelessComponent<HTMLComponentProp<HTMLCanvasElement>>
+  Caption: React.StatelessComponent<HTMLComponentProp<HTMLTableCaptionElement>>
+  Cite: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Code: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Col: React.StatelessComponent<HTMLComponentProp<HTMLTableColElement>>
+  Colgroup: React.StatelessComponent<HTMLComponentProp<HTMLTableColElement>>
+  Data: React.StatelessComponent<HTMLComponentProp<HTMLDataElement>>
+  Datalist: React.StatelessComponent<HTMLComponentProp<HTMLDataListElement>>
+  Dd: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Del: React.StatelessComponent<HTMLComponentProp<HTMLModElement>>
   // TypeScript doesn't have HTMLDetailsElement
-  Details: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Dfn: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
+  Details: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Dfn: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
   // TypeScript doesn't have HTMLDialogElement
-  Dialog: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Div: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLDivElement>>
-  Dl: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLDListElement>>
-  Dt: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Em: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Embed: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLEmbedElement>>
-  Fieldset: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLFieldSetElement>>
-  Figcaption: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Figure: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Footer: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Form: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLFormElement>>
-  H1: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadingElement>>
-  H2: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadingElement>>
-  H3: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadingElement>>
-  H4: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadingElement>>
-  H5: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadingElement>>
-  H6: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadingElement>>
-  Head: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHeadElement>>
-  Header: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Hgroup: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Hr: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHRElement>>
-  Html: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLHtmlElement>>
-  I: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Iframe: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLIFrameElement>>
-  Img: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLImageElement>>
-  Input: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLInputElement>>
-  Ins: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLModElement>>
-  Kbd: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
+  Dialog: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Div: React.StatelessComponent<HTMLComponentProp<HTMLDivElement>>
+  Dl: React.StatelessComponent<HTMLComponentProp<HTMLDListElement>>
+  Dt: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Em: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Embed: React.StatelessComponent<HTMLComponentProp<HTMLEmbedElement>>
+  Fieldset: React.StatelessComponent<HTMLComponentProp<HTMLFieldSetElement>>
+  Figcaption: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Figure: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Footer: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Form: React.StatelessComponent<HTMLComponentProp<HTMLFormElement>>
+  H1: React.StatelessComponent<HTMLComponentProp<HTMLHeadingElement>>
+  H2: React.StatelessComponent<HTMLComponentProp<HTMLHeadingElement>>
+  H3: React.StatelessComponent<HTMLComponentProp<HTMLHeadingElement>>
+  H4: React.StatelessComponent<HTMLComponentProp<HTMLHeadingElement>>
+  H5: React.StatelessComponent<HTMLComponentProp<HTMLHeadingElement>>
+  H6: React.StatelessComponent<HTMLComponentProp<HTMLHeadingElement>>
+  Head: React.StatelessComponent<HTMLComponentProp<HTMLHeadElement>>
+  Header: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Hgroup: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Hr: React.StatelessComponent<HTMLComponentProp<HTMLHRElement>>
+  Html: React.StatelessComponent<HTMLComponentProp<HTMLHtmlElement>>
+  I: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Iframe: React.StatelessComponent<HTMLComponentProp<HTMLIFrameElement>>
+  Img: React.StatelessComponent<HTMLComponentProp<HTMLImageElement>>
+  Input: React.StatelessComponent<HTMLComponentProp<HTMLInputElement>>
+  Ins: React.StatelessComponent<HTMLComponentProp<HTMLModElement>>
+  Kbd: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
   // TypeScript doesn't have HTMLKeygenElement
-  Keygen: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Label: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLLabelElement>>
-  Legend: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLLegendElement>>
-  Li: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLLIElement>>
-  Link: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLLinkElement>>
-  Main: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Map: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLMapElement>>
-  Mark: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Menu: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLMenuElement>>
+  Keygen: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Label: React.StatelessComponent<HTMLComponentProp<HTMLLabelElement>>
+  Legend: React.StatelessComponent<HTMLComponentProp<HTMLLegendElement>>
+  Li: React.StatelessComponent<HTMLComponentProp<HTMLLIElement>>
+  Link: React.StatelessComponent<HTMLComponentProp<HTMLLinkElement>>
+  Main: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Map: React.StatelessComponent<HTMLComponentProp<HTMLMapElement>>
+  Mark: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Menu: React.StatelessComponent<HTMLComponentProp<HTMLMenuElement>>
   // TypeScript doesn't have HTMLMenuItemElement
-  Menuitem: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Meta: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLMetaElement>>
-  Meter: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLMeterElement>>
-  Nav: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Noscript: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Object: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLObjectElement>>
-  Ol: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLOListElement>>
-  Optgroup: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLOptGroupElement>>
-  Option: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLOptionElement>>
-  Output: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLOutputElement>>
-  P: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLParagraphElement>>
-  Param: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLParamElement>>
-  Picture: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLPictureElement>>
-  Pre: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLPreElement>>
-  Progress: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLProgressElement>>
-  Q: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLQuoteElement>>
-  Rp: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Rt: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Ruby: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  S: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Samp: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Script: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLScriptElement>>
-  Section: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Select: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLSelectElement>>
-  Small: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Source: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLSourceElement>>
-  Span: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLSpanElement>>
-  Strong: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Style: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLStyleElement>>
-  Sub: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Summary: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-    Sup: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Table: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableElement>>
-  Tbody: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableSectionElement>>
-  Td: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableDataCellElement>>
-  Textarea: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTextAreaElement>>
-  Tfoot: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableSectionElement>>
-  Th: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableHeaderCellElement>>
-  Thead: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableSectionElement>>
-  Time: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTimeElement>>
-  Title: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTitleElement>>
-  Tr: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTableRowElement>>
-  Track: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLTrackElement>>
-  U: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Ul: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLUListElement>>
-  Var: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
-  Video: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLVideoElement>>
-  Wbr: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.HTMLProps<HTMLElement>>
+  Menuitem: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Meta: React.StatelessComponent<HTMLComponentProp<HTMLMetaElement>>
+  Meter: React.StatelessComponent<HTMLComponentProp<HTMLMeterElement>>
+  Nav: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Noscript: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Object: React.StatelessComponent<HTMLComponentProp<HTMLObjectElement>>
+  Ol: React.StatelessComponent<HTMLComponentProp<HTMLOListElement>>
+  Optgroup: React.StatelessComponent<HTMLComponentProp<HTMLOptGroupElement>>
+  Option: React.StatelessComponent<HTMLComponentProp<HTMLOptionElement>>
+  Output: React.StatelessComponent<HTMLComponentProp<HTMLOutputElement>>
+  P: React.StatelessComponent<HTMLComponentProp<HTMLParagraphElement>>
+  Param: React.StatelessComponent<HTMLComponentProp<HTMLParamElement>>
+  Picture: React.StatelessComponent<HTMLComponentProp<HTMLPictureElement>>
+  Pre: React.StatelessComponent<HTMLComponentProp<HTMLPreElement>>
+  Progress: React.StatelessComponent<HTMLComponentProp<HTMLProgressElement>>
+  Q: React.StatelessComponent<HTMLComponentProp<HTMLQuoteElement>>
+  Rp: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Rt: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Ruby: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  S: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Samp: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Script: React.StatelessComponent<HTMLComponentProp<HTMLScriptElement>>
+  Section: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Select: React.StatelessComponent<HTMLComponentProp<HTMLSelectElement>>
+  Small: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Source: React.StatelessComponent<HTMLComponentProp<HTMLSourceElement>>
+  Span: React.StatelessComponent<HTMLComponentProp<HTMLSpanElement>>
+  Strong: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Style: React.StatelessComponent<HTMLComponentProp<HTMLStyleElement>>
+  Sub: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Summary: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+    Sup: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Table: React.StatelessComponent<HTMLComponentProp<HTMLTableElement>>
+  Tbody: React.StatelessComponent<HTMLComponentProp<HTMLTableSectionElement>>
+  Td: React.StatelessComponent<HTMLComponentProp<HTMLTableDataCellElement>>
+  Textarea: React.StatelessComponent<HTMLComponentProp<HTMLTextAreaElement>>
+  Tfoot: React.StatelessComponent<HTMLComponentProp<HTMLTableSectionElement>>
+  Th: React.StatelessComponent<HTMLComponentProp<HTMLTableHeaderCellElement>>
+  Thead: React.StatelessComponent<HTMLComponentProp<HTMLTableSectionElement>>
+  Time: React.StatelessComponent<HTMLComponentProp<HTMLTimeElement>>
+  Title: React.StatelessComponent<HTMLComponentProp<HTMLTitleElement>>
+  Tr: React.StatelessComponent<HTMLComponentProp<HTMLTableRowElement>>
+  Track: React.StatelessComponent<HTMLComponentProp<HTMLTrackElement>>
+  U: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Ul: React.StatelessComponent<HTMLComponentProp<HTMLUListElement>>
+  Var: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
+  Video: React.StatelessComponent<HTMLComponentProp<HTMLVideoElement>>
+  Wbr: React.StatelessComponent<HTMLComponentProp<HTMLElement>>
 }
 
+type SVGComponentProp<T extends SVGElement> = Overwrite<
+  CSSProperties & ExtraGlamorousProps & React.SVGAttributes<T>,
+  { children: React.ReactChild }
+>;
+
 export interface SVGComponent {
-  Circle: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGCircleElement>>;
-  ClipPath: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGClipPathElement>>;
-  Defs: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGDefsElement>>;
-  Ellipse: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGEllipseElement>>;
-  G: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGGElement>>;
-  Image: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGImageElement>>;
-  Line: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGLineElement>>;
-  LinearGradient: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGLinearGradientElement>>;
-  Mask: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGMaskElement>>;
-  Path: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGPathElement>>;
-  Pattern: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGPatternElement>>;
-  Polygon: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGPolygonElement>>;
-  Polyline: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGPolylineElement>>;
-  RadialGradient: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGRadialGradientElement>>;
-  Rect: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGRectElement>>;
-  Stop: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGStopElement>>;
-  Svg: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGSVGElement>>;
-  Text: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGTextElement>>;
-  Tspan: React.StatelessComponent<CSSProperties & ExtraGlamorousProps & React.SVGAttributes<SVGTSpanElement>>;
+  Circle: React.StatelessComponent<SVGComponentProp<SVGCircleElement>>;
+  ClipPath: React.StatelessComponent<SVGComponentProp<SVGClipPathElement>>;
+  Defs: React.StatelessComponent<SVGComponentProp<SVGDefsElement>>;
+  Ellipse: React.StatelessComponent<SVGComponentProp<SVGEllipseElement>>;
+  G: React.StatelessComponent<SVGComponentProp<SVGGElement>>;
+  Image: React.StatelessComponent<SVGComponentProp<SVGImageElement>>;
+  Line: React.StatelessComponent<SVGComponentProp<SVGLineElement>>;
+  LinearGradient: React.StatelessComponent<SVGComponentProp<SVGLinearGradientElement>>;
+  Mask: React.StatelessComponent<SVGComponentProp<SVGMaskElement>>;
+  Path: React.StatelessComponent<SVGComponentProp<SVGPathElement>>;
+  Pattern: React.StatelessComponent<SVGComponentProp<SVGPatternElement>>;
+  Polygon: React.StatelessComponent<SVGComponentProp<SVGPolygonElement>>;
+  Polyline: React.StatelessComponent<SVGComponentProp<SVGPolylineElement>>;
+  RadialGradient: React.StatelessComponent<SVGComponentProp<SVGRadialGradientElement>>;
+  Rect: React.StatelessComponent<SVGComponentProp<SVGRectElement>>;
+  Stop: React.StatelessComponent<SVGComponentProp<SVGStopElement>>;
+  Svg: React.StatelessComponent<SVGComponentProp<SVGSVGElement>>;
+  Text: React.StatelessComponent<SVGComponentProp<SVGTextElement>>;
+  Tspan: React.StatelessComponent<SVGComponentProp<SVGTSpanElement>>;
 }
