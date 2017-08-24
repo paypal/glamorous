@@ -15,6 +15,10 @@ export type Omit<
   Diff<keyof T, K>
 >
 
+export type Overwrite<T, U> = {
+  [P in Diff<keyof T, keyof U>]: T[P]
+} & U;
+
 export type SingleOrArray<Properties, T extends keyof Properties> = {
   [P in T]: Properties[P] | Array<Properties[P]>
 }
