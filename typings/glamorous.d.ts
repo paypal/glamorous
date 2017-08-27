@@ -45,6 +45,15 @@ import {
   StyleArray,
   StyleArgument,
 } from './style-arguments'
+import {
+  DOMTagComponentFactory,
+  SVGTagComponentFactory,
+  HTMLDomTags,
+  SVGDomTags,
+  DOMTagGlamorousComponentFactory,
+  SVGTagGlamorousComponentFactory,
+} from './dom-tag-component-factory'
+
 
 import { Omit } from './helpers'
 
@@ -77,6 +86,13 @@ export {
   HTMLKey,
   SVGComponentFactory,
   SVGKey,
+
+  DOMTagComponentFactory,
+  SVGTagComponentFactory,
+  HTMLDomTags,
+  SVGDomTags,
+  DOMTagGlamorousComponentFactory,
+  SVGTagGlamorousComponentFactory,
 }
 
 export interface GlamorousOptions<Props, Context, DefaultProps> {
@@ -108,14 +124,20 @@ type OmitInternals<
 
 type GlamorousProps = { className?: string, theme?: object }
 
-export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFactory, HTMLComponent, SVGComponent {
+export interface GlamorousInterface extends
+  HTMLComponentFactory,
+  SVGComponentFactory,
+  HTMLComponent,
+  SVGComponent,
+  DOMTagComponentFactory,
+  SVGTagComponentFactory {
   // # Glamarous Component factories
   
   // Two overloads are needed per shape due to a union return of CSSProperties | SVGProperties
   // resulting in a loss of typesafety on function arguments
 
   // ## create a component factory from your own component
-  
+
   <ExternalProps, Context = object, DefaultProps extends object = object>(
     component: Component<ExternalProps & GlamorousProps>,
     options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
@@ -133,34 +155,6 @@ export interface GlamorousInterface extends HTMLComponentFactory, SVGComponentFa
     component: Component<ExternalProps & GlamorousProps>,
     options?: PropsAreCssOverridesGlamorousOptions<ExternalProps, Context, DefaultProps>,
   ): GlamorousComponentFactoryCssOverides<ExternalProps, SVGProperties, DefaultProps>
-
-  // ## create a component factory from a dom tag
-
-  <ExternalProps, Context = object, DefaultProps extends object = object>(
-    component: HTMLKey,
-    options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
-  ): KeyGlamorousComponentFactory<
-    HTMLComponentFactory[HTMLKey], CSSProperties, ExternalProps, DefaultProps
-  >
-  <ExternalProps, Context = object, DefaultProps extends object = object>(
-    component: SVGKey,
-    options?: Partial<GlamorousOptions<ExternalProps, Context, DefaultProps>>,
-  ): KeyGlamorousComponentFactory<
-    SVGComponentFactory[SVGKey], SVGProperties, ExternalProps, DefaultProps
-  >
-
-  <ExternalProps, Context = object, DefaultProps extends object = object>(
-    component: HTMLKey,
-    options?: PropsAreCssOverridesGlamorousOptions<ExternalProps, Context, DefaultProps>,
-  ): KeyGlamorousComponentFactoryCssOverides<
-    HTMLComponentFactory[HTMLKey], CSSProperties, ExternalProps, DefaultProps
-  >
-  <ExternalProps, Context = object, DefaultProps extends object = object>(
-    component: SVGKey,
-    options?: PropsAreCssOverridesGlamorousOptions<ExternalProps, Context, DefaultProps>,
-  ): KeyGlamorousComponentFactoryCssOverides<
-    SVGComponentFactory[SVGKey], SVGProperties, ExternalProps, DefaultProps
-  >
 }
 
 interface ThemeProps {
