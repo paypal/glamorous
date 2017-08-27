@@ -1557,6 +1557,7 @@ export interface CSSPropertiesLossy {
     | string | number | CSSPropertiesComplete | undefined
     | Array<CSSPropertiesComplete[keyof CSSPropertiesComplete]>
     | CSSPropertiesLossy
+    | React.ReactChild
 }
 
 export interface CSSProperties extends
