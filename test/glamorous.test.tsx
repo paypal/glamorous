@@ -7,7 +7,7 @@ import glamorous, {
 // https://github.com/Microsoft/TypeScript/issues/5938
 import { GlamorousComponent, GlamorousComponentProps } from "../";
 
-import { WithComponent, WithProps, CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
+import { CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
 
 // Properties
 const Static = glamorous.div({

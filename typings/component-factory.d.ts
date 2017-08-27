@@ -5,7 +5,6 @@ import { StyleArgument, StaticStyleArgument } from './style-arguments'
 
 // # built-in DOM - component factories glamorous.div
 
-// * without Theme
 export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
   (
     ...styles: StaticStyleArgument<Properties>[]
@@ -14,17 +13,17 @@ export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
     object
   >;
 
-  <Props extends { theme: any }>(
+  <Props extends { theme: object }>(
     ...styles: StyleArgument<Properties, Props>[]
   ): GlamorousComponent<
-    ElementProps & Omit<Props, 'theme'>,
+    Omit<Props, 'theme'> & ElementProps,
     Props
   >;
 
   <Props>(
     ...styles: StyleArgument<Properties, Props>[]
   ): GlamorousComponent<
-    ElementProps & Props,
+    Props & ElementProps,
     Props
   >;
 }
@@ -33,7 +32,6 @@ export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
 
 // ## without propsAreCssOverides
 
-// * without Theme
 export interface KeyGlamorousComponentFactory<ElementProps, Properties, ExternalProps, DefaultProps> {
   (
     ...styles: StaticStyleArgument<Properties>[]
@@ -59,7 +57,6 @@ export interface KeyGlamorousComponentFactory<ElementProps, Properties, External
 
 // ## with propsAreCssOverides
 
-// * without Theme
 export interface KeyGlamorousComponentFactoryCssOverides<ElementProps, Properties, ExternalProps, DefaultProps> {
   (
     ...styles: StaticStyleArgument<Properties>[]
@@ -87,7 +84,6 @@ export interface KeyGlamorousComponentFactoryCssOverides<ElementProps, Propertie
 
 // ## without propsAreCssOverides
 
-// * without Theme
 export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultProps> {
   (
     ...styles: StaticStyleArgument<Properties>[]
@@ -113,7 +109,6 @@ export interface GlamorousComponentFactory<ExternalProps, Properties, DefaultPro
 
 // ## with propsAreCssOverides
 
-// * without Theme
 export interface GlamorousComponentFactoryCssOverides<ExternalProps, Properties, DefaultProps> {
   (
     ...styles: StaticStyleArgument<Properties>[]

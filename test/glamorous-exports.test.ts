@@ -7,8 +7,6 @@ import {
   GlamorousComponent,
   GlamorousComponentProps,
   ExtraGlamorousProps,
-  WithComponent,
-  WithProps,
 
   StyleFunction,
   StyleArray,
