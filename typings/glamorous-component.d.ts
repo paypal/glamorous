@@ -11,36 +11,41 @@ import { Omit } from './helpers'
 */
 
 export interface ExtraGlamorousProps {
+  /**
+   * Called with the inner element's reference
+   */
   innerRef?: (instance: any) => void;
 
   className?: string;
+  /**
+   * Same type as any of the styles provided, will be merged with this component's styles and take highest priority over the component's predefined styles
+   */
   css?: CSSProperties;
   theme?: object;
 }
 
-export interface WithComponent<ExternalProps, Props> {
+export interface GlamorousComponentFunctions<ExternalProps, Props> {
+  /**
+   * Copies the styles of an already created glamorous component with a different tag
+   */
   withComponent: (
     component: string | Component<Props>
   ) => GlamorousComponent<
     ExternalProps,
     Props
   >
-}
 
-export interface WithProps<ExternalProps, Props> {
+  /**
+   * Applies props by default for a component
+   */
   withProps: <DefaultProps extends object>(
     props: DefaultProps
   ) => GlamorousComponent<
     ExternalProps & Partial<DefaultProps>,
     Props
   >
-}
-
-export interface GlamorousComponentFunctions<ExternalProps, Props> extends 
-  WithComponent<ExternalProps, Props>,
-  WithProps<ExternalProps, Props>
-    {}
-
+} 
+  
 export interface GlamorousComponent<ExternalProps, Props> extends
   React.ComponentClass<ExternalProps & ExtraGlamorousProps>,
   GlamorousComponentFunctions<ExternalProps, Props>

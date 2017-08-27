@@ -16,9 +16,8 @@ import {
 import {
   GlamorousComponent,
   GlamorousComponentProps,
+  GlamorousComponentFunctions,
   ExtraGlamorousProps,
-  WithComponent,
-  WithProps,
 } from './glamorous-component'
 import {
   BuiltInGlamorousComponentFactory,
@@ -65,9 +64,8 @@ export {
 
   GlamorousComponent,
   GlamorousComponentProps,
+  GlamorousComponentFunctions,
   ExtraGlamorousProps,
-  WithComponent,
-  WithProps,
 
   StyleFunction,
   StyleArray,
