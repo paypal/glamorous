@@ -520,3 +520,34 @@ const usePropsAreCssOverrides = (
     />
   </div>
 )
+
+const BuiltinSingleElement: JSX.Element = <glamorous.Div />;
+
+const BuiltinSingleChild: JSX.Element = (
+  <glamorous.Div>
+    <glamorous.Span>Hello, world!</glamorous.Span>
+  </glamorous.Div>
+);
+
+const BuiltinMultipleChild: JSX.Element = (
+  <glamorous.Div>
+    <glamorous.Span>Hello,</glamorous.Span>
+    <glamorous.Span>world!</glamorous.Span>
+  </glamorous.Div>
+);
+
+const BuiltinStyledSingleElement: JSX.Element =
+  <glamorous.Div color='red'/>
+
+const BuiltinStyledWithSingleChild: JSX.Element = (
+  <glamorous.Div color='red'>
+    <glamorous.Span>Hello, world!</glamorous.Span>
+  </glamorous.Div>
+);
+
+const BuiltinStyledWithMultipleChild: JSX.Element = (
+  <glamorous.Div color='red'>
+    <glamorous.Span>Hello,</glamorous.Span>
+    <glamorous.Span>world!</glamorous.Span>
+  </glamorous.Div>
+);
