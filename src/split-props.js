@@ -1,5 +1,7 @@
 import shouldForwardProperty from './should-forward-property'
 
+const includesProp = (props, name) => props.indexOf(name) !== -1
+
 export default function splitProps(
   {
     css: cssProp,
@@ -11,20 +13,22 @@ export default function splitProps(
     // component ever
     ...rest
   },
-  {propsAreCssOverrides, rootEl, forwardProps},
+  {propsAreCssOverrides, rootEl, filterProps, forwardProps},
 ) {
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
-    if (typeof rootEl !== 'string') {
-      // if it's not a string, then we can forward everything
-      // (because it's a component)
+    if (typeof rootEl !== 'string' && filterProps.length === 0) {
+      // if it's not a string and filterProps is empty,
+      // then we can forward everything (because it's a component)
       returnValue.toForward = rest
       return returnValue
     }
   }
   return Object.keys(rest).reduce((split, propName) => {
-    if (
-      forwardProps.indexOf(propName) !== -1 ||
+    if (includesProp(filterProps, propName)) {
+      return split
+    } else if (
+      includesProp(forwardProps, propName) ||
       shouldForwardProperty(rootEl, propName)
     ) {
       split.toForward[propName] = rest[propName]

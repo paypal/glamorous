@@ -28,6 +28,7 @@ function createGlamorous(splitProps) {
       rootEl,
       displayName,
       shouldClassNameUpdate,
+      filterProps = [],
       forwardProps = [],
       propsAreCssOverrides = comp.propsAreCssOverrides,
       withProps: basePropsToApply,
@@ -101,15 +102,20 @@ function createGlamorous(splitProps) {
       }
 
       function withComponent(newComp, options = {}) {
-        const {forwardProps: fp, ...componentProperties} = GlamorousComponent
+        const {
+          forwardProps: fwp,
+          filterProps: flp,
+          ...componentProperties
+        } = GlamorousComponent
         return glamorous(
           {
             ...componentProperties,
             comp: newComp,
           },
           {
-            // allows the forwardProps to be overridden
-            forwardProps: fp,
+            // allows the forwardProps and filterProps to be overridden
+            forwardProps: fwp,
+            filterProps: flp,
             ...options,
           },
         )()
@@ -149,6 +155,7 @@ function createGlamorous(splitProps) {
           comp,
           styles,
           rootEl,
+          filterProps,
           forwardProps,
           displayName,
           propsToApply: basePropsToApply,
@@ -169,6 +176,7 @@ function createGlamorous(splitProps) {
     comp,
     styles,
     rootEl,
+    filterProps,
     forwardProps,
     displayName,
     propsToApply: basePropsToApply,
@@ -186,8 +194,10 @@ function createGlamorous(splitProps) {
       // component in glamorous
       comp: componentsComp,
       rootEl: rootEl || componentsComp,
-      // join forwardProps (for anyone doing: glamorous(glamorous.a({}), {}))
+      // join forwardProps and filterProps
+      // (for anyone doing: glamorous(glamorous.a({}), {}))
       forwardProps: when(comp.forwardProps, forwardProps),
+      filterProps: when(comp.filterProps, filterProps),
       // set the displayName to something that's slightly more
       // helpful than `GlamorousComponent` :)
       displayName: displayName || `glamorous(${getDisplayName(comp)})`,
