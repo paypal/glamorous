@@ -478,6 +478,18 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "bjoernricks",
+      "name": "Björn Ricks",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/897575?v=4",
+      "profile": "https://twitter.com/bjoernricks",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }
