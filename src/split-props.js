@@ -11,19 +11,21 @@ export default function splitProps(
     // component ever
     ...rest
   },
-  {propsAreCssOverrides, rootEl, forwardProps},
+  {propsAreCssOverrides, rootEl, filterProps, forwardProps},
 ) {
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
-    if (typeof rootEl !== 'string') {
-      // if it's not a string, then we can forward everything
-      // (because it's a component)
+    if (typeof rootEl !== 'string' && filterProps.length === 0) {
+      // if it's not a string and filterProps is empty,
+      // then we can forward everything (because it's a component)
       returnValue.toForward = rest
       return returnValue
     }
   }
   return Object.keys(rest).reduce((split, propName) => {
-    if (
+    if (filterProps.indexOf(propName) !== -1) {
+      return split
+    } else if (
       forwardProps.indexOf(propName) !== -1 ||
       shouldForwardProperty(rootEl, propName)
     ) {
