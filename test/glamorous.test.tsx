@@ -9,6 +9,19 @@ import { GlamorousComponent, GlamorousComponentProps } from "../";
 
 import { CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
 
+
+// Glamorous built in Components named exports
+
+import { Article, H1, P } from '../'
+
+const useBuiltInNamedExports = (
+  <Article color="black">
+    <H1 float="left">Test</H1>
+    <P marginBottom="10px">Built in components</P>
+  </Article>
+)
+
+
 // Properties
 const Static = glamorous.div({
   "fontSize": 20,

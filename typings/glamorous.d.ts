@@ -173,6 +173,8 @@ export function withTheme<Props extends { theme: any }>(
   Omit<Props, "theme">
 >
 
+export * from './named-built-in-glamorous-components'
+
 declare const glamorous: GlamorousInterface
 
 export default glamorous
