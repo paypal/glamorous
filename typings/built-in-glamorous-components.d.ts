@@ -1,6 +1,9 @@
 import { ExtraGlamorousProps } from './glamorous-component';
 import { CSSProperties } from './css-properties';
 
+// The file `./named-built-in-glamorous-components.d.ts` is based off this file
+// and should get any updates this file does. 
+
 /*
  * FIXME:
  * Since TypeScript doesn't have
