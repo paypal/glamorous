@@ -11,21 +11,29 @@ const tiny = process.env.TINY
 const esm = format === 'es'
 const umd = format === 'umd'
 const cjs = format === 'cjs'
+const isForPreact = Boolean(process.env.PREACT)
 
 let targets
 
 const tinyExt = tiny ? '.tiny' : ''
+const subdir = isForPreact ? 'preact/' : ''
 
 if (esm) {
-  targets = [{dest: `dist/glamorous.es${tinyExt}.js`, format: 'es'}]
+  targets = [{dest: `${subdir}dist/glamorous.es${tinyExt}.js`, format: 'es'}]
 } else if (umd) {
   if (minify) {
-    targets = [{dest: `dist/glamorous.umd${tinyExt}.min.js`, format: 'umd'}]
+    targets = [
+      {dest: `${subdir}dist/glamorous.umd${tinyExt}.min.js`, format: 'umd'},
+    ]
   } else {
-    targets = [{dest: `dist/glamorous.umd${tinyExt}.js`, format: 'umd'}]
+    targets = [
+      {dest: `${subdir}dist/glamorous.umd${tinyExt}.js`, format: 'umd'},
+    ]
   }
 } else if (cjs) {
-  targets = [{dest: `dist/glamorous.cjs${tinyExt}.js`, format: 'cjs'}]
+  targets = [
+    {dest: `${subdir}dist/glamorous.cjs${tinyExt}.js`, format: 'cjs'},
+  ]
 } else if (format) {
   throw new Error(`invalid format specified: "${format}".`)
 } else {
@@ -43,9 +51,10 @@ export default {
   exports,
   moduleName: 'glamorous',
   format,
-  external: ['react', 'glamor', 'prop-types'],
+  external: ['preact', 'react', 'glamor', 'prop-types'],
   globals: {
     react: 'React',
+    preact: 'preact',
     glamor: 'Glamor',
     'prop-types': 'PropTypes',
   },
@@ -57,6 +66,9 @@ export default {
         ),
       }) :
       null,
+    replace({
+      'process.env.PREACT': JSON.stringify(isForPreact),
+    }),
     nodeResolve({jsnext: true, main: true}),
     commonjs({include: 'node_modules/**'}),
     json(),
@@ -64,7 +76,21 @@ export default {
       exclude: 'node_modules/**',
       babelrc: false,
       presets: [['env', {modules: false}], 'stage-2', 'react'],
-      plugins: ['external-helpers', 'babel-macros'],
+      plugins: [
+        'external-helpers',
+        'babel-macros',
+        isForPreact ?
+          [
+            'module-resolver',
+            {
+              root: ['./src'],
+              alias: {
+                react: 'preact',
+              },
+            },
+          ] :
+          null,
+      ].filter(Boolean),
     }),
     minify ? uglify() : null,
   ].filter(Boolean),

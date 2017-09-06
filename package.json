@@ -10,9 +10,10 @@
     "start": "nps",
     "test": "nps test",
     "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
-    "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
+    "precommit":
+      "lint-staged && opt --in pre-commit --exec \"npm start validate\""
   },
-  "files": ["dist", "typings"],
+  "files": ["dist", "typings", "preact"],
   "keywords": [
     "react",
     "css",
@@ -34,8 +35,7 @@
     "svg-tag-names": "^1.1.0"
   },
   "peerDependencies": {
-    "glamor": ">=2",
-    "react": ">=0.14"
+    "glamor": ">=2"
   },
   "devDependencies": {
     "@types/react": "^15.0.27",
@@ -64,6 +64,7 @@
     "nps": "^5.3.1",
     "nps-utils": "^1.1.2",
     "opt-cli": "^1.5.1",
+    "preact": "^8.2.5",
     "prettier-eslint-cli": "^4.1.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
