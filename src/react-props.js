@@ -35,6 +35,7 @@ export default [
   'onBlur',
   'onChange',
   'onInput',
+  'onInvalid',
   'onSubmit',
   'onClick',
   'onContextMenu',

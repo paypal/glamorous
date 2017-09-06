@@ -490,6 +490,15 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "tvler",
+      "name": "Tyler Deitz",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4934193?v=4",
+      "profile": "http://tylerdeitz.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
