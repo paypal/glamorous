@@ -5,7 +5,7 @@
  */
 
 /* Logic copied from ReactDOMUnknownPropertyHook */
-export default [
+const reactProps = [
   'children',
   'dangerouslySetInnerHTML',
   'key',
@@ -159,3 +159,18 @@ export default [
   'onAnimationIterationCapture',
   'onTransitionEndCapture',
 ]
+
+if (process.env.PREACT) {
+  reactProps.push(
+    'autocomplete',
+    'autofocus',
+    'class',
+    'for',
+    'onDblClick',
+    'onSearch',
+    'slot',
+    'srcset',
+  )
+}
+
+export {reactProps as default}

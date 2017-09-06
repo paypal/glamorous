@@ -1,6 +1,7 @@
 node_modules
 coverage
 dist
+preact
 .opt-in
 .opt-out
 test-ts
@@ -8,3 +9,4 @@ typings/*.js
 *.log
 yarn.lock
 package-lock.json
+.vscode

@@ -4,6 +4,7 @@ const series = npsUtils.series
 const concurrent = npsUtils.concurrent
 const rimraf = npsUtils.rimraf
 const crossEnv = npsUtils.crossEnv
+const copy = npsUtils.copy
 
 module.exports = {
   scripts: {
@@ -23,7 +24,8 @@ module.exports = {
       watch: crossEnv('NODE_ENV=test jest --watch'),
       build: {
         description: 'validates the built files',
-        script: 'babel-node dist-test/index.js',
+        script:
+          'babel-node dist-test/index.js && babel-node dist-test/preact.js',
       },
       size: {
         description: 'check the size of the bundle',
@@ -31,6 +33,7 @@ module.exports = {
           'echo "bundlesize is disabled https://github.com/siddharthkp/bundlesize/issues/30"',
       },
     },
+
     build: {
       description: 'delete the dist directory and run all builds',
       default: series(
@@ -44,22 +47,53 @@ module.exports = {
           'build.cjs.tiny',
           'build.umd.main.tiny',
           'build.umd.min.tiny'
-        )
+        ),
+        rimraf('preact'),
+        concurrent.nps(
+          'build.es.preact',
+          'build.cjs.preact',
+          'build.umd.main.preact',
+          'build.umd.min.preact',
+          'build.es.preact.tiny',
+          'build.cjs.preact.tiny',
+          'build.umd.main.preact.tiny',
+          'build.umd.min.preact.tiny'
+        ),
+        copy("'package.json' 'preact'")
       ),
       es: {
         description: 'run the build with rollup (uses rollup.config.js)',
         script: 'rollup --config --environment FORMAT:es',
         tiny: 'rollup --config --environment FORMAT:es,TINY',
+        preact: {
+          description:
+            'run the build with rollup (uses rollup.config.js) for preact',
+          script: 'rollup --config --environment FORMAT:es,PREACT',
+          tiny: 'rollup --config --environment FORMAT:es,PREACT,TINY',
+        },
       },
       cjs: {
         description: 'run rollup build with CommonJS format',
         script: 'rollup --config --environment FORMAT:cjs',
         tiny: 'rollup --config --environment FORMAT:cjs,TINY',
+        preact: {
+          description: 'run rollup build with CommonJS format for preact',
+          script: 'rollup --config --environment FORMAT:cjs,PREACT',
+          tiny: 'rollup --config --environment FORMAT:cjs,PREACT,TINY',
+        },
       },
       umd: {
         min: {
           description: 'run the rollup build with sourcemaps',
           script: 'rollup --config --sourcemap --environment MINIFY,FORMAT:umd',
+          preact: {
+            description: 'for preact',
+            script:
+              'rollup --config --sourcemap --environment MINIFY,FORMAT:umd,PREACT',
+            tiny:
+              'rollup --config --sourcemap --environment MINIFY,FORMAT:umd,PREACT,TINY',
+          },
+
           tiny:
             'rollup --config --sourcemap --environment MINIFY,FORMAT:umd,TINY',
         },
@@ -67,6 +101,13 @@ module.exports = {
           description: 'builds the cjs and umd files',
           script: 'rollup --config --sourcemap --environment FORMAT:umd',
           tiny: 'rollup --config --sourcemap --environment FORMAT:umd,TINY',
+          preact: {
+            description: 'for preact',
+            script:
+              'rollup --config --sourcemap --environment FORMAT:umd,PREACT',
+            tiny:
+              'rollup --config --sourcemap --environment FORMAT:umd,TINY,PREACT',
+          },
         },
       },
       andTest: series.nps('build', 'test.build', 'test.size'),
