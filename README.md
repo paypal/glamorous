@@ -53,6 +53,17 @@ website:
 - [Convert CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js): VSCode extension making it easy to convert normal CSS format to CSS in JS format.
 - [`glamorous-redocx`](https://github.com/nitin42/glamorous-redocx): style [redocx](https://github.com/nitin42/redocx) components with glamorous 💄
 
+## Using glamorous with react-sketchapp
+
+<p align="center">
+  <img src="https://i.gyazo.com/f599a760dbe18aaefbeecc40f9146dd8.png">
+</p>
+
+With the release of [`glamorous-primitives`](https://github.com/nitin42/glamorous-primitives), now you can use glamorous with [react-sketchapp](https://github.com/airbnb/react-sketchapp) to manage design systems and use React components for designs.
+
+You can find documentation and related examples [here](https://github.com/airbnb/react-sketchapp/tree/master/examples/glamorous).
+
+
 ## Users
 
 Who uses `glamorous`? See [other/USERS.md](https://github.com/paypal/glamorous/blob/master/other/USERS.md) and add yourself if you use `glamorous`!
