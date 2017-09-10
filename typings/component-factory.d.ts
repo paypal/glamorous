@@ -13,7 +13,7 @@ export interface BuiltInGlamorousComponentFactory<ElementProps, Properties> {
     object
   >;
 
-  <Props extends { theme: object }>(
+  <Props extends { theme: any }>(
     ...styles: StyleArgument<Properties, Props>[]
   ): GlamorousComponent<
     Omit<Props, 'theme'> & ElementProps,
