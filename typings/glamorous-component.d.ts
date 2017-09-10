@@ -21,7 +21,7 @@ export interface ExtraGlamorousProps {
    * Same type as any of the styles provided, will be merged with this component's styles and take highest priority over the component's predefined styles
    */
   css?: CSSProperties;
-  theme?: object;
+  theme?: any;
 }
 
 export interface GlamorousComponentFunctions<ExternalProps, Props> {
