@@ -13,14 +13,17 @@ import {css} from 'glamor'
 function extractGlamorStyles(className) {
   const glamorlessClassName = []
   const glamorStyles = []
-  className.toString().split(' ').forEach(name => {
-    if (name.indexOf('css-') === 0) {
-      const style = buildGlamorSrcFromClassName(name)
-      glamorStyles.push(style)
-    } else {
-      glamorlessClassName.push(name)
-    }
-  })
+  className
+    .toString()
+    .split(' ')
+    .forEach(name => {
+      if (name.indexOf('css-') === 0) {
+        const style = buildGlamorSrcFromClassName(name)
+        glamorStyles.push(style)
+      } else {
+        glamorlessClassName.push(name)
+      }
+    })
 
   return {glamorlessClassName, glamorStyles}
 }

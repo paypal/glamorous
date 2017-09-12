@@ -11,6 +11,8 @@ import {render} from 'enzyme'
 
 const nodeEnv = process.env.NODE_ENV
 
+jest.mock('../constants')
+
 beforeEach(() => {
   process.env.NODE_ENV = 'development'
   jest.resetModules()

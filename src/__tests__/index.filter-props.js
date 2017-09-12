@@ -3,6 +3,8 @@ import React from 'react'
 import {mount as render} from 'enzyme'
 import glamorous from '../'
 
+jest.mock('../constants')
+
 test('filterProps are not passed to child component', () => {
   const filterProps = ['bold']
   const Child = props => <div {...props} />

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import isFunction from 'is-function'
 import isPlainObject from 'is-plain-object'
 import brcast from 'brcast'
@@ -13,7 +13,7 @@ import {CHANNEL} from './constants'
  * https://github.com/styled-components/styled-components
  * @param {Object} theme the theme object..
  */
-class ThemeProvider extends Component {
+class ThemeProvider extends React.Component {
   broadcast = brcast(this.props.theme)
 
   // create theme, by merging with outer theme, if present
@@ -69,9 +69,7 @@ class ThemeProvider extends Component {
   }
 
   render() {
-    return this.props.children ?
-      React.Children.only(this.props.children) :
-      null
+    return this.props.children ? React.Children.only(this.props.children) : null
   }
 }
 

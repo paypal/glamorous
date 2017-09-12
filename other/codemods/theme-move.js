@@ -50,7 +50,7 @@ function glamorousThemeCodemod(babel) {
         exit(path, {file: {opts: {filename}}}) {
           // now that we've traversed everything, we can go through each of them
           // and convert the ones that need to be converted
-          (identifiers[filename] || []).forEach(identifier => {
+          ;(identifiers[filename] || []).forEach(identifier => {
             if (identifier.isJSXIdentifier()) {
               const openingElement = identifier.findParent(
                 t.isJSXOpeningElement,

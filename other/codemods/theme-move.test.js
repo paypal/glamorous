@@ -1,6 +1,6 @@
 /* eslint max-len:0 */
 import path from 'path'
-import prettierEslint from 'prettier-eslint'
+import prettier from 'prettier'
 import stripIndent from 'strip-indent'
 // not sure why, but travis seems to error out
 // due to this import 🙃
@@ -167,10 +167,18 @@ function withGlamorousImport(tests) {
 }
 
 function formatResult(result) {
-  return prettierEslint({
-    filePath: __filename,
-    text: result,
-  }).trim()
+  return prettier
+    .format(result, {
+      printWidth: 80,
+      tabWidth: 2,
+      useTabs: false,
+      semi: false,
+      singleQuote: true,
+      trailingComma: 'all',
+      bracketSpacing: false,
+      jsxBracketSameLine: false,
+    })
+    .trim()
 }
 
 /*

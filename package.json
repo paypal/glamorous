@@ -7,11 +7,18 @@
   "module": "dist/glamorous.es.js",
   "typings": "typings/glamorous.d.ts",
   "scripts": {
-    "start": "nps",
-    "test": "nps test",
+    "add-contributor": "kcd-scripts contributors add",
+    "build":
+      "rimraf dist preact/dist && kcd-scripts build --bundle --p-react --no-clean && kcd-scripts build --bundle --p-react --no-clean --no-package-json --environment BUILD_TINY",
+    "lint": "kcd-scripts lint",
+    "test": "kcd-scripts test",
+    "test:cover": "kcd-scripts test --coverage",
+    "test:update": "npm run test:cover -s -- --updateSnapshot",
+    "test:build": "kcd-scripts test --config other/jest.config.js --no-watch",
+    "build-and-test": "npm run build -s && npm run test:build -s",
     "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
-    "precommit":
-      "lint-staged && opt --in pre-commit --exec \"npm start validate\""
+    "validate": "kcd-scripts validate lint,build-and-test,test:cover,test:ts",
+    "precommit": "kcd-scripts precommit"
   },
   "files": ["dist", "typings", "preact"],
   "keywords": [
@@ -39,81 +46,41 @@
   },
   "devDependencies": {
     "@types/react": "^15.0.27",
-    "all-contributors-cli": "^4.3.0",
-    "babel-cli": "^6.24.1",
-    "babel-jest": "^20.0.3",
-    "babel-macros": "^0.5.2",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "bundlesize": "^0.12.2",
     "codegen.macro": "^1.0.0",
-    "common-tags": "^1.4.0",
     "cross-spawn": "^5.1.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
-    "eslint": "^4.3.0",
-    "eslint-config-kentcdodds": "^12.4.2",
     "glamor": "^2.20.37",
-    "husky": "^0.14.3",
-    "jest-cli": "^20.0.4",
     "jest-glamor-react": "^3.0.0",
-    "lint-staged": "^4.0.2",
-    "nps": "^5.3.1",
-    "nps-utils": "^1.1.2",
-    "opt-cli": "^1.5.1",
+    "kcd-scripts": "^0.14.1",
     "preact": "^8.2.5",
-    "prettier-eslint-cli": "^4.1.0",
+    "preval.macro": "^1.0.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
-    "rollup": "^0.45.2",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-json": "^2.3.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-replace": "^1.1.1",
-    "rollup-plugin-uglify": "^2.0.1",
     "tslint": "^5.4.3",
     "tslint-microsoft-contrib": "^5.0.0",
     "tsutils": "^1.9.1",
     "typescript": "2.4.2"
   },
   "eslintConfig": {
-    "extends": [
-      "kentcdodds",
-      "kentcdodds/jest",
-      "kentcdodds/react",
-      "kentcdodds/prettier"
-    ],
+    "extends": "./node_modules/kcd-scripts/eslint.js",
     "rules": {
-      "import/prefer-default-export": 0,
-      "react/no-unused-prop-types": 0,
-      "valid-jsdoc": 0,
-      "func-style": 0
+      "import/prefer-default-export": "off",
+      "react/no-unused-prop-types": "off",
+      "valid-jsdoc": "off",
+      "func-style": "off"
     }
   },
-  "lint-staged": {
-    "*.+(js|json)": ["prettier-eslint --write", "git add"]
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "snapshotSerializers": ["enzyme-to-json/serializer", "jest-glamor-react"],
-    "roots": ["src"]
-  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist",
+    "storybook-static",
+    "typings"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/paypal/glamorous.git"
@@ -121,19 +88,5 @@
   "bugs": {
     "url": "https://github.com/paypal/glamorous/issues"
   },
-  "homepage": "https://github.com/paypal/glamorous#readme",
-  "bundlesize": [
-    {
-      "path": "dist/glamorous.umd.tiny.min.js",
-      "threshold": "3kB"
-    },
-    {
-      "path": "dist/glamorous.es.tiny.js",
-      "threshold": "5kB"
-    },
-    {
-      "path": "dist/glamorous.cjs.tiny.js",
-      "threshold": "5kB"
-    }
-  ]
+  "homepage": "https://github.com/paypal/glamorous#readme"
 }

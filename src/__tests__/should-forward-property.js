@@ -2,6 +2,7 @@ import reactHTMLAttributes from 'react-html-attributes'
 import shouldForwardProperty from '../should-forward-property'
 import reactProps from '../react-props'
 
+jest.mock('../constants')
 // Used for css overrides API
 const validCssProps = ['color', 'height', 'width']
 

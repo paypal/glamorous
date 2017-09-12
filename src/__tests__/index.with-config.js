@@ -1,6 +1,8 @@
 import React from 'react'
 import glamorous from '../'
 
+jest.mock('../constants')
+
 test('withConfig returns a glamorous component with the new config', () => {
   const config = {
     displayName: 'MyDiv',
@@ -25,7 +27,7 @@ test('withConfig works for non-built-in components', () => {
     propsAreCssOverrides: true,
   }
   const MyComp = ({shouldRender, ...props}) =>
-    (shouldRender ? <div {...props} /> : null)
+    shouldRender ? <div {...props} /> : null
   const styles = {a: 'b'}
   const forwardProps = ['shouldRender']
   const MyDiv = glamorous(MyComp, {rootEl: 'div', forwardProps}).withConfig(

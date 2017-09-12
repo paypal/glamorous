@@ -10,26 +10,25 @@
  * This file is unable to validate the global export.
  */
 import assert from 'assert'
-import {oneLine} from 'common-tags'
 
-import * as esImportStar from '../dist/glamorous.es'
-import * as esImportStarTiny from '../dist/glamorous.es.tiny'
-import esImport from '../dist/glamorous.es'
-import esImportTiny from '../dist/glamorous.es.tiny'
+import * as esImportStar from '../preact/dist/glamorous.es'
+import * as esImportStarTiny from '../preact/dist/glamorous.es.tiny'
+import esImport from '../preact/dist/glamorous.es'
+import esImportTiny from '../preact/dist/glamorous.es.tiny'
 
-import cjsImport from '../' // picks up the main from package.json
-import cjsImportTiny from '../dist/glamorous.cjs.tiny'
+import cjsImport from '../preact' // picks up the main from package.json
+import cjsImportTiny from '../preact/dist/glamorous.cjs.tiny'
 
-import umdImport from '../dist/glamorous.umd'
-import umdImportTiny from '../dist/glamorous.umd.tiny'
+import umdImport from '../preact/dist/glamorous.umd'
+import umdImportTiny from '../preact/dist/glamorous.umd.tiny'
 
 // intentionally left out because you shouldn't ever
 // try to require the ES file in CommonJS
-// const esRequire = require('../dist/glamorous.es')
-const cjsRequire = require('../') // picks up the main from package.json
-const umdRequire = require('../dist/glamorous.umd')
-const cjsRequireTiny = require('../dist/glamorous.cjs.tiny')
-const umdRequireTiny = require('../dist/glamorous.umd.tiny')
+// const esRequire = require('../preact/dist/glamorous.es')
+const cjsRequire = require('../preact') // picks up the main from package.json
+const umdRequire = require('../preact/dist/glamorous.umd')
+const cjsRequireTiny = require('../preact/dist/glamorous.cjs.tiny')
+const umdRequireTiny = require('../preact/dist/glamorous.umd.tiny')
 
 assert(
   isGlamorousFunction(esImport) && hasExtraExports(esImportStar),
@@ -100,11 +99,9 @@ console.log('Built modules look good 👍')
 function isGlamorousFunction(thing) {
   if (typeof thing !== 'function') {
     console.error(
-      oneLine`
-        glamorous thing should be a function.
-        It's a ${typeof thing} with the
-        properties of: ${Object.keys(thing).join(', ')}
-      `,
+      `glamorous thing should be a function. It's a ${typeof thing} with the properties of: ${Object.keys(
+        thing,
+      ).join(', ')}`,
     )
     return false
   }

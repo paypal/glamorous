@@ -62,7 +62,7 @@ export default glamorous
 export {ThemeProvider, withTheme}
 
 codegen`
-if (process.env.FORMAT === 'es') {
+if (process.env.BUILD_FORMAT === 'esm') {
   module.exports = require('../other/get-exports-code')
 } else {
   module.exports = ''

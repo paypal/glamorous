@@ -4,6 +4,8 @@ import {render} from 'enzyme'
 
 import glamorousTiny from '../tiny'
 
+jest.mock('../constants')
+
 test('should pass glam object prop', () => {
   const dynamicStyles = jest.fn(({glam: {big}}) => ({
     fontSize: big ? 20 : 10,
