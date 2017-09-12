@@ -1,3 +1,5 @@
+import {isPreact} from './constants'
+
 /*
  * This is used to check if a property name is one of the React-specific
  * properties and determine if that property should be forwarded
@@ -160,7 +162,7 @@ const reactProps = [
   'onTransitionEndCapture',
 ]
 
-if (process.env.PREACT) {
+if (isPreact) {
   reactProps.push(
     'autocomplete',
     'autofocus',

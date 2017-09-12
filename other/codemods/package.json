@@ -14,9 +14,15 @@
     "ast-pretty-print": "^2.0.0",
     "babel-core": "^6.25.0",
     "babel-plugin-tester": "^3.3.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "jest": "^20.0.4",
-    "prettier-eslint": "^6.4.2",
+    "prettier": "^1.6.1",
     "recast": "^0.12.6",
     "strip-indent": "^2.0.0"
+  },
+  "babel": {
+    "presets": ["env", "react", "stage-2"]
   }
 }

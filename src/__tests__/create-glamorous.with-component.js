@@ -4,6 +4,8 @@ import {render} from 'enzyme'
 import * as glamor from 'glamor'
 import glamorous from '../'
 
+jest.mock('../constants')
+
 test('withComponent composes the component with provided styles', () => {
   const Text = glamorous.span({color: 'red', fontSize: 20})
   const View = Text.withComponent('div')

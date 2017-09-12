@@ -74,16 +74,16 @@ function createGlamorous(splitProps) {
           )
 
           // create className to apply
-          this.className = updateClassName ?
-            getGlamorClassName({
-              styles: GlamorousComponent.styles,
-              props,
-              cssOverrides,
-              cssProp,
-              context,
-              displayName: GlamorousComponent.displayName,
-            }) :
-            this.className
+          this.className = updateClassName
+            ? getGlamorClassName({
+                styles: GlamorousComponent.styles,
+                props,
+                cssOverrides,
+                cssProp,
+                context,
+                displayName: GlamorousComponent.displayName,
+              })
+            : this.className
 
           return React.createElement(GlamorousComponent.comp, {
             ref: props.innerRef,
@@ -182,9 +182,9 @@ function createGlamorous(splitProps) {
     propsToApply: basePropsToApply,
   }) {
     const componentsComp = comp.comp ? comp.comp : comp
-    const propsToApply = comp.propsToApply ?
-      [...comp.propsToApply, ...arrayify(basePropsToApply)] :
-      arrayify(basePropsToApply)
+    const propsToApply = comp.propsToApply
+      ? [...comp.propsToApply, ...arrayify(basePropsToApply)]
+      : arrayify(basePropsToApply)
     return {
       // join styles together (for anyone doing: glamorous(glamorous.a({}), {}))
       styles: when(comp.styles, styles),
@@ -248,7 +248,7 @@ function when(comp, prop) {
 }
 
 function getDisplayName(comp) {
-  return typeof comp === 'string' ?
-    comp :
-    comp.displayName || comp.name || 'unknown'
+  return typeof comp === 'string'
+    ? comp
+    : comp.displayName || comp.name || 'unknown'
 }

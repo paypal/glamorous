@@ -1,11 +1,13 @@
+jest.mock('../constants')
+
 beforeEach(() => {
-  process.env.PREACT = true
+  process.env.MOCK_PREACT = true
   jest.resetModules()
   jest.mock('react', () => require('preact'))
 })
 
 afterEach(() => {
-  delete process.env.PREACT
+  delete process.env.MOCK_PREACT
   jest.unmock('react')
 })
 

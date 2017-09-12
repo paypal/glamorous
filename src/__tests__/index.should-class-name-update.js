@@ -4,6 +4,8 @@ import {css as cssMock} from 'glamor'
 import {mount} from 'enzyme'
 import glamorous from '../'
 
+jest.mock('../constants')
+
 jest.mock('glamor', () => {
   const realGlamor = require.requireActual('glamor')
   return Object.assign(realGlamor, {
@@ -63,11 +65,7 @@ test('shouldClassNameUpdate is specific to the component instance', () => {
   const shouldClassNameUpdate = jest.fn()
 
   const Container = ({children, ...props}) => {
-    return (
-      <div {...props}>
-        {children()}
-      </div>
-    )
+    return <div {...props}>{children()}</div>
   }
 
   const Div = glamorous('div', {

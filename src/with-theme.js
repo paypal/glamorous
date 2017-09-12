@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 import {CHANNEL} from './constants'
 import {PropTypes} from './react-compat'
@@ -13,7 +13,7 @@ export default function withTheme(
   ComponentToTheme,
   {noWarn = false, createElement = true} = {},
 ) {
-  class ThemedComponent extends Component {
+  class ThemedComponent extends React.Component {
     static propTypes = {
       theme: PropTypes.object,
     }

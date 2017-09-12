@@ -2,12 +2,13 @@
 import React from 'react'
 import * as glamor from 'glamor'
 import {render, mount} from 'enzyme'
-import {oneLine} from 'common-tags'
 import glamorous, {ThemeProvider} from '../'
 import {PropTypes} from '../react-compat'
 import {CHANNEL} from '../constants'
 
 const nodeEnv = process.env.NODE_ENV
+
+jest.mock('../constants')
 
 afterEach(() => {
   process.env.NODE_ENV = nodeEnv
@@ -130,13 +131,13 @@ test('merges composed component styles for reasonable overrides', () => {
   })
   const wrapper = render(
     <Grandchild
-      className={oneLine`
-          other classes
-          ${otherGlamorStyles1}
-          are not
-          ${otherGlamorStyles2}
-          removed
-        `}
+      className={[
+        'other classes',
+        otherGlamorStyles1,
+        'are not',
+        otherGlamorStyles2,
+        'removed',
+      ].join(' ')}
       css={{
         paddingRight: 6,
       }}
@@ -179,9 +180,9 @@ test('style objects can be arrays and glamor will merge those', () => {
     ],
     ({big, square}) => {
       const bigStyles = big ? {[phoneMediaQuery]: {fontSize: 20}} : {}
-      const squareStyles = square ?
-        {[phoneMediaQuery]: {borderRadius: 0}} :
-        {[phoneMediaQuery]: {borderRadius: '50%'}}
+      const squareStyles = square
+        ? {[phoneMediaQuery]: {borderRadius: 0}}
+        : {[phoneMediaQuery]: {borderRadius: '50%'}}
       return [bigStyles, squareStyles]
     },
   )
@@ -190,6 +191,7 @@ test('style objects can be arrays and glamor will merge those', () => {
 
 test('falls back to `name` if displayName cannot be inferred', () => {
   const MyDiv = props => <div {...props} />
+  MyDiv.displayName = 'MyDiv'
   const MyComp = glamorous(MyDiv)()
   expect(MyComp.displayName).toBe('glamorous(MyDiv)')
 })
@@ -247,15 +249,13 @@ test('forwards props when the GlamorousComponent.rootEl is known', () => {
   })()
   // no need to pass anything. This will just create be a no-op class,
   // no problem
-  const MyWrappedVersionMock = jest.fn(props =>
-    <MyWrappedVersion {...props} />,
-  )
+  const MyWrappedVersionMock = jest.fn(props => <MyWrappedVersion {...props} />)
 
   // from there we can use our wrapped version and it will function the
   // same as the original
-  const MyMyWrappedVersion = jest.fn(props =>
-    <MyWrappedVersionMock {...props} />,
-  )
+  const MyMyWrappedVersion = jest.fn(props => (
+    <MyWrappedVersionMock {...props} />
+  ))
 
   // then if we make a parent glamorous, it will forward props down until
   // it hits our wrapper at which time it will check whether the prop is
@@ -376,9 +376,7 @@ test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
   const styles2 = {paddingRight: 2, paddingBottom: 2}
-  const className3 = glamor
-    .css({paddingBottom: 3, paddingLeft: 3})
-    .toString()
+  const className3 = glamor.css({paddingBottom: 3, paddingLeft: 3}).toString()
   const styles4 = {paddingLeft: 4}
   const Comp = glamorous.div(
     className1,

@@ -1,17 +1,34 @@
 import React from 'react'
+import {isPreact} from './constants'
 
 let PropTypes
 
 /* istanbul ignore next */
-if (process.env.PREACT) {
+if (isPreact) {
   if (!React.PropTypes) {
-    PropTypes = () => PropTypes;
-    ('array,bool,func,number,object,string,symbol,any,arrayOf,' +
-      'element,instanceOf,node,objectOf,oneOf,oneOfType,shape,exact')
-      .split(',')
-      .forEach(type => {
-        PropTypes[type] = PropTypes
-      })
+    PropTypes = () => PropTypes
+    const allTypes = [
+      'array',
+      'bool',
+      'func',
+      'number',
+      'object',
+      'string',
+      'symbol',
+      'any',
+      'arrayOf',
+      'element',
+      'instanceOf',
+      'node',
+      'objectOf',
+      'oneOf',
+      'oneOfType',
+      'shape',
+      'exact',
+    ]
+    allTypes.forEach(type => {
+      PropTypes[type] = PropTypes
+    })
   }
   // copied from preact-compat
   /* eslint-disable no-eq-null, eqeqeq, consistent-return */

@@ -2,6 +2,7 @@ import React from 'react'
 import {render} from 'enzyme'
 import glamorous from '../'
 
+jest.mock('../constants')
 const expectContext = expect.objectContaining({__glamorous__: undefined})
 
 test('allows you to specify props as an object', () => {
@@ -20,9 +21,7 @@ test('allows you to specify props as an object', () => {
 })
 
 test('composes well with other glamorous components', () => {
-  const MyDiv = glamorous
-    .div({marginTop: 1}, () => ({fontSize: 1}))
-    .withProps()
+  const MyDiv = glamorous.div({marginTop: 1}, () => ({fontSize: 1})).withProps()
   const MyIdDiv = glamorous(MyDiv)(() => ({fontWeight: 300})).withProps()
   expect(render(<MyIdDiv />)).toMatchSnapshot()
 })

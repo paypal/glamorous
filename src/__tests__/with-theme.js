@@ -7,6 +7,8 @@ import ThemeProvider from '../theme-provider'
 import {CHANNEL} from '../constants'
 import {PropTypes} from '../react-compat'
 
+jest.mock('../constants')
+
 const getMockedContext = () => ({
   [CHANNEL]: {
     getState: () => {},
@@ -17,9 +19,9 @@ const getMockedContext = () => ({
 })
 
 test('renders a non-glamorous component with theme', () => {
-  const CompWithTheme = withTheme(({theme: {padding}}) =>
-    <div style={{padding}} />,
-  )
+  const CompWithTheme = withTheme(({theme: {padding}}) => (
+    <div style={{padding}} />
+  ))
   expect(
     render(
       <ThemeProvider theme={{padding: '10px'}}>
@@ -44,9 +46,7 @@ test('theme properties updates get propagated down the tree', () => {
     }
   }
 
-  const Child = withTheme(({theme: {padding}}) =>
-    <div style={{padding}} />,
-  )
+  const Child = withTheme(({theme: {padding}}) => <div style={{padding}} />)
   const wrapper = mount(<Parent />)
   expect(wrapper).toMatchSnapshot(`with theme prop of padding 10px`)
   wrapper.setState({padding: 20})

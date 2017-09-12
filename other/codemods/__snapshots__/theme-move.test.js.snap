@@ -8,7 +8,6 @@ glamorous.div((props, theme) => ({fontSize: theme.fontSize}))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
-
 glamorous.div(props => ({fontSize: props.theme.fontSize}))
 
 `;
@@ -21,7 +20,6 @@ glamorous.div((props, theme, context) => ({ fontSize: theme.main.fontSize }))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
-
 glamorous.div((props, context) => ({fontSize: props.theme.main.fontSize}))
 
 `;
@@ -58,7 +56,6 @@ glamorous.div((props, theme) => ({fontSize: theme.main.fontSize}))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const glamorous = require('glamorous')
-
 glamorous.div(props => ({fontSize: props.theme.main.fontSize}))
 
 `;
@@ -143,7 +140,6 @@ glamorous('div')((props, theme) => ({fontSize: theme.fontSize}))
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
-
 glamorous('div')(props => ({fontSize: props.theme.fontSize}))
 
 `;
@@ -156,7 +152,6 @@ glamorous.div([(props, theme) => ({fontSize: theme.fontSize})])
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
-
 glamorous.div([props => ({fontSize: props.theme.fontSize})])
 
 `;
@@ -205,10 +200,7 @@ const ui = <glamorous.Div css={(props, theme) => ({fontSize: theme.fontSize})} /
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import glamorous from 'glamorous'
-
-const ui = (
-  <glamorous.Div css={props => ({fontSize: props.theme.fontSize})} />
-)
+const ui = <glamorous.Div css={props => ({fontSize: props.theme.fontSize})} />
 
 `;
 
@@ -240,7 +232,6 @@ const ui = <Span css={(props, theme) => ({fontSize: theme.fontSize})}>content</S
 import glamorous from 'glamorous'
 
 import {Span} from 'glamorous'
-
 const ui = (
   <Span css={props => ({fontSize: props.theme.fontSize})}>content</Span>
 )
@@ -261,10 +252,7 @@ glamorous.div((props, {primary: {headings: {font: {size: fontSize}}}}) => ({
 import glamorous from 'glamorous'
 
 glamorous.div(
-  ({
-    theme: {primary: {headings: {font: {size: fontSize}}}},
-    ...props
-  }) => ({
+  ({theme: {primary: {headings: {font: {size: fontSize}}}}, ...props}) => ({
     color: props.color,
     fontSize,
   }),
@@ -286,10 +274,7 @@ glamorous.div(({color}, {primary: {headings: {font: {size: fontSize}}}}) => ({
 import glamorous from 'glamorous'
 
 glamorous.div(
-  ({
-    color,
-    theme: {primary: {headings: {font: {size: fontSize}}}},
-  }) => ({
+  ({color, theme: {primary: {headings: {font: {size: fontSize}}}}}) => ({
     color,
     fontSize,
   }),

@@ -5,6 +5,8 @@ import glamorous from '../'
 import ThemeProvider from '../theme-provider'
 import {CHANNEL} from '../constants'
 
+jest.mock('../constants')
+
 const getMockedContext = () => ({
   [CHANNEL]: {
     getState: () => {},
@@ -135,9 +137,7 @@ test('merges nested themes', () => {
 test('renders if children are null', () => {
   expect(
     mount(
-      <ThemeProvider theme={{padding: 1}}>
-        {false && <div />}
-      </ThemeProvider>,
+      <ThemeProvider theme={{padding: 1}}>{false && <div />}</ThemeProvider>,
     ),
   ).toMatchSnapshot()
 })
