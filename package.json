@@ -3,8 +3,8 @@
   "version": "0.0.0-semantically-released",
   "description": "React component styling solved",
   "main": "dist/glamorous.cjs.js",
-  "jsnext:main": "dist/glamorous.es.js",
-  "module": "dist/glamorous.es.js",
+  "jsnext:main": "dist/glamorous.esm.js",
+  "module": "dist/glamorous.esm.js",
   "typings": "typings/glamorous.d.ts",
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
