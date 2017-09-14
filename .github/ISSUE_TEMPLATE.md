@@ -14,6 +14,11 @@ learn how: http://kcd.im/pull-request
 - `glamorous` version:
 - `glamor` version:
 - `react` version:
+<!--
+If you are using glamorous with typescript and believe the issue is with the
+definitions please also include the typescript version you are using
+- `typescript` version:
+-->
 
 Relevant code.
 
@@ -32,7 +37,9 @@ What happened:
 Reproduction:
 
 <!--
-Please reproduce your issue with this: https://help.glamorous.rocks
+Please reproduce your issue with one of the following:
+* javascript - https://help.glamorous.rocks
+* typescript - https://stackblitz.com/edit/react-ts-glamorous-help
 with as minimal amount of code possible. Then paste a link below:
 -->
 
