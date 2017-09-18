@@ -63,6 +63,9 @@ With the release of [`glamorous-primitives`](https://github.com/nitin42/glamorou
 
 You can find documentation and related examples [here](https://github.com/airbnb/react-sketchapp/tree/master/examples/glamorous).
 
+## Usage with Stylus
+
+You can use [glamorous-stylus](https://github.com/nitin42/glamorous-stylus) for styling React components with Stylus. Find detailed documentation [here](https://github.com/nitin42/glamorous-stylus#api-reference). 
 
 ## Users
 
