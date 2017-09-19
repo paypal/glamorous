@@ -211,6 +211,11 @@ export interface CSSPropertiesCompleteSingle {
   borderLeftWidth?: CSSWideKeyword | string | number
 
   /**
+   * Sets the width of an element's border radius.
+   */
+  borderRadius?: CSSWideKeyword | string | number
+
+  /**
    * Shorthand property that defines the border-width, border-style and border-color of an element's right border in a single declaration. Note that you can use the corresponding longhand properties to set specific individual properties of the right border — border-right-width, border-right-style and border-right-color.
    */
   borderRight?: CSSWideKeyword | string | number
