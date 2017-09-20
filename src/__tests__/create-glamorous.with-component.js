@@ -60,6 +60,6 @@ test('resulting component can have its styles extended further', () => {
     'overriding styles via css prop',
   )
   expect(
-    render(<View className={glamor.css({color: 'green'}).toString()} />),
+    render(<View className={glamor.css({color: 'green'})} />),
   ).toMatchSnapshot('overriding styles via className')
 })
