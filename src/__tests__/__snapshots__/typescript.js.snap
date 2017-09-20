@@ -41,7 +41,7 @@ test/should-fail.test.tsx(119,3): error TS2345: Argument of type 'StatelessCompo
 test/should-fail.test.tsx(134,3): error TS2345: Argument of type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { theme: any; } & ExampleComponentProps & object>'.
   Type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { theme: any; } & ExampleComponentProps & ...'.
     Property 'push' is missing in type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }'.
-test/should-fail.test.tsx(135,20): error TS2339: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'.
+test/should-fail.test.tsx(135,20): error TS2551: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'. Did you mean 'visible'?
 test/should-fail.test.tsx(140,3): error TS2345: Argument of type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { visible: boolean; } & object>'.
   Type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { visible: boolean; } & object>)[]'.
     Property 'push' is missing in type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }'.
