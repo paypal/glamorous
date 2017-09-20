@@ -45,33 +45,32 @@
     "glamor": ">=2"
   },
   "devDependencies": {
-    "@types/react": "^15.0.27",
+    "@types/react": "^16.0.5",
     "codegen.macro": "^1.0.0",
     "cross-spawn": "^5.1.0",
     "enzyme": "^2.8.2",
-    "enzyme-to-json": "^1.5.1",
+    "enzyme-to-json": "^2.0.0",
     "glamor": "^2.20.37",
-    "jest-glamor-react": "^3.0.0",
-    "kcd-scripts": "^0.14.1",
+    "jest-glamor-react": "^3.1.1",
+    "kcd-scripts": "^0.16.3",
     "preact": "^8.2.5",
     "preval.macro": "^1.0.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
-    "rimraf": "^2.6.1",
-    "tslint": "^5.4.3",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.0",
-    "tsutils": "^1.9.1",
-    "typescript": "2.4.2"
+    "tsutils": "^2.8.2",
+    "typescript": "^2.5.2"
   },
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js",
     "rules": {
       "import/prefer-default-export": "off",
       "react/no-unused-prop-types": "off",
-      "valid-jsdoc": "off",
-      "func-style": "off"
+      "valid-jsdoc": "off"
     }
   },
   "eslintIgnore": [
