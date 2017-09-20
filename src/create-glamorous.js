@@ -95,7 +95,9 @@ function createGlamorous(splitProps) {
       )
 
       GlamorousComponent.propTypes = {
-        className: PropTypes.string,
+        // className accepts an object due to glamor's css function
+        // returning an object with a toString method that gives the className
+        className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
         cssOverrides: PropTypes.object,
         innerRef: PropTypes.func,
         glam: PropTypes.object,
