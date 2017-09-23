@@ -26,6 +26,26 @@
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+## Table of Contents
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Documentation](#documentation)
+- [Related projects](#related-projects)
+- [Using glamorous with react-sketchapp](#using-glamorous-with-react-sketchapp)
+- [Usage with Stylus](#usage-with-stylus)
+- [Users](#users)
+- [Inspiration](#inspiration)
+- [Other Solutions](#other-solutions)
+- [Support](#support)
+- [Got Questions?](#got-questions)
+- [Swag 👕](#swag-)
+- [Contributors](#contributors)
+- [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Documentation
 
 You will find [tutorials](https://glamorous.rocks/getting-started/),
@@ -65,7 +85,7 @@ You can find documentation and related examples [here](https://github.com/airbnb
 
 ## Usage with Stylus
 
-You can use [glamorous-stylus](https://github.com/nitin42/glamorous-stylus) for styling React components with Stylus. Find detailed documentation [here](https://github.com/nitin42/glamorous-stylus#api-reference). 
+You can use [glamorous-stylus](https://github.com/nitin42/glamorous-stylus) for styling React components with Stylus. Find detailed documentation [here](https://github.com/nitin42/glamorous-stylus#api-reference).
 
 ## Users
 
