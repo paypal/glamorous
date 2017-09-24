@@ -19,8 +19,7 @@
     "test:update": "npm run test:cover -s -- --updateSnapshot",
     "test:build": "kcd-scripts test --config other/jest.config.js --no-watch",
     "build-and-test": "npm run build -s && npm run test:build -s",
-    "test:ts": "(tsc -p ./tsconfig.json && rimraf test-ts) || rimraf test-ts",
-    "validate": "kcd-scripts validate lint,build-and-test,test:cover,test:ts",
+    "validate": "kcd-scripts validate lint,build-and-test,test:cover",
     "precommit": "kcd-scripts precommit"
   },
   "files": ["dist", "typings", "preact"],
