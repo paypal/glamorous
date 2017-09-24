@@ -47,8 +47,6 @@ import {
 import {
   DOMTagComponentFactory,
   SVGTagComponentFactory,
-  HTMLDomTags,
-  SVGDomTags,
   DOMTagGlamorousComponentFactory,
   SVGTagGlamorousComponentFactory,
 } from './dom-tag-component-factory'
@@ -87,8 +85,6 @@ export {
 
   DOMTagComponentFactory,
   SVGTagComponentFactory,
-  HTMLDomTags,
-  SVGDomTags,
   DOMTagGlamorousComponentFactory,
   SVGTagGlamorousComponentFactory,
 }
