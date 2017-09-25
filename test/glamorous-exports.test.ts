@@ -1,21 +1,22 @@
 import {
   CSSProperties,
-  CSSPropertiesCompleteSingle, CSSPropertiesComplete, CSSPropertiesPseudo, CSSPropertiesLossy,
+  CSSPropertiesCompleteSingle,
+  CSSPropertiesComplete,
+  CSSPropertiesPseudo,
+  CSSPropertiesLossy,
   SVGProperties,
-  SVGPropertiesCompleteSingle, SVGPropertiesComplete, SVGPropertiesLossy,
-
+  SVGPropertiesCompleteSingle,
+  SVGPropertiesComplete,
+  SVGPropertiesLossy,
   GlamorousComponent,
   GlamorousComponentProps,
   ExtraGlamorousProps,
-
   StyleFunction,
   StyleArray,
   StyleArgument,
-
   BuiltInGlamorousComponentFactory,
   KeyGlamorousComponentFactory,
   GlamorousComponentFactory,
-
   HTMLComponentFactory,
   HTMLKey,
   SVGComponentFactory,

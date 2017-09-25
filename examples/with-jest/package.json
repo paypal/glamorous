@@ -6,11 +6,7 @@
   "scripts": {
     "test": "jest --coverage"
   },
-  "keywords": [
-    "glamorous",
-    "jest",
-    "react"
-  ],
+  "keywords": ["glamorous", "jest", "react"],
   "author": "pksjce",
   "license": "ISC",
   "dependencies": {
@@ -25,9 +21,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "setupTestFrameworkScriptFile": "./testSetup.js"
   }
 }

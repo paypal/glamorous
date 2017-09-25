@@ -1,14 +1,20 @@
-import { SVGProperties } from './svg-properties'
-import { CSSProperties } from './css-properties'
-import {
-  BuiltInGlamorousComponentFactory,
-} from './component-factory'
+import {SVGProperties} from './svg-properties'
+import {CSSProperties} from './css-properties'
+import {BuiltInGlamorousComponentFactory} from './component-factory'
 
-export type HTMLGlamorousComponentFactory<HTMLElement> =
-  BuiltInGlamorousComponentFactory<React.HTMLProps<HTMLElement>, CSSProperties>
+export type HTMLGlamorousComponentFactory<
+  HTMLElement
+> = BuiltInGlamorousComponentFactory<
+  React.HTMLProps<HTMLElement>,
+  CSSProperties
+>
 
-export type SVGGlamorousComponentFactory<SVGElement> =
-  BuiltInGlamorousComponentFactory<React.SVGAttributes<SVGElement>, SVGProperties>
+export type SVGGlamorousComponentFactory<
+  SVGElement
+> = BuiltInGlamorousComponentFactory<
+  React.SVGAttributes<SVGElement>,
+  SVGProperties
+>
 
 export interface HTMLComponentFactory {
   a: HTMLGlamorousComponentFactory<HTMLAnchorElement>
@@ -121,7 +127,7 @@ export interface HTMLComponentFactory {
   track: HTMLGlamorousComponentFactory<HTMLTrackElement>
   u: HTMLGlamorousComponentFactory<HTMLElement>
   ul: HTMLGlamorousComponentFactory<HTMLUListElement>
-  "var": HTMLGlamorousComponentFactory<HTMLElement>
+  var: HTMLGlamorousComponentFactory<HTMLElement>
   video: HTMLGlamorousComponentFactory<HTMLVideoElement>
   wbr: HTMLGlamorousComponentFactory<HTMLElement>
 }

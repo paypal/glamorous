@@ -4,9 +4,8 @@ dist
 .opt-in
 .opt-out
 test-ts
-typings/*.js
 *.log
 yarn.lock
 package-lock.json
 .vscode
-preact/**/*
+preact/

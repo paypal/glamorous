@@ -1,20 +1,20 @@
 {
-    "compilerOptions": {
-        "allowJs": false,
-        "declaration": true,
-        "inlineSources": true,
-        "jsx": "react",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "noEmit": false,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "outDir": "./test-ts",
-        "removeComments": false,
-        "sourceMap": true,
-        "strictNullChecks": true,
-        "target": "es6"
-    }
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "inlineSources": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "outDir": "./test-ts",
+    "removeComments": false,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "es6"
+  }
 }

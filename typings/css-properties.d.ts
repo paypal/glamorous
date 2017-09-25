@@ -1,4 +1,4 @@
-import { SingleOrArray } from './helpers'
+import {SingleOrArray} from './helpers'
 
 // See CSS 3 CSS-wide keywords https://www.w3.org/TR/css3-values/#common-keywords
 // See CSS 3 Explicit Defaulting https://www.w3.org/TR/css-cascade-3/#defaulting-keywords
@@ -10,24 +10,58 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Aligns a flex container's lines within the flex container when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
-  alignContent?: CSSWideKeyword | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch'
+  alignContent?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'stretch'
 
   /**
    * Sets the default alignment in the cross axis for all of the flex container's items, including anonymous flex items, similarly to how justify-content aligns items along the main axis.
    */
-  alignItems?: CSSWideKeyword | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+  alignItems?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch'
 
   /**
    * Allows the default alignment to be overridden for individual flex items.
    */
-  alignSelf?: CSSWideKeyword | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+  alignSelf?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch'
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not have a baseline-table or lack the desired baseline in their baseline-table. With the alignment-adjust property, the position of the baseline identified by the alignment-baseline can be explicitly determined. It also determines precisely the alignment point for each glyph within a textual element.
    */
   alignmentAdjust?: CSSWideKeyword | string | number
 
-  alignmentBaseline?: CSSWideKeyword | 'auto' | 'baseline' | 'before-edge' | 'text-before-edge' | 'middle' | 'central' | 'after-edge' | 'text-after-edge' | 'ideographic' | 'alphabetic' | 'hanging' | 'mathematical' | 'use-script'
+  alignmentBaseline?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'baseline'
+    | 'before-edge'
+    | 'text-before-edge'
+    | 'middle'
+    | 'central'
+    | 'after-edge'
+    | 'text-after-edge'
+    | 'ideographic'
+    | 'alphabetic'
+    | 'hanging'
+    | 'mathematical'
+    | 'use-script'
 
   /**
    * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
@@ -37,7 +71,12 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Defines whether an animation should run in reverse on some or all cycles.
    */
-  animationDirection?: CSSWideKeyword | 'normal' | 'reverse' | 'alternate' | ' alternate-reverse'
+  animationDirection?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'reverse'
+    | 'alternate'
+    | ' alternate-reverse'
 
   /**
    * Specifies how many times an animation cycle should play.
@@ -84,7 +123,24 @@ export interface CSSPropertiesCompleteSingle {
    * This property describes how the element's background images should blend with each other and the element's background color.
    * The value is a list of blend modes that corresponds to each background image. Each element in the list will apply to the corresponding element of background-image. If a property doesn’t have enough comma-separated values to match the number of layers, the UA must calculate its used value by repeating the list of values until there are enough.
    */
-  backgroundBlendMode?: CSSWideKeyword | 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten' | 'color-dodge' | 'color-burn' | 'hard-light' | 'soft-light' | 'difference' | 'exclusion' | 'hue' | 'saturation' | 'color' | 'luminosity'
+  backgroundBlendMode?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'multiply'
+    | 'screen'
+    | 'overlay'
+    | 'darken'
+    | 'lighten'
+    | 'color-dodge'
+    | 'color-burn'
+    | 'hard-light'
+    | 'soft-light'
+    | 'difference'
+    | 'exclusion'
+    | 'hue'
+    | 'saturation'
+    | 'color'
+    | 'luminosity'
 
   /**
    * Sets the background color of an element.
@@ -101,7 +157,11 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Specifies what the background-position property is relative to.
    */
-  backgroundOrigin?: CSSWideKeyword | 'border-box' | 'padding-box' | 'content-box'
+  backgroundOrigin?:
+    | CSSWideKeyword
+    | 'border-box'
+    | 'padding-box'
+    | 'content-box'
 
   /**
    * Sets the position of a background image.
@@ -152,7 +212,18 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Sets the line style of the bottom border of a box.
    */
-  borderBottomStyle?: CSSWideKeyword | 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'
+  borderBottomStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset'
 
   /**
    * Sets the width of an element's bottom border. To set all four borders, use the border-width shorthand property which sets the values simultaneously for border-top-width, border-right-width, border-bottom-width, and border-left-width.
@@ -203,7 +274,18 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Sets the style of an element's left border. To set all four borders, use the shorthand property, border-style. Otherwise, you can set the borders individually with border-top-style, border-right-style, border-bottom-style, border-left-style.
    */
-  borderLeftStyle?: CSSWideKeyword | 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'
+  borderLeftStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset'
 
   /**
    * Sets the width of an element's left border. To set all four borders, use the border-width shorthand property which sets the values simultaneously for border-top-width, border-right-width, border-bottom-width, and border-left-width.
@@ -229,7 +311,18 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Sets the style of an element's right border. To set all four borders, use the shorthand property, border-style. Otherwise, you can set the borders individually with border-top-style, border-right-style, border-bottom-style, border-left-style.
    */
-  borderRightStyle?: CSSWideKeyword | 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'
+  borderRightStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset'
 
   /**
    * Sets the width of an element's right border. To set all four borders, use the border-width shorthand property which sets the values simultaneously for border-top-width, border-right-width, border-bottom-width, and border-left-width.
@@ -244,7 +337,18 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Sets the style of an element's four borders. This property can have from one to four values. With only one value, the value will be applied to all four borders; otherwise, this works as a shorthand property for each of border-top-style, border-right-style, border-bottom-style, border-left-style, where each border style may be assigned a separate value.
    */
-  borderStyle?: CSSWideKeyword | 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'
+  borderStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset'
 
   /**
    * Shorthand property that defines the border-width, border-style and border-color of an element's top border in a single declaration. Note that you can use the corresponding longhand properties to set specific individual properties of the top border — border-top-width, border-top-style and border-top-color.
@@ -270,7 +374,18 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Sets the style of an element's top border. To set all four borders, use the shorthand property, border-style. Otherwise, you can set the borders individually with border-top-style, border-right-style, border-bottom-style, border-left-style.
    */
-  borderTopStyle?: CSSWideKeyword | 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'
+  borderTopStyle?:
+    | CSSWideKeyword
+    | 'none'
+    | 'hidden'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
+    | 'ridge'
+    | 'inset'
+    | 'outset'
 
   /**
    * Sets the width of an element's top border. To set all four borders, use the border-width shorthand property which sets the values simultaneously for border-top-width, border-right-width, border-bottom-width, and border-left-width.
@@ -290,7 +405,13 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Obsolete.
    */
-  boxAlign?: CSSWideKeyword | 'start' | 'center' | 'end' | 'baseline' | 'stretch'
+  boxAlign?:
+    | CSSWideKeyword
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'baseline'
+    | 'stretch'
 
   /**
    * Breaks a box into fragments creating new borders, padding and repeating backgrounds or lets it stay as a continuous box on a page break, column break, or, for inline elements, at a line break.
@@ -345,22 +466,61 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The CSS break-after property allows you to force a break on multi-column layouts. More specifically, it allows you to force a break after an element. It allows you to determine if a break should occur, and what type of break it should be. The break-after CSS property describes how the page, column or region break behaves after the generated box. If there is no generated box, the property is ignored.
    */
-  breakAfter?: CSSWideKeyword | 'auto' | 'avoid' | 'avoid-page' | 'page' | 'left' | 'right' | 'recto' | 'verso' | 'avoid-column' | 'column' | 'avoid-region' | 'region'
+  breakAfter?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'avoid'
+    | 'avoid-page'
+    | 'page'
+    | 'left'
+    | 'right'
+    | 'recto'
+    | 'verso'
+    | 'avoid-column'
+    | 'column'
+    | 'avoid-region'
+    | 'region'
 
   /**
    * Control page/column/region breaks that fall above a block of content
    */
-  breakBefore?: CSSWideKeyword | 'auto' | 'avoid' | 'avoid-page' | 'page' | 'left' | 'right' | 'recto' | 'verso' | 'avoid-column' | 'column' | 'avoid-region' | 'region'
+  breakBefore?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'avoid'
+    | 'avoid-page'
+    | 'page'
+    | 'left'
+    | 'right'
+    | 'recto'
+    | 'verso'
+    | 'avoid-column'
+    | 'column'
+    | 'avoid-region'
+    | 'region'
 
   /**
    * Control page/column/region breaks that fall within a block of content
    */
-  breakInside?: CSSWideKeyword | 'auto' | 'avoid' | 'avoid-page' | 'avoid-column' | 'avoid-region'
+  breakInside?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'avoid'
+    | 'avoid-page'
+    | 'avoid-column'
+    | 'avoid-region'
 
   /**
    * The clear CSS property specifies if an element can be positioned next to or must be positioned below the floating elements that precede it in the markup.
    */
-  clear?: CSSWideKeyword | 'none' | 'left' | 'right' | 'both' | 'inline-start' | 'inline-end'
+  clear?:
+    | CSSWideKeyword
+    | 'none'
+    | 'left'
+    | 'right'
+    | 'both'
+    | 'inline-start'
+    | 'inline-end'
 
   /**
    * Deprecated; see clip-path.
@@ -457,23 +617,55 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * This property specifies the type of rendering box used for an element. It is a shorthand property for many other display properties.
    */
-  display?:
-    /** turn off the display of an element and its descendants */
+  display /** turn off the display of an element and its descendants */?:
     | 'none'
     /** <display-outside> values. */
-    | 'block' | 'inline' | 'run-in'
+    | 'block'
+    | 'inline'
+    | 'run-in'
     /** <display-inside> values. */
-    | 'flow' | 'flow-root' | 'table' | 'flex' | 'grid' | 'ruby' | 'subgrid'
+    | 'flow'
+    | 'flow-root'
+    | 'table'
+    | 'flex'
+    | 'grid'
+    | 'ruby'
+    | 'subgrid'
     /** <display-outside> plus <display-inside> values */
-    | 'block flow' | 'inline table' | 'flex run-in'
+    | 'block flow'
+    | 'inline table'
+    | 'flex run-in'
     /** <display-listitem> values */
-    | 'list-item' | 'list-item block' | 'list-item inline' | 'list-item flow' | 'list-item flow-root' | 'list-item block flow' | 'list-item block flow-root' | 'flow list-item block'
+    | 'list-item'
+    | 'list-item block'
+    | 'list-item inline'
+    | 'list-item flow'
+    | 'list-item flow-root'
+    | 'list-item block flow'
+    | 'list-item block flow-root'
+    | 'flow list-item block'
     /** <display-internal> values. */
-    | 'table-row-group' | 'table-header-group' | 'table-footer-group' | 'table-row' | 'table-cell' | 'table-column-group' | 'table-column' | 'table-caption' | 'ruby-base' | 'ruby-text' | 'ruby-base-container' | 'ruby-text-container'
+    | 'table-row-group'
+    | 'table-header-group'
+    | 'table-footer-group'
+    | 'table-row'
+    | 'table-cell'
+    | 'table-column-group'
+    | 'table-column'
+    | 'table-caption'
+    | 'ruby-base'
+    | 'ruby-text'
+    | 'ruby-base-container'
+    | 'ruby-text-container'
     /** <display-box> values. */
-    | 'contents' | 'none'
+    | 'contents'
+    | 'none'
     /** <display-legacy> values. */
-    | 'inline-block' | 'inline-list-item' | 'inline-table' | 'inline-flex' | 'inline-grid'
+    | 'inline-block'
+    | 'inline-list-item'
+    | 'inline-table'
+    | 'inline-flex'
+    | 'inline-grid'
     /** global values. */
     | CSSWideKeyword
 
@@ -518,47 +710,53 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The flex-direction CSS property describes how flex items are placed in the flex container, by setting the direction of the flex container's main axis.
    */
-  flexDirection?: CSSWideKeyword | 'row' | 'row-reverse' | 'column' | 'column-reverse'
+  flexDirection?:
+    | CSSWideKeyword
+    | 'row'
+    | 'row-reverse'
+    | 'column'
+    | 'column-reverse'
 
   /**
    * The flex-flow CSS property defines the flex container's main and cross axis. It is a shorthand property for the flex-direction and flex-wrap properties.
    */
-  flexFlow?: CSSWideKeyword
-  // flex direction
-  | 'row'
-  | 'row-reverse'
-  | 'column'
-  | 'column-reverse'
-  // flex wrap
-  | 'nowrap'
-  | 'wrap'
-  | 'wrap-reverse'
-  // flex direction + flex wrap
-  | 'row nowrap'
-  | 'row wrap'
-  | 'row wrap-reverse'
-  | 'row-reverse nowrap'
-  | 'row-reverse wrap'
-  | 'row-reverse wrap-reverse'
-  | 'column nowrap'
-  | 'column wrap'
-  | 'column wrap-reverse'
-  | 'column-reverse nowrap'
-  | 'column-reverse wrap'
-  | 'column-reverse wrap-reverse'
-  // flex direction + flex wrap (reverse order)
-  | 'nowrap row'
-  | 'wrap row'
-  | 'wrap-reverse row'
-  | 'nowrap row-reverse'
-  | 'wrap row-reverse'
-  | 'wrap-reverse row-reverse'
-  | 'nowrap column'
-  | 'wrap column'
-  | 'wrap-reverse column'
-  | 'nowrap column-reverse'
-  | 'wrap column-reverse'
-  | 'wrap-reverse column-reverse'
+  flexFlow?:
+    | CSSWideKeyword
+    // flex direction
+    | 'row'
+    | 'row-reverse'
+    | 'column'
+    | 'column-reverse'
+    // flex wrap
+    | 'nowrap'
+    | 'wrap'
+    | 'wrap-reverse'
+    // flex direction + flex wrap
+    | 'row nowrap'
+    | 'row wrap'
+    | 'row wrap-reverse'
+    | 'row-reverse nowrap'
+    | 'row-reverse wrap'
+    | 'row-reverse wrap-reverse'
+    | 'column nowrap'
+    | 'column wrap'
+    | 'column wrap-reverse'
+    | 'column-reverse nowrap'
+    | 'column-reverse wrap'
+    | 'column-reverse wrap-reverse'
+    // flex direction + flex wrap (reverse order)
+    | 'nowrap row'
+    | 'wrap row'
+    | 'wrap-reverse row'
+    | 'nowrap row-reverse'
+    | 'wrap row-reverse'
+    | 'wrap-reverse row-reverse'
+    | 'nowrap column'
+    | 'wrap column'
+    | 'wrap-reverse column'
+    | 'nowrap column-reverse'
+    | 'wrap column-reverse'
+    | 'wrap-reverse column-reverse'
 
   /**
    * Specifies the flex grow factor of a flex item.
@@ -598,7 +796,13 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Elements which have the style float are floated horizontally. These elements can move as far to the left or right of the containing element. All elements after the floating element will flow around it, but elements before the floating element are not impacted. If several floating elements are placed after each other, they will float next to each other as long as there is room.
    */
-  float?: CSSWideKeyword | 'left' | 'right' | 'none' | 'inline-start' | 'inline-end'
+  float?:
+    | CSSWideKeyword
+    | 'left'
+    | 'right'
+    | 'none'
+    | 'inline-start'
+    | 'inline-end'
 
   /**
    * Flows content from a named flow (specified by a corresponding flow-into) through selected elements to form a dynamic chain of layout regions.
@@ -636,9 +840,17 @@ export interface CSSPropertiesCompleteSingle {
    * Allows you to expand or condense the widths for a normal, condensed, or expanded font face.
    * See CSS 3 font-stretch property https://drafts.csswg.org/css-fonts-3/#propdef-font-stretch
    */
-  fontStretch?: CSSWideKeyword |
-  'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' |
-  'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded'
+  fontStretch?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'ultra-condensed'
+    | 'extra-condensed'
+    | 'condensed'
+    | 'semi-condensed'
+    | 'semi-expanded'
+    | 'expanded'
+    | 'extra-expanded'
+    | 'ultra-expanded'
 
   /**
    * The font-style property allows normal, italic, or oblique faces to be selected. Italic forms are generally cursive in nature while oblique faces are typically sloped versions of the regular face. Oblique faces can be simulated by artificially sloping the glyphs of the regular face.
@@ -665,7 +877,21 @@ export interface CSSPropertiesCompleteSingle {
    * Specifies the weight or boldness of the font.
    * See CSS 3 'font-weight' property https://www.w3.org/TR/css-fonts-3/#propdef-font-weight
    */
-  fontWeight?: CSSWideKeyword | 'normal' | 'bold' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
+  fontWeight?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'bold'
+    | 'bolder'
+    | 'lighter'
+    | 100
+    | 200
+    | 300
+    | 400
+    | 500
+    | 600
+    | 700
+    | 800
+    | 900
 
   /**
    * Lays out one or more grid items bound by 4 grid lines. Shorthand for setting grid-column-start, grid-column-end, grid-row-start, and grid-row-end in a single declaration.
@@ -745,14 +971,27 @@ export interface CSSPropertiesCompleteSingle {
    */
   hyphens?: CSSWideKeyword | 'none' | 'manual' | 'auto'
 
-  imeMode?: CSSWideKeyword | 'auto' | 'normal' | 'active' | 'inactive' | 'disabled'
+  imeMode?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'normal'
+    | 'active'
+    | 'inactive'
+    | 'disabled'
 
   /**
    * Defines how the browser distributes space between and around flex items
    * along the main-axis of their container.
    * See CSS justify-content property https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: CSSWideKeyword | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+  justifyContent?:
+    | CSSWideKeyword
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
 
   layoutGrid?: CSSWideKeyword | string | number
 
@@ -953,7 +1192,12 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Specifies the preferred scrolling methods for elements that overflow.
    */
-  overflowStyle?: CSSWideKeyword | 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar'
+  overflowStyle?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'none'
+    | 'scrollbar'
+    | '-ms-autohiding-scrollbar'
 
   /**
    * Controls how extra content exceeding the x-axis of the bounding box of an element is rendered.
@@ -994,12 +1238,24 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The page-break-after property is supported in all major browsers. With CSS3, page-break-* properties are only aliases of the break-* properties. The CSS3 Fragmentation spec defines breaks for all CSS box fragmentation.
    */
-  pageBreakAfter?: CSSWideKeyword | 'auto' | 'always' | 'avoid' | 'left' | 'right'
+  pageBreakAfter?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'always'
+    | 'avoid'
+    | 'left'
+    | 'right'
 
   /**
    * The page-break-before property sets the page-breaking behavior before an element. With CSS3, page-break-* properties are only aliases of the break-* properties. The CSS3 Fragmentation spec defines breaks for all CSS box fragmentation.
    */
-  pageBreakBefore?: CSSWideKeyword | 'auto' | 'always' | 'avoid' | 'left' | 'right'
+  pageBreakBefore?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'always'
+    | 'avoid'
+    | 'left'
+    | 'right'
 
   /**
    * Sets the page-breaking behavior inside an element. With CSS3, page-break-* properties are only aliases of the break-* properties. The CSS3 Fragmentation spec defines breaks for all CSS box fragmentation.
@@ -1038,18 +1294,41 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The pointer-events property allows you to control whether an element can be the target for the pointing device (e.g, mouse, pen) events.
    */
-  pointerEvents?: CSSWideKeyword | 'auto' | 'none' | 'visiblePainted' | 'visibleFill' | 'visibleStroke' | 'visible' | 'painted' | 'fill' | 'stroke' | 'all'
+  pointerEvents?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'none'
+    | 'visiblePainted'
+    | 'visibleFill'
+    | 'visibleStroke'
+    | 'visible'
+    | 'painted'
+    | 'fill'
+    | 'stroke'
+    | 'all'
 
   /**
    * The position property controls the type of positioning used by an element within its parent elements. The effect of the position property depends on a lot of factors, for example the position property of parent elements.
    */
-  position?: CSSWideKeyword | 'static' | 'relative' | 'absolute' | 'sticky' | 'fixed'
+  position?:
+    | CSSWideKeyword
+    | 'static'
+    | 'relative'
+    | 'absolute'
+    | 'sticky'
+    | 'fixed'
 
   /**
    * Obsolete: unsupported.
    * This property determines whether or not a full-width punctuation mark character should be trimmed if it appears at the beginning of a line, so that its "ink" lines up with the first glyph in the line above and below.
    */
-  punctuationTrim?: CSSWideKeyword | 'none' | 'start' | 'end' | 'allow-end' | 'adjacent'
+  punctuationTrim?:
+    | CSSWideKeyword
+    | 'none'
+    | 'start'
+    | 'end'
+    | 'allow-end'
+    | 'adjacent'
 
   /**
    * Sets the type of quotation marks for embedded quotations.
@@ -1076,7 +1355,12 @@ export interface CSSPropertiesCompleteSingle {
    */
   right?: CSSWideKeyword | string | number
 
-  rubyAlign?: CSSWideKeyword | 'start' | 'center' | 'space-between' | 'space-around'
+  rubyAlign?:
+    | CSSWideKeyword
+    | 'start'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
 
   rubyPosition?: CSSWideKeyword | 'over' | 'under' | 'inter-character'
 
@@ -1135,12 +1419,28 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The text-align CSS property describes how inline content like text is aligned in its parent block element. text-align does not control the alignment of block elements itself, only their inline content.
    */
-  textAlign?: CSSWideKeyword | 'start' | 'end' | 'left' | 'right' | 'center' | 'justify' | 'match-parent'
+  textAlign?:
+    | CSSWideKeyword
+    | 'start'
+    | 'end'
+    | 'left'
+    | 'right'
+    | 'center'
+    | 'justify'
+    | 'match-parent'
 
   /**
    * The text-align-last CSS property describes how the last line of a block element or a line before line break is aligned in its parent block element.
    */
-  textAlignLast?: CSSWideKeyword | 'auto' | 'start' | 'end' | 'left' | 'right' | 'center' | 'justify'
+  textAlignLast?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'start'
+    | 'end'
+    | 'left'
+    | 'right'
+    | 'center'
+    | 'justify'
 
   /**
    * The text-decoration CSS property is used to set the text formatting to underline, overline, line-through or blink.
@@ -1201,7 +1501,15 @@ export interface CSSPropertiesCompleteSingle {
    */
   textIndent?: CSSWideKeyword | string | number
 
-  textJustifyTrim?: CSSWideKeyword | 'auto' | 'inter-word' | 'inter-ideograph' | 'inter-cluster' | 'distribute' | 'kashida' | 'trim'
+  textJustifyTrim?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'inter-word'
+    | 'inter-ideograph'
+    | 'inter-cluster'
+    | 'distribute'
+    | 'kashida'
+    | 'trim'
 
   textKashidaSpace?: CSSWideKeyword | string | number
 
@@ -1266,7 +1574,12 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The text-rendering CSS property provides information to the browser about how to optimize when rendering text. Options are: legibility, speed or geometric precision.
    */
-  textRendering?: CSSWideKeyword | 'auto' | 'optimizeSpeed' | 'optimizeLegibility' | 'geometricPrecision'
+  textRendering?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'optimizeSpeed'
+    | 'optimizeLegibility'
+    | 'geometricPrecision'
 
   /**
    * Obsolete: unsupported.
@@ -1281,7 +1594,13 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * This property transforms text for styling purposes. (It has no effect on the underlying content.)
    */
-  textTransform?: CSSWideKeyword | 'none' | 'capitalize' | 'uppercase' | 'lowercase' | 'full-width'
+  textTransform?:
+    | CSSWideKeyword
+    | 'none'
+    | 'capitalize'
+    | 'uppercase'
+    | 'lowercase'
+    | 'full-width'
 
   /**
    * Unsupported.
@@ -1353,7 +1672,14 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The unicode-bidi CSS property specifies the level of embedding with respect to the bidirectional algorithm.
    */
-  unicodeBidi?: CSSWideKeyword | 'normal' | 'embed' | 'isolate' | 'bidi-override' | 'isolate-override' | 'plaintext'
+  unicodeBidi?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'embed'
+    | 'isolate'
+    | 'bidi-override'
+    | 'isolate-override'
+    | 'plaintext'
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded from a font (embedded using @font-face) and made available for use on the current page.
@@ -1363,7 +1689,16 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * This is for all the high level UX stuff.
    */
-  userFocus?: CSSWideKeyword | 'ignore' | 'normal' | 'select-after' | 'select-before' | 'select-menu' | 'select-same' | 'select-all' | 'none'
+  userFocus?:
+    | CSSWideKeyword
+    | 'ignore'
+    | 'normal'
+    | 'select-after'
+    | 'select-before'
+    | 'select-menu'
+    | 'select-same'
+    | 'select-all'
+    | 'none'
 
   /**
    * For inputing user content
@@ -1383,7 +1718,14 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The voice-balance property sets the apparent position (in stereo sound) of the synthesized voice for spoken media.
    */
-  voiceBalance?: CSSWideKeyword | number | 'left' | 'center' | 'right' | 'leftwards' | 'rightwards'
+  voiceBalance?:
+    | CSSWideKeyword
+    | number
+    | 'left'
+    | 'center'
+    | 'right'
+    | 'leftwards'
+    | 'rightwards'
 
   /**
    * The voice-duration property allows the author to explicitly set the amount of time it should take a speech synthesizer to read an element's content, for example to allow the speech to be synchronized with other media. With a value of auto (the default) the length of time it takes to read the content is determined by the content itself and the voice-rate property.
@@ -1423,7 +1765,13 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * The white-space property controls whether and how white space inside the element is collapsed, and whether lines may wrap at unforced "soft wrap" opportunities.
    */
-  whiteSpace?: CSSWideKeyword | 'normal' | 'pre' | 'nowrap' | 'pre-wrap' | 'pre-line'
+  whiteSpace?:
+    | CSSWideKeyword
+    | 'normal'
+    | 'pre'
+    | 'nowrap'
+    | 'pre-wrap'
+    | 'pre-line'
 
   /**
    * Obsolete: unsupported.
@@ -1460,7 +1808,14 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * Specifies how exclusions affect inline content within block-level elements. Elements lay out their inline content in their content area but wrap around exclusion areas.
    */
-  wrapFlow?: CSSWideKeyword | 'auto' | 'both' | 'start' | 'end' | 'maximum' | 'clear'
+  wrapFlow?:
+    | CSSWideKeyword
+    | 'auto'
+    | 'both'
+    | 'start'
+    | 'end'
+    | 'maximum'
+    | 'clear'
 
   /**
    * Set the value that is used to offset the inner wrap shape from other shapes. Inline content that intersects a shape with this property will be pushed by this shape's margin.
@@ -1476,7 +1831,13 @@ export interface CSSPropertiesCompleteSingle {
   /**
    * writing-mode specifies if lines of text are laid out horizontally or vertically, and the direction which lines of text and blocks progress.
    */
-  writingMode?: CSSWideKeyword | 'horizontal-tb' | 'vertical-rl' | 'vertical-lr' | 'sideways-rl' | 'sideways-lr'
+  writingMode?:
+    | CSSWideKeyword
+    | 'horizontal-tb'
+    | 'vertical-rl'
+    | 'vertical-lr'
+    | 'sideways-rl'
+    | 'sideways-lr'
 
   /**
    * The z-index property specifies the z-order of an element and its descendants.
@@ -1559,14 +1920,16 @@ type CSSPropertiesComplete = SingleOrArray<
 
 export interface CSSPropertiesLossy {
   [propertyName: string]:
-    | string | number | CSSPropertiesComplete | undefined
+    | string
+    | number
+    | CSSPropertiesComplete
+    | undefined
     | Array<CSSPropertiesComplete[keyof CSSPropertiesComplete]>
     | CSSPropertiesLossy
     | React.ReactChild
 }
 
-export interface CSSProperties extends
-  CSSPropertiesComplete,
-  CSSPropertiesPseudo,
-  CSSPropertiesLossy
-    {}
+export interface CSSProperties
+  extends CSSPropertiesComplete,
+    CSSPropertiesPseudo,
+    CSSPropertiesLossy {}
