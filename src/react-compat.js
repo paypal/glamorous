@@ -1,4 +1,5 @@
 import React from 'react'
+import codegen from 'codegen.macro'
 import {isPreact} from './constants'
 
 let PropTypes
@@ -77,7 +78,13 @@ if (isPreact) {
 } else if (parseFloat(React.version.slice(0, 4)) >= 15.5) {
   /* istanbul ignore next */
   try {
-    PropTypes = require('prop-types')
+    PropTypes = codegen`
+      if (process.env.BUILD_FORMAT === 'umd') {
+        module.exports = "(typeof window !== 'undefined' ? window : global).PropTypes"
+      } else {
+        module.exports = "require('prop-types')"
+      }
+    `
     /* istanbul ignore next */
   } catch (error) {
     // ignore
