@@ -10,6 +10,7 @@
  * This file is unable to validate the global export.
  */
 import assert from 'assert'
+import './helpers/prop-types' // eslint-disable-line
 
 import * as esImportStar from '../../dist/glamorous.esm'
 import * as esImportStarTiny from '../../dist/glamorous.esm.tiny'
