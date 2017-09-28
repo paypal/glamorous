@@ -19,3 +19,4 @@ we may have a website to showcase these (wanna build it!?)
   [mobile](https://robinpowered.com/features/mobile) and [tablet](https://robinpowered.com/features/room-display)
   applications
 - [Budgee](https://budgee.com)is styled entirely using glamorous.
+- [Rubrik](https://rubrik.com) is using glamorous in styling the UI of our next generation product for cloud data management.
