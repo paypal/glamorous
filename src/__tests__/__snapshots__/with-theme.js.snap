@@ -7,7 +7,7 @@ exports[`renders a non-glamorous component with theme 1`] = `
 `;
 
 exports[`with theme prop of padding 10px 1`] = `
-<Component>
+<ReactComponent>
   <ThemeProvider
     theme={
       Object {
@@ -33,11 +33,11 @@ exports[`with theme prop of padding 10px 1`] = `
       </Component>
     </ThemedComponent>
   </ThemeProvider>
-</Component>
+</ReactComponent>
 `;
 
 exports[`with theme prop of padding 10px 2`] = `
-<Component>
+<ReactComponent>
   <ThemeProvider
     theme={
       Object {
@@ -63,11 +63,11 @@ exports[`with theme prop of padding 10px 2`] = `
       </Child>
     </ThemedComponent>
   </ThemeProvider>
-</Component>
+</ReactComponent>
 `;
 
 exports[`with theme prop of padding 20px 1`] = `
-<Component>
+<ReactComponent>
   <ThemeProvider
     theme={
       Object {
@@ -93,7 +93,7 @@ exports[`with theme prop of padding 20px 1`] = `
       </Component>
     </ThemedComponent>
   </ThemeProvider>
-</Component>
+</ReactComponent>
 `;
 
 exports[`without theme provider 1`] = `
