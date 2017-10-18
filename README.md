@@ -6,8 +6,10 @@
 </h1>
 <p align="center" style="font-size: 1.2rem;">Maintainable CSS with React</p>
 
-> Read [the intro blogpost][intro-blogpost] and [the v4 announcement blog post][v4-announcement-blogpost]
-
+<div align="center">
+  
+  Read [the intro blogpost][intro-blogpost] and [the v4 announcement blog post][v4-announcement-blogpost]
+  
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
 [![version][version-badge]][package]
@@ -22,9 +24,11 @@
 [![gzip size][gzip-badge]][unpkg-dist]
 [![size][size-badge]][unpkg-dist]
 [![module formats: umd, cjs, and es][module-formats-badge]][unpkg-dist]
+
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
+</div>
 
 ## Table of Contents
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
