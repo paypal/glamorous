@@ -87,7 +87,8 @@ export {
 export interface GlamorousOptions<Props, Context, DefaultProps> {
   displayName: string
   rootEl: string | Element
-  forwardProps: String[]
+  forwardProps: string[]
+  filterProps: string[]
   shouldClassNameUpdate: (
     props: Props,
     prevProps: Props,
@@ -105,7 +106,8 @@ export interface PropsAreCssOverridesGlamorousOptions<
 > {
   displayName?: string
   rootEl?: string | Element
-  forwardProps?: String[]
+  forwardProps?: string[]
+  filterProps?: string[]
   shouldClassNameUpdate?: (
     props: Props,
     prevProps: Props,
