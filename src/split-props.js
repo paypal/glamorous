@@ -13,17 +13,16 @@ export default function splitProps(
   },
   {propsAreCssOverrides, rootEl, filterProps, forwardProps},
 ) {
+  // forward innerRef if user wishes to do so
+  if (innerRef !== undefined && forwardProps.indexOf('innerRef') !== -1) {
+    rest.innerRef = innerRef
+  }
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     if (typeof rootEl !== 'string' && filterProps.length === 0) {
       // if it's not a string and filterProps is empty,
       // then we can forward everything (because it's a component)
       returnValue.toForward = rest
-
-      // forward innerRef if user wishes to do so
-      if (innerRef !== undefined && forwardProps.indexOf('innerRef') !== -1) {
-        returnValue.toForward.innerRef = innerRef
-      }
       return returnValue
     }
   }

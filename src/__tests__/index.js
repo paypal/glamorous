@@ -419,6 +419,60 @@ test('should not pass inner ref to underlying component if not forwarded', () =>
   expect(nodeType).toBeInstanceOf(InnerComp)
 })
 
+test('should pass inner ref to underlying component if forwarded and rootEl is set', () => {
+  let nodeType = null
+  const getRef = n => (nodeType = n)
+
+  class InnerComp extends React.Component {
+    render() {
+      return (
+        <div>
+          <span ref={this.props.innerRef} />
+        </div>
+      )
+    }
+  }
+
+  const Comp = glamorous(InnerComp, {
+    rootEl: 'span',
+    forwardProps: ['innerRef'],
+  })({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} blue />)
+
+  expect(nodeType).toBeInstanceOf(HTMLElement)
+  expect(nodeType.tagName).toBe('SPAN')
+})
+
+test('should pass inner ref to underlying component if forwarded and filterProps are specified', () => {
+  let nodeType = null
+  const getRef = n => (nodeType = n)
+
+  class InnerComp extends React.Component {
+    render() {
+      return (
+        <div>
+          <span ref={this.props.innerRef} />
+        </div>
+      )
+    }
+  }
+
+  const Comp = glamorous(InnerComp, {
+    filterProps: ['noname'],
+    forwardProps: ['innerRef'],
+  })({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} blue />)
+
+  expect(nodeType).toBeInstanceOf(HTMLElement)
+  expect(nodeType.tagName).toBe('SPAN')
+})
+
 test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()

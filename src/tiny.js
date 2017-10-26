@@ -14,13 +14,11 @@ function splitProps(
   },
   {forwardProps},
 ) {
-  const returnValue = {toForward: rest, cssProp}
-
   // forward innerRef if user wishes to do so
   if (innerRef !== undefined && forwardProps.indexOf('innerRef') !== -1) {
-    returnValue.toForward.innerRef = innerRef
+    rest.innerRef = innerRef
   }
-  return returnValue
+  return {toForward: rest, cssProp}
 }
 
 const glamorous = createGlamorous(splitProps)
