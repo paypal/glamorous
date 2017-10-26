@@ -86,7 +86,8 @@ function createGlamorous(splitProps) {
             : this.className
 
           return React.createElement(GlamorousComponent.comp, {
-            ref: props.innerRef,
+            // if innerRef is forwarded we don't want to apply it here
+            ref: 'innerRef' in toForward ? undefined : props.innerRef,
             ...toForward,
             className: this.className,
           })

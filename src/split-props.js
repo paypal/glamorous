@@ -19,6 +19,11 @@ export default function splitProps(
       // if it's not a string and filterProps is empty,
       // then we can forward everything (because it's a component)
       returnValue.toForward = rest
+
+      // forward innerRef if user wishes to do so
+      if (innerRef !== undefined && forwardProps.indexOf('innerRef') !== -1) {
+        returnValue.toForward.innerRef = innerRef
+      }
       return returnValue
     }
   }

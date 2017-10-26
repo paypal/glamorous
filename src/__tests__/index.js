@@ -372,6 +372,53 @@ test('should receive inner ref if specified', () => {
   expect(getRef).toHaveBeenCalled()
 })
 
+test('should pass inner ref to underlying component if forwarded', () => {
+  let nodeType = null
+  const getRef = n => (nodeType = n)
+
+  class InnerComp extends React.Component {
+    render() {
+      return (
+        <div>
+          <span ref={this.props.innerRef} />
+        </div>
+      )
+    }
+  }
+
+  const Comp = glamorous(InnerComp, {forwardProps: ['innerRef']})({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} blue />)
+
+  expect(nodeType).toBeInstanceOf(HTMLElement)
+  expect(nodeType.tagName).toBe('SPAN')
+})
+
+test('should not pass inner ref to underlying component if not forwarded', () => {
+  let nodeType = null
+  const getRef = n => (nodeType = n)
+
+  class InnerComp extends React.Component {
+    render() {
+      return (
+        <div>
+          <span ref={this.props.innerRef} />
+        </div>
+      )
+    }
+  }
+
+  const Comp = glamorous(InnerComp)({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} />)
+
+  expect(nodeType).toBeInstanceOf(InnerComp)
+})
+
 test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()
