@@ -3,16 +3,21 @@ import shouldForwardProperty from './should-forward-property'
 export default function splitProps(
   {
     css: cssProp,
+    innerRef,
     // these are plucked off
     theme, // because they
     className, // should never
-    innerRef, // be forwarded
-    glam, // to the lower
+    glam, // be forwarded
+    // to the lower
     // component ever
     ...rest
   },
   {propsAreCssOverrides, rootEl, filterProps, forwardProps},
 ) {
+  // forward innerRef if user wishes to do so
+  if (innerRef !== undefined && forwardProps.indexOf('innerRef') !== -1) {
+    rest.innerRef = innerRef
+  }
   const returnValue = {toForward: {}, cssProp, cssOverrides: {}}
   if (!propsAreCssOverrides) {
     if (typeof rootEl !== 'string' && filterProps.length === 0) {

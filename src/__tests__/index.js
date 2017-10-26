@@ -361,17 +361,6 @@ test('allows you to pass custom props that are allowed', () => {
   )
 })
 
-test('should receive inner ref if specified', () => {
-  const getRef = jest.fn()
-  const Comp = glamorous.div({
-    marginLeft: '24px',
-  })
-
-  mount(<Comp innerRef={getRef} />)
-
-  expect(getRef).toHaveBeenCalled()
-})
-
 test('can accept classNames instead of style objects', () => {
   // this is to support a babel plugin to pre-compile static styles
   const className1 = glamor.css({paddingTop: 1, paddingRight: 1}).toString()

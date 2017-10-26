@@ -517,6 +517,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "danielberndt",
+      "name": "Daniel",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/856386?v=4",
+      "profile": "https://www.danielberndt.net",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }

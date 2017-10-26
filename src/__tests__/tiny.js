@@ -1,6 +1,6 @@
 /* eslint func-style:0, react/prop-types:0 */
 import React from 'react'
-import {render} from 'enzyme'
+import {render, mount} from 'enzyme'
 
 import glamorousTiny from '../tiny'
 
@@ -30,4 +30,51 @@ test('should pass glam object prop', () => {
   }
   const context = expect.any(Object) // the context
   expect(dynamicStyles).toHaveBeenCalledWith(props, context)
+})
+
+test('should pass inner ref to underlying component if forwarded', () => {
+  let node = null
+  const getRef = n => (node = n)
+
+  class InnerComp extends React.Component {
+    render() {
+      return (
+        <div>
+          <span ref={this.props.innerRef} />
+        </div>
+      )
+    }
+  }
+
+  const Comp = glamorousTiny(InnerComp, {forwardProps: ['innerRef']})({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} />)
+
+  expect(node).toBeInstanceOf(HTMLElement)
+  expect(node.tagName).toBe('SPAN')
+})
+
+test('should not pass inner ref to underlying component if not forwarded', () => {
+  let node = null
+  const getRef = n => (node = n)
+
+  class InnerComp extends React.Component {
+    render() {
+      return (
+        <div>
+          <span ref={this.props.innerRef} />
+        </div>
+      )
+    }
+  }
+
+  const Comp = glamorousTiny(InnerComp)({
+    marginLeft: '24px',
+  })
+
+  mount(<Comp innerRef={getRef} />)
+
+  expect(node).toBeInstanceOf(InnerComp)
 })
