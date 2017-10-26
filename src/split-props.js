@@ -3,11 +3,12 @@ import shouldForwardProperty from './should-forward-property'
 export default function splitProps(
   {
     css: cssProp,
+    innerRef,
     // these are plucked off
     theme, // because they
     className, // should never
-    innerRef, // be forwarded
-    glam, // to the lower
+    glam, // be forwarded
+    // to the lower
     // component ever
     ...rest
   },
