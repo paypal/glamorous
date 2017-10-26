@@ -33,8 +33,8 @@ test('should pass glam object prop', () => {
 })
 
 test('should pass inner ref to underlying component if forwarded', () => {
-  let nodeType = null
-  const getRef = n => (nodeType = n)
+  let node = null
+  const getRef = n => (node = n)
 
   class InnerComp extends React.Component {
     render() {
@@ -50,15 +50,15 @@ test('should pass inner ref to underlying component if forwarded', () => {
     marginLeft: '24px',
   })
 
-  mount(<Comp innerRef={getRef} blue />)
+  mount(<Comp innerRef={getRef} />)
 
-  expect(nodeType).toBeInstanceOf(HTMLElement)
-  expect(nodeType.tagName).toBe('SPAN')
+  expect(node).toBeInstanceOf(HTMLElement)
+  expect(node.tagName).toBe('SPAN')
 })
 
 test('should not pass inner ref to underlying component if not forwarded', () => {
-  let nodeType = null
-  const getRef = n => (nodeType = n)
+  let node = null
+  const getRef = n => (node = n)
 
   class InnerComp extends React.Component {
     render() {
@@ -76,5 +76,5 @@ test('should not pass inner ref to underlying component if not forwarded', () =>
 
   mount(<Comp innerRef={getRef} />)
 
-  expect(nodeType).toBeInstanceOf(InnerComp)
+  expect(node).toBeInstanceOf(InnerComp)
 })
