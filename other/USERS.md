@@ -20,3 +20,4 @@ we may have a website to showcase these (wanna build it!?)
   applications
 - [Budgee](https://budgee.com)is styled entirely using glamorous.
 - [Rubrik](https://rubrik.com) is using glamorous in styling the UI of our next generation product for cloud data management.
+- [Mineral UI](http://mineral-ui.com/) is using Glamorous to build an open source design system and React component library.
