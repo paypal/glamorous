@@ -14,8 +14,6 @@ import {CHANNEL} from './constants'
  * @param {Object} theme the theme object..
  */
 class ThemeProvider extends React.Component {
-  broadcast = brcast(this.props.theme)
-
   // create theme, by merging with outer theme, if present
   getTheme(passedTheme) {
     const theme = passedTheme || this.props.theme
@@ -40,7 +38,9 @@ class ThemeProvider extends React.Component {
 
   setOuterTheme = theme => {
     this.outerTheme = theme
-    this.publishTheme()
+    if (this.broadcast !== undefined) {
+      this.publishTheme()
+    }
   }
 
   publishTheme(theme) {
@@ -59,6 +59,7 @@ class ThemeProvider extends React.Component {
     if (this.context[CHANNEL]) {
       this.setOuterTheme(this.context[CHANNEL].getState())
     }
+    this.broadcast = brcast(this.getTheme(this.props.theme))
   }
 
   componentWillReceiveProps(nextProps) {
