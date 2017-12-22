@@ -46,6 +46,32 @@ exports[`merges nested themes 1`] = `
 </div>
 `;
 
+exports[`propagates theme updates through nested ThemeProviders 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  background-color: black;
+  color: red;
+}
+
+<ThemeProvider
+  theme={
+    Object {
+      "bg": "black",
+    }
+  }
+>
+  <ThemeProvider
+    theme={[Function]}
+  >
+    <glamorous(div)>
+      <div
+        className="glamor-0"
+      />
+    </glamorous(div)>
+  </ThemeProvider>
+</ThemeProvider>
+`;
+
 exports[`renders a component with theme 1`] = `
 .glamor-0,
 [data-glamor-0] {

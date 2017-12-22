@@ -134,6 +134,29 @@ test('merges nested themes', () => {
   ).toMatchSnapshot()
 })
 
+test('propagates theme updates through nested ThemeProviders', () => {
+  const theme = {bg: 'white'}
+  const augment = outerTheme => Object.assign({}, outerTheme, {color: 'red'})
+  const update = {bg: 'black'}
+
+  const Child = glamorous.div(({theme: {bg, color}}) => ({
+    backgroundColor: bg,
+    color,
+  }))
+
+  const wrapper = mount(
+    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={augment}>
+        <Child />
+      </ThemeProvider>
+    </ThemeProvider>,
+  )
+
+  wrapper.setProps({theme: Object.assign({}, theme, update)})
+
+  expect(wrapper).toMatchSnapshot()
+})
+
 test('renders if children are null', () => {
   expect(
     mount(

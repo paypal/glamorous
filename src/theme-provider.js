@@ -40,6 +40,11 @@ class ThemeProvider extends React.Component {
 
   setOuterTheme = theme => {
     this.outerTheme = theme
+    this.publishTheme()
+  }
+
+  publishTheme(theme) {
+    this.broadcast.setState(this.getTheme(theme))
   }
 
   componentDidMount() {
@@ -53,13 +58,12 @@ class ThemeProvider extends React.Component {
     // set broadcast state by merging outer theme with own
     if (this.context[CHANNEL]) {
       this.setOuterTheme(this.context[CHANNEL].getState())
-      this.broadcast.setState(this.getTheme())
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.theme !== nextProps.theme) {
-      this.broadcast.setState(this.getTheme(nextProps.theme))
+      this.publishTheme(nextProps.theme)
     }
   }
 
