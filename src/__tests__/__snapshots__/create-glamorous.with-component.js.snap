@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`overriding styles via className 1`] = `
+exports[`resulting component can have its styles extended further: overriding styles via className 1`] = `
 .glamor-0,
 [data-glamor-0] {
   color: green;
@@ -12,7 +12,7 @@ exports[`overriding styles via className 1`] = `
 />
 `;
 
-exports[`overriding styles via css prop 1`] = `
+exports[`resulting component can have its styles extended further: overriding styles via css prop 1`] = `
 .glamor-0,
 [data-glamor-0] {
   color: red;
@@ -24,7 +24,7 @@ exports[`overriding styles via css prop 1`] = `
 />
 `;
 
-exports[`overriding styles via wrapping with glamorous 1`] = `
+exports[`resulting component can have its styles extended further: overriding styles via wrapping with glamorous 1`] = `
 .glamor-0,
 [data-glamor-0] {
   color: blue;

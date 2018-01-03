@@ -118,54 +118,6 @@ exports[`can use pre-built glamorous components with css prop 1`] = `
 />
 `;
 
-exports[`css prop with a className 1`] = `
-.glamor-0,
-[data-glamor-0] {
-  color: red;
-}
-
-<section
-  class="glamor-0 abc-123"
-/>
-`;
-
-exports[`css prop with a function 1`] = `
-.glamor-0,
-[data-glamor-0] {
-  font-size: 10px;
-  padding: 20px;
-  margin: 30px;
-}
-
-<section
-  class="glamor-0"
-/>
-`;
-
-exports[`css prop with an array 1`] = `
-.glamor-0,
-[data-glamor-0] {
-  margin-top: 1px;
-  margin-right: 2px;
-  margin-bottom: 2px;
-}
-
-<section
-  class="glamor-0"
-/>
-`;
-
-exports[`css prop with an object 1`] = `
-.glamor-0,
-[data-glamor-0] {
-  font-size: 12px;
-}
-
-<section
-  class="glamor-0"
-/>
-`;
-
 exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 .glamor-0,
 [data-glamor-0] {
@@ -200,6 +152,46 @@ exports[`merges composed component styles for reasonable overrides 1`] = `
 <div
   class="glamor-0 other classes are not removed"
 />
+`;
+
+exports[`passes an updated theme when theme prop changes: with theme prop of padding 10px 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  color: red;
+  padding: 10px;
+}
+
+<glamorous(div)
+  theme={
+    Object {
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="glamor-0"
+  />
+</glamorous(div)>
+`;
+
+exports[`passes an updated theme when theme prop changes: with theme prop of padding 20px 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  color: red;
+  padding: 20px;
+}
+
+<glamorous(div)
+  theme={
+    Object {
+      "padding": 20,
+    }
+  }
+>
+  <div
+    className="glamor-0"
+  />
+</glamorous(div)>
 `;
 
 exports[`renders a component with theme properties 1`] = `
@@ -251,6 +243,54 @@ exports[`styles can be functions that accept props 1`] = `
 />
 `;
 
+exports[`the css prop accepts "GlamorousStyles": css prop with a className 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  color: red;
+}
+
+<section
+  class="glamor-0 abc-123"
+/>
+`;
+
+exports[`the css prop accepts "GlamorousStyles": css prop with a function 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  font-size: 10px;
+  padding: 20px;
+  margin: 30px;
+}
+
+<section
+  class="glamor-0"
+/>
+`;
+
+exports[`the css prop accepts "GlamorousStyles": css prop with an array 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  margin-top: 1px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+}
+
+<section
+  class="glamor-0"
+/>
+`;
+
+exports[`the css prop accepts "GlamorousStyles": css prop with an object 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  font-size: 12px;
+}
+
+<section
+  class="glamor-0"
+/>
+`;
+
 exports[`will forward \`color\` to an svg 1`] = `
 <svg
   class="css-nil"
@@ -267,44 +307,4 @@ exports[`will not forward \`color\` to a div 1`] = `
 <div
   class="glamor-0"
 />
-`;
-
-exports[`with theme prop of padding 10px 1`] = `
-.glamor-0,
-[data-glamor-0] {
-  color: red;
-  padding: 10px;
-}
-
-<glamorous(div)
-  theme={
-    Object {
-      "padding": 10,
-    }
-  }
->
-  <div
-    className="glamor-0"
-  />
-</glamorous(div)>
-`;
-
-exports[`with theme prop of padding 20px 1`] = `
-.glamor-0,
-[data-glamor-0] {
-  color: red;
-  padding: 20px;
-}
-
-<glamorous(div)
-  theme={
-    Object {
-      "padding": 20,
-    }
-  }
->
-  <div
-    className="glamor-0"
-  />
-</glamorous(div)>
 `;

@@ -143,11 +143,10 @@ test('merges composed component styles for reasonable overrides', () => {
       }}
     />,
   )
-  const el = wrapper.children()[0]
   // being explicit
   const included = ['other', 'classes', 'are', 'not', 'removed']
   included.forEach(className => {
-    expect(el.attribs.class).toContain(className)
+    expect(wrapper[0].attribs.class).toContain(className)
   })
   // still using a snapshot though for good measure
   expect(wrapper).toMatchSnapshot()

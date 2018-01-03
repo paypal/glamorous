@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`does nothing when receive same theme via props: with theme prop of margin 2px 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": 2,
+    }
+  }
+/>
+`;
+
+exports[`does nothing when receive same theme via props: with theme prop of margin 2px 2`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "margin": 2,
+    }
+  }
+/>
+`;
+
 exports[`merges nested themes 1`] = `
 .glamor-0,
 [data-glamor-0] {
@@ -117,36 +137,14 @@ exports[`renders inverted theme 1`] = `
 </div>
 `;
 
-exports[`throws if inverted theme is not object 1`] = `"[ThemeProvider] Please return an object from your theme function, i.e. theme={() => ({})}!"`;
-
-exports[`with theme prop of margin 2px 1`] = `
-<ThemeProvider
-  theme={
-    Object {
-      "margin": 2,
-    }
-  }
-/>
-`;
-
-exports[`with theme prop of margin 2px 2`] = `
-<ThemeProvider
-  theme={
-    Object {
-      "margin": 2,
-    }
-  }
-/>
-`;
-
-exports[`with theme prop of padding 10px 1`] = `
+exports[`theme properties updates get propagated down the tree: with theme prop of padding 10px 1`] = `
 .glamor-0,
 [data-glamor-0] {
   color: red;
   padding: 10px;
 }
 
-<ReactComponent>
+<Component>
   <ThemeProvider
     theme={
       Object {
@@ -160,17 +158,17 @@ exports[`with theme prop of padding 10px 1`] = `
       />
     </glamorous(div)>
   </ThemeProvider>
-</ReactComponent>
+</Component>
 `;
 
-exports[`with theme prop of padding 20px 1`] = `
+exports[`theme properties updates get propagated down the tree: with theme prop of padding 20px 1`] = `
 .glamor-0,
 [data-glamor-0] {
   color: red;
   padding: 20px;
 }
 
-<ReactComponent>
+<Component>
   <ThemeProvider
     theme={
       Object {
@@ -184,5 +182,7 @@ exports[`with theme prop of padding 20px 1`] = `
       />
     </glamorous(div)>
   </ThemeProvider>
-</ReactComponent>
+</Component>
 `;
+
+exports[`throws if inverted theme is not object 1`] = `"[ThemeProvider] Please return an object from your theme function, i.e. theme={() => ({})}!"`;

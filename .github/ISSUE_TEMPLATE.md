@@ -11,24 +11,21 @@ never done that before, that's great! Check this free short video tutorial to
 learn how: http://kcd.im/pull-request
 -->
 
-- `glamorous` version:
-- `glamor` version:
-- `react` version:
-<!--
-If you are using glamorous with typescript and believe the issue is with the
-definitions please also include the typescript version you are using
-- `typescript` version:
--->
+* `glamorous` version:
+* `glamor` version:
+* `react` version:
+  <!--
+  If you are using glamorous with typescript and believe the issue is with the
+  definitions please also include the typescript version you are using
+* `typescript` version:
+  -->
 
 Relevant code.
 
 ```javascript
-
 ```
 
 What you did:
-
-
 
 What happened:
 
@@ -46,7 +43,5 @@ with as minimal amount of code possible. Then paste a link below:
 -- paste your link here --
 
 Problem description:
-
-
 
 Suggested solution:

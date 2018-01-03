@@ -31,6 +31,7 @@ const umdRequire = require('../../dist/glamorous.umd')
 const cjsRequireTiny = require('../../dist/glamorous.cjs.tiny')
 const umdRequireTiny = require('../../dist/glamorous.umd.tiny')
 
+// eslint-disable-next-line complexity
 test('all imports work', () => {
   assert(
     isGlamorousFunction(esImport) && hasExtraExports(esImportStar),

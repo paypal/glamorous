@@ -13,16 +13,16 @@ function createGlamorous(splitProps) {
   return glamorous
 
   /**
-  * This is the main export and the function that people
-  * interact with most directly.
-  *
-  * It accepts a component which can be a string or
-  * a React Component and returns
-  * a "glamorousComponentFactory"
-  * @param {String|ReactComponent} comp the component to render
-  * @param {Object} options helpful info for the GlamorousComponents
-  * @return {Function} the glamorousComponentFactory
-  */
+   * This is the main export and the function that people
+   * interact with most directly.
+   *
+   * It accepts a component which can be a string or
+   * a React Component and returns
+   * a "glamorousComponentFactory"
+   * @param {String|ReactComponent} comp the component to render
+   * @param {Object} options helpful info for the GlamorousComponents
+   * @return {Function} the glamorousComponentFactory
+   */
   function glamorous(comp, config = {}) {
     const {
       rootEl,

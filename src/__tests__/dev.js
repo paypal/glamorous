@@ -30,5 +30,5 @@ test('can be configured to use the displayName in the className', () => {
   })({color: 'red'})
   const wrapper = render(<MyComp />)
   expect(wrapper).toMatchSnapshot()
-  expect(wrapper.html()).toMatch(/hi-there/)
+  expect(wrapper[0].attribs.class).toMatch(/hi-there/)
 })

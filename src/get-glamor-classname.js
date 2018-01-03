@@ -39,7 +39,7 @@ function extractGlamorStyles(className) {
  * this shape it just pulls the resulting styles from the cache.
  *
  * note: the toString method is not needed to qualify the shape
-**/
+ **/
 function buildGlamorSrcFromClassName(className) {
   return {[`data-${className}`]: ''}
 }

@@ -1,13 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`pass through when no theme provider found up tree: without theme provider 1`] = `
+<Component>
+  <ThemedComponent>
+    <Component
+      theme={Object {}}
+    >
+      <div />
+    </Component>
+  </ThemedComponent>
+</Component>
+`;
+
 exports[`renders a non-glamorous component with theme 1`] = `
 <div
-  style="padding:10px;"
+  style="padding:10px"
 />
 `;
 
-exports[`with theme prop of padding 10px 1`] = `
-<ReactComponent>
+exports[`theme properties updates get propagated down the tree: with theme prop of padding 10px 1`] = `
+<Component>
   <ThemeProvider
     theme={
       Object {
@@ -33,41 +45,11 @@ exports[`with theme prop of padding 10px 1`] = `
       </Component>
     </ThemedComponent>
   </ThemeProvider>
-</ReactComponent>
+</Component>
 `;
 
-exports[`with theme prop of padding 10px 2`] = `
-<ReactComponent>
-  <ThemeProvider
-    theme={
-      Object {
-        "padding": 10,
-      }
-    }
-  >
-    <ThemedComponent>
-      <Child
-        theme={
-          Object {
-            "padding": 10,
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "padding": 10,
-            }
-          }
-        />
-      </Child>
-    </ThemedComponent>
-  </ThemeProvider>
-</ReactComponent>
-`;
-
-exports[`with theme prop of padding 20px 1`] = `
-<ReactComponent>
+exports[`theme properties updates get propagated down the tree: with theme prop of padding 20px 1`] = `
+<Component>
   <ThemeProvider
     theme={
       Object {
@@ -93,17 +75,35 @@ exports[`with theme prop of padding 20px 1`] = `
       </Component>
     </ThemedComponent>
   </ThemeProvider>
-</ReactComponent>
+</Component>
 `;
 
-exports[`without theme provider 1`] = `
+exports[`works properly with classes: with theme prop of padding 10px 1`] = `
 <Component>
-  <ThemedComponent>
-    <Component
-      theme={Object {}}
-    >
-      <div />
-    </Component>
-  </ThemedComponent>
+  <ThemeProvider
+    theme={
+      Object {
+        "padding": 10,
+      }
+    }
+  >
+    <ThemedComponent>
+      <Child
+        theme={
+          Object {
+            "padding": 10,
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "padding": 10,
+            }
+          }
+        />
+      </Child>
+    </ThemedComponent>
+  </ThemeProvider>
 </Component>
 `;

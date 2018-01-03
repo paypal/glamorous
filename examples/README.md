@@ -1,24 +1,25 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
 
-- [Examples](#examples)
-    - [Simple Example](#simple-example)
-  - [Dynamic + Static Styles](#dynamic--static-styles)
-  - [@supports + CSS Grid](#supports--css-grid)
-  - [Ampersands & CSS Combinators](#ampersands--css-combinators)
-  - [with Next.js](#with-nextjs)
-  - [with create-react-app](#with-create-react-app)
-  - [with ✨ polished](#with--polished)
-  - [Providing props to underlying components](#providing-props-to-underlying-components)
-  - [colour-contrast](#colour-contrast)
-- [Third party examples on codesandbox](#third-party-examples-on-codesandbox)
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+* [Examples](#examples)
+  * [Simple Example](#simple-example)
+  * [Dynamic + Static Styles](#dynamic--static-styles)
+  * [@supports + CSS Grid](#supports--css-grid)
+  * [Ampersands & CSS Combinators](#ampersands--css-combinators)
+  * [with Next.js](#with-nextjs)
+  * [with create-react-app](#with-create-react-app)
+  * [with ✨ polished](#with--polished)
+  * [Providing props to underlying components](#providing-props-to-underlying-components)
+  * [colour-contrast](#colour-contrast)
+* [Third party examples on codesandbox](#third-party-examples-on-codesandbox)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Examples
 
 ### [Simple Example](https://github.com/MicheleBertoli/css-in-js/blob/master/glamorous/button.js)
+
 This example includes both the object literal styles and prop based styles.
 Additionally, shows how to implement pseudo selectors and a media query.
 
@@ -64,25 +65,25 @@ const MyDiv = glamorous.div(
     },
   ],
   ({big, square}) => {
-    const bigStyles = big ?
-    {
-      [phoneMediaQuery]: {
-        fontSize: 20,
-      },
-    } :
-      {}
+    const bigStyles = big
+      ? {
+          [phoneMediaQuery]: {
+            fontSize: 20,
+          },
+        }
+      : {}
 
-    const squareStyles = square ?
-    {
-      [phoneMediaQuery]: {
-        borderRadius: 0,
-      },
-    } :
-    {
-      [phoneMediaQuery]: {
-        borderRadius: '50%',
-      },
-    }
+    const squareStyles = square
+      ? {
+          [phoneMediaQuery]: {
+            borderRadius: 0,
+          },
+        }
+      : {
+          [phoneMediaQuery]: {
+            borderRadius: '50%',
+          },
+        }
     // note that I'm returning an array here
     return [bigStyles, squareStyles]
   },
@@ -142,17 +143,17 @@ const Item = glamorous.div({
   'background-color': 'red',
   '& + &': {
     'margin-top': '10px',
-    'background-color': 'orange'
+    'background-color': 'orange',
   },
   '&:first-of-type + &': {
-    'background-color': 'yellow'
+    'background-color': 'yellow',
   },
   '& ~ &': {
-    'background-color': 'green'
+    'background-color': 'green',
   },
   '& > &': {
-    'background-color': 'blue'
-  }
+    'background-color': 'blue',
+  },
 })
 ```
 
@@ -165,7 +166,7 @@ Here's a [deployed example](https://with-glamorous-zrqwerosse.now.sh/) of using
 
 ## with create-react-app
 
-[Here](https://github.com/patitonar/create-react-app-glamorous) is an example  of using
+[Here](https://github.com/patitonar/create-react-app-glamorous) is an example of using
 `glamorous` with `create-react-app`.
 
 ## with ✨ polished
@@ -190,9 +191,8 @@ function GlamorousLogo() {
       border="2px solid"
       borderColor={mix(0.5, '#fff', '#000')}
       {...borderRadius('top', '5px')}
-    >
-    </glamorous.Div>
-  );
+    />
+  )
 }
 ```
 
@@ -206,10 +206,9 @@ that forwards props to that component with some defaults, but don't do that!
 [Just use `defaultProps`](https://codesandbox.io/s/82vZm5q2o)!
 
 ```jsx
-const MyComponent = ({ shouldRender, ...rest }) => (
+const MyComponent = ({shouldRender, ...rest}) =>
   shouldRender ? <div {...rest} /> : null
-)
-const MyGlamorousComponent = glamorous(MyComponent)(({ color, big }) => ({
+const MyGlamorousComponent = glamorous(MyComponent)(({color, big}) => ({
   color,
   fontSize: big ? 46 : 30,
 }))

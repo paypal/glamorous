@@ -1,8 +1,12 @@
-const jest = require('kcd-scripts/config').jest
+const jestConfig = require('kcd-scripts/jest')
 
-jest.coveragePathIgnorePatterns = jest.coveragePathIgnorePatterns || []
-jest.coveragePathIgnorePatterns.push('/src/.*-entry.js$', '/src/constants.js$')
+function push(prop, ...vals) {
+  jestConfig[prop] = jestConfig[prop] || []
+  jestConfig[prop].push(...vals)
+}
 
-module.exports = Object.assign({}, jest, {
-  snapshotSerializers: ['enzyme-to-json/serializer', 'jest-glamor-react'],
-})
+push('coveragePathIgnorePatterns', '/src/.*-entry.js$', '/src/constants.js$')
+push('snapshotSerializers', 'enzyme-to-json/serializer', 'jest-glamor-react')
+push('setupFiles', '<rootDir>/other/setup-tests.js')
+
+module.exports = jestConfig

@@ -1,5 +1,6 @@
 import shouldForwardProperty from './should-forward-property'
 
+// eslint-disable-next-line complexity
 export default function splitProps(
   {
     css: cssProp,

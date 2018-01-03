@@ -1,4 +1,5 @@
 ## FAQ
+
 [How about source mapping in dev tools?](#how-about-source-mapping-in-dev-tools)
 
 ---
