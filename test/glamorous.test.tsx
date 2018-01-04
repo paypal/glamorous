@@ -564,3 +564,19 @@ const BuiltinStyledWithMultipleChild: JSX.Element = (
     <glamorous.Span>world!</glamorous.Span>
   </glamorous.Div>
 );
+
+const BuiltinStyledWithPrimitivesChildren: JSX.Element = (
+  <glamorous.Div color='red'>
+    {null}
+    {false}
+    {true}
+    {undefined}
+    {5}
+  </glamorous.Div>
+);
+
+const BuiltinStyledWithFragment: JSX.Element = (
+  <glamorous.Div color='red'>
+    <React.Fragment />
+  </glamorous.Div>
+);

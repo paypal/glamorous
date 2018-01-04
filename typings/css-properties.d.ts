@@ -1926,7 +1926,7 @@ export interface CSSPropertiesLossy {
     | undefined
     | Array<CSSPropertiesComplete[keyof CSSPropertiesComplete]>
     | CSSPropertiesLossy
-    | React.ReactChild
+    | React.ReactNode
 }
 
 export interface CSSProperties

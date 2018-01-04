@@ -317,7 +317,7 @@ export interface SVGPropertiesLossy {
     | undefined
     | Array<SVGPropertiesCompleteSingle[keyof SVGPropertiesCompleteSingle]>
     | SVGPropertiesLossy
-    | React.ReactChild
+    | React.ReactNode
 }
 
 export interface SVGProperties

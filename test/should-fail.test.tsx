@@ -218,14 +218,6 @@ glamorous('div', {
   withProps: ''
 })
 
-glamorous('div', {
-  withProps: { visible: false }
-})(
-  (props) => ({
-    primaryColor: props.visible
-  })
-)
-
 glamorous('div')().withProps()
 glamorous('div')().withProps('')
 glamorous('div')().withProps(false)
