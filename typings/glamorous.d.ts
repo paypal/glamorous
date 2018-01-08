@@ -85,17 +85,38 @@ export {
 }
 
 export interface GlamorousOptions<Props, Context, DefaultProps> {
+  /**
+   * Used by React in the React DevTools
+   */
   displayName: string
+  /**
+   * Applies the same logic to components (html/svg) for which props to forward as it does for the built-in factories
+   */
   rootEl: string | Element
+  /**
+   * Specifies extra props that should be forwarded and spread on the DOM element
+   */
   forwardProps: string[]
+  /**
+   * Specifies properties to filter out from being forwarded to the child components; Useful for components like react-router Link
+   */
   filterProps: string[]
+  /**
+   * Allows you to prevent glamor from computing your styles when you know the class name should not change.
+   */
   shouldClassNameUpdate: (
     props: Props,
     prevProps: Props,
     context: Context,
     prevContext: Context,
   ) => boolean
+  /**
+   * Allows you to use props as CSS
+   */
   propsAreCssOverrides?: false
+  /**
+   * Applies props by default for a component
+   */
   withProps: DefaultProps
 }
 
@@ -104,17 +125,38 @@ export interface PropsAreCssOverridesGlamorousOptions<
   Context,
   DefaultProps
 > {
+  /**
+   * Used by React in the React DevTools
+   */
   displayName?: string
+  /**
+   * Applies the same logic to components (html/svg) for which props to forward as it does for the built-in factories
+   */
   rootEl?: string | Element
+  /**
+   * Specifies extra props that should be forwarded and spread on the DOM element
+   */
   forwardProps?: string[]
+  /**
+   * Specifies properties to filter out from being forwarded to the child components; Useful for components like react-router Link
+   */
   filterProps?: string[]
+  /**
+   * Allows you to prevent glamor from computing your styles when you know the class name should not change.
+   */
   shouldClassNameUpdate?: (
     props: Props,
     prevProps: Props,
     context: Context,
     prevContext: Context,
   ) => boolean
+  /**
+   * Allows you to use props as CSS
+   */
   propsAreCssOverrides: true
+  /**
+   * Applies props by default for a component
+   */
   withProps?: DefaultProps
 }
 
