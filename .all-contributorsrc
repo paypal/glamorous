@@ -536,6 +536,17 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "exah",
+      "name": "John Grishin",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/442932?v=4",
+      "profile": "http://johngrish.in",
+      "contributions": [
+        "bug",
+        "code",
+        "test"
+      ]
     }
   ]
 }
