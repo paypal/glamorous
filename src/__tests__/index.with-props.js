@@ -117,3 +117,11 @@ test('allows you to provide any number of arguments for props', () => {
     expectContext,
   )
 })
+
+test('custom component with props to filter custom props', () => {
+  const MyComp = glamorous(props => <div {...props} />, {rootEl: 'div'})({})
+  const MyCompWithProps = MyComp.withProps({propA: true})
+  const rendered = render(<MyCompWithProps propB={true} />).find('div')
+  expect(rendered.prop('propA')).toBeUndefined()
+  expect(rendered.prop('propB')).toBeUndefined()
+})
