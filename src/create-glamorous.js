@@ -114,6 +114,7 @@ function createGlamorous(splitProps) {
           {
             ...componentProperties,
             comp: newComp,
+            rootEl: getRootEl(newComp),
           },
           {
             // allows the forwardProps and filterProps to be overridden

@@ -63,3 +63,9 @@ test('resulting component can have its styles extended further', () => {
     render(<View className={glamor.css({color: 'green'})} />),
   ).toMatchSnapshot('overriding styles via className')
 })
+
+test('resulting component gets sent valid props', () => {
+  const A = glamorous.div({}).withComponent('a')
+  const rendered = render(<A href="https://glamorous.rocks" />)
+  expect(rendered.prop('href')).toBe('https://glamorous.rocks')
+})
