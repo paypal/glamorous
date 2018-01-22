@@ -6,22 +6,32 @@
   "scripts": {
     "test": "jest --coverage"
   },
-  "keywords": ["glamorous", "jest", "react"],
+  "keywords": [
+    "glamorous",
+    "jest",
+    "react"
+  ],
   "author": "pksjce",
   "license": "ISC",
   "dependencies": {
-    "enzyme": "^2.8.0",
+    "enzyme": "^2.9.1",
     "glamorous": "^1.0.1",
-    "jest-glamor-react": "^1.2.0",
-    "react": "^15.4.2"
+    "jest-glamor-react": "^1.4.0",
+    "react": "^15.6.2"
   },
   "devDependencies": {
-    "enzyme-to-json": "^1.5.0",
-    "jest": "^19.0.2"
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme-to-json": "^1.6.0",
+    "jest": "^19.0.2",
+    "react-dom": "^15.6.2",
+    "react-test-renderer": "^15.6.2"
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "setupTestFrameworkScriptFile": "./testSetup.js"
   }
 }
