@@ -20,7 +20,7 @@
     "react": "^15.5.0"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "enzyme-to-json": "^1.5.0",
     "jest": "^19.0.2",
