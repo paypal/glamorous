@@ -114,6 +114,7 @@ function createGlamorous(splitProps) {
           {
             ...componentProperties,
             comp: newComp,
+            rootEl: getRootEl(newComp),
           },
           {
             // allows the forwardProps and filterProps to be overridden
@@ -196,7 +197,7 @@ function createGlamorous(splitProps) {
       // the base component, even when people wrap a glamorous
       // component in glamorous
       comp: componentsComp,
-      rootEl: rootEl || componentsComp,
+      rootEl: rootEl || getRootEl(comp),
       // join forwardProps and filterProps
       // (for anyone doing: glamorous(glamorous.a({}), {}))
       forwardProps: when(comp.forwardProps, forwardProps),
@@ -248,6 +249,10 @@ function arrayify(x = []) {
 
 function when(comp, prop) {
   return comp ? comp.concat(prop) : prop
+}
+
+function getRootEl(comp) {
+  return comp.rootEl ? comp.rootEl : comp.comp || comp
 }
 
 function getDisplayName(comp) {
