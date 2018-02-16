@@ -473,7 +473,7 @@ const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpd
   },
 })
 
-const Div = pureDivFactory({marginLeft: 1})
+const PureDiv = pureDivFactory({marginLeft: 1})
 
 // withProps
 
@@ -534,7 +534,13 @@ const usePropsAreCssOverrides = (
   </div>
 )
 
-import { Span } from "../"
+import { Span, Div } from "../"
+
+const testDiv: React.ReactNode = (
+  <Div>
+    <Div />
+  </Div>
+)
 
 const BuiltinSingleElement: JSX.Element = <glamorous.Div display="block" onClick={() => {}} />;
 const BuiltinSingleElementNamedExport: JSX.Element = <Span display="block" onClick={() => {}} />;
@@ -588,13 +594,13 @@ const BuiltinStyledComponentChildren: JSX.Element = (
   </glamorous.Div>
 )
 const BuiltinStyledWithPrimitivesChildren: JSX.Element = (
-  <Div color='red'>
+  <PureDiv color='red'>
     {null}
     {false}
     {true}
     {undefined}
     {5}
-  </Div>
+  </PureDiv>
 );
 
 const BuiltinStyledWithFragment: JSX.Element = (
