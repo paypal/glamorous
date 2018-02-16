@@ -1,4 +1,4 @@
-import {CSSProperties, CSSPropertiesRecursive} from './css-properties'
+import {CSSPropertiesRecursive} from './css-properties'
 
 import {Component} from './glamorous'
 
