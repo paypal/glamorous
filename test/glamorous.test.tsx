@@ -473,7 +473,7 @@ const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpd
   },
 })
 
-const Div = pureDivFactory({marginLeft: 1})
+const PureDiv = pureDivFactory({marginLeft: 1})
 
 // withProps
 
@@ -534,17 +534,26 @@ const usePropsAreCssOverrides = (
   </div>
 )
 
-const BuiltinSingleElement: JSX.Element = <glamorous.Div />;
+import { Span, Div } from "../"
+
+const testDiv: React.ReactNode = (
+  <Div>
+    <Div />
+  </Div>
+)
+
+const BuiltinSingleElement: JSX.Element = <glamorous.Div display="block" onClick={() => {}} />;
+const BuiltinSingleElementNamedExport: JSX.Element = <Span display="block" onClick={() => {}} />;
 
 const BuiltinSingleChild: JSX.Element = (
   <glamorous.Div>
-    <glamorous.Span>Hello, world!</glamorous.Span>
+    <Span>Hello, world!</Span>
   </glamorous.Div>
 );
 
 const BuiltinMultipleChild: JSX.Element = (
   <glamorous.Div>
-    <glamorous.Span>Hello,</glamorous.Span>
+    <Span>Hello,</Span>
     <glamorous.Span>world!</glamorous.Span>
   </glamorous.Div>
 );
@@ -559,8 +568,61 @@ const BuiltinStyledWithSingleChild: JSX.Element = (
 );
 
 const BuiltinStyledWithMultipleChild: JSX.Element = (
-  <glamorous.Div color='red'>
+  <glamorous.Div color='red' onClick={() => {}}>
     <glamorous.Span>Hello,</glamorous.Span>
-    <glamorous.Span>world!</glamorous.Span>
+    <Span>world!</Span>
   </glamorous.Div>
+);
+
+const CustomStatelessComponent: React.SFC<{}> = (_props) => <div />
+class CustomClassComponent extends React.Component<{}, {}> {
+  render() {
+    return null
+  }
+}
+const CustomGlamorousComponent = glamorous.div()
+const CustomGlamorousComponent2 = glamorous('div')()
+const CustomGlamorousComponent3 = glamorous(CustomGlamorousComponent)()
+const BuiltinStyledComponentChildren: JSX.Element = (
+  <glamorous.Div height={18} onClick={() => {}}>
+    {}
+    <CustomStatelessComponent />
+    <CustomClassComponent />
+    <CustomGlamorousComponent />
+    <CustomGlamorousComponent2 />
+    <CustomGlamorousComponent3 />
+  </glamorous.Div>
+)
+const BuiltinStyledWithPrimitivesChildren: JSX.Element = (
+  <PureDiv color='red'>
+    {null}
+    {false}
+    {true}
+    {undefined}
+    {5}
+  </PureDiv>
+);
+
+const BuiltinStyledWithFragment: JSX.Element = (
+  <div>
+    <glamorous.Div color='red' onClick={() => {}}>
+      <React.Fragment />
+    </glamorous.Div>
+    <Span color='red' onClick={() => {}}>
+      <React.Fragment />
+    </Span>
+  </div>
+);
+
+const cssProps = {
+  ":active": {
+    color: "purple"
+  }
+};
+
+const BuiltinStyledWithCSSPseudoProps = (
+  <div>
+    <glamorous.A {...cssProps} />
+    <glamorous.A css={cssProps} />
+  </div>
 );
