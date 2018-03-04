@@ -1,6 +1,7 @@
 {
   "projectName": "glamorous",
   "projectOwner": "paypal",
+  "repoType": "github",
   "files": [
     "README.md"
   ],
@@ -585,6 +586,5 @@
         "test"
       ]
     }
-  ],
-  "repoType": "github"
+  ]
 }
