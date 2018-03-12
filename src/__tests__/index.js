@@ -87,18 +87,26 @@ test('the css prop accepts "GlamorousStyles"', () => {
 
   const fn1 = jest.fn(() => ({padding: 20}))
   const fn2 = jest.fn(() => ({margin: 30}))
-  const props = {css: [fn1, fn2], fontSize: 10, theme: {color: 'red'}}
+  const nestedFn3 = jest.fn(() => ({border: '1px solid pink'}))
+  const fn3 = () => [() => [() => nestedFn3]] // Deeply nested functions
+  const props = {css: [fn1, fn2, fn3], fontSize: 10, theme: {color: 'red'}}
   expect(render(<glamorous.Section {...props} />)).toMatchSnapshot(
     'css prop with a function',
   )
   expect(fn1).toHaveBeenCalledTimes(1)
   expect(fn2).toHaveBeenCalledTimes(1)
+  expect(nestedFn3).toHaveBeenCalledTimes(1)
+
   const context = {__glamorous__: undefined}
   expect(fn1).toHaveBeenCalledWith(
     expect.objectContaining(props),
     expect.objectContaining(context),
   )
   expect(fn2).toHaveBeenCalledWith(
+    expect.objectContaining(props),
+    expect.objectContaining(context),
+  )
+  expect(nestedFn3).toHaveBeenCalledWith(
     expect.objectContaining(props),
     expect.objectContaining(context),
   )

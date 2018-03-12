@@ -76,16 +76,10 @@ function handleStyles(styles, props, context) {
   const nonGlamorClassNames = []
   for (let i = 0; i < styles.length; i++) {
     current = styles[i]
-    if (typeof current === 'function') {
-      const result = current(props, context)
-      if (typeof result === 'string') {
-        const {glamorStyles, glamorlessClassName} = extractGlamorStyles(result)
-        mappedArgs.push(...glamorStyles)
-        nonGlamorClassNames.push(...glamorlessClassName)
-      } else {
-        mappedArgs.push(result)
-      }
-    } else if (typeof current === 'string') {
+    while (typeof current === 'function') {
+      current = current(props, context)
+    }
+    if (typeof current === 'string') {
       const {glamorStyles, glamorlessClassName} = extractGlamorStyles(current)
       mappedArgs.push(...glamorStyles)
       nonGlamorClassNames.push(...glamorlessClassName)

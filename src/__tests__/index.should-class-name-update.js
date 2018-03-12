@@ -1,5 +1,5 @@
 /* eslint func-style:0, react/prop-types:0 */
-import React from 'react'
+import React, {Component} from 'react'
 import {css as cssMock} from 'glamor'
 import {mount} from 'enzyme'
 import glamorous from '../'
@@ -61,15 +61,17 @@ test('calls shouldClassNameUpdate and updates accordingly', () => {
   )
 })
 
-// this test fails with React 16 because using `this` in function components doesn't work 😅
-// gotta figure out another way to do this... Maybe get a ref of some kind?
-// Anyway, this means that the shouldClassNameUpdate feature doesn't work at all in React 16 I think...
-// eslint-disable-next-line jest/no-disabled-tests
-test.skip('shouldClassNameUpdate is specific to the component instance', () => {
+test('shouldClassNameUpdate is specific to the component instance', () => {
   const shouldClassNameUpdate = jest.fn()
 
-  const Container = ({children, ...props}) => {
-    return <div {...props}>{children()}</div>
+  // using a class because wrapper.instance()
+  // returns null when using a stateless function
+  // eslint-disable-next-line react/prefer-stateless-function
+  class Container extends Component {
+    render() {
+      const {children} = this.props
+      return <div>{children()}</div>
+    }
   }
 
   const Div = glamorous('div', {
@@ -78,7 +80,7 @@ test.skip('shouldClassNameUpdate is specific to the component instance', () => {
     padding: 10,
   })
 
-  // On the third render (second update()), change the color props
+  // On the third render (second forceUpdate()), change the css props
   let count = 0
   const wrapper = mount(
     <Container>
@@ -87,8 +89,8 @@ test.skip('shouldClassNameUpdate is specific to the component instance', () => {
 
         return (
           <div>
-            <Div color={count === 3 ? 'purple' : 'red'} />
-            <Div color={count === 3 ? 'green' : 'blue'} />
+            <Div css={{color: count === 3 ? 'purple' : 'red'}} />
+            <Div css={{color: count === 3 ? 'green' : 'blue'}} />
           </div>
         )
       }}
@@ -97,34 +99,34 @@ test.skip('shouldClassNameUpdate is specific to the component instance', () => {
 
   expect(shouldClassNameUpdate).toHaveBeenCalledTimes(0)
 
-  wrapper.update()
+  wrapper.instance().forceUpdate()
 
   expect(shouldClassNameUpdate).toHaveBeenCalledTimes(2)
   expect(shouldClassNameUpdate.mock.calls[0]).toEqual([
-    expect.objectContaining({color: 'red'}),
-    expect.objectContaining({color: 'red'}),
+    expect.objectContaining({css: {color: 'red'}}),
+    expect.objectContaining({css: {color: 'red'}}),
     expect.objectContaining({__glamorous__: undefined}),
     expect.objectContaining({__glamorous__: undefined}),
   ])
   expect(shouldClassNameUpdate.mock.calls[1]).toEqual([
-    expect.objectContaining({color: 'blue'}),
-    expect.objectContaining({color: 'blue'}),
+    expect.objectContaining({css: {color: 'blue'}}),
+    expect.objectContaining({css: {color: 'blue'}}),
     expect.objectContaining({__glamorous__: undefined}),
     expect.objectContaining({__glamorous__: undefined}),
   ])
 
-  wrapper.update()
+  wrapper.instance().forceUpdate()
 
   expect(shouldClassNameUpdate).toHaveBeenCalledTimes(4)
   expect(shouldClassNameUpdate.mock.calls[2]).toEqual([
-    expect.objectContaining({color: 'red'}),
-    expect.objectContaining({color: 'purple'}),
+    expect.objectContaining({css: {color: 'red'}}),
+    expect.objectContaining({css: {color: 'purple'}}),
     expect.objectContaining({__glamorous__: undefined}),
     expect.objectContaining({__glamorous__: undefined}),
   ])
   expect(shouldClassNameUpdate.mock.calls[3]).toEqual([
-    expect.objectContaining({color: 'blue'}),
-    expect.objectContaining({color: 'green'}),
+    expect.objectContaining({css: {color: 'blue'}}),
+    expect.objectContaining({css: {color: 'green'}}),
     expect.objectContaining({__glamorous__: undefined}),
     expect.objectContaining({__glamorous__: undefined}),
   ])
