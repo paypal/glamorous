@@ -20,6 +20,7 @@
     "test:build": "kcd-scripts test --config other/jest.config.js --no-watch",
     "build-and-test": "npm run build -s && npm run test:build -s",
     "validate": "kcd-scripts validate lint,build-and-test,test:cover",
+    "setup": "npm install && npm run validate --silent",
     "precommit": "kcd-scripts precommit"
   },
   "files": ["dist", "typings", "preact"],
@@ -56,6 +57,7 @@
     "glamor": "^2.20.37",
     "jest-glamor-react": "^3.2.2",
     "kcd-scripts": "^0.36.0",
+    "node": "^8.9.4",
     "npm-run-all": "^4.1.2",
     "preact": "^8.2.7",
     "preval.macro": "^1.0.2",
