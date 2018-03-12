@@ -617,7 +617,7 @@ const BuiltinStyledWithFragment: JSX.Element = (
 const cssProps = {
   ":active": {
     color: "purple"
-  }
+  },
 };
 
 const BuiltinStyledWithCSSPseudoProps = (
@@ -626,3 +626,15 @@ const BuiltinStyledWithCSSPseudoProps = (
     <glamorous.A css={cssProps} />
   </div>
 );
+
+const nestedCssProps = [
+  { color: 'red', },
+  () => ({ fontSize: 123 }),
+  () => () => () => [{ border: '1px solid black'}],
+];
+
+const NestedStyleFunctions = (
+  <div>
+    <glamorous.Div css={nestedCssProps} />
+  </div>
+)
