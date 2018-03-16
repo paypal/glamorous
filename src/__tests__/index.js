@@ -404,3 +404,17 @@ test('should accept user defined contextTypes', () => {
   const props = {theme}
   expect(dynamicStyles).toHaveBeenCalledWith(props, context)
 })
+
+test('can render nested components', () => {
+  const InnerOne = glamorous.div({
+    color: '#F00',
+  })
+
+  const InnerTwo = props => <InnerOne {...props} />
+
+  const Example = glamorous(InnerTwo)(({color}) => ({
+    color: color ? color : undefined,
+  }))
+
+  expect(mount(<Example />)).toMatchSnapshot()
+})
