@@ -35,6 +35,8 @@
 * [
   glamorous.rocks
   ](#glamorousrocks)
+* [Installation](#installation)
+* [Usage](#usage)
 * [Documentation](#documentation)
 * [Related projects](#related-projects)
 * [Using glamorous with react-sketchapp](#using-glamorous-with-react-sketchapp)
@@ -49,6 +51,14 @@
 * [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Installation
+
+You will find instructions to install glamorous [here](https://glamorous.rocks/basics/#installation).
+
+## Usage
+
+You will find a getting stared guide [here](https://glamorous.rocks/getting-started/).
 
 ## Documentation
 
@@ -191,7 +201,7 @@ MIT
 [chat]: https://gitter.im/paypal/glamorous
 [chat-badge]: https://img.shields.io/gitter/room/paypal/glamorous.svg?style=flat-square
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://github.com/paypal/glamorous/blob/master/other/CODE_OF_CONDUCT.md
+[coc]: https://github.com/paypal/glamorous/blob/master/CODE_OF_CONDUCT.md
 [github-watch-badge]: https://img.shields.io/github/watchers/paypal/glamorous.svg?style=social
 [github-watch]: https://github.com/paypal/glamorous/watchers
 [github-star-badge]: https://img.shields.io/github/stars/paypal/glamorous.svg?style=social
