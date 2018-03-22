@@ -62,7 +62,10 @@ function getGlamorClassName({
   // eslint-disable-next-line max-len
   const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
   const devRules = isDev ? {label: displayName} : null
-  const glamorClassName = css(devRules, ...mappedArgs).toString()
+  let glamorClassName = css(devRules, ...mappedArgs).toString()
+  if (glamorClassName === 'css-nil') {
+    glamorClassName = ''
+  }
   const extras = nonGlamorClassNames.join(' ').trim()
   return `${glamorClassName} ${extras}`.trim()
 }
