@@ -35,6 +35,8 @@
 * [
   glamorous.rocks
   ](#glamorousrocks)
+* [Installation](#installation)
+* [Usage](#usage)
 * [Documentation](#documentation)
 * [Related projects](#related-projects)
 * [Using glamorous with react-sketchapp](#using-glamorous-with-react-sketchapp)
@@ -49,6 +51,14 @@
 * [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Installation
+
+You will find instructions to install glamorous [here](https://glamorous.rocks/basics/#installation).
+
+## Usage
+
+You will find a getting stared guide [here](https://glamorous.rocks/getting-started/).
 
 ## Documentation
 
