@@ -58,7 +58,7 @@ You will find instructions to install glamorous [here](https://glamorous.rocks/b
 
 ## Usage
 
-You will find a getting stared guide [here](https://glamorous.rocks/getting-started/).
+You will find a getting started guide [here](https://glamorous.rocks/getting-started/).
 
 ## Documentation
 
