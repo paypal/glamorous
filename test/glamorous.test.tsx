@@ -1,18 +1,15 @@
-import * as React from "react";
-import glamorous, {
-  withTheme, ThemeProvider
-} from "../";
+import * as React from 'react'
+import glamorous, {withTheme, ThemeProvider} from '../'
 
 // Needed if generating definition files
 // https://github.com/Microsoft/TypeScript/issues/5938
-import { GlamorousComponent, GlamorousComponentProps } from "../";
+import {GlamorousComponent, GlamorousComponentProps} from '../'
 
-import { CSSPropertiesPseudo, CSSPropertiesLossy } from "../"
-
+import {CSSPropertiesPseudo, CSSPropertiesLossy} from '../'
 
 // Glamorous built in Components named exports
 
-import { Article, H1, P } from '../'
+import {Article, H1, P} from '../'
 
 const useBuiltInNamedExports = (
   <Article color="black">
@@ -21,12 +18,13 @@ const useBuiltInNamedExports = (
   </Article>
 )
 
-
 // Properties
 const Static = glamorous.div({
-  "fontSize": 20,
-  "textAlign": "center",
-});
+  fontSize: 20,
+  textAlign: 'center',
+  grid: 'auto-flow dense / 40px 40px 1fr',
+  gridTemplate: 'fit-content(100px) / fit-content(40%)',
+})
 
 // multi level nested properties
 
@@ -34,229 +32,217 @@ glamorous.div({
   ':hover': {
     '& .vendor-class': {
       height: '10px',
-    }
-  }
+    },
+  },
 })
 
 glamorous.svg({
   ':hover': {
     '& .vendor-class': {
       height: '10px',
-    }
-  }
+    },
+  },
 })
 
 export interface StaticProps {
   visible: boolean
 }
 
-const StaticWithProps = glamorous.div<StaticProps>(
-  (props) => ({
-    display: props.visible ? 'block' : 'none'
-  })
-)
+const StaticWithProps = glamorous.div<StaticProps>(props => ({
+  display: props.visible ? 'block' : 'none',
+}))
 
-const useStatic = (
-  <StaticWithProps visible />
-)
+const useStatic = <StaticWithProps visible />
 
 // Properties Array
 glamorous.div({
-  overflowWrap: "break-word",
-  display: ["flex", "block"],
-});
+  overflowWrap: 'break-word',
+  display: ['flex', 'block'],
+})
 
 glamorous.circle({
-  textAlign: "center",
-  display: ["marker", "block"],
-});
+  textAlign: 'center',
+  display: ['marker', 'block'],
+})
 
 // pseudo and complex Properties
 glamorous.div({
   ':active': {
-    "fontSize": 10,
+    fontSize: 10,
   },
   '&:active': {
-    "fontSize": 20,
-    "textAlign": "center",
+    fontSize: 20,
+    textAlign: 'center',
   },
-});
+})
 
 // classname string style
 const Classname = glamorous.div(
   {
-    "fontSize": 20,
-    "textAlign": "center",
+    fontSize: 20,
+    textAlign: 'center',
   },
   'example',
-);
+)
 
 // StyleFunction
-const StyleFunction = glamorous.h1<{ color: string }>(
+const StyleFunction = glamorous.h1<{color: string}>(
   {
-    "fontSize": "10px",
-    "zIndex": "auto",
+    fontSize: '10px',
+    zIndex: 'auto',
   },
   'example',
-  (props) => ({
-    "color": props.color,
+  props => ({
+    color: props.color,
   }),
-);
+)
 
 // withComponent
-const ExampleWithComponent = Classname
-  .withComponent('p')
+const ExampleWithComponent = Classname.withComponent('p')
 
-const OtherExampleWithComponent = StyleFunction
-  .withComponent('p')
+const OtherExampleWithComponent = StyleFunction.withComponent('p')
 
 const UseWithComponent = () => (
   <Classname>
-    <OtherExampleWithComponent color="red">
-    </OtherExampleWithComponent>
+    <OtherExampleWithComponent color="red" />
   </Classname>
 )
 
-
-const StyleFunctionUseColor = () => (
-  <StyleFunction color="red" />
-)
+const StyleFunctionUseColor = () => <StyleFunction color="red" />
 
 // StyleFunction Array return
-const StyleFunctionArray = glamorous.h1<{ color: string }>(
-  (props) => [
-    'example',
-    {
-      "color": props.color,
-    }
-  ],
-);
+const StyleFunctionArray = glamorous.h1<{color: string}>(props => [
+  'example',
+  {
+    color: props.color,
+  },
+])
 
 // Style Array
-const StyleArray = glamorous.h1<{ color: string }>(
-  [
+const StyleArray = glamorous.h1<{color: string}>([
+  'example',
+  props => [
     'example',
-    (props) => [
-      'example',
-      {
-        "color": props.color,
-      }
-    ],
-  ]
-);
+    {
+      color: props.color,
+    },
+  ],
+])
 
 // theme styles
 const Divider = glamorous.span<{
-  theme: { main: { color: string; } }
+  theme: {main: {color: string}}
 }>(
   {
-    "fontSize": "10px",
-    "zIndex": "auto"
+    fontSize: '10px',
+    zIndex: 'auto',
   },
   ({theme}) => ({
-    "color": theme.main && theme.main.color,
+    color: theme.main && theme.main.color,
   }),
-);
+)
 
 // n-number of styles
 const SpanDivider = glamorous.span<{
-  theme: { awesome: string, main: string }
+  theme: {awesome: string; main: string}
 }>(
   {
-    "fontSize": "10px",
+    fontSize: '10px',
   },
   ({theme}) => ({
-    "color": theme.awesome,
+    color: theme.awesome,
   }),
   {
-    "fontWeight": 500,
+    fontWeight: 500,
   },
   {
-    "fontFamily": "Roboto",
-    "fontWeight": 500,
+    fontFamily: 'Roboto',
+    fontWeight: 500,
   },
   ({theme}) => ({
-    "color": theme.main,
+    color: theme.main,
   }),
-);
+)
 
 interface DividerInsideDividerProps {
-  color: string;
-};
+  color: string
+}
 
 // component styles
 const DividerInsideDivider = glamorous(Divider)<{
   visible: boolean
-}>(
-  ({visible}) => ({
-    display: visible ? 'block' : 'none',
-  })
-);
+}>(({visible}) => ({
+  display: visible ? 'block' : 'none',
+}))
 
 const DividerInsideDividerWithTheme = glamorous(Divider)<{
   visible: boolean
-  theme: { main: { color: string } }
+  theme: {main: {color: string}}
 }>(
   {
-    "fontSize": "10px",
+    fontSize: '10px',
   },
   ({visible, theme}) => ({
     display: visible ? 'block' : 'none',
-    "color": theme.main.color,
+    color: theme.main.color,
   }),
-);
+)
 
 const theme = {
-  "main": {
-    "color": "red",
+  main: {
+    color: 'red',
   },
-};
+}
 
 export const Balloon = () => (
   <ThemeProvider theme={theme}>
-    <Divider theme={{
-      main: { color: "blue" }
-    }}>
+    <Divider
+      theme={{
+        main: {color: 'blue'},
+      }}
+    >
       <DividerInsideDivider visible />
       <DividerInsideDividerWithTheme visible />
       <DividerInsideDividerWithTheme
         visible
         theme={{
-          main: { color: "blue" }
+          main: {color: 'blue'},
         }}
       >
         <Static>Static</Static>
-        <StyleFunction color="blue">
-          Hello
-        </StyleFunction>
+        <StyleFunction color="blue">Hello</StyleFunction>
       </DividerInsideDividerWithTheme>
     </Divider>
   </ThemeProvider>
-);
+)
 
 export class AirBalloon extends React.Component<{}, {}> {
-  private spanElem: HTMLSpanElement;
+  private spanElem: HTMLSpanElement
 
   public render() {
     return (
       <Divider
-        innerRef={(
-          c: HTMLSpanElement
-        ) => { this.spanElem = c; }}
+        innerRef={(c: HTMLSpanElement) => {
+          this.spanElem = c
+        }}
       >
         Hello
-        <SpanDivider>
-          Span Divider
-        </SpanDivider>
+        <SpanDivider>Span Divider</SpanDivider>
       </Divider>
-    );
+    )
   }
 }
 
 class Test extends React.Component<object, object> {
   private div: HTMLDivElement
   render() {
-    return <div ref={(c: HTMLDivElement) => { this.div = c }} />
+    return (
+      <div
+        ref={(c: HTMLDivElement) => {
+          this.div = c
+        }}
+      />
+    )
   }
 }
 
@@ -275,12 +261,7 @@ class ClassToWrap extends React.Component<ClassToWrapProps, object> {
 
 const WrappedClass = glamorous(ClassToWrap)({})
 
-const useWrappedClass = (
-  <WrappedClass
-    test={10}
-    className=''
-  />
-)
+const useWrappedClass = <WrappedClass test={10} className="" />
 
 // React Stateless Wrapped Component
 
@@ -290,20 +271,16 @@ export interface WrappedStatelessProps {
   }
 }
 
-const StatelessToWrap: React.StatelessComponent<object> = () => (
-  <div />
-)
+const StatelessToWrap: React.StatelessComponent<object> = () => <div />
 
 const WrappedStateless = glamorous(StatelessToWrap)<WrappedStatelessProps>(
-  (props) => ({
-    display: props.theme.visible ? 'block' : 'none'
-  })
+  props => ({
+    display: props.theme.visible ? 'block' : 'none',
+  }),
 )
 
 // Exported Component (for testing declaration generation)
-export const ExportTest = glamorous.div(
-  {}
-)
+export const ExportTest = glamorous.div({})
 
 // Theme Provider
 
@@ -312,32 +289,33 @@ interface ExampleTheme {
 }
 
 const exampleTheme: ExampleTheme = {
-  color: "red",
+  color: 'red',
 }
 
-const ThemedComponent = glamorous.h1<
-  { theme: ExampleTheme }
->({
-  fontSize: '10px'
-}, ({theme}) => ({
-  color: theme ? theme.color : 'blue'
-}))
+const ThemedComponent = glamorous.h1<{theme: ExampleTheme}>(
+  {
+    fontSize: '10px',
+  },
+  ({theme}) => ({
+    color: theme ? theme.color : 'blue',
+  }),
+)
 
 export const ThemeProviderAndThemedComponent = () => (
   <ThemeProvider theme={exampleTheme}>
     <ThemedComponent />
   </ThemeProvider>
-);
+)
 
 // Glamorous component using general prop
 
 const props: GlamorousComponentProps<React.HTMLProps<HTMLButtonElement>> = {
   name: 'button',
-  onClick: () => {}
+  onClick: () => {},
 }
 
 const GlamorousButton = glamorous.button({
-  fontSize: '10px'
+  fontSize: '10px',
 })
 
 const UseGlamorousButtonWithGlamorousComponentProps = (
@@ -355,31 +333,24 @@ interface Props {
   theme: ExampleTheme
 }
 
-const ComponentWithTheme: React.SFC<Props> = (props) => (
-  <h3 style={{
-    color: props.theme.color
-  }}>
+const ComponentWithTheme: React.SFC<Props> = props => (
+  <h3
+    style={{
+      color: props.theme.color,
+    }}
+  >
     {props.title}
   </h3>
 )
 
-const NonGlamorousThemedComponent = withTheme<
-  Props
->(ComponentWithTheme)
+const NonGlamorousThemedComponent = withTheme<Props>(ComponentWithTheme)
 
-
-const NonGlamorousAlsoThemedComponent = withTheme<
-  Props
->(ComponentWithTheme)
+const NonGlamorousAlsoThemedComponent = withTheme<Props>(ComponentWithTheme)
 
 const UseNonGlamorousThemedComponent = (
   <div>
-    <NonGlamorousThemedComponent
-      title='test'
-    />
-    <NonGlamorousAlsoThemedComponent
-      title='test'
-    />
+    <NonGlamorousThemedComponent title="test" />
+    <NonGlamorousAlsoThemedComponent title="test" />
   </div>
 )
 
@@ -387,12 +358,9 @@ const UseNonGlamorousThemedComponent = (
 
 const TestDisplayName: React.SFC<object> = () => <div />
 
-glamorous(
-  TestDisplayName,
-  {
-    displayName: 'example'
-  },
-)
+glamorous(TestDisplayName, {
+  displayName: 'example',
+})
 
 // custom glamorous component factory
 
@@ -402,40 +370,32 @@ interface ExampleComponentProps {
 
 const ExampleComponent: React.SFC<ExampleComponentProps> = () => <div />
 
-const StyledExampleComponent = glamorous(ExampleComponent)(
-  (props) => ({
-    display: props.visible ? 'none' : 'block'
-  })
+const StyledExampleComponent = glamorous(ExampleComponent)(props => ({
+  display: props.visible ? 'none' : 'block',
+}))
+
+const StyledExampleComponentHTMLKey = glamorous<{visible: boolean}>('div')(
+  props => ({
+    display: props.visible ? 'none' : 'block',
+  }),
 )
 
-const StyledExampleComponentHTMLKey = glamorous<{ visible: boolean }>('div')(
-  (props) => ({
-    display: props.visible ? 'none' : 'block'
-  })
-)
-
-const StyledExampleComponentSVGKey = glamorous<{ visible: boolean }>('circle')(
+const StyledExampleComponentSVGKey = glamorous<{visible: boolean}>('circle')(
   {
     fill: 'black',
   },
-  (props) => ({
-    display: props.visible ? 'none' : 'block'
-  })
+  props => ({
+    display: props.visible ? 'none' : 'block',
+  }),
 )
 
-glamorous('circle')({ allowReorder: 'yes' })
-glamorous('div')({ color: 'red' })
+glamorous('circle')({allowReorder: 'yes'})
+glamorous('div')({color: 'red'})
 
 const usingStyledExampleComponent = (
   <div>
-    <StyledExampleComponent
-      visible={false}
-    />
-    <StyledExampleComponent
-      visible={false}
-      className=""
-      theme={{}}
-    />
+    <StyledExampleComponent visible={false} />
+    <StyledExampleComponent visible={false} className="" theme={{}} />
     <StyledExampleComponentHTMLKey visible={false} />
     <StyledExampleComponentSVGKey visible={false} />
   </div>
@@ -447,7 +407,9 @@ interface ShouldClassNameUpdateProps {
   color: string
 }
 
-const TestShouldClassNameUpdate: React.SFC<ShouldClassNameUpdateProps> = () => <div />
+const TestShouldClassNameUpdate: React.SFC<ShouldClassNameUpdateProps> = () => (
+  <div />
+)
 
 const pureDivFactory = glamorous(TestShouldClassNameUpdate, {
   shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
@@ -458,12 +420,14 @@ const pureDivFactory = glamorous(TestShouldClassNameUpdate, {
   },
 })
 
-
 interface ShouldClassNameUpdateContext {
   color: string
 }
 
-const pureDivFactory2 = glamorous<ShouldClassNameUpdateProps, ShouldClassNameUpdateContext>(TestShouldClassNameUpdate, {
+const pureDivFactory2 = glamorous<
+  ShouldClassNameUpdateProps,
+  ShouldClassNameUpdateContext
+>(TestShouldClassNameUpdate, {
   shouldClassNameUpdate: (props, previousProps, context, previousContext) => {
     if (context.color !== previousContext.color) {
       return false
@@ -478,25 +442,21 @@ const PureDiv = pureDivFactory({marginLeft: 1})
 // withProps
 
 const WithPropsDiv = glamorous('div', {
-  withProps: {primaryColor: 'red'}
-})(
-  (props) => ({
-    color: props.primaryColor
-  })
-)
+  withProps: {primaryColor: 'red'},
+})(props => ({
+  color: props.primaryColor,
+}))
 
 const SimpleComponent = () => <div />
 
 const WithPropsSimpleComponent = glamorous(SimpleComponent, {
-  withProps: {primaryColor: 'red'}
-})(
-  (props) => ({
-    color: props.primaryColor
-  })
-)
+  withProps: {primaryColor: 'red'},
+})(props => ({
+  color: props.primaryColor,
+}))
 
 const MethodWithPropsComponent = glamorous(SimpleComponent)({}).withProps({
-  primaryColor: 'red'
+  primaryColor: 'red',
 })
 
 const useWithProps = (
@@ -512,7 +472,9 @@ const useWithProps = (
 
 // propsAreCssOverrides
 
-const ComponentPropsAreCssOverides = glamorous(SimpleComponent, {propsAreCssOverrides: true})({
+const ComponentPropsAreCssOverides = glamorous(SimpleComponent, {
+  propsAreCssOverrides: true,
+})({
   margin: 1,
   fontSize: 1,
 })
@@ -522,19 +484,14 @@ const DivPropsAreCssOverides = glamorous('div', {propsAreCssOverrides: true})({
   fontSize: 1,
 })
 
-
 const usePropsAreCssOverrides = (
   <div>
-    <ComponentPropsAreCssOverides
-      display={'block'}
-    />
-    <DivPropsAreCssOverides
-      display={'block'}
-    />
+    <ComponentPropsAreCssOverides display={'block'} />
+    <DivPropsAreCssOverides display={'block'} />
   </div>
 )
 
-import { Span, Div } from "../"
+import {Span, Div} from '../'
 
 const testDiv: React.ReactNode = (
   <Div>
@@ -542,39 +499,42 @@ const testDiv: React.ReactNode = (
   </Div>
 )
 
-const BuiltinSingleElement: JSX.Element = <glamorous.Div display="block" onClick={() => {}} />;
-const BuiltinSingleElementNamedExport: JSX.Element = <Span display="block" onClick={() => {}} />;
+const BuiltinSingleElement: JSX.Element = (
+  <glamorous.Div display="block" onClick={() => {}} />
+)
+const BuiltinSingleElementNamedExport: JSX.Element = (
+  <Span display="block" onClick={() => {}} />
+)
 
 const BuiltinSingleChild: JSX.Element = (
   <glamorous.Div>
     <Span>Hello, world!</Span>
   </glamorous.Div>
-);
+)
 
 const BuiltinMultipleChild: JSX.Element = (
   <glamorous.Div>
     <Span>Hello,</Span>
     <glamorous.Span>world!</glamorous.Span>
   </glamorous.Div>
-);
+)
 
-const BuiltinStyledSingleElement: JSX.Element =
-  <glamorous.Div color='red'/>
+const BuiltinStyledSingleElement: JSX.Element = <glamorous.Div color="red" />
 
 const BuiltinStyledWithSingleChild: JSX.Element = (
-  <glamorous.Div color='red'>
+  <glamorous.Div color="red">
     <glamorous.Span>Hello, world!</glamorous.Span>
   </glamorous.Div>
-);
+)
 
 const BuiltinStyledWithMultipleChild: JSX.Element = (
-  <glamorous.Div color='red' onClick={() => {}}>
+  <glamorous.Div color="red" onClick={() => {}}>
     <glamorous.Span>Hello,</glamorous.Span>
     <Span>world!</Span>
   </glamorous.Div>
-);
+)
 
-const CustomStatelessComponent: React.SFC<{}> = (_props) => <div />
+const CustomStatelessComponent: React.SFC<{}> = _props => <div />
 class CustomClassComponent extends React.Component<{}, {}> {
   render() {
     return null
@@ -594,44 +554,44 @@ const BuiltinStyledComponentChildren: JSX.Element = (
   </glamorous.Div>
 )
 const BuiltinStyledWithPrimitivesChildren: JSX.Element = (
-  <PureDiv color='red'>
+  <PureDiv color="red">
     {null}
     {false}
     {true}
     {undefined}
     {5}
   </PureDiv>
-);
+)
 
 const BuiltinStyledWithFragment: JSX.Element = (
   <div>
-    <glamorous.Div color='red' onClick={() => {}}>
+    <glamorous.Div color="red" onClick={() => {}}>
       <React.Fragment />
     </glamorous.Div>
-    <Span color='red' onClick={() => {}}>
+    <Span color="red" onClick={() => {}}>
       <React.Fragment />
     </Span>
   </div>
-);
+)
 
 const cssProps = {
-  ":active": {
-    color: "purple"
+  ':active': {
+    color: 'purple',
   },
-};
+}
 
 const BuiltinStyledWithCSSPseudoProps = (
   <div>
     <glamorous.A {...cssProps} />
     <glamorous.A css={cssProps} />
   </div>
-);
+)
 
 const nestedCssProps = [
-  { color: 'red', },
-  () => ({ fontSize: 123 }),
-  () => () => () => [{ border: '1px solid black'}],
-];
+  {color: 'red'},
+  () => ({fontSize: 123}),
+  () => () => () => [{border: '1px solid black'}],
+]
 
 const NestedStyleFunctions = (
   <div>
