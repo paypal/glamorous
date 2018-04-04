@@ -894,6 +894,11 @@ export interface CSSPropertiesCompleteSingle {
     | 900
 
   /**
+   * Shorthand property that sets the grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow.
+   */
+  grid?: CSSWideKeyword | string
+
+  /**
    * Lays out one or more grid items bound by 4 grid lines. Shorthand for setting grid-column-start, grid-column-end, grid-row-start, and grid-row-end in a single declaration.
    */
   gridArea?: CSSWideKeyword | string | number
@@ -930,6 +935,11 @@ export interface CSSPropertiesCompleteSingle {
   gridRowPosition?: CSSWideKeyword | string | number
 
   gridRowSpan?: CSSWideKeyword | number
+
+  /**
+   * Shorthand property that sets the grid-template-rows, grid-template-columns, and grid-template-areas.
+   */
+  gridTemplate?: CSSWideKeyword | string
 
   /**
    * Specifies named grid areas which are not associated with any particular grid item, but can be referenced from the grid-placement properties. The syntax of the grid-template-areas property also provides a visualization of the structure of the grid, making the overall layout of the grid container easier to understand.

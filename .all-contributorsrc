@@ -586,6 +586,16 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "whtsky",
+      "name": "Wu Haotian",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/876694?v=4",
+      "profile": "https://github.com/whtsky",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }
