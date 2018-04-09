@@ -14,7 +14,7 @@ export interface ExtraGlamorousProps {
   /**
    * Called with the inner element's reference
    */
-  innerRef?: (instance: any) => void
+  innerRef?: object | ((instance: any) => void)
 
   className?: string
   /**

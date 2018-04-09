@@ -100,7 +100,7 @@ function createGlamorous(splitProps) {
         // returning an object with a toString method that gives the className
         className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
         cssOverrides: PropTypes.object,
-        innerRef: PropTypes.func,
+        innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
         glam: PropTypes.object,
       }
 
