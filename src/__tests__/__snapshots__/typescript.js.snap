@@ -105,13 +105,13 @@ test/should-fail.test.tsx(272,18): error TS2345: Argument of type '{ textAlign: 
 test/should-fail.test.tsx(289,35): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & CSSProperties & ExtraGlamorousP...'.
   Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<object & CSSProperties & ExtraGlamorousProps>'.
     Types of property 'display' are incompatible.
-      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"ruby\\" | \\"table\\" | \\"inline\\" | \\"grid\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"block\\" | \\"run-...'.
+      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"ruby\\" | \\"table\\" | \\"inherit\\" | \\"initial\\" | \\"unset\\" | \\"contents\\" | \\"block\\" | \\"inline\\" | \\"...'.
 test/should-fail.test.tsx(290,38): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
 test/should-fail.test.tsx(291,42): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
 test/should-fail.test.tsx(293,29): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & CSS...'.
   Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<HTMLProps<HTMLDivElement> & object & CSSProperties & ExtraGlamorousProps>'.
     Types of property 'display' are incompatible.
-      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"ruby\\" | \\"table\\" | \\"inline\\" | \\"grid\\" | \\"initial\\" | \\"inherit\\" | \\"unset\\" | \\"block\\" | \\"run-...'.
+      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"ruby\\" | \\"table\\" | \\"inherit\\" | \\"initial\\" | \\"unset\\" | \\"contents\\" | \\"block\\" | \\"inline\\" | \\"...'.
 test/should-fail.test.tsx(294,32): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
 test/should-fail.test.tsx(295,36): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
 "
