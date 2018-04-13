@@ -37,6 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "brcast": "^3.0.0",
+    "csstype": "^2.2.0",
     "fast-memoize": "^2.2.7",
     "html-tag-names": "^1.1.1",
     "is-function": "^1.0.1",
