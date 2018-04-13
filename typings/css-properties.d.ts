@@ -1,8 +1,8 @@
 import * as CSS from 'csstype'
 import {SingleOrArray} from './helpers'
 
-export interface CSSPropertiesCompleteSingle<TLength = number | string>
-  extends CSS.Properties<TLength> {}
+export interface CSSPropertiesCompleteSingle
+  extends CSS.Properties<number | string> {}
 
 export type CSSPropertiesPseudo = {[K in CSS.Pseudos]?: CSSProperties}
 
