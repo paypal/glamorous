@@ -38,13 +38,7 @@ test/should-fail.test.tsx(100,24): error TS2551: Property 'colors' does not exis
 test/should-fail.test.tsx(111,3): error TS2344: Type 'PropsWithoutTheme' does not satisfy the constraint '{ theme: any; }'.
   Property 'theme' is missing in type 'PropsWithoutTheme'.
 test/should-fail.test.tsx(119,3): error TS2345: Argument of type 'StatelessComponent<object>' is not assignable to parameter of type '\\"tspan\\"'.
-test/should-fail.test.tsx(134,3): error TS2345: Argument of type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { theme: any; } & ExampleComponentProps & object>'.
-  Type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { theme: any; } & ExampleComponentProps & ...'.
-    Property 'push' is missing in type '(props: { theme: any; } & ExampleComponentProps & object) => { display: \\"none\\" | \\"hidden\\"; }'.
 test/should-fail.test.tsx(135,20): error TS2551: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'. Did you mean 'visible'?
-test/should-fail.test.tsx(140,3): error TS2345: Argument of type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { visible: boolean; } & object>'.
-  Type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { visible: boolean; } & object>)[]'.
-    Property 'push' is missing in type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }'.
 test/should-fail.test.tsx(150,29): error TS2322: Type '{ visible: string; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExampleComponentProps & object & ExtraGl...'.
   Type '{ visible: string; }' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps>'.
     Types of property 'visible' are incompatible.
@@ -67,9 +61,6 @@ test/should-fail.test.tsx(158,18): error TS2345: Argument of type '{ color: bool
     Property 'length' is missing in type '{ color: boolean; }'.
 test/should-fail.test.tsx(162,4): error TS2345: Argument of type 'StatelessComponent<ExampleComponentProps>' is not assignable to parameter of type '\\"tspan\\"'.
 test/should-fail.test.tsx(163,4): error TS7006: Parameter 'props' implicitly has an 'any' type.
-test/should-fail.test.tsx(169,3): error TS2345: Argument of type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { visible: boolean; } & object>'.
-  Type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { visible: boolean; } & object>)[]'.
-    Property 'push' is missing in type '(props: { visible: boolean; } & object) => { display: \\"none\\" | \\"hidden\\"; }'.
 test/should-fail.test.tsx(170,14): error TS2365: Operator '===' cannot be applied to types 'boolean' and '\\"\\"'.
 test/should-fail.test.tsx(184,15): error TS2551: Property 'colors' does not exist on type 'ShouldClassNameUpdateProps'. Did you mean 'color'?
 test/should-fail.test.tsx(191,35): error TS2345: Argument of type 'StatelessComponent<ShouldClassNameUpdateProps>' is not assignable to parameter of type '\\"tspan\\"'.
@@ -96,22 +87,8 @@ test/should-fail.test.tsx(262,31): error TS2322: Type '{ primaryColor: number; }
   Type '{ primaryColor: number; }' is not assignable to type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps>'.
     Types of property 'primaryColor' are incompatible.
       Type 'number' is not assignable to type 'string | undefined'.
-test/should-fail.test.tsx(267,15): error TS2345: Argument of type '{ textAlign: \\"center\\"; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}>'.
-  Type '{ textAlign: \\"center\\"; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, {}>)[]'.
-    Property 'length' is missing in type '{ textAlign: \\"center\\"; display: (\\"block\\" | \\"flexs\\")[]; }'.
-test/should-fail.test.tsx(272,18): error TS2345: Argument of type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
-  Type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, {}>)[]'.
-    Property 'length' is missing in type '{ textAlign: string; display: (\\"block\\" | \\"flexs\\")[]; }'.
-test/should-fail.test.tsx(289,35): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & CSSProperties & ExtraGlamorousP...'.
-  Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<object & CSSProperties & ExtraGlamorousProps>'.
-    Types of property 'display' are incompatible.
-      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"ruby\\" | \\"table\\" | \\"inherit\\" | \\"initial\\" | \\"unset\\" | \\"contents\\" | \\"block\\" | \\"inline\\" | \\"...'.
 test/should-fail.test.tsx(290,38): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
 test/should-fail.test.tsx(291,42): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
-test/should-fail.test.tsx(293,29): error TS2322: Type '{ display: \\"blocks\\"; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & CSS...'.
-  Type '{ display: \\"blocks\\"; }' is not assignable to type 'Readonly<HTMLProps<HTMLDivElement> & object & CSSProperties & ExtraGlamorousProps>'.
-    Types of property 'display' are incompatible.
-      Type '\\"blocks\\"' is not assignable to type '\\"none\\" | \\"ruby\\" | \\"table\\" | \\"inherit\\" | \\"initial\\" | \\"unset\\" | \\"contents\\" | \\"block\\" | \\"inline\\" | \\"...'.
 test/should-fail.test.tsx(294,32): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
 test/should-fail.test.tsx(295,36): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
 "
