@@ -118,6 +118,17 @@ exports[`can use pre-built glamorous components with css prop 1`] = `
 />
 `;
 
+exports[`does not attempt to merge class names that are not from glamor that begin with css- 1`] = `
+.glamor-0,
+[data-glamor-0] {
+  color: hotpink;
+}
+
+<div
+  class="glamor-0 glamor-1"
+/>
+`;
+
 exports[`forwards props when the GlamorousComponent.rootEl is known 1`] = `
 .glamor-0,
 [data-glamor-0] {
