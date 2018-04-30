@@ -404,3 +404,14 @@ test('should accept user defined contextTypes', () => {
   const props = {theme}
   expect(dynamicStyles).toHaveBeenCalledWith(props, context)
 })
+
+test('does not attempt to merge class names that are not from glamor that begin with css-', () => {
+  const Wrapper = glamorous.div({
+    color: 'hotpink',
+  })
+  const wrapper = render(<Wrapper className="css-something" />)
+
+  expect(wrapper[0].attribs.class).toContain('css-something')
+
+  expect(wrapper).toMatchSnapshot()
+})

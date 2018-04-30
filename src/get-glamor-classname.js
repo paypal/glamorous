@@ -1,4 +1,4 @@
-import {css} from 'glamor'
+import {css, styleSheet} from 'glamor'
 /**
  * This function takes a className string and gets all the
  * associated glamor styles. It's used to merge glamor styles
@@ -17,11 +17,11 @@ function extractGlamorStyles(className) {
     .toString()
     .split(' ')
     .forEach(name => {
-      if (name.indexOf('css-') === 0) {
+      if (styleSheet.registered[name.substring(4)] === undefined) {
+        glamorlessClassName.push(name)
+      } else {
         const style = buildGlamorSrcFromClassName(name)
         glamorStyles.push(style)
-      } else {
-        glamorlessClassName.push(name)
       }
     })
 
