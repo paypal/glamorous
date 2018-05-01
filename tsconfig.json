@@ -6,7 +6,7 @@
     "jsx": "react",
     "module": "commonjs",
     "moduleResolution": "node",
-    "noEmit": false,
+    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": false,
@@ -16,5 +16,6 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "es6"
-  }
+  },
+  "exclude": ["typings/preact"]
 }
