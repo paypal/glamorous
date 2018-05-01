@@ -1,6 +1,93 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Typescript: Typescript expected failures 1`] = `
+exports[`Typescript Preact: Typescript expected failures 1`] = `
+"test/preact/should-fail.test.tsx(9,61): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, {}>)[]'.
+    Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
+test/preact/should-fail.test.tsx(13,66): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, {}>)[]'.
+    Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
+test/preact/should-fail.test.tsx(17,68): error TS2345: Argument of type '() => { fillRule: string; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
+  Type '() => { fillRule: string; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, {}>)[]'.
+    Property 'push' is missing in type '() => { fillRule: string; }'.
+test/preact/should-fail.test.tsx(23,61): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, {}>)[]'.
+    Property 'length' is missing in type '{ float: \\"cat\\"; }'.
+test/preact/should-fail.test.tsx(27,66): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, {}>)[]'.
+    Property 'length' is missing in type '{ float: \\"cat\\"; }'.
+test/preact/should-fail.test.tsx(31,64): error TS2345: Argument of type '() => { float: string; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}>'.
+  Type '() => { float: string; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, {}>)[]'.
+    Property 'push' is missing in type '() => { float: string; }'.
+test/preact/should-fail.test.tsx(35,69): error TS2345: Argument of type '() => { float: string; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, {}>'.
+  Type '() => { float: string; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, {}>)[]'.
+    Property 'push' is missing in type '() => { float: string; }'.
+test/preact/should-fail.test.tsx(49,55): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object>'.
+  Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, TestComponentProps & object>)[]'.
+    Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
+test/preact/should-fail.test.tsx(53,57): error TS2345: Argument of type '() => { fillRule: string; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object>'.
+  Type '() => { fillRule: string; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, TestComponentProps & object>)[]'.
+    Property 'push' is missing in type '() => { fillRule: string; }'.
+test/preact/should-fail.test.tsx(57,61): error TS2345: Argument of type '{ float: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object>'.
+  Type '{ float: \\"cat\\"; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, TestComponentProps & object>)[]'.
+    Property 'length' is missing in type '{ float: \\"cat\\"; }'.
+test/preact/should-fail.test.tsx(61,64): error TS2345: Argument of type '() => { float: string; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, TestComponentProps & object>'.
+  Type '() => { float: string; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, TestComponentProps & object>)[]'.
+    Property 'push' is missing in type '() => { float: string; }'.
+test/preact/should-fail.test.tsx(79,26): error TS2551: Property 'colors' does not exist on type 'ExampleTheme'. Did you mean 'color'?
+test/preact/should-fail.test.tsx(90,47): error TS2344: Type 'PropsWithoutTheme' does not satisfy the constraint '{ theme: any; }'.
+  Property 'theme' is missing in type 'PropsWithoutTheme'.
+test/preact/should-fail.test.tsx(98,11): error TS2345: Argument of type 'FunctionalComponent<object>' is not assignable to parameter of type '\\"tspan\\"'.
+test/preact/should-fail.test.tsx(113,18): error TS2551: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'. Did you mean 'visible'?
+test/preact/should-fail.test.tsx(125,29): error TS2322: Type '{ visible: string; }' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps & Attributes & { children?: Compone...'.
+  Types of property 'visible' are incompatible.
+    Type 'string' is not assignable to type 'boolean'.
+test/preact/should-fail.test.tsx(126,5): error TS2322: Type '{}' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps & Attributes & { children?: Compone...'.
+  Property 'visible' is missing in type '{}'.
+test/preact/should-fail.test.tsx(127,32): error TS2322: Type '{ visible: string; }' is not assignable to type 'Readonly<HTMLAttributes & { visible: boolean; } & object & ExtraGlamorousProps & Attributes & { c...'.
+  Types of property 'visible' are incompatible.
+    Type 'string' is not assignable to type 'boolean'.
+test/preact/should-fail.test.tsx(128,5): error TS2322: Type '{}' is not assignable to type 'Readonly<HTMLAttributes & { visible: boolean; } & object & ExtraGlamorousProps & Attributes & { c...'.
+  Property 'visible' is missing in type '{}'.
+test/preact/should-fail.test.tsx(132,21): error TS2345: Argument of type '{ allowReorder: boolean; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, object & {}>'.
+  Type '{ allowReorder: boolean; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, object & {}>)[]'.
+    Property 'length' is missing in type '{ allowReorder: boolean; }'.
+test/preact/should-fail.test.tsx(133,18): error TS2345: Argument of type '{ color: boolean; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, object & {}>'.
+  Type '{ color: boolean; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, object & {}>)[]'.
+    Property 'length' is missing in type '{ color: boolean; }'.
+test/preact/should-fail.test.tsx(137,4): error TS2345: Argument of type 'FunctionalComponent<ExampleComponentProps>' is not assignable to parameter of type '\\"tspan\\"'.
+test/preact/should-fail.test.tsx(137,22): error TS7006: Parameter 'props' implicitly has an 'any' type.
+test/preact/should-fail.test.tsx(142,12): error TS2365: Operator '===' cannot be applied to types 'boolean' and '\\"\\"'.
+test/preact/should-fail.test.tsx(157,15): error TS2551: Property 'colors' does not exist on type 'ShouldClassNameUpdateProps'. Did you mean 'color'?
+test/preact/should-fail.test.tsx(164,35): error TS2345: Argument of type 'FunctionalComponent<ShouldClassNameUpdateProps>' is not assignable to parameter of type '\\"tspan\\"'.
+test/preact/should-fail.test.tsx(182,17): error TS2551: Property 'colors' does not exist on type 'ShouldClassNameUpdateContext'. Did you mean 'color'?
+test/preact/should-fail.test.tsx(191,11): error TS2345: Argument of type '\\"div\\"' is not assignable to parameter of type '\\"tspan\\"'.
+test/preact/should-fail.test.tsx(197,4): error TS2345: Argument of type '(props: { visible: boolean; }) => { primaryColor: boolean; }' is not assignable to parameter of type 'StyleArgument<CSSProperties, { visible: boolean; }>'.
+  Type '(props: { visible: boolean; }) => { primaryColor: boolean; }' is not assignable to type '(string | CSSProperties | StyleFunction<CSSProperties, { visible: boolean; }>)[]'.
+    Property 'push' is missing in type '(props: { visible: boolean; }) => { primaryColor: boolean; }'.
+test/preact/should-fail.test.tsx(201,1): error TS2554: Expected 1 arguments, but got 0.
+test/preact/should-fail.test.tsx(202,30): error TS2345: Argument of type '\\"\\"' is not assignable to parameter of type 'object'.
+test/preact/should-fail.test.tsx(203,30): error TS2345: Argument of type 'false' is not assignable to parameter of type 'object'.
+test/preact/should-fail.test.tsx(225,19): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<HTMLAttributes & Partial<{ primaryColor: string; }> & Pick<{ theme?: any; }, never> & { ...'.
+test/preact/should-fail.test.tsx(226,19): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'Readonly<HTMLAttributes & Partial<{ primaryColor: string; }> & Pick<{ theme?: any; }, never> & { ...'.
+  Types of property 'primaryColor' are incompatible.
+    Type 'number' is not assignable to type 'string | undefined'.
+test/preact/should-fail.test.tsx(227,31): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps ...'.
+test/preact/should-fail.test.tsx(228,31): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps ...'.
+  Types of property 'primaryColor' are incompatible.
+    Type 'number' is not assignable to type 'string | undefined'.
+test/preact/should-fail.test.tsx(229,31): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps & Attributes & { child...'.
+test/preact/should-fail.test.tsx(230,31): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps & Attributes & { child...'.
+  Types of property 'primaryColor' are incompatible.
+    Type 'number' is not assignable to type 'string | undefined'.
+test/preact/should-fail.test.tsx(266,38): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<object & ExtraGlamorousProps & Attributes & { children?: ComponentChild[] | undefined; r...'.
+test/preact/should-fail.test.tsx(267,42): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<object & ExtraGlamorousProps & Attributes & { children?: ComponentChild[] | undefined; r...'.
+test/preact/should-fail.test.tsx(270,32): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<HTMLAttributes & object & ExtraGlamorousProps & Attributes & { children?: ComponentChild...'.
+test/preact/should-fail.test.tsx(271,36): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<HTMLAttributes & object & ExtraGlamorousProps & Attributes & { children?: ComponentChild...'.
+"
+`;
+
+exports[`Typescript React: Typescript expected failures 1`] = `
 "test/should-fail.test.tsx(10,3): error TS2345: Argument of type '{ fillRule: \\"cat\\"; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, {}>'.
   Type '{ fillRule: \\"cat\\"; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, {}>)[]'.
     Property 'length' is missing in type '{ fillRule: \\"cat\\"; }'.
