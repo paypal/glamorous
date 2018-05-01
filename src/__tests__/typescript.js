@@ -3,7 +3,7 @@ import spawn from 'cross-spawn'
 test('Typescript', () => {
   const typescriptCompilation = spawn.sync('./node_modules/.bin/tsc', [
     '-p',
-    './tsconfig.json',
+    './tsconfig.react.json',
   ])
 
   const output = typescriptCompilation.stdout.toString()
