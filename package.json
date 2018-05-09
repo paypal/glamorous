@@ -13,6 +13,7 @@
     "build:main": "kcd-scripts build --bundle --p-react --no-clean",
     "build:tiny":
       "npm run build:main -- --no-package-json --environment BUILD_TINY",
+    "postbuild": "node other/patch-preact-package-json.js",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
     "test:cover": "kcd-scripts test --coverage",
@@ -60,7 +61,7 @@
     "kcd-scripts": "^0.36.0",
     "node": "^8.9.4",
     "npm-run-all": "^4.1.2",
-    "preact": "^8.2.7",
+    "preact": "^8.2.9",
     "preval.macro": "^1.0.2",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",

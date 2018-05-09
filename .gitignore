@@ -8,5 +8,5 @@ test-ts
 yarn.lock
 package-lock.json
 .vscode
-preact/
+/preact/
 .eslintcache

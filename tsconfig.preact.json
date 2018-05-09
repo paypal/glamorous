@@ -5,10 +5,11 @@
     "jsx": "preserve",
     "jsxFactory": "h",
     "paths": {
-      "glamorous/preact": ["typings/preact/glamorous.d.ts"]
+      "glamorous/preact": ["typings/preact/glamorous.d.ts"],
+      "preact": ["node_modules/preact"]
     },
     "types": ["preact"]
   },
-  "include": ["test/preact/**/*", "typings/preact/**/*"],
+  "include": ["test/preact/*", "typings/preact/*"],
   "exclude": ["**/react/**/*"]
 }

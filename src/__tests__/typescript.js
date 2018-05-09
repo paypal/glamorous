@@ -1,15 +1,23 @@
 import spawn from 'cross-spawn'
-import rimraf from 'rimraf'
 
-test('Typescript', () => {
+test('Typescript React', () => {
   const typescriptCompilation = spawn.sync('./node_modules/.bin/tsc', [
     '-p',
-    './tsconfig.json',
+    './tsconfig.react.json',
   ])
 
   const output = typescriptCompilation.stdout.toString()
 
-  rimraf.sync('./test-ts')
+  expect(output).toMatchSnapshot('Typescript expected failures')
+})
+
+test('Typescript Preact', () => {
+  const typescriptCompilation = spawn.sync('./node_modules/.bin/tsc', [
+    '-p',
+    './tsconfig.preact.json',
+  ])
+
+  const output = typescriptCompilation.stdout.toString()
 
   expect(output).toMatchSnapshot('Typescript expected failures')
 })
