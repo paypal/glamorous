@@ -69,7 +69,7 @@ Find and replace `glamorous.` ftw.
 
 If you use `css={{ backgroundColor: "purple" }}` you should be good.. but you will need to replace any glamorous objects like `import { Div, Span, Img } from 'glamorous'` with good ol' divs and elements. Also `<glamorous.Div>` needs to become `<div>` etc.
 
-One thing to watch out for `content:`""`` should become `content: '""'` (replace with single ticks) or you will be missing some pseudo elements that are most likely important ;).
+One thing to watch out for `` content: `""` ``(backticks) should become `content: '""'` (replace with single ticks) or you will be missing some pseudo elements that are most likely important ;).
 
 ## Thanks!
 
