@@ -623,6 +623,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "cbhoweth",
+      "name": "Colin Howeth",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2104197?v=4",
+      "profile": "http://colinhoweth.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ]
 }
