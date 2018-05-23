@@ -1,3 +1,7 @@
+# STATUS: UNMAINTAINED
+
+**For details on the unmaintained status (and to help people with an automated migration to [emotion](https://emotion.sh)), see [#419](https://github.com/paypal/glamorous/issues/419).**
+
 <h1 align="center">
   <img src="https://github.com/paypal/glamorous/raw/master/other/logo/full.png" alt="glamorous" title="glamorous" width="200">
   <br>
