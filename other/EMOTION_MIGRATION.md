@@ -53,7 +53,7 @@ If your using css.keyframes(glamor) you can adjust them to use `import { keyfram
 
 This list is not comprehensive please feel free to make adjustments or additions.
 
-##### Object Syntax
+### Object Syntax
 
 If moving to emotion you will need their [babel-plugin-emotion](https://github.com/emotion-js/emotion/tree/master/packages/babel-plugin-emotion). Otherwise you will need to use template strings(that's a lot of work don't do that) and most likely change your syntax a lot of places.
 
@@ -70,6 +70,10 @@ Find and replace `glamorous.` ftw.
 If you use `css={{ backgroundColor: "purple" }}` you should be good.. but you will need to replace any glamorous objects like `import { Div, Span, Img } from 'glamorous'` with good ol' divs and elements. Also `<glamorous.Div>` needs to become `<div>` etc.
 
 One thing to watch out for `` content: `""` ``(backticks) should become `content: '""'` (replace with single ticks) or you will be missing some pseudo elements that are most likely important ;).
+
+### `withProps`
+
+The emotion library doesn't support `withProps` directly itself, but you can use [`withProps` from `recompose`](https://github.com/emotion-js/emotion/blob/master/docs/with-props.md) instead.
 
 ## Thanks!
 
