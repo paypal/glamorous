@@ -22,7 +22,7 @@ yarn add emotion-theming
 ### Babel
 babel-plugin-emotion is optional but recommended because it enables the element shorthand(`styled.div` instead of `styled('div')`), the css prop, performance optimizations and developer experience improvements like labels.
 
-If you use babel-plugin-emotion, you will need to make some adjustments to your `.babelrc`, the recomended config is shown below.
+If you want to use babel-plugin-emotion, you will need to make some adjustments to your `.babelrc`, the recommended config is shown below.
 ```json
 {
   "env": {
