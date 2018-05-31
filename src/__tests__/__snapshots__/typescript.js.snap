@@ -39,15 +39,13 @@ test/preact/should-fail.test.tsx(90,47): error TS2344: Type 'PropsWithoutTheme' 
   Property 'theme' is missing in type 'PropsWithoutTheme'.
 test/preact/should-fail.test.tsx(98,11): error TS2345: Argument of type 'FunctionalComponent<object>' is not assignable to parameter of type '\\"tspan\\"'.
 test/preact/should-fail.test.tsx(113,18): error TS2551: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'. Did you mean 'visible'?
-test/preact/should-fail.test.tsx(125,29): error TS2322: Type '{ visible: string; }' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps & Attributes & { children?: Compone...'.
-  Types of property 'visible' are incompatible.
-    Type 'string' is not assignable to type 'boolean'.
-test/preact/should-fail.test.tsx(126,5): error TS2322: Type '{}' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps & Attributes & { children?: Compone...'.
+test/preact/should-fail.test.tsx(125,29): error TS2326: Types of property 'visible' are incompatible.
+  Type 'string' is not assignable to type 'boolean'.
+test/preact/should-fail.test.tsx(126,6): error TS2322: Type '{}' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps & Attributes & { children?: Compone...'.
   Property 'visible' is missing in type '{}'.
-test/preact/should-fail.test.tsx(127,32): error TS2322: Type '{ visible: string; }' is not assignable to type 'Readonly<HTMLAttributes & { visible: boolean; } & object & ExtraGlamorousProps & Attributes & { c...'.
-  Types of property 'visible' are incompatible.
-    Type 'string' is not assignable to type 'boolean'.
-test/preact/should-fail.test.tsx(128,5): error TS2322: Type '{}' is not assignable to type 'Readonly<HTMLAttributes & { visible: boolean; } & object & ExtraGlamorousProps & Attributes & { c...'.
+test/preact/should-fail.test.tsx(127,32): error TS2326: Types of property 'visible' are incompatible.
+  Type 'string' is not assignable to type 'boolean'.
+test/preact/should-fail.test.tsx(128,6): error TS2322: Type '{}' is not assignable to type 'Readonly<HTMLAttributes & { visible: boolean; } & object & ExtraGlamorousProps & Attributes & { c...'.
   Property 'visible' is missing in type '{}'.
 test/preact/should-fail.test.tsx(132,21): error TS2345: Argument of type '{ allowReorder: boolean; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, object & {}>'.
   Type '{ allowReorder: boolean; }' is not assignable to type '(string | SVGProperties | StyleFunction<SVGProperties, object & {}>)[]'.
@@ -68,22 +66,19 @@ test/preact/should-fail.test.tsx(197,4): error TS2345: Argument of type '(props:
 test/preact/should-fail.test.tsx(201,1): error TS2554: Expected 1 arguments, but got 0.
 test/preact/should-fail.test.tsx(202,30): error TS2345: Argument of type '\\"\\"' is not assignable to parameter of type 'object'.
 test/preact/should-fail.test.tsx(203,30): error TS2345: Argument of type 'false' is not assignable to parameter of type 'object'.
-test/preact/should-fail.test.tsx(225,19): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<HTMLAttributes & Partial<{ primaryColor: string; }> & Pick<{ theme?: any; }, never> & { ...'.
-test/preact/should-fail.test.tsx(226,19): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'Readonly<HTMLAttributes & Partial<{ primaryColor: string; }> & Pick<{ theme?: any; }, never> & { ...'.
-  Types of property 'primaryColor' are incompatible.
-    Type 'number' is not assignable to type 'string | undefined'.
-test/preact/should-fail.test.tsx(227,31): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps ...'.
-test/preact/should-fail.test.tsx(228,31): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps ...'.
-  Types of property 'primaryColor' are incompatible.
-    Type 'number' is not assignable to type 'string | undefined'.
-test/preact/should-fail.test.tsx(229,31): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps & Attributes & { child...'.
-test/preact/should-fail.test.tsx(230,31): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps & Attributes & { child...'.
-  Types of property 'primaryColor' are incompatible.
-    Type 'number' is not assignable to type 'string | undefined'.
-test/preact/should-fail.test.tsx(266,38): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<object & ExtraGlamorousProps & Attributes & { children?: ComponentChild[] | undefined; r...'.
-test/preact/should-fail.test.tsx(267,42): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<object & ExtraGlamorousProps & Attributes & { children?: ComponentChild[] | undefined; r...'.
-test/preact/should-fail.test.tsx(270,32): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<HTMLAttributes & object & ExtraGlamorousProps & Attributes & { children?: ComponentChild...'.
-test/preact/should-fail.test.tsx(271,36): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<HTMLAttributes & object & ExtraGlamorousProps & Attributes & { children?: ComponentChild...'.
+test/preact/should-fail.test.tsx(225,6): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<HTMLAttributes & Partial<{ primaryColor: string; }> & Pick<{ theme?: any; }, never> & { ...'.
+test/preact/should-fail.test.tsx(226,19): error TS2326: Types of property 'primaryColor' are incompatible.
+  Type 'number' is not assignable to type 'string | undefined'.
+test/preact/should-fail.test.tsx(227,6): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps ...'.
+test/preact/should-fail.test.tsx(228,31): error TS2326: Types of property 'primaryColor' are incompatible.
+  Type 'number' is not assignable to type 'string | undefined'.
+test/preact/should-fail.test.tsx(229,6): error TS2559: Type '{ d: string; }' has no properties in common with type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps & Attributes & { child...'.
+test/preact/should-fail.test.tsx(230,31): error TS2326: Types of property 'primaryColor' are incompatible.
+  Type 'number' is not assignable to type 'string | undefined'.
+test/preact/should-fail.test.tsx(266,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<object & ExtraGlamorousProps & Attributes & { children?: ComponentChild[] | undefined; r...'.
+test/preact/should-fail.test.tsx(267,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<object & ExtraGlamorousProps & Attributes & { children?: ComponentChild[] | undefined; r...'.
+test/preact/should-fail.test.tsx(270,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<HTMLAttributes & object & ExtraGlamorousProps & Attributes & { children?: ComponentChild...'.
+test/preact/should-fail.test.tsx(271,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'Readonly<HTMLAttributes & object & ExtraGlamorousProps & Attributes & { children?: ComponentChild...'.
 "
 `;
 
@@ -126,18 +121,14 @@ test/should-fail.test.tsx(111,3): error TS2344: Type 'PropsWithoutTheme' does no
   Property 'theme' is missing in type 'PropsWithoutTheme'.
 test/should-fail.test.tsx(119,3): error TS2345: Argument of type 'StatelessComponent<object>' is not assignable to parameter of type '\\"tspan\\"'.
 test/should-fail.test.tsx(135,20): error TS2551: Property 'visibles' does not exist on type '{ theme: any; } & ExampleComponentProps & object'. Did you mean 'visible'?
-test/should-fail.test.tsx(150,29): error TS2322: Type '{ visible: string; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExampleComponentProps & object & ExtraGl...'.
-  Type '{ visible: string; }' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps>'.
-    Types of property 'visible' are incompatible.
-      Type 'string' is not assignable to type 'boolean'.
-test/should-fail.test.tsx(151,5): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExampleComponentProps & object & ExtraGl...'.
+test/should-fail.test.tsx(150,29): error TS2326: Types of property 'visible' are incompatible.
+  Type 'string' is not assignable to type 'boolean'.
+test/should-fail.test.tsx(151,6): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<ExampleComponentProps & object & ExtraGl...'.
   Type '{}' is not assignable to type 'Readonly<ExampleComponentProps & object & ExtraGlamorousProps>'.
     Property 'visible' is missing in type '{}'.
-test/should-fail.test.tsx(152,32): error TS2322: Type '{ visible: string; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & { visible: b...'.
-  Type '{ visible: string; }' is not assignable to type 'Readonly<HTMLProps<HTMLDivElement> & { visible: boolean; } & object & ExtraGlamorousProps>'.
-    Types of property 'visible' are incompatible.
-      Type 'string' is not assignable to type 'boolean'.
-test/should-fail.test.tsx(153,5): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & { visible: b...'.
+test/should-fail.test.tsx(152,32): error TS2326: Types of property 'visible' are incompatible.
+  Type 'string' is not assignable to type 'boolean'.
+test/should-fail.test.tsx(153,6): error TS2322: Type '{}' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & { visible: b...'.
   Type '{}' is not assignable to type 'Readonly<HTMLProps<HTMLDivElement> & { visible: boolean; } & object & ExtraGlamorousProps>'.
     Property 'visible' is missing in type '{}'.
 test/should-fail.test.tsx(157,21): error TS2345: Argument of type '{ allowReorder: boolean; }' is not assignable to parameter of type 'StyleArgument<SVGProperties, object & {}>'.
@@ -159,24 +150,18 @@ test/should-fail.test.tsx(224,3): error TS2345: Argument of type '(props: { visi
 test/should-fail.test.tsx(229,1): error TS2554: Expected 1 arguments, but got 0.
 test/should-fail.test.tsx(230,30): error TS2345: Argument of type '\\"\\"' is not assignable to parameter of type 'object'.
 test/should-fail.test.tsx(231,30): error TS2345: Argument of type 'false' is not assignable to parameter of type 'object'.
-test/should-fail.test.tsx(257,19): error TS2559: Type '{ d: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & Partial<{ pr...'.
-test/should-fail.test.tsx(258,19): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & Partial<{ pr...'.
-  Type '{ primaryColor: number; }' is not assignable to type 'Readonly<HTMLProps<HTMLDivElement> & Partial<{ primaryColor: string; }> & Pick<{ theme?: any; }, ...'.
-    Types of property 'primaryColor' are incompatible.
-      Type 'number' is not assignable to type 'string | undefined'.
-test/should-fail.test.tsx(259,31): error TS2559: Type '{ d: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<Partial<{ primaryColor: string; }> & Pic...'.
-test/should-fail.test.tsx(260,31): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<Partial<{ primaryColor: string; }> & Pic...'.
-  Type '{ primaryColor: number; }' is not assignable to type 'Readonly<Partial<{ primaryColor: string; }> & Pick<{ theme: any; }, never> & ExtraGlamorousProps>'.
-    Types of property 'primaryColor' are incompatible.
-      Type 'number' is not assignable to type 'string | undefined'.
-test/should-fail.test.tsx(261,31): error TS2559: Type '{ d: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & Partial<{ primaryColor: string;...'.
-test/should-fail.test.tsx(262,31): error TS2322: Type '{ primaryColor: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & Partial<{ primaryColor: string;...'.
-  Type '{ primaryColor: number; }' is not assignable to type 'Readonly<object & Partial<{ primaryColor: string; }> & ExtraGlamorousProps>'.
-    Types of property 'primaryColor' are incompatible.
-      Type 'number' is not assignable to type 'string | undefined'.
-test/should-fail.test.tsx(290,38): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
-test/should-fail.test.tsx(291,42): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
-test/should-fail.test.tsx(294,32): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
-test/should-fail.test.tsx(295,36): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
+test/should-fail.test.tsx(257,6): error TS2559: Type '{ d: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & Partial<{ pr...'.
+test/should-fail.test.tsx(258,19): error TS2326: Types of property 'primaryColor' are incompatible.
+  Type 'number' is not assignable to type 'string | undefined'.
+test/should-fail.test.tsx(259,6): error TS2559: Type '{ d: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<Partial<{ primaryColor: string; }> & Pic...'.
+test/should-fail.test.tsx(260,31): error TS2326: Types of property 'primaryColor' are incompatible.
+  Type 'number' is not assignable to type 'string | undefined'.
+test/should-fail.test.tsx(261,6): error TS2559: Type '{ d: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & Partial<{ primaryColor: string;...'.
+test/should-fail.test.tsx(262,31): error TS2326: Types of property 'primaryColor' are incompatible.
+  Type 'number' is not assignable to type 'string | undefined'.
+test/should-fail.test.tsx(290,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
+test/should-fail.test.tsx(291,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<object & ExtraGlamorousProps, ComponentS...'.
+test/should-fail.test.tsx(294,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
+test/should-fail.test.tsx(295,6): error TS2559: Type '{ display: string; }' has no properties in common with type 'IntrinsicAttributes & IntrinsicClassAttributes<Component<HTMLProps<HTMLDivElement> & object & Ext...'.
 "
 `;
