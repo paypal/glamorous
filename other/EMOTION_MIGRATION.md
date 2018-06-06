@@ -96,6 +96,14 @@ SomeComponent.defaultProps = {
 
 ```
 
+### Simulation of Pseudo Selectors
+
+Emotion doesn't support simulation of pseudo selectors. Glamor creates additional styles for `[data-simulate-*]` selectors in dev mode. Remove any `[data-simulate-*]` selectors that you still have in your styles and any calls to `glamor.simulate`.
+
+### Prop Filtering
+
+Emotion's prop filtering only looks at attributes that are valid for all DOM elements, whereas Glamorous uses the tag to determine which attributes are valid. 
+
 ## Possible Gotchas
 
 This list is not comprehensive please feel free to make adjustments or additions.
