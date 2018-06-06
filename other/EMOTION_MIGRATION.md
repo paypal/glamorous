@@ -96,24 +96,6 @@ SomeComponent.defaultProps = {
 
 ```
 
-### Arrays of Style Objects
-
-Emotion's `styled` components don't support arrays of style objects, which were useful for conditionally composing styles. However, you can conditionally compose your style objects.
-```
-const SomeComponent = glamorous.div((props) => {
-  const styles = [{background: 'blue'}];
-  if(this.props.wide) {
-    styles.push({paddingLeft: '10rem, paddingRight: '10rem'});
-  }
-  return styles;
-});
-// ↓ ↓ ↓ ↓ ↓ ↓
-const SomeComponent = styled.div(props => {
-  background: 'blue',
-  ...(props.wide ? {paddingLeft: '10rem, paddingRight: '10rem'} : undefined)
-});
-```
-
 ### Simulation of Pseudo Selectors
 
 Emotion doesn't support simulation of pseudo selectors. Glamor creates additional styles for `[data-simulate-*]` selectors in dev mode. Remove any `[data-simulate-*]` selectors that you still have in your styles and any calls to `glamor.simulate`.
