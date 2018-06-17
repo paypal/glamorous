@@ -6,6 +6,7 @@
   * [Running Codemods](#running-codemods)
   * [Available codemods](#available-codemods)
     * [`theme-move`](#theme-move)
+    * [`glamorous-to-emotion`](#glamorous-to-emotion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -58,3 +59,7 @@ Where `props` has a `theme` property.
 
 This codemod updates your code to use the `theme` from props and remove the
 `theme` argument.
+
+### `glamorous-to-emotion`
+
+[This codemod](https://github.com/TejasQ/babel-plugin-glamorous-to-emotion) helps migrate an existing codebase from glamorous to emotion.
