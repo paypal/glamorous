@@ -19,6 +19,10 @@ yarn add babel-plugin-emotion
 # if you use ThemeProvider
 yarn add emotion-theming
 ```
+
+### Codemod
+[There is a codemod](https://github.com/TejasQ/babel-plugin-glamorous-to-emotion) that aims to help migrate an entire existing codebase over to emotion from glamorous. It may be worth looking into this in order to have a quicker and easier migration.
+
 ### Babel
 babel-plugin-emotion is optional but recommended because it enables the element shorthand(`styled.div` instead of `styled('div')`), the css prop, performance optimizations and developer experience improvements like labels.
 
