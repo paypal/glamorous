@@ -135,19 +135,7 @@ Check out the [FAQ](other/FAQ.md).
 
 ## Swag 👕
 
-You can pick up [glamorous stickers][stickers] from
-[unixstickers.com](https://www.unixstickers.com)! A portion of all purchases
-will be donated to [Girls Who Code][gwc]! 🎉
-
-<a href="https://www.unixstickers.com/stickers/coding_stickers/glamorous-hexagon-sticker" title="link to glamorous sticker listing on unixstickers">
-  <img src="https://github.com/paypal/glamorous/raw/master/other/swag/sticker-hex.png" alt="glamorous Hex Sticker" title="glamorous Hex Sticker" width="200" />
-</a>
-
-<a href="https://www.unixstickers.com/stickers/coding_stickers/glamorous-square-sticker" title="link to glamorous sticker listing on unixstickers">
-  <img src="https://github.com/paypal/glamorous/raw/master/other/swag/sticker-square.png" alt="glamorous Square Sticker" title="glamorous Square Sticker" width="200" />
-</a>
-
-In addition, a community member created this awesome t-shirt, and they're now
+A community member created this awesome t-shirt, and they're now
 available on Amazon! For every shirt purchased, GSM Studio will donate $1 to
 [Girls Who Code][gwc] to support the next generation of programmers. The shirts
 come in various colors and sizes. In addition you can check out other clever
