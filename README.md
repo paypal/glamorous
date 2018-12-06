@@ -1,4 +1,4 @@
-# STATUS: UNMAINTAINED
+# STATUS: DEPRECATED AND UNMAINTAINED
 
 **For details on the unmaintained status (and to help people with an automated migration to [emotion](https://emotion.sh)), see [#419](https://github.com/paypal/glamorous/issues/419).**
 
@@ -33,26 +33,25 @@
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-* [
+- [
   glamorous.rocks
   ](#glamorousrocks)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Documentation](#documentation)
-* [Related projects](#related-projects)
-* [Using glamorous with react-sketchapp](#using-glamorous-with-react-sketchapp)
-* [Usage with Stylus](#usage-with-stylus)
-* [Users](#users)
-* [Inspiration](#inspiration)
-* [Other Solutions](#other-solutions)
-* [Support](#support)
-* [Got Questions?](#got-questions)
-* [Swag 👕](#swag-)
-* [Contributors](#contributors)
-* [LICENSE](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Related projects](#related-projects)
+- [Using glamorous with react-sketchapp](#using-glamorous-with-react-sketchapp)
+- [Usage with Stylus](#usage-with-stylus)
+- [Users](#users)
+- [Inspiration](#inspiration)
+- [Other Solutions](#other-solutions)
+- [Support](#support)
+- [Got Questions?](#got-questions)
+- [Swag 👕](#swag-)
+- [Contributors](#contributors)
+- [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -77,20 +76,20 @@ website:
 
 ## Related projects
 
-* [`jest-glamor-react`](https://github.com/kentcdodds/jest-glamor-react): Jest utilities for Glamor and React
-* [`glamorous-native`](https://github.com/robinpowered/glamorous-native): React Native component styling solved 💄
-* [`glamorous-primitives`](https://github.com/nitin42/glamorous-primitives): style primitive interfaces with glamorous 💄
-* [`babel-plugin-glamorous-displayname`](https://github.com/bernard-lin/babel-plugin-glamorous-displayname): Automatically adds a `displayName` to your glamorous components for a better debugging experience.
-* [`styled-system`](https://github.com/jxnblk/styled-system): Design system utilities for styled-components, glamorous, and other css-in-js libraries
-* [`glamorous-pseudo`](https://github.com/tkh44/glamorous-pseudo): Pseudo component to extend built-in GlamorousComponents
-* [`preact-glam`](https://github.com/vesparny/preact-glam): A tiny glamorous version for preact
-* [`glamorous-jsxstyle`](https://github.com/paulmolluzzo/glamorous-jsxstyle): jsxstyle components generated with glamorous
-* [`vscode-glamorous`](https://github.com/nitin42/vscode-glamorous): A vscode extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
-* [`glam-atom`](https://github.com/nitin42/glam-atom): Atom editor extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
-* [`css-in-js`](https://atom.io/packages/css-in-js): Atom editor extension making it easy to convert normal CSS format to CSS in JS format.
-* [Convert CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js): VSCode extension making it easy to convert normal CSS format to CSS in JS format.
-* [`glamorous-redocx`](https://github.com/nitin42/glamorous-redocx): style [redocx](https://github.com/nitin42/redocx) components with glamorous 💄
-* [`stylelint-processor-glamorous`](https://github.com/zabute/stylelint-processor-glamorous): Lint glamorous and related css-in-js with [stylelint](https://github.com/stylelint/stylelint).
+- [`jest-glamor-react`](https://github.com/kentcdodds/jest-glamor-react): Jest utilities for Glamor and React
+- [`glamorous-native`](https://github.com/robinpowered/glamorous-native): React Native component styling solved 💄
+- [`glamorous-primitives`](https://github.com/nitin42/glamorous-primitives): style primitive interfaces with glamorous 💄
+- [`babel-plugin-glamorous-displayname`](https://github.com/bernard-lin/babel-plugin-glamorous-displayname): Automatically adds a `displayName` to your glamorous components for a better debugging experience.
+- [`styled-system`](https://github.com/jxnblk/styled-system): Design system utilities for styled-components, glamorous, and other css-in-js libraries
+- [`glamorous-pseudo`](https://github.com/tkh44/glamorous-pseudo): Pseudo component to extend built-in GlamorousComponents
+- [`preact-glam`](https://github.com/vesparny/preact-glam): A tiny glamorous version for preact
+- [`glamorous-jsxstyle`](https://github.com/paulmolluzzo/glamorous-jsxstyle): jsxstyle components generated with glamorous
+- [`vscode-glamorous`](https://github.com/nitin42/vscode-glamorous): A vscode extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
+- [`glam-atom`](https://github.com/nitin42/glam-atom): Atom editor extension for `glamorous`, `glamorous-native` and `glamorous-primitives`.
+- [`css-in-js`](https://atom.io/packages/css-in-js): Atom editor extension making it easy to convert normal CSS format to CSS in JS format.
+- [Convert CSS-in-JS](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js): VSCode extension making it easy to convert normal CSS format to CSS in JS format.
+- [`glamorous-redocx`](https://github.com/nitin42/glamorous-redocx): style [redocx](https://github.com/nitin42/redocx) components with glamorous 💄
+- [`stylelint-processor-glamorous`](https://github.com/zabute/stylelint-processor-glamorous): Lint glamorous and related css-in-js with [stylelint](https://github.com/stylelint/stylelint).
 
 ## Using glamorous with react-sketchapp
 
@@ -115,8 +114,8 @@ Who uses `glamorous`? See [other/USERS.md](https://github.com/paypal/glamorous/b
 This package was inspired by the work from people's work on the following
 projects:
 
-* [styled-components](https://github.com/styled-components/styled-components)
-* [jsxstyle](https://github.com/smyte/jsxstyle)
+- [styled-components](https://github.com/styled-components/styled-components)
+- [jsxstyle](https://github.com/smyte/jsxstyle)
 
 ## Other Solutions
 
@@ -136,7 +135,7 @@ Check out the [FAQ](other/FAQ.md).
 ## Swag 👕
 
 A community member created this awesome t-shirt, and they're now
-available on Amazon! For every shirt purchased, GSM Studio will donate $1 to
+available on Amazon! For every shirt purchased, GSM Studio will donate \$1 to
 [Girls Who Code][gwc] to support the next generation of programmers. The shirts
 come in various colors and sizes. In addition you can check out other clever
 t-shirts by [GSM Studio](http://amzn.to/2rxvB1T).
