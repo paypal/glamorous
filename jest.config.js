@@ -9,4 +9,6 @@ push('coveragePathIgnorePatterns', '/src/.*-entry.js$', '/src/constants.js$')
 push('snapshotSerializers', 'enzyme-to-json/serializer', 'jest-glamor-react')
 push('setupFiles', '<rootDir>/other/setup-tests.js')
 
+jestConfig.testURL = 'http://localhost'
+
 module.exports = jestConfig
