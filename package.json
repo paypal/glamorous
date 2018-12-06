@@ -11,8 +11,7 @@
     "prebuild": "rimraf dist preact",
     "build": "npm-run-all build:*",
     "build:main": "kcd-scripts build --bundle --p-react --no-clean",
-    "build:tiny":
-      "npm run build:main -- --no-package-json --environment BUILD_TINY",
+    "build:tiny": "npm run build:main -- --no-package-json --environment BUILD_TINY",
     "postbuild": "node other/patch-preact-package-json.js",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
@@ -24,7 +23,11 @@
     "setup": "npm install && npm run validate --silent",
     "precommit": "kcd-scripts precommit"
   },
-  "files": ["dist", "typings", "preact"],
+  "files": [
+    "dist",
+    "typings",
+    "preact"
+  ],
   "keywords": [
     "react",
     "css",
